@@ -1,0 +1,3 @@
+<launch>
+  <test test-name="test_rclify" pkg="rosros" type="test_rclify.py" />
+</launch>

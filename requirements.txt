@@ -1,0 +1,2 @@
+# ROS1 deps not pip-installable: genpy, rosbag, roslib, rospy
+# ROS2 deps not pip-installable: ament_index_python, builtin_interfaces, rclpy, rosidl_parser, rosidl_runtime_py

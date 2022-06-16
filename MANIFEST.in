@@ -1,0 +1,2 @@
+recursive-include src *.py
+include CHANGELOG.rst LICENSE.md README.md requirements.txt
