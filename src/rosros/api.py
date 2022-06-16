@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    16.04.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -109,6 +109,15 @@ def get_message_fields(val):
     @param   val  ROS message or service request/response instance, or class object
     """
     return ros.get_message_fields(val)
+
+
+def get_message_header(val):
+    """
+    Returns message `std_msgs/Header`-attribute if any, else `None`.
+
+    @param   val  ROS message or service request/response instance
+    """
+    return ros.get_message_header(val)
 
 
 def get_message_type(msg_or_cls):

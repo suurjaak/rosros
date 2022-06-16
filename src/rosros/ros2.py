@@ -777,6 +777,19 @@ def get_message_fields(val):
     return {k: canonical(v) for k, v in val.get_fields_and_field_types().items()}
 
 
+def get_message_header(val):
+    """
+    Returns message `std_msgs/Header`-attribute if any, else `None`.
+
+    @param   val  ROS message or service request/response instance
+    """
+    if is_ros_message(val):
+        for name, typename in val.get_fields_and_field_types().items():
+            if "std_msgs/Header" == typename:
+                return get_message_value(val, name)
+    return None
+
+
 def get_message_type(msg_or_cls):
     """Returns ROS2 canonical message type name, like "std_msgs/Header"."""
     cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)

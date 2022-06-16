@@ -572,6 +572,19 @@ def get_message_fields(val):
     return dict(zip(names, getattr(val, "_slot_types", [])))
 
 
+def get_message_header(val):
+    """
+    Returns message `std_msgs/Header`-attribute if any, else `None`.
+
+    @param   val  ROS message or service request/response instance
+    """
+    if is_ros_message(val) and val._has_header:
+        for name, typename in get_message_fields(val):
+            if "std_msgs/Header" == typename:
+                return get_message_value(val, name)
+    return None
+
+
 def get_message_type(msg_or_cls):
     """
     Returns ROS1 message / service canonical type name, like "std_msgs/Header".

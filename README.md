@@ -252,6 +252,7 @@ Can be used as stand-alone library functions without initializing rosros core.
 | `rosros.api.get_message_definition`     | `msg_or_type, full=True`   | returns ROS message or service request/response type definition text,
 |                                         |                            | by default including message subtype definitions
 | `rosros.api.get_message_fields`         | `val`                      | returns `{field name: field type name}` if ROS message or service request/response, else `{}`
+| `rosros.api.get_message_header`         | `val`                      | returns message `Header`-attribute if any, else `None`
 | `rosros.api.get_message_type`           | `msg_or_cls`               | returns ROS message / service canonical type name, like `"std_msgs/Header"`
 | `rosros.api.get_message_type_hash`      | `msg_or_type`              | returns ROS message / service type MD5 hash
 | `rosros.api.get_message_value`          | `msg, name`                | returns message attribute value, with numeric arrays converted to lists
