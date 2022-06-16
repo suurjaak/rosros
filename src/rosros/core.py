@@ -200,8 +200,7 @@ def create_subscriber(topic, cls_or_typename, callback, callback_args=None,
     @return                   `rospy.Subscriber` or `rclpy.subscription.Subscription`
     """
     if ros1:
-        if "depth" in qosargs:
-            queue_size = qosargs["depth"]
+        queue_size = qosargs.get("depth", queue_size)
         return ros1.create_subscriber(topic, cls_or_typename, callback, callback_args,
                                       queue_size, raw)
     return ros2.create_subscriber(topic, cls_or_typename, callback, callback_args,
@@ -325,7 +324,7 @@ def remap_name(name, namespace=None):
                         by default current node namespace
     @return             remapped resolved name, or original if not mapped
     """
-    return ros.remap_name(name, namespace, resolved)
+    return ros.remap_name(name, namespace)
 
 
 def resolve_name(name, namespace=None):

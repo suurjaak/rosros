@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    02.06.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -25,7 +25,6 @@ if os.getenv("ROS_VERSION") != "2":
     import genpy
     import rospy
 
-    from . import rclify
     from . rclify.clock import Clock, ClockType
     from . import ros1 as ros
 else:
@@ -134,7 +133,7 @@ def patch_ros1_rclify():
 
 def patch_ros2():
     """Patches ROS2 classes with full stand-ins for ROS1 methods and properties."""
-    global PATCHED
+    global PATCHED, PATCHED_FULL
     if PATCHED: return
 
     rclpy.client.Client.call           = client_call_wrapper(rclpy.client.Client.call)
@@ -228,7 +227,7 @@ def patch_ros2():
 def set_extra_attribute(obj, name, value):
     """Sets value for object patched attribute."""
     if hasattr(obj, name):
-       setattr(obj, name, value)
+        setattr(obj, name, value)
     else:
         EXTRA_ATTRS.setdefault(id(obj), {})[name] = value
 
@@ -455,8 +454,7 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
                 duration = duration.to_sec()
             if duration < 0:
                 return
-            else:
-                event.wait(duration) if event else rospy.rostime.wallsleep(duration)
+            event.wait(duration) if event else rospy.rostime.wallsleep(duration)
         else:
             initial_rostime = rospy.rostime.get_rostime()
             if not isinstance(duration, genpy.Duration):
@@ -695,7 +693,7 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
         for cb, arg in list(self._callbacks):
             try:
                 cb(msg) if arg is None else cb(msg, arg)
-            except Exception as e:
+            except Exception:
                 t = ("during shutdown, " if ros.SHUTDOWN else "") + "bad callback: %s\n%s"
                 ros.get_logger().warning(t, cb, traceback.format_exc())
 
@@ -739,6 +737,7 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
 
     def Timer__init(self, callback, callback_group, timer_period_ns, clock, *, context=None):
         """Constructs a new ROS2 `Timer`."""
+        global TIMER_COUNTER
         ROS2_Timer__init(self, callback, callback_group, timer_period_ns, clock, context=context)
         TIMER_COUNTER += 1
         self._name = "%s-%s" % (self.handle.name, TIMER_COUNTER)
@@ -766,7 +765,7 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
     def Timer__join(self):
         """Returns when timer has terminated."""
         while self.handle and self.is_ready():
-            ros2.spin_once(1)
+            time.sleep(1)
 
     def Timer__is_alive(self):
         """Returns whether timer is still running."""

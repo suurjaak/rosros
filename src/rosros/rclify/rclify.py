@@ -11,7 +11,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     16.02.2022
-@modified    23.02.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rclify.rclify
@@ -34,7 +34,7 @@ Released under the BSD License.
 import rospy
 import rospy.core
 
-from .. import patch  # Imported late to avoid circular import
+#from .. import patch  # Imported late to avoid circular import
 from .. import ros1
 from . node import Node
 

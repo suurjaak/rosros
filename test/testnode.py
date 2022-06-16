@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    03.06.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -21,7 +21,6 @@ import time
 
 import rosros
 import rosros.util
-from rosros import api
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from test import testbase
@@ -163,12 +162,12 @@ class TestNode():
     def create_services(self):
         """Opens service servers and clients as configured."""
         for props in self._opts.get("service", {}).values():
-            name, typename, qos = props["name"], props["type"], props.get("qos", {})
+            name, typename = props["name"], props["type"]
             logger.debug("Opening service %r as %s.", name, typename)
             handler = functools.partial(self.on_service, name)
             self._srvs[name] = rosros.create_service(name, typename, handler)
         for props in self._opts.get("client", {}).values():
-            name, typename, qos = props["name"], props["type"], props.get("qos", {})
+            name, typename = props["name"], props["type"]
             logger.debug("Opening service client to %r as %s.", name, typename)
             self._clis[name] = rosros.create_client(name, typename)
 
@@ -204,7 +203,7 @@ class TestNode():
             sys.exit()
 
 
-    def do_action(self, action, event, source, arg):
+    def do_action(self, action, event, source, arg=None):
         """
         Carries out action in a callback thread, in response to a source event.
 

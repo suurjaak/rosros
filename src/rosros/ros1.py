@@ -28,6 +28,7 @@ import rospy.rostime
 import rosservice
 
 from . import patch
+from . import rclify
 from . import util
 
 

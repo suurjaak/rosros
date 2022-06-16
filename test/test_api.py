@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    16.04.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -25,7 +25,7 @@ from rosros import api
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from test import testbase
-from test.testbase import ROS1, ROS2
+from test.testbase import ROS1
 
 logger = logging.getLogger()
 

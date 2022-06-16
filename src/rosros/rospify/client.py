@@ -7,15 +7,13 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    30.05.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.client
 import logging
-import os
 import re
 import sys
-import time
 
 import rclpy.exceptions
 import rclpy.timer
@@ -125,8 +123,8 @@ def init_node(name, argv=None, anonymous=False, log_level=None,
 
     @param   name              node name, with no namespace
     @param   argv              list of command-line arguments for the node
-    @param   anonymous         create a "hidden" node with timestamped name,
-                               e.g. "_mynode_20220130_145523_312" for "mynode"
+    @param   anonymous         whether to auto-generate a unique name for the node,
+                               using the given name as base
     @param   log_level         log level to set for the node logger,
                                one of `rospify.DEBUG .INFO .WARN .ERROR .FATAL`
     @param   disable_rostime   ignored (ROS1 compatibility stand-in)
@@ -143,9 +141,7 @@ def init_node(name, argv=None, anonymous=False, log_level=None,
     if "/" in name:
         raise ValueError("namespaces are not allowed in node names")
 
-    if anonymous:
-        name = "%s_%s_%s" % (name, os.getpid(), int(time.time() * 1000))
-    try: ros2.init_node(name, argv)
+    try: ros2.init_node(name, argv, anonymous=anonymous)
     except Exception as e:
         raise exceptions.ROSInitException() from e
     if log_level is not None:

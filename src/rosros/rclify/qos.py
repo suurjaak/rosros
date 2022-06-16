@@ -17,7 +17,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     16.02.2022
-@modified    12.04.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rclify.qos
@@ -77,7 +77,7 @@ class QoSPolicyEnum(IntEnum):
         for k, v in self.__class__.__members__.items():
             if k.startswith('RMW'):
                 continue
-            if self.value == v:
+            if self.value is v:
                 return k.lower()
         raise AttributeError(
             'failed to find value %s in %s' %
