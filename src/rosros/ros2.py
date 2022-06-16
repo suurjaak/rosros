@@ -8,13 +8,14 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    11.06.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
 import array
 import inspect
 import logging
+import os
 import re
 import threading
 import time
@@ -142,17 +143,22 @@ class Mutex:
 
 
 
-def init_node(name, args=None, multithreaded=True, reentrant=False):
+def init_node(name, args=None, anonymous=False, multithreaded=True, reentrant=False):
     """
     Initializes rclpy and creates ROS2 node.
 
+    @param   name           node name, without namespace
     @param   args           list of command-line arguments for the node
+    @param   anonymous      whether to auto-generate a unique name for the node,
+                            using the given name as base
     @param   multithreaded  use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
     """
     global NODE, CALLBACK_GROUP, EXECUTOR, SHUTDOWN
     if NODE: return
 
+    if anonymous:
+        name = "%s_%s_%s" % (name, os.getpid(), int(time.time_ns() * 1000))
     with Mutex.NODE:
         if NODE: return
 

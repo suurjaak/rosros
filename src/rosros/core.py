@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    30.05.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -22,18 +22,21 @@ else:
 ros = ros1 or ros2
 
 
-def init_node(name, args=None, multithreaded=True, reentrant=False):
+def init_node(name, args=None, anonymous=False, multithreaded=True, reentrant=False):
     """
     Initializes ROS and creates ROS node.
 
+    @param   name           node name, without namespace
     @param   args           list of command-line arguments for the node
+    @param   anonymous      whether to auto-generate a unique name for the node,
+                            using the given name as base
     @param   multithreaded  ROS2 only, ignored in ROS1:
                             use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      ROS2 only, ignored in ROS1:
                             use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
     """
-    if ros1: ros1.init_node(name, args)
-    else: ros2.init_node(name, args, multithreaded, reentrant)
+    if ros1: ros1.init_node(name, args, anonymous)
+    else: ros2.init_node(name, args, anonymous, multithreaded, reentrant)
 
 
 def init_params(defaults=None, **defaultkws):

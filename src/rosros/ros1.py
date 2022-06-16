@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    30.05.2022
+@modified    16.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -88,18 +88,21 @@ class Mutex:
     SPIN_START = threading.RLock()
 
 
-def init_node(name, args=None):
+def init_node(name, args=None, anonymous=False):
     """
     Initializes rospy and creates ROS1 node.
 
-    @param   args  list of command-line arguments for the node
+    @param   name       node name, without namespace
+    @param   args       list of command-line arguments for the node
+    @param   anonymous  whether to auto-generate a unique name for the node,
+                        using the given name as base
     """
     global MASTER, logger
     if MASTER: return
 
     patch.patch_ros1()
     logger.debug("Initializing ROS node %r.", name)
-    rospy.init_node(name, args, disable_signals=True)
+    rospy.init_node(name, args, anonymous=anonymous, disable_signals=True)
     MASTER = rospy.client.get_master()
     if not any(isinstance(x, ROSLogHandler) for x in logger.handlers):
         logger.addHandler(ROSLogHandler())
