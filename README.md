@@ -222,7 +222,8 @@ Functions for creating and spinning a node, working with topics and services.
 |                                     | `oneshot=False, immediate=False`       | |
 | `rosros.create_rate`                | `frequency`                            | returns a ROS rate instance, for sleeping at a fixed rate
 | `rosros.destroy_entity`             | `item`                                 | closes the given publisher, subscriber, service client, service server, or timer instance
-| `rosros.get_logger`                 |                                        | returns `logging.Logger` for logging to ROS log handler
+| `rosros.get_logger`                 |                                        | returns `logging.Logger` for logging to ROS log handler;
+|                                     |                                        | logger supports additional keywords `__once__`, `__throttle__`, `__throttle_identical__`
 | `rosros.get_namespace`              |                                        | returns ROS node namespace
 | `rosros.get_node_name`              |                                        | returns ROS node full name with namespace
 | `rosros.get_nodes`                  |                                        | returns all ROS nodes, as `[node full name, ]`

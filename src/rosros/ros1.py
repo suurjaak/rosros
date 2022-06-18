@@ -54,7 +54,7 @@ MASTER = None
 SPINNER = None
 
 
-logger = logging.getLogger(__name__)
+logger = util.ThrottledLogger(logging.getLogger(__name__))
 
 
 class ROSLogHandler(logging.Handler):
@@ -453,7 +453,16 @@ def get_services(node=None, namespace=None, include_types=True):
 
 
 def get_logger():
-    """Returns `logging.Logger` for logging to ROS1 log handler."""
+    """
+    Returns `logging.Logger` for logging to ROS1 log handler.
+
+    Logging methods on the logger (`debug()`, `info()`, etc) accept additional keyword arguments:
+    - `__once__`:                whether to log only once from call site
+    - `__throttle__`:            seconds to skip logging from call site for
+    - `__throttle_identical__`:  whether to skip logging identical consecutive texts from call site
+                                 (given log message excluding formatting arguments).
+                                 Combines with `__throttle__` to skip duplicates for a period.
+    """
     return logger
 
 

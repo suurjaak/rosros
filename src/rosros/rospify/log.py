@@ -147,21 +147,21 @@ def _base_logger(msg, args, kwargs, throttle=None,
     @param   msg                 log message
     @param   args                positional arguments for log message
     @param   kwargs              keyword arguments for log message
-    @param   throttle            seconds to throttle log message
-    @param   throttle_identical  whether to throttle identical log messages only
+    @param   throttle            seconds to throttle log messages from call site for
+    @param   throttle_identical  whether to throttle identical consecutive log messages
     @param   level               log level name
-    @param   once                whether to log from callsite only once
+    @param   once                whether to log only once from callsite
     """
     do_log = True
     if once:
-        do_log = LogInhibitor.once(_make_caller_id())
+        do_log = LogInhibitor.passes_once(_make_caller_id())
     elif throttle_identical:
         caller_id, throttle_elapsed = _make_caller_id(), False
         if throttle is not None:
-            throttle_elapsed = LogInhibitor.throttle(caller_id, throttle)
-        do_log = LogInhibitor.identical(caller_id, msg) or throttle_elapsed
+            throttle_elapsed = LogInhibitor.passes_throttle(caller_id, throttle)
+        do_log = LogInhibitor.passes_identical(caller_id, msg) or throttle_elapsed
     elif throttle:
-        do_log = LogInhibitor.throttle(_make_caller_id(), throttle)
+        do_log = LogInhibitor.passes_throttle(_make_caller_id(), throttle)
 
     if do_log: getattr(ros2.get_logger(), level.lower())(msg, *args, **kwargs)
 
@@ -178,24 +178,24 @@ class LogInhibitor:
     HASHES = {}
 
     @classmethod
-    def once(cls, caller_id):
+    def passes_once(cls, caller_id):
         """Returns whether the caller ID has not been once()-d before."""
         result = caller_id not in cls.ONCES
         cls.ONCES.add(caller_id)
         return result
 
     @classmethod
-    def throttle(cls, caller_id, period):
+    def passes_throttle(cls, caller_id, period):
         """Returns whether time from last throttle() was more than specified seconds ago, if any."""
         now, last = ros2.get_rostime(), cls.TIMES.get(caller_id)
         if last is not None and last > now: cls.TIMES.clear()  # Reset all on time jump backward
         last = cls.TIMES.get(caller_id)
         result = last is None or now - last > ros2.make_duration(period)
-        if result: cls.TIMES[caller_id] = now
+        cls.TIMES[caller_id] = now
         return result
 
     @classmethod
-    def identical(cls, caller_id, msg):
+    def passes_identical(cls, caller_id, msg):
         """Returns whether last message from caller was different, if any."""
         result, msg_hash = False, hashlib.md5(msg.encode()).hexdigest()
         if msg_hash != cls.HASHES.get(caller_id):

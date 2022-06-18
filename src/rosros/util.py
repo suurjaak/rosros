@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Common utility functions.
+Common utility classes and functions.
 
 ------------------------------------------------------------------------------
 This file is part of rosros - simple unified interface to ROS1 / ROS2.
@@ -8,14 +8,150 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    12.04.2022
+@modified    18.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
 import asyncio
 import functools
+import hashlib
 import inspect
+import logging
 import threading
+import time
+
+
+
+class ThrottledLogger(logging.Logger):
+    """
+    Logger wrapper with support for throttling logged messages per call site.
+
+    Logging methods (`debug()`, `info()`, etc) accept additional keyword arguments:
+    - `__once__`:                whether to log only once from call site
+    - `__throttle__`:            seconds to skip logging from call site for
+    - `__throttle_identical__`:  whether to skip logging identical consecutive texts from call site
+                                 (given log message excluding formatting arguments).
+                                 Combines with `__throttle__` to skip a duplicate for a period.
+    """
+
+    _KEYWORDS = ["__throttle__", "__throttle_identical__", "__once__"]
+
+    ## Caller IDs registered for throttling by once-only
+    _ONCES = set()
+
+    ## Caller IDs and last timestamps for throttling by time
+    _TIMES = {}
+
+    ## Caller IDs and log message hashes for throttling by identical text
+    _HASHES = {}
+
+
+    def __init__(self, logger):
+        """
+        Creates a wrapper logger around given logger instance, providing support for throttling.
+
+        @param   `logging.Logger` to wrap
+        """
+        super().__init__(logger.name, logger.level)
+        OVERRIDES = ("debug", "info", "warning", "warn", "error", "fatal", "log")
+        for name in dir(logger):  # Monkey-patch all other attributes from wrapped
+            if not name.startswith("_") and name not in OVERRIDES:
+                setattr(self, name, getattr(logger, name))
+        self.__logger = logger
+
+
+    def debug(self, msg, *args, **kwargs):
+        """
+        Logs `msg % args` with severity `DEBUG`.
+
+        To pass exception information, use the keyword argument `exc_info=True`.
+
+        @param   __once__                 whether to log only once from call site
+        @param   __throttle__             seconds to skip logging from call site for
+        @param   __throttle_identical__   whether to skip identical consecutive texts from call site
+        """
+        if not self._is_throttled(msg, **self._extract_args(kwargs)):
+            self.__logger.debug(self, msg, *args, **kwargs)
+
+
+    def info(self, msg, *args, **kwargs):
+        """
+        Logs `msg % args` with severity `INFO`. The arguments are interpreted as for `debug()`.
+        """
+        if not self._is_throttled(msg, **self._extract_args(kwargs)):
+            self.__logger.info(self, msg, *args, **kwargs)
+
+
+    def warning(self, msg, *args, **kwargs):
+        """
+        Logs `msg % args` with severity `WARN`. The arguments are interpreted as for `debug()`.
+        """
+        if not self._is_throttled(msg, **self._extract_args(kwargs)):
+            self.__logger.warning(self, msg, *args, **kwargs)
+
+
+    def warn(self, msg, *args, **kwargs):
+        """
+        Logs `msg % args` with severity `WARNING`. The arguments are interpreted as for `debug()`.
+        """
+        if not self._is_throttled(msg, **self._extract_args(kwargs)):
+            self.__logger.warn(self, msg, *args, **kwargs)
+
+
+    def error(self, msg, *args, **kwargs):
+        """
+        Logs `msg % args` with severity `ERROR`. The arguments are interpreted as for `debug()`.
+        """
+        if not self._is_throttled(msg, **self._extract_args(kwargs)):
+            self.__logger.error(self, msg, *args, **kwargs)
+
+
+    def fatal(self, msg, *args, **kwargs):
+        """
+        Logs `msg % args` with severity `FATAL`. The arguments are interpreted as for `debug()`.
+        """
+        if not self._is_throttled(msg, **self._extract_args(kwargs)):
+            self.__logger.fatal(self, msg, *args, **kwargs)
+
+
+    def log(self, level, msg, *args, **kwargs):
+        """
+        Logs `msg % args` with given severity. The arguments are interpreted as for `debug()`.
+        """
+        if not self._is_throttled(msg, **self._extract_args(kwargs)):
+            self.__logger.log(self, level, msg, *args, **kwargs)
+
+
+    @classmethod
+    def _extract_args(cls, kwargs):
+        """Drops throttle parameters from kwargs and returns as dict."""
+        return {k.replace("__", ""): kwargs.pop(k, None) for k in cls._KEYWORDS}
+
+
+    @classmethod
+    def _is_throttled(cls, msg, once=False, throttle=None, throttle_identical=False):
+        """Returns whether message should be skipped."""
+        result = False
+        if once or throttle_identical or throttle:
+            f = inspect.currentframe().f_back.f_back
+            caller_id = ":".join(str(x) for x in (inspect.getabsfile(f), f.f_lineno, f.f_lasti))
+        if once:
+            result = caller_id in cls._ONCES
+            cls._ONCES.add(caller_id)
+        elif throttle_identical:
+            msg_hash = hashlib.md5(msg.encode()).hexdigest()
+            result = (cls._HASHES.get(caller_id) == msg_hash)
+            if not result:
+                cls._HASHES[caller_id] = msg_hash
+            if throttle:
+                now, last = time.time(), cls._TIMES.get(caller_id)
+                result = result and last is not None and now - last < throttle
+                cls._TIMES[caller_id] = now
+        elif throttle:
+            now, last = time.time(), cls._TIMES.get(caller_id)
+            result = last is not None and now - last < throttle
+            cls._TIMES[caller_id] = now
+        return result
 
 
 
