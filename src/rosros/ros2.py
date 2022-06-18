@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    16.06.2022
+@modified    18.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -143,12 +143,14 @@ class Mutex:
 
 
 
-def init_node(name, args=None, anonymous=False, multithreaded=True, reentrant=False):
+def init_node(name, args=None, namespace=None, anonymous=False,
+              multithreaded=True, reentrant=False):
     """
     Initializes rclpy and creates ROS2 node.
 
     @param   name           node name, without namespace
     @param   args           list of command-line arguments for the node
+    @param   namespace      node namespace override
     @param   anonymous      whether to auto-generate a unique name for the node,
                             using the given name as base
     @param   multithreaded  use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
@@ -166,7 +168,8 @@ def init_node(name, args=None, anonymous=False, multithreaded=True, reentrant=Fa
         logger.debug("Initializing ROS node %r.", name)
         try: rclpy.init(args=args)
         except RuntimeError: pass  # Raises if called twice at runtime
-        NODE = rclpy.create_node(name, automatically_declare_parameters_from_overrides=True,
+        NODE = rclpy.create_node(name, namespace=namespace,
+                                 automatically_declare_parameters_from_overrides=True,
                                  allow_undeclared_parameters=True)
         execls = rclpy.executors.SingleThreadedExecutor
         grpcls = rclpy.callback_groups.MutuallyExclusiveCallbackGroup

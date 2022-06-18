@@ -193,7 +193,8 @@ Functions for creating and spinning a node, working with topics and services.
 
 | Function                            | Arguments                              | Description
 | ----------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------
-| `rosros.init_node`                  | `name, args=None, anonymous=True,`     | initializes ROS and creates ROS node
+| `rosros.init_node`                  | `name, args=None, namespace=None,`     | initializes ROS and creates ROS node
+|                                     | `anonymous=True,`                      | |
 |                                     | `multithreaded=True, reentrant=False`  | |
 | `rosros.init_params`                | `defaults=None, **defaultkws`          | sets all parameters on node from defaults dictionary, returns full parameters dictionary.
 |                                     |                                        | In ROS2, auto-declares unregistered parameters.

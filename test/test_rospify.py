@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     16.04.2022
-@modified    19.04.2022
+@modified    18.06.2022
 ------------------------------------------------------------------------------
 """
 import copy
@@ -35,6 +35,9 @@ class TestRospify(testbase.TestBase):
 
     ## Test name used in flow logging
     NAME = "test_rospify"
+
+    ## Node namespace
+    NAMESPACE = "/tests"
 
     ## Topic remaps as {from: to}
     REMAPS = {"/foo": "/bar"}
@@ -480,8 +483,9 @@ class TestRospify(testbase.TestBase):
                             "No function %r in rospy API." % name)
 
 
-        self.assertEqual(rospy.get_name(), "/" + self.NAME, "Unexpected value from get_name().")
-        self.assertEqual(rospy.get_namespace(), "/",     "Unexpected value from get_namespace().")
+        self.assertEqual(rospy.get_name(), util.namejoin(self.NAMESPACE, self.NAME),
+                         "Unexpected value from get_name().")
+        self.assertEqual(rospy.get_namespace(), self.NAMESPACE, "Unexpected value from get_namespace().")
         self.assertIsInstance(rospy.get_node_uri(), str, "Unexpected type from get_node_uri().")
         self.assertIsInstance(rospy.get_ros_root(), str, "Unexpected type from get_ros_root().")
 

@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     01.06.2022
-@modified    15.06.2022
+@modified    18.06.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -33,6 +33,9 @@ class TestRclify(testbase.TestBase):
 
     ## Test name used in flow logging
     NAME = "test_rclify"
+
+    ## Node namespace
+    NAMESPACE = "/tests"
 
 
     def __init__(self, *args, **kwargs):

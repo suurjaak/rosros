@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.04.2022
-@modified    03.06.2022
+@modified    18.06.2022
 ------------------------------------------------------------------------------
 """
 import contextlib
@@ -46,6 +46,9 @@ class TestBase(unittest.TestCase):
     ## Test name used in flow logging, overriden in subclasses
     NAME = ""
 
+    ## Node namespace
+    NAMESPACE = None
+
     ## Command for launching testnode
     NODE_CMD = "python3 testnode.py"
 
@@ -78,7 +81,7 @@ class TestBase(unittest.TestCase):
 
     def init_local_node(self):
         """Creates ROS1 or ROS2 node."""
-        rosros.init_node(self.NAME)
+        rosros.init_node(self.NAME, namespace=self.NAMESPACE)
         self.add_logging()
 
     def add_logging(self):

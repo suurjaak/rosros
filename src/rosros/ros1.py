@@ -8,13 +8,14 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    16.06.2022
+@modified    18.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
 import inspect
 import io
 import logging
+import os
 import re
 import threading
 import time
@@ -24,6 +25,7 @@ import genpy
 import roslib
 import rospy
 import rospy.core
+import rospy.names
 import rospy.rostime
 import rosservice
 
@@ -89,17 +91,22 @@ class Mutex:
     SPIN_START = threading.RLock()
 
 
-def init_node(name, args=None, anonymous=False):
+def init_node(name, args=None, namespace=None, anonymous=False):
     """
     Initializes rospy and creates ROS1 node.
 
     @param   name       node name, without namespace
     @param   args       list of command-line arguments for the node
+    @param   namespace  node namespace override
     @param   anonymous  whether to auto-generate a unique name for the node,
                         using the given name as base
     """
     global MASTER, logger
     if MASTER: return
+
+    if namespace and namespace != "/":
+        os.environ["ROS_NAMESPACE"] = namespace
+        rospy.names._set_caller_id(util.namejoin(namespace, name))
 
     patch.patch_ros1()
     logger.debug("Initializing ROS node %r.", name)
