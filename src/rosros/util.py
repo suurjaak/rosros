@@ -17,6 +17,7 @@ import functools
 import hashlib
 import inspect
 import logging
+import re
 import threading
 import time
 
@@ -211,6 +212,29 @@ def flatten_dict(dct, sep="."):
         else:
             result[k] = v
     return result
+
+
+def get_nested(obj, path):
+    """
+    Returns (nested value, value parent container, key in parent container).
+
+    Raises if path not found.
+
+    @param   obj      object or dictionary or list, with arbitrary nesting
+    @param   path     "name" or ("nested", "path") or "nested.path", element can be list index
+    @return           (value, value parent container, key in parent container)
+    """
+
+    def getter(obj, key):
+        """Returns dictionary value, or object attribute, or sequence element if numeric key."""
+        key = int(key) if isinstance(key, str) and re.match("^[0-9]+$", key) else key
+        return obj[key] if isinstance(obj, dict) or isinstance(key, int) else getattr(obj, key)
+
+    (*path, leaf) = path.split(".") if isinstance(path, str) else path
+    ptr = obj
+    for p in path:
+        ptr = getter(ptr, p)
+    return getter(ptr, leaf), ptr, leaf
 
 
 def get_value(obj, path, pathsep=None):

@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    16.06.2022
+@modified    19.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -143,7 +143,11 @@ def get_message_type_hash(msg_or_type):
 
 
 def get_message_value(msg, name):
-    """Returns object attribute value, with numeric arrays converted to lists."""
+    """
+    Returns object attribute value, with numeric arrays converted to lists.
+
+    @param   message attribute name; may also be (nested, path) or "nested.path"
+    """
     return ros.get_message_value(msg, name)
 
 

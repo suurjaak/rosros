@@ -838,13 +838,17 @@ def _get_message_type_hash(typename):
 
 
 def get_message_value(msg, name):
-    """Returns object attribute value, with numeric arrays converted to lists."""
-    v = getattr(msg, name)
+    """
+    Returns object attribute value, with numeric arrays converted to lists.
+
+    @param   message attribute name; may also be (nested, path) or "nested.path"
+    """
+    v, parent, k = util.get_nested(msg, name)
     if isinstance(v, (bytes, array.array)) \
     or "numpy.ndarray" == "%s.%s" % (v.__class__.__module__, v.__class__.__name__):
         v = list(v)
-    if v and isinstance(v, (list, tuple)):
-        typename = canonical(msg.get_fields_and_field_types()[name])
+    if v and isinstance(v, (list, tuple)) and is_ros_message(parent):
+        typename = canonical(parent.get_fields_and_field_types()[k])
         scalartype = scalar(typename)
         if scalartype in ("byte", "uint8"):
             if isinstance(v[0], bytes):

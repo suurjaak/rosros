@@ -644,10 +644,16 @@ def get_message_type_hash(msg_or_type):
 
 
 def get_message_value(msg, name):
-    """Returns object attribute value, with numeric arrays converted to lists."""
-    v = getattr(msg, name)
-    do_list = isinstance(v, bytes) and get_message_fields(msg)[name].startswith("uint8[")
-    return list(v) if do_list else v
+    """
+    Returns object attribute value, with numeric arrays converted to lists.
+
+    @param   message attribute name; may also be (nested, path) or "nested.path"
+    """
+    v, parent, k = util.get_nested(msg, name)
+    if isinstance(v, bytes) and is_ros_message(parent) \
+    and get_message_fields(parent)[k].startswith("uint8["):
+        v = list(v)
+    return v
 
 
 def get_service_definition(srv_or_type):
