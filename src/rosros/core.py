@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    18.06.2022
+@modified    19.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -22,7 +22,7 @@ else:
 ros = ros1 or ros2
 
 
-def init_node(name, args=None, namespace=None, anonymous=False,
+def init_node(name, args=None, namespace=None, anonymous=False, log_level=None,
               multithreaded=True, reentrant=False):
     """
     Initializes ROS and creates ROS node.
@@ -32,13 +32,15 @@ def init_node(name, args=None, namespace=None, anonymous=False,
     @param   namespace      node namespace override
     @param   anonymous      whether to auto-generate a unique name for the node,
                             using the given name as base
+    @param   log_level      level to set for ROS logging
+                            (name like "DEBUG" or one of `logging` constants like `logging.DEBUG`)
     @param   multithreaded  ROS2 only, ignored in ROS1:
                             use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      ROS2 only, ignored in ROS1:
                             use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
     """
-    if ros1: ros1.init_node(name, args, namespace, anonymous)
-    else: ros2.init_node(name, args, namespace, anonymous, multithreaded, reentrant)
+    if ros1: ros1.init_node(name, args, namespace, anonymous, log_level)
+    else: ros2.init_node(name, args, namespace, anonymous, log_level, multithreaded, reentrant)
 
 
 def init_params(defaults=None, **defaultkws):

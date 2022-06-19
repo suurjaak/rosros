@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    18.06.2022
+@modified    19.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -29,6 +29,7 @@ import rclpy.client
 import rclpy.duration
 import rclpy.exceptions
 import rclpy.executors
+import rclpy.logging
 import rclpy.publisher
 import rclpy.qos
 import rclpy.serialization
@@ -143,7 +144,7 @@ class Mutex:
 
 
 
-def init_node(name, args=None, namespace=None, anonymous=False,
+def init_node(name, args=None, namespace=None, anonymous=False, log_level=None,
               multithreaded=True, reentrant=False):
     """
     Initializes rclpy and creates ROS2 node.
@@ -153,6 +154,8 @@ def init_node(name, args=None, namespace=None, anonymous=False,
     @param   namespace      node namespace override
     @param   anonymous      whether to auto-generate a unique name for the node,
                             using the given name as base
+    @param   log_level      level to set for ROS logging
+                            (name like "DEBUG" or one of `logging` constants like `logging.DEBUG`)
     @param   multithreaded  use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
     """
@@ -180,8 +183,14 @@ def init_node(name, args=None, namespace=None, anonymous=False,
         defgrp = NODE.default_callback_group
         CALLBACK_GROUP = defgrp if grpcls is type(defgrp) else grpcls()
         SHUTDOWN = False
+
         if not any(isinstance(x, ROSLogHandler) for x in logger.handlers):
             logger.addHandler(ROSLogHandler(NODE))
+        if log_level is not None:
+            if not isinstance(log_level, str): log_level = logging.getLevelName(log_level)
+            logger.setLevel(log_level)
+            ros_level = rclpy.logging.get_logging_severity_from_string(log_level)
+            NODE.get_logger().set_level(ros_level)
 
 
 def register_init(node):

@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    18.06.2022
+@modified    19.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -48,6 +48,15 @@ PARAM_SEPARATOR = "/"
 
 ## Prefix for "private" names, auto-namespaced under current namespace
 PRIVATE_PREFIX = "~"
+
+## Map rospy log level constants to Python logging level constants
+PY_LOG_LEVEL_TO_ROSPY_LEVEL = {
+    logging.DEBUG:  1,
+    logging.INFO:   2,
+    logging.WARN:   4,
+    logging.ERROR:  8,
+    logging.FATAL: 16,
+}
 
 ## rospy.MasterProxy instance
 MASTER = None
@@ -91,7 +100,7 @@ class Mutex:
     SPIN_START = threading.RLock()
 
 
-def init_node(name, args=None, namespace=None, anonymous=False):
+def init_node(name, args=None, namespace=None, anonymous=False, log_level=None):
     """
     Initializes rospy and creates ROS1 node.
 
@@ -100,6 +109,8 @@ def init_node(name, args=None, namespace=None, anonymous=False):
     @param   namespace  node namespace override
     @param   anonymous  whether to auto-generate a unique name for the node,
                         using the given name as base
+    @param   log_level  level to set for ROS logging
+                        (name like "DEBUG" or one of `logging` constants like `logging.DEBUG`)
     """
     global MASTER, logger
     if MASTER: return
@@ -108,12 +119,20 @@ def init_node(name, args=None, namespace=None, anonymous=False):
         os.environ["ROS_NAMESPACE"] = namespace
         rospy.names._set_caller_id(util.namejoin(namespace, name))
 
+    ros_level = None
+    if log_level is not None:
+        if isinstance(log_level, str): log_level = logging.getLevelName(log_level)
+        ros_level = PY_LOG_LEVEL_TO_ROSPY_LEVEL.get(log_level)
+
     patch.patch_ros1()
     logger.debug("Initializing ROS node %r.", name)
-    rospy.init_node(name, args, anonymous=anonymous, disable_signals=True)
+    rospy.init_node(name, args, anonymous=anonymous, log_level=ros_level, disable_signals=True)
     MASTER = rospy.client.get_master()
+
     if not any(isinstance(x, ROSLogHandler) for x in logger.handlers):
         logger.addHandler(ROSLogHandler())
+    if log_level is not None:
+        logger.setLevel(log_level)
 
 
 def register_init():
@@ -743,8 +762,8 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "ROSLogHandler", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "ROS_ALIAS_TYPES",
-    "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
+    "ROSLogHandler", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "PY_LOG_LEVEL_TO_ROSPY_LEVEL",
+    "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
     "canonical", "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "deserialize_message",
     "destroy_entity", "format_param_name", "get_logger", "get_message_class",
