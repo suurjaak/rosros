@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    16.06.2022
+@modified    19.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.client
@@ -115,7 +115,7 @@ def get_published_topics(namespace="/"):
 
 
 def init_node(name, argv=None, anonymous=False, log_level=None,
-              disable_rostime=None, disable_rosout=None,
+              disable_rostime=None, disable_rosout=False,
               disable_signals=None, xmlrpc_port=None, tcpros_port=None):
     """
     Inits ROS2 and creates ROS2 node.
@@ -128,7 +128,7 @@ def init_node(name, argv=None, anonymous=False, log_level=None,
     @param   log_level         log level to set for the node logger,
                                one of `rospify.DEBUG .INFO .WARN .ERROR .FATAL`
     @param   disable_rostime   ignored (ROS1 compatibility stand-in)
-    @param   disable_rosout    ignored (ROS1 compatibility stand-in)
+    @param   disable_rosout    whether to suppress auto-publication of rosout
     @param   disable_signals   ignored (ROS1 compatibility stand-in)
     @param   xmlrpc_port       ignored (ROS1 compatibility stand-in)
     @param   tcpros_port       ignored (ROS1 compatibility stand-in)
@@ -141,11 +141,11 @@ def init_node(name, argv=None, anonymous=False, log_level=None,
     if "/" in name:
         raise ValueError("namespaces are not allowed in node names")
 
-    try: ros2.init_node(name, argv, anonymous=anonymous)
+    log_level = _ROSPY_LOG_LEVEL_TO_PY_LEVEL.get(log_level, log_level)
+    try: ros2.init_node(name, argv, anonymous=anonymous, log_level=log_level,
+                        enable_rosout=not disable_rosout)
     except Exception as e:
         raise exceptions.ROSInitException() from e
-    if log_level is not None:
-        ros2.get_logger().setLevel(_ROSPY_LOG_LEVEL_TO_PY_LEVEL[log_level])
 
 
 def myargv(argv=None):

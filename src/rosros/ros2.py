@@ -147,7 +147,7 @@ class Mutex:
 
 
 
-def init_node(name, args=None, namespace=None, anonymous=False, log_level=None,
+def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True,
               multithreaded=True, reentrant=False):
     """
     Initializes rclpy and creates ROS2 node.
@@ -159,6 +159,7 @@ def init_node(name, args=None, namespace=None, anonymous=False, log_level=None,
                             using the given name as base
     @param   log_level      level to set for ROS logging
                             (name like "DEBUG" or one of `logging` constants like `logging.DEBUG`)
+    @param   enable_rosout  `False` to suppress auto-publication of rosout
     @param   multithreaded  use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
     """
@@ -174,7 +175,7 @@ def init_node(name, args=None, namespace=None, anonymous=False, log_level=None,
         logger.debug("Initializing ROS node %r.", name)
         try: rclpy.init(args=args)
         except RuntimeError: pass  # Raises if called twice at runtime
-        NODE = rclpy.create_node(name, namespace=namespace,
+        NODE = rclpy.create_node(name, namespace=namespace, enable_rosout=enable_rosout,
                                  automatically_declare_parameters_from_overrides=True,
                                  allow_undeclared_parameters=True)
         execls = rclpy.executors.SingleThreadedExecutor

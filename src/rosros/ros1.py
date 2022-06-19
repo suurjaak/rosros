@@ -103,17 +103,18 @@ class Mutex:
     SPIN_START = threading.RLock()
 
 
-def init_node(name, args=None, namespace=None, anonymous=False, log_level=None):
+def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True):
     """
     Initializes rospy and creates ROS1 node.
 
-    @param   name       node name, without namespace
-    @param   args       list of command-line arguments for the node
-    @param   namespace  node namespace override
-    @param   anonymous  whether to auto-generate a unique name for the node,
-                        using the given name as base
-    @param   log_level  level to set for ROS logging
-                        (name like "DEBUG" or one of `logging` constants like `logging.DEBUG`)
+    @param   name           node name, without namespace
+    @param   args           list of command-line arguments for the node
+    @param   namespace      node namespace override
+    @param   anonymous      whether to auto-generate a unique name for the node,
+                            using the given name as base
+    @param   log_level      level to set for ROS logging
+                            (name like "DEBUG" or one of `logging` constants like `logging.DEBUG`)
+    @param   enable_rosout  `False` to suppress auto-publication of rosout
     """
     global MASTER, logger
     if MASTER: return
@@ -129,7 +130,8 @@ def init_node(name, args=None, namespace=None, anonymous=False, log_level=None):
 
     patch.patch_ros1()
     logger.debug("Initializing ROS node %r.", name)
-    rospy.init_node(name, args, anonymous=anonymous, log_level=ros_level, disable_signals=True)
+    rospy.init_node(name, args, anonymous=anonymous, log_level=ros_level,
+                    disable_rosout=not enable_rosout, disable_signals=True)
     MASTER = rospy.client.get_master()
 
     if not any(isinstance(x, ROSLogHandler) for x in logger.handlers):

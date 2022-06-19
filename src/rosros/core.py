@@ -22,7 +22,7 @@ else:
 ros = ros1 or ros2
 
 
-def init_node(name, args=None, namespace=None, anonymous=False, log_level=None,
+def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True,
               multithreaded=True, reentrant=False):
     """
     Initializes ROS and creates ROS node.
@@ -34,12 +34,13 @@ def init_node(name, args=None, namespace=None, anonymous=False, log_level=None,
                             using the given name as base
     @param   log_level      level to set for ROS logging
                             (name like "DEBUG" or one of `logging` constants like `logging.DEBUG`)
+    @param   enable_rosout  `False` to suppress auto-publication of rosout
     @param   multithreaded  ROS2 only, ignored in ROS1:
                             use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      ROS2 only, ignored in ROS1:
                             use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
     """
-    if ros1: ros1.init_node(name, args, namespace, anonymous, log_level)
+    if ros1: ros1.init_node(name, args, namespace, anonymous, log_level, enable_rosout)
     else: ros2.init_node(name, args, namespace, anonymous, log_level, multithreaded, reentrant)
 
 
