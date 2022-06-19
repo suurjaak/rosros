@@ -14,6 +14,7 @@ Released under the BSD License.
 ## @namespace rosros.api
 import datetime
 import decimal
+import inspect
 import os
 
 ros1 = ros2 = None
@@ -57,6 +58,9 @@ PARAM_SEPARATOR = ros.PARAM_SEPARATOR
 
 ## Prefix for "private" names, auto-namespaced under current namespace
 PRIVATE_PREFIX = ros.PRIVATE_PREFIX
+
+## ROS Python module family, "rospy" or "rclpy"
+FAMILY = ros.FAMILY
 
 ## Logging handler that forwards logging messages to ROS logger
 ROSLogHandler = ros.ROSLogHandler
@@ -232,7 +236,7 @@ def is_ros_service(val):
 
 
 def is_ros_time(val):
-    """Returns whether value is a ROS time/duration."""
+    """Returns whether value is a ROS time/duration class or instance."""
     return ros.is_ros_time(val)
 
 
@@ -253,7 +257,7 @@ def make_full_typename(typename, category="msg"):
     @param   category  type category like "msg" or "srv"
     """
     INTER = "/%s/" % category
-    if INTER in typename or "/" not in typename:
+    if INTER in typename or "/" not in typename or typename.startswith("%s/" % FAMILY):
         return typename
     return INTER.join(next((x[0], x[-1]) for x in [typename.split("/")]))
 
@@ -339,7 +343,7 @@ def to_datetime(val):
 
 def to_decimal(val):
     """Returns value as decimal.Decimal if value is ROS time/duration, else value."""
-    if ros.is_ros_time(val):
+    if ros.is_ros_time(val) and not inspect.isclass(val):
         return decimal.Decimal("%d.%09d" % ros.to_sec_nsec(val))
     return val
 
@@ -360,7 +364,7 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "ROSLogHandler", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "ROS_ALIAS_TYPES",
+    "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "ROS_ALIAS_TYPES",
     "ROS_BUILTIN_CTORS", "ROS_BUILTIN_TYPES", "ROS_COMMON_TYPES", "ROS_NUMERIC_TYPES",
     "ROS_STRING_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES", "canonical",
     "deserialize_message", "dict_to_message", "format_param_name", "get_alias_type",

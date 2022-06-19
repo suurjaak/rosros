@@ -74,6 +74,9 @@ PARAM_SEPARATOR = "."
 ## Prefix for "private" names, auto-namespaced under current namespace
 PRIVATE_PREFIX = "~"
 
+## ROS Python module family, "rclpy"
+FAMILY = "rclpy"
+
 ## `rclpy.node.Node` instance
 NODE = None
 
@@ -929,7 +932,8 @@ def is_ros_service(val):
 
 
 def is_ros_time(val):
-    """Returns whether value is a ROS2 time/duration."""
+    """Returns whether value is a ROS2 time/duration class or instance."""
+    if inspect.isclass(val): return issubclass(val, tuple(ROS_TIME_CLASSES))
     return isinstance(val, tuple(ROS_TIME_CLASSES))
 
 
@@ -996,7 +1000,7 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "ROSLogHandler", "DDS_TYPES", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
+    "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
     "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
     "canonical", "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "deserialize_message",

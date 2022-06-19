@@ -49,6 +49,9 @@ PARAM_SEPARATOR = "/"
 ## Prefix for "private" names, auto-namespaced under current namespace
 PRIVATE_PREFIX = "~"
 
+## ROS Python module family, "rospy"
+FAMILY = "rospy"
+
 ## Map rospy log level constants to Python logging level constants
 PY_LOG_LEVEL_TO_ROSPY_LEVEL = {
     logging.DEBUG:  1,
@@ -628,6 +631,9 @@ def get_message_type(msg_or_cls):
     @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
                          or class object like `std_msgs.msg.Bool`
     """
+    if is_ros_time(msg_or_cls):
+        cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)
+        return "rospy/%s" % cls.__name__
     return msg_or_cls._type
 
 
@@ -717,8 +723,8 @@ def is_ros_service(val):
 
 
 def is_ros_time(val):
-    """Returns whether value is a ROS1 time/duration."""
-    return isinstance(val, genpy.TVal)
+    """Returns whether value is a ROS1 time/duration class or instance."""
+    return issubclass(val, genpy.TVal) if inspect.isclass(val) else isinstance(val, genpy.TVal)
 
 
 def make_duration(secs=0, nsecs=0):
@@ -768,7 +774,7 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "ROSLogHandler", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "PY_LOG_LEVEL_TO_ROSPY_LEVEL",
+    "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "PY_LOG_LEVEL_TO_ROSPY_LEVEL",
     "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
     "canonical", "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "deserialize_message",

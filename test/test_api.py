@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    16.06.2022
+@modified    19.06.2022
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -84,6 +84,11 @@ class TestAPI(testbase.TestBase):
             logger.info("Testing %s.", NAME(func))
             self.assertEqual(func(std_msgs.msg.Bool),   "std_msgs/Bool", ERR(func))
             self.assertEqual(func(std_msgs.msg.Bool()), "std_msgs/Bool", ERR(func))
+            self.assertEqual(func(type(api.make_time())), "%s/Time" % api.FAMILY, ERR(func))
+            self.assertEqual(func(api.make_time()),       "%s/Time" % api.FAMILY, ERR(func))
+            self.assertEqual(func(type(api.make_duration())), "%s/Duration" % api.FAMILY, ERR(func))
+            self.assertEqual(func(api.make_duration()),       "%s/Duration" % api.FAMILY, ERR(func))
+
 
         func = api.get_message_type_hash
         with self.subTest(NAME(func)):
@@ -231,6 +236,10 @@ class TestAPI(testbase.TestBase):
             self.assertEqual(func("std_msgs/msg/Bool"),           "std_msgs/msg/Bool", ERR(func))
             self.assertEqual(func("std_srvs/SetBool", "srv"),     "std_srvs/srv/SetBool", ERR(func))
             self.assertEqual(func("std_srvs/srv/SetBool", "srv"), "std_srvs/srv/SetBool", ERR(func))
+            self.assertEqual(func("%s/Time" % api.FAMILY),
+                             "%s/Time" % api.FAMILY, ERR(func))
+            self.assertEqual(func("%s/Duration" % api.FAMILY),
+                             "%s/Duration" % api.FAMILY, ERR(func))
 
         func = api.scalar
         with self.subTest(NAME(func)):
@@ -255,8 +264,12 @@ class TestAPI(testbase.TestBase):
         with self.subTest(NAME(func)):
             logger.info("Testing %s.", NAME(func))
             msg = std_msgs.msg.Header(frame_id=self.NAME)
-            self.assertTrue(func(msg.stamp), ERR(func))
-            self.assertFalse(func(msg),      ERR(func))
+            dur = msg.stamp - msg.stamp
+            self.assertTrue(func(type(msg.stamp)), ERR(func))
+            self.assertTrue(func(msg.stamp),       ERR(func))
+            self.assertFalse(func(msg),            ERR(func))
+            self.assertTrue(func(type(dur)),       ERR(func))
+            self.assertTrue(func(dur),             ERR(func))
 
         func = api.make_duration
         with self.subTest(NAME(func)):
