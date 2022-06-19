@@ -271,6 +271,7 @@ Can be used as stand-alone library functions without initializing rosros core.
 | `rosros.api.make_time`                  | `secs=0, nsecs=0`          | returns a ROS time
 | `rosros.api.message_to_dict`            | `msg, replace=None`        | returns ROS message as nested Python dictionary;
 |                                         |                            | with optional replacements for certain values like `{math.nan: None}`
+| `rosros.api.message_to_str`             | `msg, indent=None`         | returns ROS message as an evaluatable string, e.g. `"std_msgs.msg.UInt8(data=0)"`
 | `rosros.api.scalar`                     | `typename`                 | returns scalar type from ROS message data type, like `"uint8"` from `uint8`-array;
 |                                         |                            | in ROS2, returns unbounded type, e.g. `"string"` from `"string<=10[<=5]"`.
 | `rosros.api.serialize_message`          | `msg`                      | returns ROS message or service request/response as a serialized binary of `bytes()`

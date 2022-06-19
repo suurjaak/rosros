@@ -174,6 +174,37 @@ class TestAPI(testbase.TestBase):
             if ROS1: msg.seq = dct["seq"]
             self.assertEqual(func(msg), dct, ERR(func))
 
+        func = api.message_to_str
+        with self.subTest(NAME(func)):
+            logger.info("Testing %s.", NAME(func))
+            stamp = api.make_time(1, 2)
+            msg  = std_msgs.msg.Header(frame_id=self.NAME, stamp=stamp if ROS1 else stamp.to_msg())
+            if ROS1:
+                exp1 = "std_msgs.msg.Header(seq=0, stamp=rospy.Time(secs=1, nsecs=2), " \
+                                           "frame_id='%s')" % self.NAME
+                exp2 = """std_msgs.msg.Header(
+  seq=0,
+  stamp=rospy.Time(
+    secs=1,
+    nsecs=2
+  ),
+  frame_id='%s'
+)""" % self.NAME
+            else:
+                exp1 = "std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1, nanosec=2), " \
+                                           "frame_id='%s')" % self.NAME
+                exp2 = """std_msgs.msg.Header(
+  stamp=builtin_interfaces.msg.Time(
+    secs=1,
+    nsecs=2
+  ),
+  frame_id='%s'
+)""" % self.NAME
+
+            self.assertEqual(func(msg),              exp1, ERR(func))
+            self.assertEqual(func(msg, indent=2),    exp2, ERR(func))
+            self.assertEqual(func(msg, indent="  "), exp2, ERR(func))
+
         func = api.serialize_message
         with self.subTest(NAME(func)):
             logger.info("Testing %s.", NAME(func))

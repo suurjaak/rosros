@@ -315,6 +315,38 @@ def message_to_dict(msg, replace=None):
     return result
 
 
+def message_to_str(msg, indent=None):
+    """
+    Returns ROS message as an evaluatable string, e.g. "std_msgs.msg.UInt8(data=0)".
+
+    @param   indent  multi-line indentation level to use if not returning one-liner;
+                     as the number of spaces or the string to indent with
+    """
+    if not is_ros_message(msg):
+        return repr(msg)
+    indent = " " * indent if isinstance(indent, int) else indent or ""
+    sep, start, end = (",\n", "\n%s" % indent, "\n") if indent else (", ", "", "")
+    parts = []
+    for k in get_message_fields(msg):
+        v = get_message_value(msg, k)
+        if is_ros_message(v):
+            v = message_to_str(v, indent)
+            if indent:
+                v = v.replace("\n", start)
+        elif isinstance(v, bytes):
+            v = "bytes(%s)" % list(v)
+        elif isinstance(v, list) and v:
+            nested = sep.join(message_to_str(x, indent) for x in v)
+            if indent:
+                nested = indent + nested.replace("\n", "\n%s" % (indent * 2))
+            v = "[%s%s%s%s]" % (start, nested, end, indent)
+        else:
+            v = repr(v)
+        parts.append("%s=%s" % (k, v))
+    name = make_full_typename(get_message_type(msg)).replace("/", ".")
+    return "%s(%s%s%s)" % (name, start, (sep + indent).join(parts), end)
+
+
 def serialize_message(msg):
     """Returns ROS message or service request/response as a serialized binary of `bytes()`."""
     return ros.serialize_message(msg)
