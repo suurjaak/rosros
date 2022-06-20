@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    19.06.2022
+@modified    20.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -568,8 +568,10 @@ def get_message_class(msg_or_type):
     if is_ros_message(msg_or_type) or is_ros_service(msg_or_type):
         return msg_or_type if inspect.isclass(msg_or_type) else type(msg_or_type)
 
-    typename = canonical(msg_or_type)
-    try: cls = roslib.message.get_message_class(typename)
+    typename, cls = canonical(msg_or_type), None
+    if typename.startswith("%s/" % FAMILY):
+        cls = next((c for c in ROS_TIME_CLASSES if get_message_type(c) == typename), None)
+    try: cls = cls or roslib.message.get_message_class(typename)
     except Exception: cls = None
     if not cls:
         try: cls = roslib.message.get_service_class(typename)
@@ -635,7 +637,7 @@ def get_message_type(msg_or_cls):
     """
     if is_ros_time(msg_or_cls):
         cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)
-        return "rospy/%s" % cls.__name__
+        return "%s/%s" % (FAMILY, cls.__name__)
     return msg_or_cls._type
 
 
