@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    19.06.2022
+@modified    23.06.2022
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -195,8 +195,8 @@ class TestAPI(testbase.TestBase):
                                            "frame_id='%s')" % self.NAME
                 exp2 = """std_msgs.msg.Header(
   stamp=builtin_interfaces.msg.Time(
-    secs=1,
-    nsecs=2
+    sec=1,
+    nanosec=2
   ),
   frame_id='%s'
 )""" % self.NAME
@@ -295,17 +295,17 @@ class TestAPI(testbase.TestBase):
         with self.subTest(NAME(func)):
             logger.info("Testing %s.", NAME(func))
             msg = std_msgs.msg.Header(frame_id=self.NAME)
-            dur = msg.stamp - msg.stamp
             self.assertTrue(func(type(msg.stamp)), ERR(func))
             self.assertTrue(func(msg.stamp),       ERR(func))
             self.assertFalse(func(msg),            ERR(func))
-            self.assertTrue(func(type(dur)),       ERR(func))
-            self.assertTrue(func(dur),             ERR(func))
 
         func = api.make_duration
         with self.subTest(NAME(func)):
             logger.info("Testing %s.", NAME(func))
-            self.assertIsInstance(func(1, 2), tuple(api.ROS_TIME_CLASSES),  ERR(func))
+            dur = func(1, 2)
+            self.assertIsInstance(dur, tuple(api.ROS_TIME_CLASSES),  ERR(func))
+            self.assertTrue(api.is_ros_time(type(dur)), ERR(func))
+            self.assertTrue(api.is_ros_time(dur),       ERR(func))
 
         func = api.make_time
         with self.subTest(NAME(func)):
