@@ -9,10 +9,11 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     01.06.2022
-@modified    18.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 import functools
+import inspect
 import logging
 import os
 import sys
@@ -31,7 +32,7 @@ logger = logging.getLogger()
 class TestRclify(testbase.TestBase):
     """Tests using rclify stand-in for rclpy in ROS1."""
 
-    ## Test name used in flow logging
+    ## Test and node name used in flow logging
     NAME = "test_rclify"
 
     ## Node namespace
@@ -55,7 +56,7 @@ class TestRclify(testbase.TestBase):
         self._running = False  # Whether test has been set up and is executing
 
         rclpy.init()
-        self._node = rclpy.create_node(self.NAME)
+        self._node = rclpy.create_node(self.NAME, namespace=self.NAMESPACE)
         self._grp  = rclpy.callback_groups.ReentrantCallbackGroup()
         self._exec = rclpy.executors.MultiThreadedExecutor()
         self._exec.add_node(self._node)
@@ -127,7 +128,8 @@ class TestRclify(testbase.TestBase):
 
     def on_message(self, name, msg):
         """Handler for incoming message, registers message object."""
-        logger.info("Received message in %r: %s.", name, msg)
+        raw, loggable = ("raw ", "AnyMsg") if "*" == rosros.api.get_message_type(msg) else ("", msg)
+        logger.info("Received %smessage in %r: %s.", raw, name, loggable)
         self._msgs.setdefault(name, []).append(msg)
 
 
@@ -174,6 +176,7 @@ class TestRclify(testbase.TestBase):
         with self.subTest("clock"):               self.verify_clock()
         with self.subTest("duration"):            self.verify_duration()
         with self.subTest("executors"):           self.verify_executors()
+        with self.subTest("node"):                self.verify_node()
         with self.subTest("parameter"):           self.verify_parameter()
         with self.subTest("publisher"):           self.verify_publisher()
         with self.subTest("qos"):                 self.verify_qos()
@@ -341,14 +344,288 @@ class TestRclify(testbase.TestBase):
                             "Unexpected type for rclpy.executors.%s (%r)." % (name, cls))
             instance = cls(context=self._node.context)
             for attrname in ("add_node", "context", "create_task", "get_nodes", "remove_node",
-                          "shutdown", "spin", "spin_once", "spin_once_until_future_complete",
-                          "spin_until_future_complete", "wake"):
-                attr = getattr(instance, attrname, None)
-                self.assertIsNotNone(attr, "Unexpected value for rclpy.executors.%s.%s (%r)" %
-                                           (name, attrname, attr))
+                             "shutdown", "spin", "spin_once", "spin_once_until_future_complete",
+                             "spin_until_future_complete", "wake"):
+                exists = hasattr(instance, attrname)
+                self.assertTrue(exists, "Unexpected value for rclpy.executors.%s.%s." %
+                                        (name, attrname))
             self.assertEqual(instance.context, self._node.context,
-                             "Unexpected value for rclpy.executors.%s.%s." % (name, attrname))
+                             "Unexpected value for rclpy.node.Node.context.")
             instance.shutdown()
+
+
+    def verify_node(self):
+        """Tests rclify Node API."""
+        logger.info("Testing Node API.")
+
+        self.assertTrue(issubclass(getattr(rclpy.node, "NodeNameNonExistentError", None),
+                                   Exception),
+                        "Unexpected value for rclpy.node.NodeNameNonExistentError.")
+
+        self.assertTrue(list(self._node.publishers),
+                        "Unexpected value for rclpy.node.Node.publishers.")
+        self.assertTrue(list(self._node.subscriptions),
+                        "Unexpected value for rclpy.node.Node.subscriptions.")
+        self.assertTrue(list(self._node.clients),
+                        "Unexpected value for rclpy.node.Node.clients.")
+        self.assertTrue(list(self._node.services),
+                        "Unexpected value for rclpy.node.Node.services.")
+        self.assertTrue(inspect.isgenerator(self._node.timers),
+                        "Unexpected value for rclpy.node.Node.timers.")
+        self.assertTrue(inspect.isgenerator(self._node.guards),
+                        "Unexpected value for rclpy.node.Node.guards.")
+        self.assertTrue(inspect.isgenerator(self._node.waitables),
+                        "Unexpected value for rclpy.node.Node.waitables.")
+
+        self.assertEqual(self._node.get_name(), self.NAME,
+                         "Unexpected value for rclpy.node.Node.get_name()")
+        self.assertEqual(self._node.get_namespace(), self.NAMESPACE,
+                         "Unexpected value for rclpy.node.Node.get_namespace()")
+        self.assertIsInstance(self._node.get_clock(), rclpy.clock.Clock,
+                         "Unexpected value for rclpy.node.Node.get_clock()")
+        self.assertIsNotNone(self._node.get_logger(),
+                         "Unexpected value for rclpy.node.Node.get_logger()")
+
+        def make_callback(lst, resulter):
+            """
+            Returns function that calls resulter() with parameters,
+            adds result to list and returns SetParametersResult.
+            """
+            def inner(params):
+                success = resulter(params)
+                lst.append(success)
+                return rclpy.node.SetParametersResult(successful=success)
+            return inner
+
+        cbs1, cbs2, cbs3, cbs_empty = [], [], [], []
+
+        self._node.set_parameters_callback(make_callback(cbs1, lambda pp: True))
+        self._node.add_on_set_parameters_callback(make_callback(cbs2, lambda p: True))
+
+        removed_cb = make_callback(cbs_empty, lambda pp: False)
+        self._node.add_on_set_parameters_callback(removed_cb)
+        self._node.remove_on_set_parameters_callback(removed_cb)
+
+
+        param = self._node.get_parameter_or("nope")
+        self.assertIsInstance(param, rclpy.node.Parameter,
+                              "Unexpected value for rclpy.node.Node.get_parameter_or().")
+        self.assertEqual(param.type_, rclpy.node.Parameter.Type.NOT_SET,
+                              "Unexpected value for rclpy.node.Node.get_parameter_or().")
+        self.assertEqual(param.value, None,
+                              "Unexpected value for rclpy.node.Node.get_parameter_or().")
+
+        param = self._node.declare_parameter("declare.param.v1", 5,
+            rclpy.node.ParameterDescriptor(name="declare.param.v1",
+                                           type=rclpy.node.Parameter.Type.INTEGER.value,
+                                           description="v1 description"))
+        self.assertIsInstance(param, rclpy.node.Parameter,
+                              "Unexpected value for rclpy.node.Node.declare_parameter().")
+        self.assertTrue(self._node.has_parameter("declare.param.v1"),
+                        "Unexpected state from rclpy.node.Node.declare_parameter().")
+        self.assertEqual(self._node.get_parameter("declare.param.v1"), param,
+                         "Unexpected value for rclpy.node.Node.get_parameter().")
+        self.assertEqual(cbs1, [True],
+                         "Unexpected state from rclpy.node.Node.declare_parameter().")
+        self.assertEqual(cbs2, [True],
+                         "Unexpected state from rclpy.node.Node.declare_parameter().")
+        self.assertFalse(cbs_empty,
+                         "Unexpected state from rclpy.node.Node.declare_parameter().")
+        cbs1.clear(), cbs2.clear()
+
+
+        params = self._node.declare_parameters("declare", [("params.v1", 1),
+                                                           ("params.v2", 2)])
+        self.assertEqual(len(params), 2, "Unexpected value from rclpy.node.set_parameters().")
+        self.assertIsInstance(params[0], rclpy.node.Parameter,
+                              "Unexpected value for rclpy.node.Node.declare_parameters().")
+        self.assertEqual(params[0].name, "declare.params.v1",
+                         "Unexpected value for rclpy.node.Node.declare_parameters().")
+        self.assertEqual(params[1].value, 2,
+                         "Unexpected value for rclpy.node.Node.declare_parameters().")
+        self.assertEqual(cbs1, [True, True],
+                         "Unexpected state from rclpy.node.Node.declare_parameters().")
+
+        params[0] = rclpy.node.Parameter(name=params[0].name, type_=params[0].type_, value=11)
+        params[1] = rclpy.node.Parameter(name=params[1].name, type_=params[1].type_, value=22)
+        cbs1.clear(), cbs2.clear()
+        results = self._node.set_parameters(params)
+        self.assertEqual(len(results), 2, "Unexpected value from rclpy.node.set_parameters().")
+        self.assertTrue(all(x.successful for x in results),
+                         "Unexpected value for rclpy.node.Node.set_parameters().")
+        self.assertEqual(cbs2, [True, True],
+                         "Unexpected state from rclpy.node.Node.set_parameters().")
+
+        params = self._node.get_parameters_by_prefix("declare")
+        self.assertEqual(len(params), 3, "Unexpected value from rclpy.node.get_parameters_by_prefix().")
+        self.assertEqual(params["param.v1"].name, "declare.param.v1",
+                         "Unexpected value for rclpy.node.Node.get_parameters_by_prefix().")
+
+        params = self._node.get_parameters_by_prefix("declare.params")
+        self.assertEqual(len(params), 2, "Unexpected value from rclpy.node.get_parameters_by_prefix().")
+        self.assertEqual(params["v2"].name, "declare.params.v2",
+                         "Unexpected value for rclpy.node.Node.get_parameters_by_prefix().")
+
+        desc = self._node.describe_parameter("declare.param.v1")
+        self.assertIsInstance(desc, rclpy.node.ParameterDescriptor,
+                              "Unexpected state from rclpy.node.Node.describe_parameter().")
+        self.assertEqual(desc.type, rclpy.node.Parameter.Type.INTEGER.value,
+                         "Unexpected value for rclpy.node.Node.describe_parameter().")
+        self.assertEqual(desc.description, "v1 description",
+                         "Unexpected value for rclpy.node.Node.describe_parameter().")
+
+        with self.assertRaises(rclpy.exceptions.InvalidParameterValueException,
+                               msg="Unexpected success for rclpy.node.Node.set_descriptor()."):
+            self._node.set_descriptor("declare.param.v1",
+                rclpy.node.ParameterDescriptor(
+                    type=rclpy.node.Parameter.Type.INTEGER.value,
+                    integer_range=[rclpy.node.IntegerRange(from_value=10, to_value=20)]
+                ),
+            )
+
+        value = self._node.set_descriptor("declare.param.v1",
+            rclpy.node.ParameterDescriptor(type=rclpy.node.Parameter.Type.INTEGER.value,
+                                           description="x",
+                                           integer_range=[rclpy.node.IntegerRange(from_value=10,
+                                                                                  to_value=20)]),
+            rclpy.node.ParameterValue(type=rclpy.node.Parameter.Type.INTEGER.value,
+                                      integer_value=15)
+        )
+        self.assertEqual(value.integer_value, 15,
+                        "Unexpected value for rclpy.node.Node.set_descriptor().")
+        self.assertEqual(self._node.get_parameter("declare.param.v1").value, 15,
+                        "Unexpected state from rclpy.node.Node.set_descriptor().")
+
+        descs = self._node.describe_parameters(["declare.param.v1", "declare.params.v2"])
+        self.assertEqual(len(descs), 2,
+                         "Unexpected value for rclpy.node.Node.describe_parameters().")
+        self.assertEqual(descs[0].type, rclpy.node.Parameter.Type.INTEGER.value,
+                         "Unexpected state from rclpy.node.Node.set_descriptor().")
+        self.assertEqual(descs[0].description, "x",
+                         "Unexpected state from rclpy.node.Node.set_descriptor().")
+        self.assertEqual(descs[1].name, "declare.params.v2",
+                         "Unexpected value for rclpy.node.Node.describe_parameters().")
+
+        self._node.undeclare_parameter("declare.param.v1")
+        self.assertFalse(self._node.has_parameter("declare.param.v1"),
+                        "Unexpected state from rclpy.node.Node.undeclare_parameter().")
+
+        params = self._node.get_parameters(["declare.params.v1", "declare.params.v2"])
+        self.assertEqual(len(params), 2,
+                         "Unexpected value for rclpy.node.Node.get_parameters().")
+        self.assertIsInstance(params[0], rclpy.node.Parameter,
+                         "Unexpected value for rclpy.node.Node.get_parameters().")
+        self.assertEqual(params[0].get_parameter_value().integer_value, 11,
+                         "Unexpected value for rclpy.node.Node.get_parameters().")
+
+        with self.assertRaises(rclpy.exceptions.ParameterNotDeclaredException,
+                               msg="Unexpected success for rclpy.node.Node.set_parameters()."):
+            self._node.set_parameters([rclpy.node.Parameter("rejected0")])
+        self.assertFalse(self._node.has_parameter("rejected0"),
+                         "Unexpected state from rclpy.node.Node.set_parameters().")
+
+        # Verify that a rejecting callback gets enforced
+        self._node.declare_parameter("rejected1", "")
+        self._node.declare_parameter("rejected2", "")
+        self._node.add_on_set_parameters_callback(make_callback(cbs3, lambda pp: False))
+        results = self._node.set_parameters([rclpy.node.Parameter("rejected1")])
+        self.assertTrue(results, "Unexpected value for rclpy.node.Node.set_parameters().")
+
+        result = self._node.set_parameters_atomically([rclpy.node.Parameter("rejected1"),
+                                                       rclpy.node.Parameter("rejected2")])
+        self.assertIsInstance(result, rclpy.node.SetParametersResult,
+                         "Unexpected value for rclpy.node.Node.set_parameters_atomically().")
+        self.assertFalse(results[0].successful,
+                         "Unexpected value for rclpy.node.Node.set_parameters_atomically().")
+
+        self.assertFalse(cbs_empty, "Unexpected invocation of a removed set-parameters-callback.")
+
+
+        for name in ("add_waitable", "remove_waitable", "create_guard_condition",
+                     "destroy_client", "destroy_guard_condition", "destroy_node", "destroy_publisher",
+                     "destroy_rate", "destroy_service", "destroy_subscription", "destroy_timer"):
+            self.assertTrue(callable(getattr(self._node, name, None)),
+                            "Unexpected value for rclpy.node.Node.%s." % name)
+
+        self.assertGreater(self._node.count_publishers(next(iter(self._subs))), 0,
+                           "Unexpected value for rclpy.node.Node.count_publishers().")
+        for topic in self._pubs:
+            self.assertGreater(self._node.count_subscribers(topic), 0,
+                               "Unexpected value for rclpy.node.Node.count_subscribers().")
+
+        self.assertIsInstance(self._node.get_client_names_and_types_by_node(self.NAME, self.NAMESPACE),
+                              list, "Unexpected value for "
+                                    "rclpy.node.Node.get_client_names_and_types_by_node().")
+
+        self.assertIn(testnode.TestNode.NAME, self._node.get_node_names(),
+                      "Unexpected value for rclpy.node.Node.get_node_names().")
+        self.assertIn((testnode.TestNode.NAME, self.NAMESPACE),
+                      self._node.get_node_names_and_namespaces(),
+                      "Unexpected value for rclpy.node.Node.get_node_names_and_namespaces().")
+        self.assertIn((testnode.TestNode.NAME, self.NAMESPACE, "/"),
+                      self._node.get_node_names_and_namespaces_with_enclaves(),
+                      "Unexpected value for "
+                      "rclpy.node.Node.get_node_names_and_namespaces_with_enclaves().")
+
+        pubs = self._node.get_publisher_names_and_types_by_node(testnode.TestNode.NAME,
+                                                                self.NAMESPACE)
+        self.assertIsInstance(pubs, list,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_publisher_names_and_types_by_node().")
+        self.assertIsInstance(pubs[0], tuple,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_publisher_names_and_types_by_node().")
+        self.assertIsInstance(pubs[0][0], str,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_publisher_names_and_types_by_node().")
+        self.assertIsInstance(pubs[0][1], list,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_publisher_names_and_types_by_node().")
+        self.assertIsInstance(pubs[0][1][0], str,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_publisher_names_and_types_by_node().")
+
+        srvs = self._node.get_service_names_and_types()
+        self.assertIsInstance(srvs, list,
+                              "Unexpected value for rclpy.node.Node.get_service_names_and_types().")
+
+        srvs = self._node.get_service_names_and_types_by_node(testnode.TestNode.NAME,
+                                                              self.NAMESPACE)
+        self.assertIsInstance(srvs, list,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_service_names_and_types_by_node().")
+        self.assertTrue(set(self._clis) & set(x[0] for x in srvs),
+                            "Unexpected value for "
+                            "rclpy.node.Node.get_service_names_and_types_by_node().")
+
+        subs = self._node.get_subscriber_names_and_types_by_node(testnode.TestNode.NAME,
+                                                                 self.NAMESPACE)
+        self.assertIsInstance(subs, list,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_subscriber_names_and_types_by_node().")
+        self.assertTrue(set(self._pubs) & set(x[0] for x in subs),
+                            "Unexpected value for "
+                            "rclpy.node.Node.get_subscriber_names_and_types_by_node().")
+
+        topics = self._node.get_topic_names_and_types()
+        self.assertIsInstance(topics, list,
+                              "Unexpected value for "
+                              "rclpy.node.Node.get_topic_names_and_types().")
+        self.assertTrue(set(self._subs) & set(x[0] for x in topics),
+                            "Unexpected value for "
+                            "rclpy.node.Node.get_topic_names_and_types().")
+
+        infos = self._node.get_publishers_info_by_topic(next(iter(self._subs)))
+        self.assertTrue(infos,
+                        "Unexpected value for rclpy.node.Node.get_publishers_info_by_topic().")
+        self.assertIsInstance(infos[0], rclpy.topic_endpoint_info.TopicEndpointInfo,
+                        "Unexpected value for rclpy.node.Node.get_publishers_info_by_topic().")
+
+        infos = self._node.get_subscriptions_info_by_topic(next(iter(self._pubs)))
+        self.assertTrue(infos,
+                        "Unexpected value for rclpy.node.Node.get_subscriptions_info_by_topic().")
+        self.assertIsInstance(infos[0], rclpy.topic_endpoint_info.TopicEndpointInfo,
+                        "Unexpected value for rclpy.node.Node.get_subscriptions_info_by_topic().")
 
 
     def verify_parameter(self):
