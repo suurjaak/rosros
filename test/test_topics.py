@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    15.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -40,6 +40,7 @@ class TestTopics(testbase.TestBase):
         self._msgs    = {}    # {topic name: [incoming message, ]}
         self._exps    = {}    # {topic name: expected message data dictionary}
         self._raw_sub = None  # subscriber instance for raw messages
+        self._raw_cls = {}    # {topic name: real message class}
 
         self.init_local_node()
 
@@ -64,6 +65,7 @@ class TestTopics(testbase.TestBase):
             self._exps[action["name"]] = action.get("value", {})
             if raw:
                 self._raw_sub = sub
+                self._raw_cls[action["name"]] = rosros.api.get_message_class(action["type"])
 
         rosros.start_spin()
 
@@ -77,9 +79,9 @@ class TestTopics(testbase.TestBase):
 
     def on_message(self, name, msg):
         """Handler for incoming message, registers message object."""
-        logged = msg if "*" != rosros.api.get_message_type(msg) else "AnyMsg"
+        loggable = msg if "*" != rosros.api.get_message_type(msg) else "AnyMsg"
         # rospy.AnyMsg raises error on string representation
-        logger.info("Received message in %r: %s.", name, logged)
+        logger.info("Received message in %r: %s.", name, loggable)
         self._msgs.setdefault(name, []).append(msg)
 
 
@@ -114,7 +116,7 @@ class TestTopics(testbase.TestBase):
                                 "Expected message not received in topic %r." % name)
                 msg = self._msgs[name][0]
                 if sub is self._raw_sub:
-                    msg = rosros.api.deserialize_message(msg, sub.data_class)
+                    msg = rosros.api.deserialize_message(msg, self._raw_cls[name])
                 for k, v in self._exps[name].items():
                     if isinstance(v, (dict, list)): continue  # for k, v
                     logger.info("Verifying %s=%r in %r.", k, v, name)
