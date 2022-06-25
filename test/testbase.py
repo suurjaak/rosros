@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.04.2022
-@modified    24.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 import contextlib
@@ -117,7 +117,7 @@ class TestBase(unittest.TestCase):
         self._proc = None
 
     @contextlib.contextmanager
-    def subTest(self, msg, **params):
+    def subTest(self, msg=None, **params):
         """Overrides `TestCase.subTest` to log any exceptions."""
         with super().subTest(msg, **params):
             try: yield

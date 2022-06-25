@@ -12,7 +12,6 @@ Released under the BSD License.
 """
 ## @namespace rosros.rospify.topics
 import abc
-import functools
 
 import rclpy.publisher
 import rclpy.subscription

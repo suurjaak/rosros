@@ -11,7 +11,6 @@ Released under the BSD License.
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
-import copy
 import functools
 import numbers
 import os
