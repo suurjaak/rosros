@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    16.06.2022
+@modified    24.06.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -113,8 +113,14 @@ class TestNode():
     ## Seconds to keep node running if no connections made
     STANDALONE_LIFETIME = 10
 
+    ## Node default name
+    NAME = "testnode"
 
-    def __init__(self, params, name="testnode"):
+    ## Node namespace
+    NAMESPACE = "/tests"
+
+
+    def __init__(self, params, name=NAME, namespace=NAMESPACE):
         """
         @param   params  node parameters, as {
                              "publish":   {label: {name, type, ?qos, ?queue_size}},
@@ -131,7 +137,7 @@ class TestNode():
         self._ts_start = time.monotonic()
 
         testbase.init_logging(name)
-        rosros.init_node(name, multithreaded=True, reentrant=True)
+        rosros.init_node(name, namespace=namespace, multithreaded=True, reentrant=True)
         params = rosros.init_params(params)
         self._opts.update(params)
         self.create_publishers()
