@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     06.03.2022
-@modified    30.05.2022
+@modified    24.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify
@@ -16,5 +16,7 @@ import os
 
 if os.getenv("ROS_VERSION") != "2":
     from rospy import *
+    from rospy import timer
+    from rospy import Timer, wait_for_message
 else:
     from rosros.rospify.rospify import *
