@@ -13,7 +13,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     17.02.2022
-@modified    28.02.2022
+@modified    24.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rclify.parameter
@@ -36,7 +36,7 @@ Released under the BSD License.
 import array
 from enum import Enum
 
-PARAMETER_SEPARATOR_STRING = "/"
+PARAMETER_SEPARATOR_STRING = "."
 
 
 class Parameter:
@@ -104,31 +104,42 @@ class Parameter:
         if not type_.check(value):
             raise ValueError("Type '%s' and value '%s' do not agree" % (type_, value))
 
-        self.type_ = type_
-        self.name  = name
-        self.value = value
+        self._type_ = type_
+        self._name  = name
+        self._value = value
 
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def type_(self):
+        return self._type_
+
+    @property
+    def value(self):
+        return self._value
 
     def get_parameter_value(self):
         """Returns `ParameterValue`."""
-        parameter_value = ParameterValue(type=self.type_.value)
-        if Parameter.Type.BOOL == self.type_:
+        parameter_value = ParameterValue(type=self._type_.value)
+        if Parameter.Type.BOOL == self._type_:
             parameter_value.bool_value = self.value
-        elif Parameter.Type.INTEGER == self.type_:
+        elif Parameter.Type.INTEGER == self._type_:
             parameter_value.integer_value = self.value
-        elif Parameter.Type.DOUBLE == self.type_:
+        elif Parameter.Type.DOUBLE == self._type_:
             parameter_value.double_value = self.value
-        elif Parameter.Type.STRING == self.type_:
+        elif Parameter.Type.STRING == self._type_:
             parameter_value.string_value = self.value
-        elif Parameter.Type.BYTE_ARRAY == self.type_:
+        elif Parameter.Type.BYTE_ARRAY == self._type_:
             parameter_value.byte_array_value = self.value
-        elif Parameter.Type.BOOL_ARRAY == self.type_:
+        elif Parameter.Type.BOOL_ARRAY == self._type_:
             parameter_value.bool_array_value = self.value
-        elif Parameter.Type.INTEGER_ARRAY == self.type_:
+        elif Parameter.Type.INTEGER_ARRAY == self._type_:
             parameter_value.integer_array_value = self.value
-        elif Parameter.Type.DOUBLE_ARRAY == self.type_:
+        elif Parameter.Type.DOUBLE_ARRAY == self._type_:
             parameter_value.double_array_value = self.value
-        elif Parameter.Type.STRING_ARRAY == self.type_:
+        elif Parameter.Type.STRING_ARRAY == self._type_:
             parameter_value.string_array_value = self.value
         return parameter_value
 
@@ -167,6 +178,30 @@ class ParameterValue:
         ## An array of string values.
         self.string_array_value  = string_array_value or []
 
+    def get_value(self):
+        """Returns raw value according to type."""
+        value = None
+        type_ = Parameter.Type(self.type)
+        if Parameter.Type.BOOL == type_:
+            value = self.bool_value
+        elif Parameter.Type.INTEGER == type_:
+            value = self.integer_value
+        elif Parameter.Type.DOUBLE == type_:
+            value = self.double_value
+        elif Parameter.Type.STRING == type_:
+            value = self.string_value
+        elif Parameter.Type.BYTE_ARRAY == type_:
+            value = self.byte_array_value
+        elif Parameter.Type.BOOL_ARRAY == type_:
+            value = self.bool_array_value
+        elif Parameter.Type.INTEGER_ARRAY == type_:
+            value = self.integer_array_value
+        elif Parameter.Type.DOUBLE_ARRAY == type_:
+            value = self.double_array_value
+        elif Parameter.Type.STRING_ARRAY == type_:
+            value = self.string_array_value
+        return value
+
 
 class ParameterDescriptor:
     """
@@ -194,10 +229,10 @@ class ParameterDescriptor:
         self.dynamic_typing         = dynamic_typing or False
         ## FloatingPointRange consists of a from_value, a to_value, and a step.
         ## Mutually exclusive with `integer_range`.
-        self.floating_point_range   = floating_point_range or FloatingPointRange()
+        self.floating_point_range   = floating_point_range or []
         ## IntegerRange consists of a from_value, a to_value, and a step.
         ## Mutually exclusive with `floating_point_range`.
-        self.integer_range          = integer_range or IntegerRange()
+        self.integer_range          = integer_range or []
 
 
 class SetParametersResult:
