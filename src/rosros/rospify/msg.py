@@ -7,12 +7,13 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    30.05.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.msg
-import std_msgs.msg 
+import std_msgs.msg
 
+from .. import ros2
 from . import exceptions
 from . topics import Message
 
@@ -32,11 +33,12 @@ class AnyMsg(Message):
     on this topic, creation will fail if no publisher is available. Will not provide
     messages of different types.
     """
-    _md5sum = "*"
-    _type = "*"
+    _md5sum     = "*"
+    _type       = "*"
     _has_header = False
-    _full_text = ""
-    __slots__ = ["_buff"]
+    _full_text  = ""
+    __slots__   = ["_buff"]
+
     def __init__(self, *args):
         """
         Constructor. Does not accept any arguments.
@@ -55,6 +57,12 @@ class AnyMsg(Message):
         """Copies raw buffer into self._buff, returns self"""
         self._buff = str
         return self
+
+    @classmethod
+    def __subclasshook__(cls, C):
+        """Returns true if C is AnyMsg or descendant, else `NotImplemented`."""
+        if ros2.is_ros_message(C) and getattr(C, "_type", None) == cls._type: return True
+        return NotImplemented
 
 
 __all__ = [
