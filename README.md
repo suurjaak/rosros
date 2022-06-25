@@ -443,6 +443,10 @@ ROS2:
 - rosidl_parser
 - rosidl_runtime_py
 
+ROS2 test dependencies:
+- pytest
+- pytest-forked
+
 
 Attribution
 -----------

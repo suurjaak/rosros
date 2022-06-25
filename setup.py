@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    12.04.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 import os
@@ -52,7 +52,7 @@ version_args = dict(
          [os.path.join("resource", PACKAGE)]),
         (os.path.join("share", PACKAGE), ["package.xml"]),
     ],
-    tests_require   = ["pytest"],
+    tests_require   = ["pytest", "pytest-forked"],
 ) if "2" == os.getenv("ROS_VERSION") else {}
 
 
