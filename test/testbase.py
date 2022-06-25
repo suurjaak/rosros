@@ -147,7 +147,7 @@ class TestBase(unittest.TestCase):
 
 
 class Ros1LogHandler(logging.Handler):
-    """Logging handler that forwards logging messages to rospy.logwarn."""
+    """Logging handler that forwards logging messages to rospy.logwarn or higher."""
 
     def __init__(self, name, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -155,8 +155,8 @@ class Ros1LogHandler(logging.Handler):
 
     def emit(self, record):
         """Invokes rospy.logwarn or logerr (only warn or higher gets rostest output)."""
-        if "rospy" in record.name or record.levelno >= logging.WARN:
-            return  # Skip rospy internal logging, or higher levels logged by rospy
+        if "rosout" == record.name or record.name.startswith("rospy"):
+            return  # Skip rospy internal logging
 
         try: text = record.msg % record.args if record.args else record.msg
         except Exception: text = record.msg
