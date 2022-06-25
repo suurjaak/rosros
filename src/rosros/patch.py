@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    16.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -145,10 +145,7 @@ def patch_ros2():
     rclpy.client.Client.response_class = property(lambda self: self.srv_type.Response)
     rclpy.client.Client.resolved_name  = property(lambda self: self.srv_name)
 
-    # Transfer docstring and annotations
-    rclpy.node.Node.__init__  = functools.update_wrapper(Node__init, rclpy.node.Node.__init__)
-
-    rclpy.publisher.Publisher.publish = publish_wrapper(rclpy.publisher.Publisher.publish)
+    rclpy.publisher.Publisher.publish             = publish_wrapper(rclpy.publisher.Publisher.publish)
     rclpy.publisher.Publisher.get_num_connections = rclpy.publisher.Publisher.get_subscription_count
     rclpy.publisher.Publisher.unregister          = rclpy.publisher.Publisher.destroy
     rclpy.publisher.Publisher.resolved_name       = rclpy.publisher.Publisher.topic_name
@@ -275,7 +272,6 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
             return False
         return True
 
-
     ROS1_Duration__init = rospy.Duration.__init__
 
     def Duration__init(self, secs=0, nsecs=0, *, seconds=0, nanoseconds=0):
@@ -287,9 +283,10 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
         """Returns a new Time or Duration from this."""
         return type(self)(self.secs, self.nsecs)
 
-    def Duration__from_msg(self, msg):
-        """Returns a new Time or Duration from given."""
-        return type(self)(msg.secs, msg.nsecs)
+    @classmethod
+    def Duration__from_msg(cls, msg):
+        """Returns a new Duration from given."""
+        return cls(msg.secs, msg.nsecs)
 
 
     ROS1_Time__init = rospy.Time.__init__
@@ -316,9 +313,10 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
         attrs = EXTRA_ATTRS.get(id(self)) or {}
         return attrs.get("_clock_type", ClockType.SYSTEM_TIME)
 
-    def Time__from_msg(self, msg, clock_type=ClockType.ROS_TIME):
+    @classmethod
+    def Time__from_msg(cls, msg, clock_type=ClockType.ROS_TIME):
         """Returns a new Time from given."""
-        return type(self)(msg.secs, msg.nsecs, clock_type=clock_type)
+        return cls(msg.secs, msg.nsecs, clock_type=clock_type)
 
 
     ROS1_Timer__init = rospy.Timer.__init__
@@ -621,40 +619,6 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
             quotient, remainder = divmod(self.nanoseconds, val.nanoseconds)
             return int(quotient), self.__class__(nanoseconds=remainder)
         return NotImplemented
-
-
-    ROS2_Node__init = rclpy.node.Node.__init__
-    ROS2_Node__create_subscription = rclpy.node.Node.create_subscription
-
-    def Node__init(self, node_name, *, context=None, cli_args=None, namespace=None,
-                   use_global_arguments=True, enable_rosout=True,
-                   start_parameter_services=True, parameter_overrides=None,
-                   allow_undeclared_parameters=False,
-                   automatically_declare_parameters_from_overrides=False):
-        """Wraps Node.__init__() to retain argument values in Python."""
-        ctor = ROS2_Node__init
-        ctor(self, node_name, context=context, cli_args=cli_args, namespace=namespace,
-             use_global_arguments=use_global_arguments, enable_rosout=enable_rosout,
-             start_parameter_services=start_parameter_services,
-             parameter_overrides=parameter_overrides,
-             allow_undeclared_parameters=allow_undeclared_parameters,
-             automatically_declare_parameters_from_overrides=
-                 automatically_declare_parameters_from_overrides
-        )
-        self._cli_args = copy.copy(cli_args)
-        self._use_global_arguments = use_global_arguments
-
-    def Node__create_subscription(self, msg_type, topic, callback, qos_profile,
-                                  *, callback_group=None, event_callbacks=None, raw=False):
-        """
-        Wraps Node.create_subscription() to patch Subscription with support
-        for multiple callbacks and callback args.
-        """
-        ctor = ROS2_Node__create_subscription
-        sub = ctor(self, msg_type, topic, self._invoke_callbacks, qos_profile,
-                   callback_group=callback_group, event_callbacks=event_callbacks, raw=raw)
-        sub._callbacks = getattr(sub, "_callbacks", [(callback, None)])
-        return sub
 
 
     ROS2_Service__init = rclpy.service.Service.__init__
