@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     16.04.2022
-@modified    18.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 import copy
@@ -37,7 +37,7 @@ class TestRospify(testbase.TestBase):
     NAME = "test_rospify"
 
     ## Node namespace
-    NAMESPACE = "/tests"
+    NAMESPACE = "/"
 
     ## Topic remaps as {from: to}
     REMAPS = {"/foo": "/bar"}
@@ -55,15 +55,26 @@ class TestRospify(testbase.TestBase):
 
         self._extramsgs  = {}    # {topic name: [incoming message from added callback, ]}
         self._anymsg_sub = None  # Subscriber instance using AnyMsg
-        self._anymsgs    = []    # [incoming raw message, ]
+        self._anymsg_cls = {}    # {topic name: real message class}
 
         rospy.init_node(self.NAME, ["%s:=%s" % x for x in self.REMAPS.items()])
+        self.add_logging()
 
 
     def setUp(self):
         """Opens topics and services, spins ROS."""
         super().setUp()
         self.run_test_node()
+
+        # Give testnode time to open publishers
+        subscribables = set(o["action"]["name"] for c, d in testnode.DEFAULTS.items()
+                            for o in d.values() if "action" in o
+                            and "publish" == o["action"]["category"])
+        self.assertTrue(subscribables, "Unexpected zero publishers in node configuration.")
+        logger.info("Waiting for publishers in %s topics.", len(subscribables))
+        master = rospy.get_master()
+        while (subscribables & set(a for a, _ in master.getTopicTypes()[-1])) != subscribables:
+            time.sleep(1)
 
         for category, opts in ((c, v) for c in ("subscribe", "service")
                                for v in testnode.DEFAULTS.get(c, {}).values()):
@@ -74,7 +85,7 @@ class TestRospify(testbase.TestBase):
             cls = rosros.api.get_message_class(typename)
             if "subscribe" == category:
                 logger.info("Opening publisher to %r as %s.", name, type)
-                self._pubs[name] = rospy.Publisher(name, cls)
+                self._pubs[name] = rospy.Publisher(name, cls, queue_size=10)
             elif "service" == category:
                 logger.info("Opening service client to %r as %s.", name, typename)
                 self._clis[name] = rospy.ServiceProxy(name, cls)
@@ -84,11 +95,16 @@ class TestRospify(testbase.TestBase):
             aname, atypename, avalue = action["name"], action["type"], action.get("value")
             acls = rosros.api.get_message_class(atypename)
             if "publish" == action["category"]:
-                logger.info("Opening subscriber to %r as %s.", aname, atypename)
+                raw, acls = (False, acls) if self._anymsg_sub else (True, rospy.AnyMsg)
+                logger.info("Opening %ssubscriber to %r as %s.",
+                            "raw " if raw else "", aname, "AnyMsg" if raw else atypename)
                 self._subs[aname] = rospy.Subscriber(aname, acls, self.on_message, aname)
-                self._subs[aname].add_callback(self.on_extra_message, aname)
-                self._subs[aname].add_callback(self.on_extra_message, "NOT" + aname)
-                self._subs[aname].remove_callback(self.on_extra_message, "NOT" + aname)
+                self._subs[aname].impl.add_callback(self.on_extra_message, aname)
+                self._subs[aname].impl.add_callback(self.on_extra_message, "NOT" + aname)
+                self._subs[aname].impl.remove_callback(self.on_extra_message, "NOT" + aname)
+                if raw:
+                    self._anymsg_sub = self._subs[aname]
+                    self._anymsg_cls[action["name"]] = rosros.api.get_message_class(atypename)
 
             elif "service" == action["category"]:
                 logger.info("Opening service server at %r as %s.", aname, atypename)
@@ -109,25 +125,21 @@ class TestRospify(testbase.TestBase):
         for k in list(self._srvs): self._srvs.pop(k).shutdown()
         for k in list(self._clis): self._clis.pop(k).close()
         self.shutdown_test_node()
-        rospy.signal_shutdown()
+        rospy.signal_shutdown("reason")
 
 
     def on_message(self, msg, name):
         """Handler for incoming message, registers message object."""
-        logger.info("Received message in %r: %s.", name, msg)
+        raw, loggable = ("raw ", "AnyMsg") if isinstance(msg, rospy.AnyMsg) else ("", msg)
+        logger.info("Received %smessage in %r: %s.", raw, name, loggable)
         self._msgs.setdefault(name, []).append(msg)
 
 
     def on_extra_message(self, msg, name):
         """Handler for incoming message via added callback, registers message object."""
-        logger.info("Received message via added callback in %r: %s.", name, msg)
+        raw, loggable = ("raw ", "AnyMsg") if isinstance(msg, rospy.AnyMsg) else ("", msg)
+        logger.info("Received %smessage via added callback in %r: %s.", raw, name, loggable)
         self._extramsgs.setdefault(name, []).append(msg)
-
-
-    def on_anymsg(self, msg):
-        """Handler for incoming raw message, registers message object."""
-        logger.info("Received raw message in %r: %s.", self._anymsg_sub.name, msg)
-        self._anymsgs.append(msg)
 
 
     def on_service(self, name, req):
@@ -153,10 +165,6 @@ class TestRospify(testbase.TestBase):
         for name, cli in self._clis.items():
             logger.info("Waiting for service %r.", name)
             cli.wait_for_service(5)
-
-        topic = next(iter(self._subs))
-        logger.info("Opening subscriber to %r as AnyMsg.", topic)
-        self._anymsg_sub = rospy.Subscriber(topic, rospy.AnyMsg, self.on_anymsg)
 
         for name, pub in self._pubs.items():
             logger.info("Publishing to %r.", name)
@@ -189,15 +197,21 @@ class TestRospify(testbase.TestBase):
             time.sleep(1)
 
         logger.info("Verifying received messages in %s topics.", len(self._subs))
-        for name in self._subs:
-            logger.info("Verifying received messages in %r.", name)
+        for name, sub in self._subs.items():
+            logger.info("Verifying received %smessages in %r.",
+                        "raw " if sub is self._anymsg_sub else "", name)
             with self.subTest(name):
                 self.assertTrue(self._msgs.get(name),
                                 "Expected message not received in topic %r." % name)
+                msg = self._msgs[name][0]
+                if sub is self._anymsg_sub:
+                    self.assertIsInstance(msg, rospy.AnyMsg,
+                                          "Unexpected type in received raw messages.")
+                    msg = rosros.api.deserialize_message(msg._buff, self._anymsg_cls[name])
                 for k, v in self._exps[name].items():
                     if isinstance(v, (dict, list)): continue  # for k, v
                     logger.info("Verifying %s=%r in %r.", k, v, name)
-                    self.assertEqual(rosros.util.get_value(self._msgs[name][0], k), v,
+                    self.assertEqual(rosros.util.get_value(msg, k), v,
                                      "Unexpected value in %s." % k)
                 logger.info("Verifying received messages via added callback in %r.", name)
                 self.assertEqual(self._msgs.get(name), self._extramsgs.get(name),
@@ -206,13 +220,6 @@ class TestRospify(testbase.TestBase):
                 logger.info("Verifying not receiving messages "
                             "via added and removed callback in %r.", name)
                 self.assertFalse(self._extramsgs.get("NOT" + name))
-
-        with self.subTest("anymsg"):
-            logger.info("Verifying received raw messages in %r.", self._anymsg_sub.name)
-            self.assertTrue(self._anymsgs, "No raw messages received.")
-            self.assertIsInstance(self._anymsgs[0], rospy.AnyMsg,
-                                  "Unexpected type in received raw messages.")
-
 
         logger.info("Waiting for actions in %s service clients.", len(self._clis))
         deadline = time.monotonic() + 10
@@ -249,9 +256,9 @@ class TestRospify(testbase.TestBase):
         """Verifies rospify Duration API."""
         logger.info("Testing Duration API.")
         dur0  = rospy.Duration()
-        dur1  = rospy.Duration(secs= 10, nsecs= 20000000)
-        dur2  = rospy.Duration(secs= 20, nsecs= 40000000)
-        dur1n = rospy.Duration(secs=-10, nsecs=-20000000)
+        dur1  = rospy.Duration(secs= 10, nsecs= 25000000)
+        dur2  = rospy.Duration(secs= 20, nsecs= 50000000)
+        dur1n = rospy.Duration(secs=-10, nsecs=-25000000)
         self.assertEqual(dur1, abs(dur1n),  "Unexpected value for abs(Duration).")
         self.assertEqual(dur1 + dur1, dur2, "Unexpected value for Duration + Duration.")
         self.assertEqual(dur2 - dur1, dur1, "Unexpected value for Duration - Duration.")
@@ -344,10 +351,10 @@ class TestRospify(testbase.TestBase):
                                   "Unexpected value for Subscriber.get_num_connections().")
             self.assertTrue(callable(getattr(sub, "unregister")),
                             "Unexpected value for Subscriber.unregister.")
-            self.assertTrue(callable(getattr(sub, "add_callback")),
-                            "Unexpected value for Subscriber.add_callback.")
-            self.assertTrue(callable(getattr(sub, "remove_callback")),
-                            "Unexpected value for Subscriber.remove_callback.")
+            self.assertTrue(callable(getattr(sub.impl, "add_callback")),
+                            "Unexpected value for Subscriber.impl.add_callback.")
+            self.assertTrue(callable(getattr(sub.impl, "remove_callback")),
+                            "Unexpected value for Subscriber.impl.remove_callback.")
 
 
     def verify_service(self):
@@ -391,6 +398,7 @@ class TestRospify(testbase.TestBase):
         t2 = rospy.Timer(rospy.Duration(0.5), lists["t2"].append, oneshot=True)
         r  = rospy.Rate(0.5)
         r.sleep()
+        r.sleep()
         self.assertTrue(callable(getattr(r, "remaining")),
                         "Unexpected value for Rate.remaining.")
         self.assertIsInstance(r.remaining(), rospy.Duration,
@@ -399,11 +407,12 @@ class TestRospify(testbase.TestBase):
                         "Unexpected value for Timer.is_alive.")
         self.assertGreater(len(lists["t1"]), 1, "Timer fired insufficient times.")
         self.assertEqual(len(lists["t2"]), 1, "One-shot timer fired more than once.")
-        self.assertIsInstance(lists["t1"][-1], rospy.TimerEvent,
+        self.assertIsInstance(lists["t1"][-1], rospy.timer.TimerEvent,
                               "Unexpected value type given to timer callback.")
         self.assertTrue(callable(getattr(t1, "shutdown")),
                         "Unexpected value for Timer.shutdown.")
         t1.shutdown()
+        time.sleep(1)
         self.assertFalse(t1.is_alive(), "Unexpected value for Timer.is_alive().")
         self.assertFalse(t2.is_alive(), "Unexpected value for Timer.is_alive().")
         t1.join()
@@ -483,7 +492,7 @@ class TestRospify(testbase.TestBase):
                             "No function %r in rospy API." % name)
 
 
-        self.assertEqual(rospy.get_name(), util.namejoin(self.NAMESPACE, self.NAME),
+        self.assertEqual(rospy.get_name(), rosros.util.namejoin(self.NAMESPACE, self.NAME),
                          "Unexpected value from get_name().")
         self.assertEqual(rospy.get_namespace(), self.NAMESPACE, "Unexpected value from get_namespace().")
         self.assertIsInstance(rospy.get_node_uri(), str, "Unexpected type from get_node_uri().")
@@ -521,6 +530,7 @@ class TestRospify(testbase.TestBase):
         self.assertIn("/%s/%s" % (self.NAME, name), rospy.get_param_names(),
                       "Unexpected result from get_param_names().")
         rospy.delete_param("~" + name)
+        time.sleep(0.5)  # Give change time to propagate
         with self.assertRaises(KeyError, msg="Unexpected success from get_param()."):
             rospy.get_param("~" + name)
 
