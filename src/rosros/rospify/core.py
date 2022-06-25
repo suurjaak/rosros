@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    30.05.2022
+@modified    23.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.core
@@ -28,7 +28,7 @@ def is_shutdown():
     return ros2.SHUTDOWN
 
 
-def signal_shutdown(reason=None):
+def signal_shutdown(reason):
     """
     Initiates shutdown process.
 
