@@ -38,6 +38,7 @@ else:
     from rclpy.clock import ClockType
 
     from . import ros2 as ros
+    from . rospify import AnyMsg
 
 from . import util
 
@@ -75,6 +76,9 @@ def patch_ros1():
 
     rospy.ServiceProxy.call_async       = client_call_async
     rospy.ServiceProxy.wait_for_service = ServiceProxy__wait_for_service
+
+    rospy.Subscriber.__init__                     = Subscriber__init
+    rospy.topics._SubscriberImpl.receive_callback = SubscriberImpl__receive_callback
 
     PATCHED = True
 
@@ -171,8 +175,6 @@ def patch_ros2():
     rclpy.subscription.Subscription.type                = property(lambda self: ros.get_message_type(self.msg_type))
     rclpy.subscription.Subscription.md5sum              = property(lambda self: ros.get_message_type_hash(self.msg_type))
     rclpy.subscription.Subscription.callback_args       = property(Subscription__callback_args)
-    rclpy.subscription.Subscription.add_callback        = Subscription__add_callback
-    rclpy.subscription.Subscription.remove_callback     = Subscription__remove_callback
     rclpy.subscription.Subscription._invoke_callbacks   = Subscription__invoke_callbacks
 
     rclpy.duration.Duration.__init__     = Duration__init
@@ -271,6 +273,24 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
         except rospy.ROSException:
             return False
         return True
+
+    ROS1_Subscriber__init                 = rospy.Subscriber.__init__
+    ROS1_SubscriberImpl__receive_callback = rospy.topics._SubscriberImpl.receive_callback
+
+    def Subscriber__init(self, name, data_class, callback=None, callback_args=None,
+                         queue_size=None, buff_size=65536, tcp_nodelay=False):
+        """Wraps rospy.Subscriber.__init__() to add raw bytes autoconversion support."""
+        ROS1_Subscriber__init(self, name, data_class, callback, callback_args,
+                              queue_size, buff_size, tcp_nodelay)
+        self._anymsg = issubclass(data_class, rospy.AnyMsg)  # Whether to return AnyMsg or bytes
+        self.impl._interface = self
+
+    def SubscriberImpl__receive_callback(self, msgs, connection):
+        """Wraps rospy.topics.SubscriberImpl.receive_callback() with raw bytes autoconversion."""
+        if not self._interface._anymsg and issubclass(self.data_class, rospy.AnyMsg):
+            msgs = [x._buff for x in msgs]
+        ROS1_SubscriberImpl__receive_callback(self, msgs, connection)
+
 
     ROS1_Duration__init = rospy.Duration.__init__
 
@@ -646,7 +666,11 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
         """Wraps Subscription.__init__() to support AnyMsg and multiple callbacks."""
         ROS2_Subscription__init(self, subscription_handle, msg_type, topic, self._invoke_callbacks,
                                 callback_group, qos_profile, raw, event_callbacks)
+        self.impl = type("", (), {})()  # Dummy object
+        self.impl.add_callback    = functools.partial(Subscription__add_callback,    self)
+        self.impl.remove_callback = functools.partial(Subscription__remove_callback, self)
         self._callbacks = getattr(self, "_callbacks", [(callback, None)])
+        self._anymsg    = False
 
     def Subscription__callback_args(self):
         """Returns callback args given in constructor."""
@@ -654,6 +678,8 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
 
     def Subscription__invoke_callbacks(self, msg):
         """Handler for received message, invokes all added callbacks."""
+        if self._anymsg and isinstance(msg, bytes):
+            msg = AnyMsg().deserialize(msg)
         for cb, arg in list(self._callbacks):
             try:
                 cb(msg) if arg is None else cb(msg, arg)

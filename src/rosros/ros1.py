@@ -8,10 +8,11 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    20.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
+import functools
 import inspect
 import io
 import logging
@@ -392,12 +393,17 @@ def create_subscriber(topic, cls_or_typename, callback, callback_args=None,
                               and with additional arguments if given
     @param   callback_args    additional arguments to pass to the callback, if any,
                               invoked as `callback(msg, callback_args)´
-    @param   raw              make subscription and invoke callback with AnyMsg
+    @param   raw              make subscription with AnyMsg,
+                              invoke callback with serialized message bytes
     @param   queue_size       queue size of incoming messages (0 or None: infinite)
     @return                   `rospy.Subscriber`
     """
-    cls = rospy.AnyMsg if raw else get_message_class(cls_or_typename)
-    return rospy.Subscriber(topic, cls, callback, callback_args, queue_size=queue_size or None)
+    cls = get_message_class(cls_or_typename)
+    anymsg = issubclass(cls, rospy.AnyMsg) and not raw  # Return AnyMsg if not explicitly raw
+    if raw and not issubclass(cls, rospy.AnyMsg): cls = rospy.AnyMsg
+    sub = rospy.Subscriber(topic, cls, callback, callback_args, queue_size=queue_size or None)
+    sub._anymsg = anymsg
+    return sub
 
 
 def create_timer(period, callback, oneshot=False, immediate=False):

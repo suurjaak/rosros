@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    19.06.2022
+@modified    24.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -196,8 +196,8 @@ def create_subscriber(topic, cls_or_typename, callback, callback_args=None,
     @param   callback_args    additional arguments to pass to the callback, if any,
                               invoked as `callback(msg, callback_args)´
     @param   queue_size       queue size of incoming messages (0 or None: infinite)
-    @param   raw              make subscription and invoke callback with AnyMsg in ROS1,
-                              with serialized message bytes in ROS2
+    @param   raw              invoke callback with serialized message bytes,
+                              make subscription with AnyMsg in ROS1
     @param   qosargs          additional key-value arguments for ROS2
                               `QoSProfile`, like `reliability` (ignored in ROS1).
                               `__autodetect` will look up current publishers on the topic

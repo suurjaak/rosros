@@ -11,7 +11,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     14.02.2022
-@modified    16.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rclify.node
@@ -953,8 +953,7 @@ class Node:
         @return                   `rospy.Subscriber` instance
         """
         queue_size = qos_profile if isinstance(qos_profile, int) else qos_profile.depth
-        if raw: msg_type = rospy.AnyMsg
-        return ros1.create_subscriber(topic, msg_type, callback=callback, queue_size=queue_size)
+        return ros1.create_subscriber(topic, msg_type, callback=callback, queue_size=queue_size, raw=raw)
 
     def create_client(self, srv_type, srv_name, *, qos_profile=None, callback_group=None):
         """

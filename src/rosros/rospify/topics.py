@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    30.05.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.topics
@@ -97,16 +97,14 @@ class Subscriber(abc.ABC):
         from . msg import AnyMsg  # Imported late to avoid circular import
         try:
             raw = False
-            if data_class is AnyMsg:
+            if issubclass(data_class, AnyMsg):  # Look up real type from ROS2 network
                 infos = ros2.NODE.get_publishers_info_by_topic(name)
                 infos = infos or ros2.NODE.get_subscriptions_info_by_topic(name)
                 typename = next(ros2.canonical(x.topic_type) for x in infos)
                 data_class, raw = ros2.get_message_class(typename), True
-                callback = functools.partial(lambda c, b: c(AnyMsg().deserialize(b)), callback)
-
-            sub = ros2.create_subscriber(name, data_class, callback,
+            sub = ros2.create_subscriber(name, data_class, callback, callback_args=callback_args,
                                          queue_size=queue_size or 0, raw=raw)
-            sub._callbacks = [(callback, callback_args)]
+            sub._anymsg = raw
         except Exception as e:
             raise exceptions.ROSException() from e
         return sub

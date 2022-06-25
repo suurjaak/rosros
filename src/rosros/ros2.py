@@ -507,10 +507,11 @@ def create_subscriber(topic, cls_or_typename, callback, callback_args=None,
         qosargs.update(get_topic_qos(topic, cls_or_typename, queue_size or 0))
     cls = get_message_class(cls_or_typename)
     qos = rclpy.qos.QoSProfile(**qosargs)
+    sub = NODE.create_subscription(cls, topic, callback, qos, raw=raw,
+                                   callback_group=CALLBACK_GROUP)
     if callback_args is not None:
-        callback = (lambda h: (lambda m: h(m, callback_args)))(callback)
-    return NODE.create_subscription(cls, topic, callback, qos, raw=raw,
-                                    callback_group=CALLBACK_GROUP)
+        sub._callbacks = [(callback, callback_args)]
+    return sub
 
 
 def create_timer(period, callback, oneshot=False, immediate=False):
