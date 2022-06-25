@@ -634,11 +634,12 @@ def get_message_type(msg_or_cls):
 
     @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
                          or class object like `std_msgs.msg.Bool`
+    @return   canonical name, or `None` if not ROS message / service
     """
     if is_ros_time(msg_or_cls):
         cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)
         return "%s/%s" % (FAMILY, cls.__name__)
-    return msg_or_cls._type
+    return msg_or_cls._type if is_ros_message(msg_or_cls) else None
 
 
 def get_message_type_hash(msg_or_type):

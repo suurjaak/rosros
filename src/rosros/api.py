@@ -130,6 +130,7 @@ def get_message_type(msg_or_cls):
 
     @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
                          or class object like `std_msgs.msg.Bool`
+    @return   canonical name, or `None` if not ROS message / service
     """
     return ros.get_message_type(msg_or_cls)
 

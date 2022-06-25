@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    19.06.2022
+@modified    25.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -816,8 +816,16 @@ def get_message_header(val):
 
 
 def get_message_type(msg_or_cls):
-    """Returns ROS2 canonical message type name, like "std_msgs/Header"."""
+    """
+    Returns ROS2 message / service canonical type name, like "std_msgs/Header".
+
+    @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
+                         or class object like `std_msgs.msg.Bool`
+    @return   canonical name, or `None` if not ROS message / service
+    """
     cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)
+    if not is_ros_message(cls) and not is_ros_time(cls) and not is_ros_service(cls):
+        return None
     return canonical("%s/%s" % (cls.__module__.split(".")[0], cls.__name__))
 
 
