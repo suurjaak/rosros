@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    18.06.2022
+@modified    23.06.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
@@ -72,7 +72,7 @@ class ThrottledLogger(logging.Logger):
         @param   __throttle_identical__   whether to skip identical consecutive texts from call site
         """
         if not self._is_throttled(msg, **self._extract_args(kwargs)):
-            self.__logger.debug(self, msg, *args, **kwargs)
+            self.__logger.debug(msg, *args, **kwargs)
 
 
     def info(self, msg, *args, **kwargs):
@@ -80,7 +80,7 @@ class ThrottledLogger(logging.Logger):
         Logs `msg % args` with severity `INFO`. The arguments are interpreted as for `debug()`.
         """
         if not self._is_throttled(msg, **self._extract_args(kwargs)):
-            self.__logger.info(self, msg, *args, **kwargs)
+            self.__logger.info(msg, *args, **kwargs)
 
 
     def warning(self, msg, *args, **kwargs):
@@ -88,7 +88,7 @@ class ThrottledLogger(logging.Logger):
         Logs `msg % args` with severity `WARN`. The arguments are interpreted as for `debug()`.
         """
         if not self._is_throttled(msg, **self._extract_args(kwargs)):
-            self.__logger.warning(self, msg, *args, **kwargs)
+            self.__logger.warning(msg, *args, **kwargs)
 
 
     def warn(self, msg, *args, **kwargs):
@@ -96,7 +96,7 @@ class ThrottledLogger(logging.Logger):
         Logs `msg % args` with severity `WARNING`. The arguments are interpreted as for `debug()`.
         """
         if not self._is_throttled(msg, **self._extract_args(kwargs)):
-            self.__logger.warn(self, msg, *args, **kwargs)
+            self.__logger.warn(msg, *args, **kwargs)
 
 
     def error(self, msg, *args, **kwargs):
@@ -104,7 +104,7 @@ class ThrottledLogger(logging.Logger):
         Logs `msg % args` with severity `ERROR`. The arguments are interpreted as for `debug()`.
         """
         if not self._is_throttled(msg, **self._extract_args(kwargs)):
-            self.__logger.error(self, msg, *args, **kwargs)
+            self.__logger.error(msg, *args, **kwargs)
 
 
     def fatal(self, msg, *args, **kwargs):
@@ -112,7 +112,7 @@ class ThrottledLogger(logging.Logger):
         Logs `msg % args` with severity `FATAL`. The arguments are interpreted as for `debug()`.
         """
         if not self._is_throttled(msg, **self._extract_args(kwargs)):
-            self.__logger.fatal(self, msg, *args, **kwargs)
+            self.__logger.fatal(msg, *args, **kwargs)
 
 
     def log(self, level, msg, *args, **kwargs):
@@ -120,7 +120,7 @@ class ThrottledLogger(logging.Logger):
         Logs `msg % args` with given severity. The arguments are interpreted as for `debug()`.
         """
         if not self._is_throttled(msg, **self._extract_args(kwargs)):
-            self.__logger.log(self, level, msg, *args, **kwargs)
+            self.__logger.log(level, msg, *args, **kwargs)
 
 
     @classmethod
@@ -211,6 +211,22 @@ def flatten_dict(dct, sep="."):
             stack.extend(("%s%s%s" % (k, sep, k2), v2) for k2, v2 in v.items())
         else:
             result[k] = v
+    return result
+
+
+def get_arity(func, positional=True, keyword=False):
+    """Returns the maximum number of arguments the function takes, -1 if variable number."""
+    POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)
+    KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)
+    result, params = 0, inspect.signature(func).parameters
+    if positional and any(x.kind == inspect.Parameter.VAR_POSITIONAL for x in params.values()) \
+    or keyword    and any(x.kind == inspect.Parameter.VAR_KEYWORD    for x in params.values()):
+        result = -1
+    else:
+        if positional:
+            result += sum(x.kind in POSITIONALS for x in params.values())
+        if keyword:
+            result += sum(x.kind in KEYWORDALS  for x in params.values())
     return result
 
 
@@ -338,7 +354,7 @@ def start_future(func, *args, **kwargs):
 
     Future will be done when function returns or raises.
 
-    Future is not executed with asyncio.
+    Future is not executed with asyncio. Background thread is not daemonic.
     """
     future = asyncio.Future()
     def worker():
@@ -354,16 +370,22 @@ def wrap_arity(func):
 
     E.g. `wrap_arity(abs)(-1, -2)` will return result of `abs(-1)`.
     """
+    POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)
+    KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)
+    params   = inspect.signature(func).parameters
+    varargs  = any(x.kind == inspect.Parameter.VAR_POSITIONAL for x in params.values())
+    varkws   = any(x.kind == inspect.Parameter.VAR_KEYWORD    for x in params.values())
+    posargs  = [x.name for x in params.values() if x.kind in POSITIONALS]
+    keywords = [x.name for x in params.values() if x.kind in KEYWORDALS]
+
     def inner(*args, **kwargs):
-        spec = inspect.getfullargspec(func)
-        if spec.varargs is None: args = args[:len(spec.args)]
-        if spec.varkw is None:
-            kwargs = {k: v for k, v in kwargs.items() if k in spec.kwonlyargs}
+        if not varargs: args   = args[:len(posargs)]
+        if not varkws:  kwargs = {k: v for k, v in kwargs.items() if k in keywords}
         return func(*args, **kwargs)
     return functools.update_wrapper(inner, func)
 
 
 __all__ = [
-    "ensure_object", "flatten_dict", "get_value", "make_dict", "memoize", "merge_dicts",
-    "namejoin", "namesplit", "set_value", "start_future", "wrap_arity",
+    "ensure_object", "flatten_dict", "get_arity", "get_value", "make_dict", "memoize",
+    "merge_dicts", "namejoin", "namesplit", "set_value", "start_future", "wrap_arity",
 ]
