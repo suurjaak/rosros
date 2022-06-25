@@ -363,7 +363,13 @@ def create_service(service, cls_or_typename, callback):
     @param   callback         callback function, invoked with (req, resp) or (req)
     @return                   `rospy.Service`
     """
-    return rospy.Service(service, get_message_class(cls_or_typename), util.wrap_arity(callback))
+    cls = get_message_class(cls_or_typename)
+    arity = util.get_arity(callback)
+    if arity in (-1, 2):
+        mycallback = functools.partial((lambda f, c, r: f(r, c._response_class())), callback, cls)
+    else:
+        mycallback = util.wrap_arity(callback) if arity != 1 else callback
+    return rospy.Service(service, cls, mycallback)
 
 
 def create_publisher(topic, cls_or_typename, latch=False, queue_size=0):
