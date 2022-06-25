@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.04.2022
-@modified    18.06.2022
+@modified    24.06.2022
 ------------------------------------------------------------------------------
 """
 import contextlib
@@ -18,6 +18,7 @@ import subprocess
 import sys
 import threading
 import time
+import traceback
 import unittest
 
 if os.getenv("ROS_VERSION") != "2":
@@ -114,6 +115,15 @@ class TestBase(unittest.TestCase):
         with contextlib.suppress(Exception):
             subprocess.call("kill -9 %s" % self._proc.pid, **args)
         self._proc = None
+
+    @contextlib.contextmanager
+    def subTest(self, msg, **params):
+        """Overrides `TestCase.subTest` to log any exceptions."""
+        with super().subTest(msg, **params):
+            try: yield
+            except Exception:
+                logger.info("Exception in subTest %r.\n%s", msg, traceback.format_exc())
+                raise
 
     @classmethod
     def get_process_children(cls, pid):
