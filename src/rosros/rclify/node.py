@@ -43,7 +43,8 @@ from .. import ros1
 from .. import util
 from . import exceptions
 from . clock import Clock, ClockType
-from . parameter import PARAMETER_SEPARATOR_STRING, Parameter, ParameterDescriptor, SetParametersResult
+from . parameter import PARAMETER_SEPARATOR_STRING, FloatingPointRange, IntegerRange, \
+                        Parameter, ParameterDescriptor, ParameterValue, SetParametersResult
 from . qos import DurabilityPolicy, QoSPresetProfiles
 from . topic_endpoint_info import TopicEndpointInfo, TopicEndpointTypeEnum
 
@@ -110,8 +111,8 @@ class Node:
             os.environ["ROS_NAMESPACE"] = namespace
             rospy.names._set_caller_id(util.namejoin(namespace, node_name))
 
-        node_args = (sys.argv if use_global_arguments else []) + list(cli_args)
-        ros1.init_node(node_name, node_args, disable_rosout=not enable_rosout)
+        node_args = (sys.argv if use_global_arguments else []) + list(cli_args or [])
+        ros1.init_node(node_name, node_args, enable_rosout=enable_rosout)
 
         self._parameter_overrides = {k: Parameter(k, value=v)
                                      for k, v in ros1.get_params(nested=False)}
@@ -194,7 +195,7 @@ class Node:
 
     def get_namespace(self):
         """Returns the namespace of the node."""
-        return rospy.get_namespace()
+        return "/" + rospy.get_namespace().strip("/")
 
     def get_clock(self):
         """Returns `clock.Clock` using ROS time."""
@@ -517,7 +518,7 @@ class Node:
         allowed for the node, this method will raise a `ParameterNotDeclaredException` exception.
 
         Parameters are set all at once.
-        If setting a parameter fails due to not being declared, then no parameter will be set set.
+        If setting a parameter fails due to not being declared, then no parameter will be set.
         Either all of the parameters are set or none of them are set.
 
         If undeclared parameters are allowed for the node, then all the parameters will be
@@ -876,7 +877,7 @@ class Node:
         if alternative_value is None:
             alternative_parameter = current_parameter
         else:
-            alternative_parameter = Parameter(name=name, value=alternative_value)
+            alternative_parameter = Parameter(name=name, value=alternative_value.get_value())
 
         # First try keeping the parameter, then try the alternative one.
         # Don't check for read-only since we are applying a new descriptor now.
@@ -934,7 +935,9 @@ class Node:
         latch = False
         if not isinstance(qos_profile, int):
             latch = (DurabilityPolicy.TRANSIENT_LOCAL == qos_profile.durability)
-        return ros1.create_publisher(topic, msg_type, latch=latch, queue_size=queue_size)
+        pub = ros1.create_publisher(topic, msg_type, latch=latch, queue_size=queue_size)
+        self.__publishers.append(pub)
+        return pub
 
     def create_subscription(self, msg_type, topic, callback, qos_profile,
                             *, callback_group=None, event_callbacks=None, raw=False):
@@ -953,7 +956,10 @@ class Node:
         @return                   `rospy.Subscriber` instance
         """
         queue_size = qos_profile if isinstance(qos_profile, int) else qos_profile.depth
-        return ros1.create_subscriber(topic, msg_type, callback=callback, queue_size=queue_size, raw=raw)
+        sub = ros1.create_subscriber(topic, msg_type, callback=callback,
+                                     queue_size=queue_size, raw=raw)
+        self.__subscriptions.append(sub)
+        return sub
 
     def create_client(self, srv_type, srv_name, *, qos_profile=None, callback_group=None):
         """
@@ -977,7 +983,7 @@ class Node:
         @param   srv_type        type class of the service, like `std_srvs.srv.Trigger`
         @param   srv_name        the name of the service
         @param   callback        a user-defined callback function that is called when a service request
-                                 is received by the server
+                                 is received by the server, as callback(request, response)
         @param   qos_profile     ignored (ROS2 API compatibility stand-in)
         @param   callback_group  ignored (ROS2 API compatibility stand-in)
         @return                  `rospy.Service` instance
@@ -1144,7 +1150,7 @@ class Node:
         for topic, nodes in state[0]:
             if node_name in nodes:
                 node_topics.setdefault(topic, [])
-        if not node_topics and not any(node_name in nn for _, nn in state[1:]):
+        if not node_topics and not any(node_name in nn for lst in state[1:] for _, nn in lst):
             raise NodeNameNonExistentError(
                 "Cannot get publisher names and types for nonexistent node", node_name)
         try: topics_types = ros1.MASTER.getTopicTypes()[-1] if node_topics else ()
@@ -1176,7 +1182,7 @@ class Node:
         for topic, nodes in state[1]:
             if node_name in nodes:
                 node_topics.setdefault(topic, [])
-        if not node_topics and not any(node_name in nn for _, nn in (state[0], state[2])):
+        if not node_topics and not any(node_name in nn for lst in state[::2] for _, nn in lst):
             raise NodeNameNonExistentError(
                 "Cannot get subscriber names and types for nonexistent node", node_name)
         try: topics_types = ros1.MASTER.getTopicTypes()[-1] if node_topics else ()
@@ -1208,11 +1214,11 @@ class Node:
         for topic, nodes in state[2]:
             if node_name in nodes:
                 node_services.setdefault(topic, [])
-        if not node_services and not any(node_name in nn for _, nn in (state[0], state[2])):
+        if not node_services and not any(node_name in nn for lst in state[::2] for _, nn in lst):
             raise NodeNameNonExistentError(
                 "Cannot get service names and types for nonexistent node", node_name)
         for service in list(node_services):
-            try: node_services[service].append(api.get_service_type(service))
+            try: node_services[service].append(api.make_full_typename(service, "srv"))
             except Exception as e: raise RuntimeError(e)
         return sorted((t, sorted(nn)) for t, nn in node_services.items())
 
@@ -1251,9 +1257,9 @@ class Node:
         """
         Get a list of names for discovered nodes.
 
-        @return  list of node names
+        @return  list of node names without namespaces
         """
-        return ros1.get_nodes()
+        return [util.namesplit(n)[-1] for n in ros1.get_nodes()]
 
     def get_node_names_and_namespaces(self):
         """
@@ -1372,4 +1378,8 @@ class Node:
         return self._get_info_by_topic(topic_name, TopicEndpointTypeEnum.SUBSCRIPTION, no_mangle)
 
 
-__all__ = ["NodeNameNonExistentError", "Node"]
+__all__ = [
+    "PARAMETER_SEPARATOR_STRING", "FloatingPointRange", "IntegerRange",
+    "NodeNameNonExistentError", "Node", "Parameter", "ParameterDescriptor", "ParameterValue",
+    "SetParametersResult"
+]
