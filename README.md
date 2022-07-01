@@ -276,6 +276,8 @@ Can be used as stand-alone library functions without initializing rosros core.
 | `rosros.api.scalar`                     | `typename`                 | returns scalar type from ROS message data type, like `"uint8"` from `uint8`-array;
 |                                         |                            | in ROS2, returns unbounded type, e.g. `"string"` from `"string<=10[<=5]"`.
 | `rosros.api.serialize_message`          | `msg`                      | returns ROS message or service request/response as a serialized binary of `bytes()`
+| `rosros.api.time_message`               | `val, to_message=True,`    | converts ROS2 time/duration from `rclpy` to `builtin_interfaces` or vice versa
+|                                         | `clock_type=None`          |
 | `rosros.api.to_datetime`                | `val`                      | returns value as `datetime.datetime` if value is ROS time/duration, else value
 | `rosros.api.to_decimal`                 | `val`                      | returns value as `decimal.Decimal` if value is ROS time/duration, else value
 | `rosros.api.to_nsec`                    | `val`                      | returns value in nanoseconds if value is ROS time/duration, else value

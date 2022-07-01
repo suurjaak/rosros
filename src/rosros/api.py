@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    19.06.2022
+@modified    01.07.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -368,6 +368,19 @@ def scalar(typename):
     return ros.scalar(typename)
 
 
+def time_message(val, to_message=True, clock_type=None):
+    """
+    Converts ROS2 time/duration between `rclpy` and `builtin_interfaces` objects.
+
+    @param   val         ROS2 time/duration object from `rclpy` or `builtin_interfaces`
+    @param   to_message  whether to convert from `rclpy` to `builtin_interfaces` or vice versa
+    @param   clock_type  ClockType for converting to `rclpy.Time`, defaults to `ROS_TIME`
+    @return              value converted to appropriate type, or original value if not convertible
+    """
+    if ros1: return val
+    return ros2.time_message(val, to_message)
+
+
 def to_datetime(val):
     """Returns value as datetime.datetime if value is ROS time/duration, else value."""
     sec = ros.to_sec(val)
@@ -406,6 +419,6 @@ __all__ = [
     "get_ros_time_category", "get_service_definition", "get_service_request_class",
     "get_service_response_class", "get_type_alias", "is_ros_message", "is_ros_service",
     "is_ros_time", "make_duration", "make_full_typename", "make_time", "message_to_dict",
-    "scalar", "serialize_message", "to_datetime", "to_decimal", "to_nsec", "to_sec",
-    "to_sec_nsec"
+    "scalar", "serialize_message", "time_message", "to_datetime", "to_decimal", "to_nsec",
+    "to_sec", "to_sec_nsec"
 ]

@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    25.06.2022
+@modified    01.07.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -26,6 +26,7 @@ import builtin_interfaces.msg
 import rclpy
 import rclpy.callback_groups
 import rclpy.client
+import rclpy.clock
 import rclpy.duration
 import rclpy.exceptions
 import rclpy.executors
@@ -35,6 +36,7 @@ import rclpy.qos
 import rclpy.serialization
 import rclpy.service
 import rclpy.subscription
+import rclpy.time
 import rclpy.timer
 import rosidl_runtime_py.utilities
 from rclpy.impl.implementation_singleton import rclpy_implementation as rclpy_extension
@@ -52,6 +54,10 @@ ROS_TIME_CLASSES = {rclpy.time.Time:                 "builtin_interfaces/Time",
                     builtin_interfaces.msg.Time:     "builtin_interfaces/Time",
                     rclpy.duration.Duration:         "builtin_interfaces/Duration",
                     builtin_interfaces.msg.Duration: "builtin_interfaces/Duration"}
+
+## ROS2 time/duration types mapped to message types
+ROS_TIME_MESSAGES = {rclpy.time.Time:          builtin_interfaces.msg.Time,
+                     rclpy.duration.Duration:  builtin_interfaces.msg.Duration}
 
 ## Mapping between ROS type aliases and real types, like {"byte": "uint8"}
 ROS_ALIAS_TYPES = {"byte": "uint8", "char": "int8"}
@@ -979,6 +985,25 @@ def scalar(typename):
     return typename
 
 
+def time_message(val, to_message=True, clock_type=None):
+    """
+    Converts ROS2 time/duration between `rclpy` and `builtin_interfaces` objects.
+
+    @param   val         ROS2 time/duration object from `rclpy` or `builtin_interfaces`
+    @param   to_message  whether to convert from `rclpy` to `builtin_interfaces` or vice versa
+    @param   clock_type  ClockType for converting to `rclpy.Time`, defaults to `ROS_TIME`
+    @return              value converted to appropriate type, or original value if not convertible
+    """
+    to_message, clock_type = bool(to_message), (clock_type or rclpy.clock.ClockType.ROS_TIME)
+    if isinstance(val, tuple(ROS_TIME_CLASSES)):
+        rcl_cls = next(k for k, v in ROS_TIME_MESSAGES.items() if isinstance(val, (k, v)))
+        is_rcl = isinstance(val, tuple(ROS_TIME_MESSAGES))
+        name = "to_msg" if to_message and is_rcl else "from_msg" if to_message == is_rcl else None
+        args = [val] + ([clock_type] if rcl_cls is rclpy.time.Time and "from_msg" == name else [])
+        return getattr(rcl_cls, name)(*args) if name else val
+    return val
+
+
 def to_nsec(val):
     """Returns value in nanoseconds if value is ROS2 time/duration, else value."""
     if not isinstance(val, tuple(ROS_TIME_CLASSES)):
@@ -1023,6 +1048,6 @@ __all__ = [
     "has_param", "init_node", "init_params", "is_ros_message", "is_ros_service",
     "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
     "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "spin",
-    "spin_once", "spin_until_future_complete", "start_spin", "to_nsec", "to_sec",
-    "to_sec_nsec"
+    "spin_once", "spin_until_future_complete", "start_spin", "time_message", "to_nsec",
+    "to_sec", "to_sec_nsec"
 ]
