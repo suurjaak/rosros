@@ -296,6 +296,24 @@ class TestAPI(testbase.TestBase):
                 self.assertEqual(func(cls()), expected, ERR(func))
             self.assertEqual(func(self), self, ERR(func))
 
+        func = api.time_message
+        with self.subTest(NAME(func)):
+            logger.info("Testing %s.", NAME(func))
+            for cls in api.ROS_TIME_CLASSES:
+                v1 = cls()
+                category, is_msg = api.time_category(cls), api.is_ros_message(v1)
+                for to_message in (True, False):
+                    v2 = func(v1, to_message=to_message)
+                    if is_msg == to_message:
+                        expected = type(v1)
+                    elif is_msg:  # and not to_message
+                        expected = type(api.make_time() if "time" == category else
+                                        api.make_duration())
+                    else:  # not is_msg and to_message
+                        expected = next(api.get_message_class(x) for x in api.ROS_TIME_TYPES
+                                        if category in x.lower())
+                    self.assertTrue(issubclass(expected, type(v2)), ERR(func))
+
         func = api.is_ros_time
         with self.subTest(NAME(func)):
             logger.info("Testing %s.", NAME(func))
