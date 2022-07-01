@@ -44,7 +44,7 @@ ROS_BUILTIN_CTORS = {"byte":   int,  "char":   int, "int8":    int,   "int16":  
 ## ROS time/duration types
 ROS_TIME_TYPES = ros.ROS_TIME_TYPES
 
-## ROS1 time/duration types mapped to type names
+## ROS time/duration types mapped to type names
 ROS_TIME_CLASSES = ros.ROS_TIME_CLASSES
 
 ## All built-in basic types plus time types in ROS
@@ -154,13 +154,6 @@ def get_message_value(msg, name):
     @param   message attribute name; may also be (nested, path) or "nested.path"
     """
     return ros.get_message_value(msg, name)
-
-
-def get_ros_time_category(typename):
-    """Returns "time" or "duration" for time/duration type, else typename."""
-    if typename in ROS_TIME_TYPES:
-        return "duration" if "duration" in typename.lower() else "time"
-    return typename
 
 
 def get_service_definition(srv_or_type):
@@ -366,6 +359,22 @@ def scalar(typename):
     e.g. "string" from "string<=10[<=5]".
     """
     return ros.scalar(typename)
+
+
+def time_category(msg_or_type):
+    """
+    Returns "time" or "duration" for time/duration type, else original value.
+
+    @param   msg_or_type  full or canonical class name
+                          like "duration" or "builtin_interfaces/Time",
+                          or class instance like `rospy.Time()`,
+                          or class object like `rclpy.time.Time`
+    """
+    typename = msg_or_type
+    if not isinstance(typename, str):
+        cls = msg_or_type if inspect.isclass(msg_or_type) else type(msg_or_type)
+        typename = cls.__name__ if issubclass(cls, tuple(ROS_TIME_CLASSES)) else None
+    return msg_or_type if not typename else "duration" if "duration" in typename.lower() else "time"
 
 
 def time_message(val, to_message=True, clock_type=None):

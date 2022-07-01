@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    23.06.2022
+@modified    01.07.2022
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -284,12 +284,17 @@ class TestAPI(testbase.TestBase):
         NAME = lambda f: "%s.%s()" % (f.__module__, f.__name__)
         ERR  = lambda f: "Unexpected result from %s." % f.__name__
 
-        func = api.get_ros_time_category
+        func = api.time_category
         with self.subTest(NAME(func)):
             logger.info("Testing %s.", NAME(func))
             for typename in api.ROS_TIME_TYPES:
                 expected = "duration" if "duration" in typename.lower() else "time"
                 self.assertEqual(func(typename), expected, ERR(func))
+            for cls in api.ROS_TIME_CLASSES:
+                expected = "duration" if "duration" in cls.__name__.lower() else "time"
+                self.assertEqual(func(cls),   expected, ERR(func))
+                self.assertEqual(func(cls()), expected, ERR(func))
+            self.assertEqual(func(self), self, ERR(func))
 
         func = api.is_ros_time
         with self.subTest(NAME(func)):
