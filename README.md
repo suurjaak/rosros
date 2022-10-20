@@ -191,51 +191,52 @@ ROS core functionality
 
 Functions for creating and spinning a node, working with topics and services.
 
-| Function                            | Arguments                              | Description
-| ----------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------
-| `rosros.init_node`                  | `name, args=None, namespace=None,`     | initializes ROS and creates ROS node
-|                                     | `anonymous=True, log_level=None,`      | |
-|                                     | `enable_rosout=True,`                  | |
-|                                     | `multithreaded=True, reentrant=False`  | |
-| `rosros.init_params`                | `defaults=None, **defaultkws`          | sets all parameters on node from defaults dictionary, returns full parameters dictionary.
-|                                     |                                        | In ROS2, auto-declares unregistered parameters.
-| `rosros.has_param`                  | `name`                                 | returns whether the parameter exists
-| `rosros.get_param`                  | `name`                                 | returns parameter value from current ROS node
-| `rosros.get_param_names`            |                                        | returns the names of all current ROS node parameters
-| `rosros.get_params`                 |                                        | returns the current ROS node parameters, by default as nested dictionary
-| `rosros.set_param`                  | `name, value, descriptor=None`         | sets a parameter on the node.
-|                                     |                                        | In ROS2, parameter will be auto-declared if unknown so far.
-| `rosros.delete_param`               | `name`                                 | deletes parameter from the node
-| `rosros.start_spin`                 |                                        | sets ROS node spinning forever in a background thread
-| `rosros.spin`                       |                                        | spins ROS node forever
-| `rosros.spin_once`                  | `timeout=None`                         | waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2
-| `rosros.spin_until_future_complete` | `future, timeout=None`                 | spins ROS until future complete or timeout reached or ROS shut down
-| `rosros.ok`                         |                                        | returns whether ROS has been initialized and is not shut down
-| `rosros.shutdown`                   |                                        | shuts down live ROS node, if any
-| `rosros.create_publisher`           | `topic, cls_or_typename,`              | returns a ROS publisher instance
-|                                     | `latch=False, queue_size=0, **qosargs` | |
-| `rosros.create_subscriber`          | `topic, cls_or_typename, callback,`    | returns a ROS subscriber instance
-|                                     | `callback_args=None, queue_size=0,`    | |
-|                                     | `raw=False, **qosargs`                 | |
-| `rosros.create_service`             | `service, cls_or_typename, callback`   | returns a ROS service server instance, for providing a service
-|                                     | `**qosargs`                            | |
-| `rosros.create_client`              | `service, cls_or_typename, **qosargs`  | returns a ROS service client instance, for invoking a service
-| `rosros.create_timer`               | `period, callback,`                    | returns a ROS timer instance
-|                                     | `oneshot=False, immediate=False`       | |
-| `rosros.create_rate`                | `frequency`                            | returns a ROS rate instance, for sleeping at a fixed rate
-| `rosros.destroy_entity`             | `item`                                 | closes the given publisher, subscriber, service client, service server, or timer instance
-| `rosros.get_logger`                 |                                        | returns `logging.Logger` for logging to ROS log handler;
-|                                     |                                        | logger supports additional keywords `__once__`, `__throttle__`, `__throttle_identical__`
-| `rosros.get_namespace`              |                                        | returns ROS node namespace
-| `rosros.get_node_name`              |                                        | returns ROS node full name with namespace
-| `rosros.get_nodes`                  |                                        | returns all ROS nodes, as `[node full name, ]`
-| `rosros.get_rostime`                |                                        | returns ROS time instance for current ROS clock time
-| `rosros.get_topics`                 |                                        | returns all available ROS topics, as `[(topic name, [type name, ]), ]`
-| `rosros.get_services`               |                                        | returns all available ROS services, as `[(service name, [type name, ]), ]`
-| `rosros.remap_name`                 | `name, namespace=None`                 | returns the absolute remapped topic/service name if mapping exists
-| `rosros.resolve_name`               | `name, namespace=None`                 | returns absolute remapped name, namespaced under current node if relative or private
-| `rosros.register_init`              | `node=None`                            | informs `rosros` of ROS having been initialized outside of `init_node()`.
-|                                     |                                        | Giving node as argument is mandatory in ROS2.
+| Function                            | Description                                                                                | Arguments
+| ----------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------
+|                                     | **Startup, spin and shutdown**                                                             | |
+| `rosros.init_node`                  | initializes ROS and creates ROS node                                                       | `name, args=None, namespace=None, anonymous=True, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False`
+| `rosros.start_spin`                 | sets ROS node spinning forever in a background thread                                      | |
+| `rosros.spin`                       | spins ROS node forever                                                                     | |
+| `rosros.spin_once`                  | waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2     | `timeout=None`
+| `rosros.spin_until_future_complete` | spins ROS until future complete or timeout reached or ROS shut down                        | `future, timeout=None`
+| `rosros.ok`                         | returns whether ROS has been initialized and is not shut down                              | |
+| `rosros.shutdown`                   | shuts down live ROS node, if any                                                           | |
+|                                     |                                                                                            | |
+|                                     | **Parameters**                                                                             | |
+| `rosros.init_params`                | sets all parameters on node from defaults dictionary, returns full parameters dictionary.  | `defaults=None, **defaultkws`
+|                                     | In ROS2, auto-declares unregistered parameters.                                            | |
+| `rosros.has_param`                  | returns whether the parameter exists                                                       | `name`
+| `rosros.get_param`                  | returns parameter value from current ROS node                                              | `name, default=None, autoset=True`
+| `rosros.get_param_names`            | returns the names of all current ROS node parameters                                       | |
+| `rosros.get_params`                 | returns the current ROS node parameters, by default as nested dictionary                   | `nested=True`
+| `rosros.set_param`                  | sets a parameter on the node.                                                              | `name, value, descriptor=None`
+|                                     | In ROS2, parameter will be auto-declared if unknown so far.                                | |
+| `rosros.delete_param`               | deletes parameter from the node                                                            | `name`
+|                                     |                                                                                            | |
+|                                     | **Topics, services, timers and rates**                                                     | |
+| `rosros.create_publisher`           | returns a ROS publisher instance                                                           | `topic, cls_or_typename, latch=False, queue_size=0, **qosargs`
+| `rosros.create_subscriber`          | returns a ROS subscriber instance                                                          | `topic, cls_or_typename, callback, callback_args=None, queue_size=0, raw=False, **qosargs`
+| `rosros.create_service`             | returns a ROS service server instance, for providing a service                             | `service, cls_or_typename, callback, **qosargs`
+| `rosros.create_client`              | returns a ROS service client instance, for invoking a service                              | `service, cls_or_typename, **qosargs`
+| `rosros.create_timer`               | returns a ROS timer instance                                                               | `period, callback, oneshot=False, immediate=False`
+| `rosros.create_rate`                | returns a ROS rate instance, for sleeping at a fixed rate                                  | `frequency`
+| `rosros.destroy_entity`             | closes the given publisher, subscriber, service client, service server, or timer instance  | `item`
+|                                     |                                                                                            | |
+|                                     | **Information queries**                                                                    | |
+| `rosros.get_namespace`              | returns ROS node namespace                                                                 | |
+| `rosros.get_node_name`              | returns ROS node full name with namespace                                                  | |
+| `rosros.get_nodes`                  | returns all ROS nodes, as `[node full name, ]`                                             | |
+| `rosros.get_topics`                 | returns all available ROS topics, as `[(topic name, [type name, ]), ]`                     | |
+| `rosros.get_services`               | returns all available ROS services, as `[(service name, [type name, ]), ]`                 | |
+| `rosros.remap_name`                 | returns the absolute remapped topic/service name if mapping exists                         | `name, namespace=None`
+| `rosros.resolve_name`               | returns absolute remapped name, namespaced under current node if relative or private       | `name, namespace=None`
+|                                     |                                                                                            | |
+|                                     | **Miscellaneous**                                                                          | |
+| `rosros.get_logger`                 | returns `logging.Logger` for logging to ROS log handler;                                   | |
+|                                     | logger supports additional keywords `__once__`, `__throttle__`, `__throttle_identical__`   | |
+| `rosros.get_rostime`                | returns ROS time instance for current ROS clock time                                       | |
+| `rosros.register_init`              | informs `rosros` of ROS having been initialized outside of `init_node()`.                  | `node=None`
+|                                     | Giving node as argument is mandatory in ROS2.                                              | |
 
 
 API helpers
@@ -244,46 +245,55 @@ API helpers
 Convenience helper functions for working with message types and data.
 Can be used as stand-alone library functions without initializing rosros core.
 
-| Function                                | Arguments                  | Description
-| --------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------
-| `rosros.api.canonical`                  | `typename`                 | returns `"pkg/Type"` for `"pkg/subdir/Type"`
-| `rosros.api.deserialize_message`        | `raw, cls_or_typename`     | returns ROS message or service request/response instantiated from serialized binary
-| `rosros.api.dict_to_message`            | `dct, msg`                 | returns given ROS message populated from Python dictionary
-| `rosros.api.get_alias_type`             | `typename`                 | returns ROS built-in type for alias like `"char"`, if any; reverse of `get_type_alias()`.
-|                                         |                            | In ROS1, `byte` and `char` are aliases for `int8` and `uint8`; in ROS2 the reverse.
-| `rosros.api.get_message_class`          | `msg_or_type`              | returns ROS message / service class object, like `std_msgs.msg.Bool` for `"std_msgs/Bool"`
-| `rosros.api.get_message_definition`     | `msg_or_type, full=True`   | returns ROS message or service request/response type definition text,
-|                                         |                            | by default including message subtype definitions
-| `rosros.api.get_message_fields`         | `val`                      | returns `{field name: field type name}` if ROS message or service request/response, else `{}`
-| `rosros.api.get_message_header`         | `val`                      | returns message `Header`-attribute if any, else `None`
-| `rosros.api.get_message_type`           | `msg_or_cls`               | returns ROS message / service canonical type name, like `"std_msgs/Header"`
-| `rosros.api.get_message_type_hash`      | `msg_or_type`              | returns ROS message / service type MD5 hash
-| `rosros.api.get_message_value`          | `msg, name`                | returns message attribute value, with numeric arrays converted to lists
-| `rosros.api.get_service_definition`     | `srv_or_type`              | returns ROS service type definition text
-| `rosros.api.get_service_request_class`  | `srv_or_type`              | returns ROS service request class object
-| `rosros.api.get_service_response_class` | `srv_or_type`              | returns ROS service response class object
-| `rosros.api.get_type_alias`             | `typename`                 | returns alias like `"char"` for ROS built-in type, if any; reverse of `get_alias_type()`.
-|                                         |                            | In ROS1, `byte` and `char` are aliases for `int8` and `uint8`; in ROS2 the reverse.
-| `rosros.api.is_ros_message`             | `val`                      | returns whether value is a ROS message or service request/response class or instance
-| `rosros.api.is_ros_service`             | `val`                      | returns whether value is a ROS service class object
-| `rosros.api.is_ros_time`                | `val`                      | returns whether value is a ROS time/duration
-| `rosros.api.make_duration`              | `secs=0, nsecs=0`          | returns a ROS duration
-| `rosros.api.make_full_typename`         | `typename, category="msg"` | returns `"pkg/msg/Type"` or `"pkg/srv/Type"` for `"pkg/Type"`
-| `rosros.api.make_time`                  | `secs=0, nsecs=0`          | returns a ROS time
-| `rosros.api.message_to_dict`            | `msg, replace=None`        | returns ROS message as nested Python dictionary;
-|                                         |                            | with optional replacements for certain values like `{math.nan: None}`
-| `rosros.api.message_to_str`             | `msg, indent=None`         | returns ROS message as an evaluatable string, e.g. `"std_msgs.msg.UInt8(data=0)"`
-| `rosros.api.scalar`                     | `typename`                 | returns scalar type from ROS message data type, like `"uint8"` from `uint8`-array;
-|                                         |                            | in ROS2, returns unbounded type, e.g. `"string"` from `"string<=10[<=5]"`.
-| `rosros.api.serialize_message`          | `msg`                      | returns ROS message or service request/response as a serialized binary of `bytes()`
-| `rosros.api.time_category`              | `msg_or_type`              | returns "time" or "duration" for time/duration type, else value
-| `rosros.api.time_message`               | `val, to_message=True,`    | returns ROS2 time/duration from `rclpy` as `builtin_interfaces` or vice versa,
-|                                         | `clock_type=None`          | or value if not convertible
-| `rosros.api.to_datetime`                | `val`                      | returns value as `datetime.datetime` if value is ROS time/duration, else value
-| `rosros.api.to_decimal`                 | `val`                      | returns value as `decimal.Decimal` if value is ROS time/duration, else value
-| `rosros.api.to_nsec`                    | `val`                      | returns value in nanoseconds if value is ROS time/duration, else value
-| `rosros.api.to_sec`                     | `val`                      | returns value in seconds if value is ROS time/duration, else value
-| `rosros.api.to_sec_nsec`                | `val`                      | returns value in (seconds, nanoseconds) if value is ROS time/duration, else value
+| Function                                | Description                                                                                   | Arguments
+| --------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------
+|                                         | **Message types and instances**                                                               | |
+| `rosros.api.get_message_class`          | returns ROS message / service class object, like `std_msgs.msg.Bool` for `"std_msgs/Bool"`    | `msg_or_type`
+| `rosros.api.get_message_definition`     | returns ROS message or service request/response type definition text,                         | `msg_or_type, full=True`
+|                                         | by default including message subtype definitions                                              | |
+| `rosros.api.get_message_fields`         | returns `{field name: field type name}` if ROS message or service request/response, else `{}` | `val`
+| `rosros.api.get_message_header`         | returns message `Header`-attribute if any, else `None`                                        | `val`
+| `rosros.api.get_message_type`           | returns ROS message / service canonical type name, like `"std_msgs/Header"`                   | `msg_or_cls`
+| `rosros.api.get_message_type_hash`      | returns ROS message / service type MD5 hash                                                   | `msg_or_type`
+| `rosros.api.get_message_value`          | returns message attribute value, with numeric arrays converted to lists                       | `msg, name`
+| `rosros.api.is_ros_message`             | returns whether value is a ROS message or service request/response class or instance          | `val`
+|                                         |                                                                                               | |
+|                                         | **Message conversion**                                                                        | |
+| `rosros.api.deserialize_message`        | returns ROS message or service request/response instantiated from serialized binary           | `raw, cls_or_typename`
+| `rosros.api.dict_to_message`            | returns given ROS message populated from Python dictionary                                    | `dct, msg`
+| `rosros.api.message_to_dict`            | returns ROS message as nested Python dictionary;                                              | `msg, replace=None`
+|                                         | with optional replacements for certain values like `{math.nan: None}`                         | |
+| `rosros.api.message_to_str`             | returns ROS message as an evaluatable string, e.g. `"std_msgs.msg.UInt8(data=0)"`             | `msg, indent=None`
+| `rosros.api.serialize_message`          | returns ROS message or service request/response as a serialized binary of `bytes()`           | `msg`
+|                                         |                                                                                               | |
+|                                         | **Service classes and definitions**                                                           | |
+| `rosros.api.get_service_definition`     | returns ROS service type definition text                                                      | `srv_or_type`
+| `rosros.api.get_service_request_class`  | returns ROS service request class object                                                      | `srv_or_type`
+| `rosros.api.get_service_response_class` | returns ROS service response class object                                                     | `srv_or_type`
+| `rosros.api.is_ros_service`             | returns whether value is a ROS service class object                                           | `val`
+|                                         |                                                                                               | |
+|                                         | **Time and duration**                                                                         | |
+| `rosros.api.is_ros_time`                | returns whether value is a ROS time/duration                                                  | `val`
+| `rosros.api.make_duration`              | returns a ROS duration                                                                        | `secs=0, nsecs=0`
+| `rosros.api.make_time`                  | returns a ROS time                                                                            | `secs=0, nsecs=0`
+| `rosros.api.time_category`              | returns "time" or "duration" for time/duration type, else value                               | `msg_or_type`
+| `rosros.api.time_message`               | returns ROS2 time/duration from `rclpy` as `builtin_interfaces` or vice versa,                | `val, to_message=True, clock_type=None`
+|                                         | or value if not convertible                                                                   | |
+| `rosros.api.to_datetime`                | returns value as `datetime.datetime` if value is ROS time/duration, else value                | `val`
+| `rosros.api.to_decimal`                 | returns value as `decimal.Decimal` if value is ROS time/duration, else value                  | `val`
+| `rosros.api.to_nsec`                    | returns value in nanoseconds if value is ROS time/duration, else value                        | `val`
+| `rosros.api.to_sec`                     | returns value in seconds if value is ROS time/duration, else value                            | `val`
+| `rosros.api.to_sec_nsec`                | returns value in (seconds, nanoseconds) if value is ROS time/duration, else value             | `val`                     
+|                                         |                                                                                               | |
+|                                         | **Class and type names**                                                                      | |
+| `rosros.api.canonical`                  | returns `"pkg/Type"` for `"pkg/subdir/Type"`                                                  | `typename`
+| `rosros.api.get_alias_type`             | returns ROS built-in type for alias like `"char"`, if any; reverse of `get_type_alias()`.     | `typename`
+|                                         | In ROS1, `byte` and `char` are aliases for `int8` and `uint8`; in ROS2 the reverse.           | |
+| `rosros.api.get_type_alias`             | returns alias like `"char"` for ROS built-in type, if any; reverse of `get_alias_type()`.     | `typename`
+|                                         | In ROS1, `byte` and `char` are aliases for `int8` and `uint8`; in ROS2 the reverse.           | |
+| `rosros.api.make_full_typename`         | returns `"pkg/msg/Type"` or `"pkg/srv/Type"` for `"pkg/Type"`                                 | `typename, category="msg"`
+| `rosros.api.scalar`                     | returns scalar type from ROS message data type, like `"uint8"` from `uint8`-array;            | `typename`
+|                                         | in ROS2, returns unbounded type, e.g. `"string"` from `"string<=10[<=5]"`.                    | |
 
 
 
@@ -294,7 +304,7 @@ Converting an existing package
 
 rosros can be used as a (mostly) drop-in replacement for rospy
 to make a ROS1 package equally usable under ROS2 - if the code relies only
-on `rospy`, and does not go too deeply into using ROS1 specifics like ROS master.
+on `rospy`, and does not go too deeply into using ROS1 specifics like `rosgraph`.
 
 `rospy` imports can be replaced with `rosros.rospify`, e.g.
 
