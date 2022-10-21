@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    25.06.2022
+@modified    21.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -75,6 +75,7 @@ def patch_ros1():
 
     rospy.ServiceProxy.call_async       = client_call_async
     rospy.ServiceProxy.wait_for_service = ServiceProxy__wait_for_service
+    rospy.ServiceProxy.service_is_ready = ServiceProxy__service_is_ready
 
     rospy.Subscriber.__init__                     = Subscriber__init
     rospy.topics._SubscriberImpl.receive_callback = SubscriberImpl__receive_callback
@@ -90,7 +91,6 @@ def patch_ros1_rclify():
 
     rospy.ServiceProxy.destroy                = rospy.ServiceProxy.close
     rospy.ServiceProxy.remove_pending_request = ServiceProxy__remove_pending_request
-    rospy.ServiceProxy.service_is_ready       = ServiceProxy__service_is_ready
 
     rospy.Service.destroy = rospy.Service.shutdown
 
@@ -245,7 +245,9 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
 
     def ServiceProxy__service_is_ready(self):
         """
-        Returns whether service is ready (ROS2 compatibility stand-in).
+        Returns whether service is ready.
+
+        Provides rospy.ServiceProxy with service_is_ready() like rclpy.client.Client has.
 
         @return  True if a server is ready, False otherwise
         """
