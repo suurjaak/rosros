@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    01.07.2022
+@modified    21.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -45,6 +45,9 @@ from . import parsing
 from . import patch
 from . import util
 
+
+## Stand-in for `rospy.AnyMsg` with equivalent interface
+AnyMsg = patch.AnyMsg
 
 ## ROS2 time/duration message types
 ROS_TIME_TYPES = ["builtin_interfaces/Time", "builtin_interfaces/Duration"]
@@ -826,9 +829,11 @@ def get_message_type(msg_or_cls):
     """
     Returns ROS2 message / service canonical type name, like "std_msgs/Header".
 
+    Returns "*" for `AnyMsg`.
+
     @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
                          or class object like `std_msgs.msg.Bool`
-    @return   canonical name, or `None` if not ROS message / service
+    @return              canonical name, or `None` if not ROS message / service
     """
     cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)
     if not is_ros_message(cls) and not is_ros_time(cls) and not is_ros_service(cls):
@@ -939,7 +944,8 @@ def is_ros_message(val):
     @return       True if value is a ROS1 message or service request/response class or instance,
                   False otherwise
     """
-    return rosidl_runtime_py.utilities.is_message(val)
+    return isinstance(val, AnyMsg) or issubclass(val, AnyMsg) or \
+           rosidl_runtime_py.utilities.is_message(val)
 
 
 def is_ros_service(val):
@@ -1035,8 +1041,8 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
-    "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
+    "AnyMsg", "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR",
+    "PRIVATE_PREFIX", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
     "canonical", "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "deserialize_message",
     "destroy_entity", "format_param_name", "get_logger", "get_message_class",

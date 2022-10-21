@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    25.06.2022
+@modified    21.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -34,6 +34,9 @@ from . import patch
 from . import rclify
 from . import util
 
+
+## `rospy.AnyMsg`
+AnyMsg = rospy.AnyMsg
 
 ## ROS1 time/duration types
 ROS_TIME_TYPES = ["time", "duration"]
@@ -644,9 +647,11 @@ def get_message_type(msg_or_cls):
     """
     Returns ROS1 message / service canonical type name, like "std_msgs/Header".
 
+    Returns "*" for `AnyMsg`.
+
     @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
                          or class object like `std_msgs.msg.Bool`
-    @return   canonical name, or `None` if not ROS message / service
+    @return              canonical name, or `None` if not ROS message / service
     """
     if is_ros_time(msg_or_cls):
         cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)
@@ -791,8 +796,8 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "PY_LOG_LEVEL_TO_ROSPY_LEVEL",
-    "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
+    "AnyMsg", "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
+    "PY_LOG_LEVEL_TO_ROSPY_LEVEL", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
     "canonical", "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "deserialize_message",
     "destroy_entity", "format_param_name", "get_logger", "get_message_class",

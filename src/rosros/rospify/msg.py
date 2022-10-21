@@ -48,13 +48,13 @@ class AnyMsg(Message):
         self._buff = None
 
     def serialize(self, buff):
-        """AnyMsg provides an implementation so that a node can forward messages w/o (de)serialization"""
+        """AnyMsg provides an implementation so that a node can forward messages w/o (de)serialization."""
         if self._buff is None:
             raise exceptions.ROSException("AnyMsg is not initialized")
         buff.write(self._buff)
 
     def deserialize(self, str):
-        """Copies raw buffer into self._buff, returns self"""
+        """Copies raw buffer into self._buff, returns self."""
         self._buff = str
         return self
 

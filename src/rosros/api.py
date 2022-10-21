@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    01.07.2022
+@modified    21.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -127,6 +127,8 @@ def get_message_header(val):
 def get_message_type(msg_or_cls):
     """
     Returns ROS message / service canonical type name, like "std_msgs/Header".
+
+    Returns "*" for `AnyMsg`.
 
     @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
                          or class object like `std_msgs.msg.Bool`

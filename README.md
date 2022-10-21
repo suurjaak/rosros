@@ -189,7 +189,7 @@ timer = rosros.create_timer(rosros.api.make_duration(5), lambda: print("every 5 
 ROS core functionality
 ----------------------
 
-Functions for creating and spinning a node, working with topics and services.
+Functionality for creating and operating a ROS node.
 
 | Function                            | Description                                                                                | Arguments
 | ----------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------
@@ -221,6 +221,7 @@ Functions for creating and spinning a node, working with topics and services.
 | `rosros.create_timer`               | returns a ROS timer instance                                                               | `period, callback, oneshot=False, immediate=False`
 | `rosros.create_rate`                | returns a ROS rate instance, for sleeping at a fixed rate                                  | `frequency`
 | `rosros.destroy_entity`             | closes the given publisher, subscriber, service client, service server, or timer instance  | `item`
+| `rosros.AnyMsg`                     | `rospy.AnyMsg` in ROS1, stand-in class with equivalent functionality in ROS2               | |
 |                                     |                                                                                            | |
 |                                     | **Information queries**                                                                    | |
 | `rosros.get_namespace`              | returns ROS node namespace                                                                 | |
@@ -242,7 +243,7 @@ Functions for creating and spinning a node, working with topics and services.
 API helpers
 -----------
 
-Convenience helper functions for working with message types and data.
+Functionality for working with message types and data and metainfo.
 Can be used as stand-alone library functions without initializing rosros core.
 
 | Function                                | Description                                                                                   | Arguments
@@ -254,6 +255,7 @@ Can be used as stand-alone library functions without initializing rosros core.
 | `rosros.api.get_message_fields`         | returns `{field name: field type name}` if ROS message or service request/response, else `{}` | `val`
 | `rosros.api.get_message_header`         | returns message `Header`-attribute if any, else `None`                                        | `val`
 | `rosros.api.get_message_type`           | returns ROS message / service canonical type name, like `"std_msgs/Header"`                   | `msg_or_cls`
+|                                         | or `"*"` for `AnyMsg`                                                                         | |
 | `rosros.api.get_message_type_hash`      | returns ROS message / service type MD5 hash                                                   | `msg_or_type`
 | `rosros.api.get_message_value`          | returns message attribute value, with numeric arrays converted to lists                       | `msg, name`
 | `rosros.api.is_ros_message`             | returns whether value is a ROS message or service request/response class or instance          | `val`
