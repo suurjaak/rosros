@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    24.06.2022
+@modified    21.10.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -141,6 +141,13 @@ class TestNode():
         params = rosros.init_params(params)
         self._opts.update(params)
         self.create_publishers()
+
+        deadline = time.monotonic() + 5
+        logger.info("Waiting for subscribers in %s topics.", len(self._pubs))
+        while time.monotonic() < deadline \
+        and sum(bool(x.get_num_connections()) for x in self._pubs.values()) < len(self._pubs):
+            rosros.spin_once(1)
+
         self.create_subscribers()
         self.create_services()
         rosros.create_timer(1, self.on_watchdog)
