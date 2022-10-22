@@ -21,6 +21,8 @@ Requires the corresponding ROS Python libraries: `rospy` family for ROS1,
   - [Constructor args in publishers and services](#constructor-args-in-publishers-and-services)
   - [Timers](#timers)
 - [ROS core functionality](#ros-core-functionality)
+  - [Patches in ROS1](#patches-in-ros1)
+  - [Patches in ROS2](#patches-in-ros2)
 - [API helpers](#api-helpers)
 - [Converting an existing package](#converting-an-existing-package)
   - [Existing ROS1 package to ROS1/ROS2 package](#existing-ros1-package-to-ros1ros2-package)
@@ -191,7 +193,11 @@ ROS core functionality
 
 Functionality for creating and operating a ROS node.
 
-| Function                            | Description                                                                                | Arguments
+Objects returned are standard `rospy` / `rclpy` API objects, patched with
+additional members for a unified interface _**conforming to ROS1 API**_.
+
+
+| Name                                | Description                                                                                | Arguments
 | ----------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------
 |                                     | **Startup, spin and shutdown**                                                             | |
 | `rosros.init_node`                  | initializes ROS and creates ROS node                                                       | `name, args=None, namespace=None, anonymous=True, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False`
@@ -238,6 +244,36 @@ Functionality for creating and operating a ROS node.
 | `rosros.get_rostime`                | returns ROS time instance for current ROS clock time                                       | |
 | `rosros.register_init`              | informs `rosros` of ROS having been initialized outside of `init_node()`.                  | `node=None`
 |                                     | Giving node as argument is mandatory in ROS2.                                              | |
+
+
+### Patches in ROS1
+
+Additional functionality patched onto `rospy` classes for convenience:
+
+- `rospy.ServiceProxy.call_async(*args, **kwargs):`
+  makes service call in a background thread, returns `asyncio.Future`-like response
+- `rospy.ServiceProxy.wait_for_service(timeout=None, timeout_sec=None):`
+  waits for service to become available, returns `True`, or `False`on timeout
+- `rospy.ServiceProxy.service_is_ready():`
+   returns whether service is currently available
+- `rospy.Subscriber:`
+  callbacks are invoked with serialized message bytes if subscription was created with `raw=True`
+
+
+### Patches in ROS2
+
+The following classes are patched with full conformity to their equivalents in ROS:
+
+- `rclpy.client.Client`
+- `rclpy.publisher.Publisher`
+- `rclpy.service.Service`
+- `rclpy.subscription.Subscription`
+- `rclpy.duration.Duration`
+- `rclpy.time.Time`
+- `rclpy.timer.Rate`
+- `rclpy.timer.Timer`
+
+E.g. durations support `+-*/`arithmetic, and publisher / subscriber provide `.md5sum` for message type hash.
 
 
 API helpers
