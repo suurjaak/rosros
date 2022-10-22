@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    21.10.2022
+@modified    22.10.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -86,9 +86,7 @@ class TestTopics(testbase.TestBase):
 
     def on_message(self, name, msg):
         """Handler for incoming message, registers message object."""
-        loggable = msg if "*" != rosros.api.get_message_type(msg) else "AnyMsg"
-        # rospy.AnyMsg raises error on string representation
-        logger.info("Received message in %r: %s.", name, loggable)
+        logger.info("Received message in %r: %s.", name, msg)
         self._msgs.setdefault(name, []).append(msg)
 
 
