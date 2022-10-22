@@ -1,5 +1,5 @@
 """
-Exposes local ported ROS2 API for ROS1, or imports rclpy if ROS2 environment.
+Provides ROS2 API facade for ROS1, or imports rclpy if ROS2 environment.
 
 ------------------------------------------------------------------------------
 This file is part of rosros - simple unified interface to ROS1 / ROS2.

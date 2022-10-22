@@ -1,5 +1,5 @@
 """
-Exposes local ported ROS1 API for ROS2, or imports rospy if ROS1 environment.
+Provides ROS1 API facade for ROS2, or imports rospy if ROS1 environment.
 
 ------------------------------------------------------------------------------
 This file is part of rosros - simple unified interface to ROS1 / ROS2.

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-ROS2 interface.
+ROS2 core interface.
 
 ------------------------------------------------------------------------------
 This file is part of rosros - simple unified interface to ROS1 / ROS2.

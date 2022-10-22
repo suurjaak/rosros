@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-ROS message definition utilities.
+Utilities for ROS message definition texts.
 
 ------------------------------------------------------------------------------
 This file is part of rosros - simple unified interface to ROS1 / ROS2.

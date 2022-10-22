@@ -309,7 +309,11 @@ def namesplit(name):
 
 
 def memoize(func):
-    """Returns a results-caching wrapper for the function."""
+    """
+    Returns a results-caching wrapper for the function.
+
+    All arguments to function must be hashable.
+    """
     cache = {}
     def inner(*args, **kwargs):
         key = args + sum(kwargs.items(), ())
