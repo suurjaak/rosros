@@ -7,13 +7,12 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    25.06.2022
+@modified    23.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.msg
 import std_msgs.msg
 
-from .. import ros2
 from . import exceptions
 from . topics import Message
 
@@ -61,7 +60,7 @@ class AnyMsg(Message):
     @classmethod
     def __subclasshook__(cls, C):
         """Returns true if C is AnyMsg or descendant, else `NotImplemented`."""
-        if ros2.is_ros_message(C) and getattr(C, "_type", None) == cls._type: return True
+        if getattr(C, "_type", None) == cls._type: return True
         return NotImplemented
 
 

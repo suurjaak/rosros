@@ -1333,7 +1333,7 @@ def is_ros_message(val):
     @return       True if value is a ROS1 message or service request/response class or instance,
                   False otherwise
     """
-    return isinstance(val, AnyMsg) or issubclass(val, AnyMsg) or \
+    return isinstance(val, AnyMsg) or inspect.isclass(val) and issubclass(val, AnyMsg) or \
            rosidl_runtime_py.utilities.is_message(val)
 
 
