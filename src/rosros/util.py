@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    23.06.2022
+@modified    23.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
@@ -17,6 +17,8 @@ import functools
 import hashlib
 import inspect
 import logging
+import math
+import os
 import re
 import threading
 import time
@@ -156,6 +158,11 @@ class ThrottledLogger(logging.Logger):
 
 
 
+def drop_zeros(v, replace=""):
+    """Drops or replaces trailing zeros and empty decimal separator, if any."""
+    return re.sub(r"\.?0+$", lambda x: len(x.group()) * replace, str(v))
+
+
 def ensure_object(obj_or_cls, attributes, *args, **kwargs):
     """
     Ensures result is an object of specified type.
@@ -211,6 +218,18 @@ def flatten_dict(dct, sep="."):
             stack.extend(("%s%s%s" % (k, sep, k2), v2) for k2, v2 in v.items())
         else:
             result[k] = v
+    return result
+
+
+def format_bytes(size, precision=2, inter=" ", strip=True):
+    """Returns a formatted byte size (like 421.40 MB), trailing zeros optionally removed."""
+    result = "0 bytes"
+    if size:
+        UNITS = [("bytes", "byte")[1 == size]] + [x + "B" for x in "KMGTPEZY"]
+        exponent = min(int(math.log(size, 1024)), len(UNITS) - 1)
+        result = "%.*f" % (precision, size / (1024. ** exponent))
+        result += "" if precision > 0 else "."  # Do not strip integer zeroes
+        result = (drop_zeros(result) if strip else result) + inter + UNITS[exponent]
     return result
 
 
@@ -274,6 +293,21 @@ def get_value(obj, path, pathsep=None):
     return getattr(ptr, leaf)
 
 
+def memoize(func):
+    """
+    Returns a results-caching wrapper for the function.
+
+    All arguments to function must be hashable.
+    """
+    cache = {}
+    def inner(*args, **kwargs):
+        key = args + sum(kwargs.items(), ())
+        if key not in cache:
+            cache[key] = func(*args, **kwargs)
+        return cache[key]
+    return functools.update_wrapper(inner, func)
+
+
 def make_dict(path, value):
     """Returns a nested dictionary from path, like {"nested": {"path": value}}."""
     result = ptr = {}
@@ -306,21 +340,6 @@ def namesplit(name):
     """Returns argument split into (namespace, name), like "/a/b/c" as ("/a/b", "c")."""
     parts = name.rsplit("/", 1)
     return ("" if len(parts) < 2 else (parts[0] or "/")), parts[-1]
-
-
-def memoize(func):
-    """
-    Returns a results-caching wrapper for the function.
-
-    All arguments to function must be hashable.
-    """
-    cache = {}
-    def inner(*args, **kwargs):
-        key = args + sum(kwargs.items(), ())
-        if key not in cache:
-            cache[key] = func(*args, **kwargs)
-        return cache[key]
-    return functools.update_wrapper(inner, func)
 
 
 def set_value(obj, path, value, pathsep=None):
@@ -368,6 +387,34 @@ def start_future(func, *args, **kwargs):
     return future
 
 
+def unique_path(pathname, empty_ok=False):
+    """
+    Returns a unique version of the path.
+
+    If a file or directory with the same name already exists, returns a unique
+    version (e.g. "/tmp/my.2.file" if ""/tmp/my.file" already exists).
+
+    @param   empty_ok  whether to ignore existence if file is empty
+    """
+    result = pathname
+    if os.path.isfile(result) and empty_ok and not os.path.getsize(result):
+        return result
+    path, name = os.path.split(result)
+    base, ext = os.path.splitext(name)
+    if len(name) > 255: # Filesystem limitation
+        name = base[:255 - len(ext) - 2] + ".." + ext
+        result = os.path.join(path, name)
+    counter = 2
+    while os.path.exists(result):
+        suffix = ".%s%s" % (counter, ext)
+        name = base + suffix
+        if len(name) > 255:
+            name = base[:255 - len(suffix) - 2] + ".." + suffix
+        result = os.path.join(path, name)
+        counter += 1
+    return result
+
+
 def wrap_arity(func):
     """
     Returns wrapper for invoking function with its maximum supported number of arguments.
@@ -390,6 +437,7 @@ def wrap_arity(func):
 
 
 __all__ = [
-    "ensure_object", "flatten_dict", "get_arity", "get_value", "make_dict", "memoize",
-    "merge_dicts", "namejoin", "namesplit", "set_value", "start_future", "wrap_arity",
+    "ensure_object", "flatten_dict", "format_bytes", "get_arity", "get_value", "make_dict",
+    "memoize", "merge_dicts", "namejoin", "namesplit", "set_value", "start_future",
+    "unique_path", "wrap_arity",
 ]

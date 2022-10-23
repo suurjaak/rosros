@@ -20,6 +20,7 @@ Requires the corresponding ROS Python libraries: `rospy` family for ROS1,
   - [Parameters](#parameters)
   - [Constructor args in publishers and services](#constructor-args-in-publishers-and-services)
   - [Timers](#timers)
+  - [Bags](#bags)
 - [ROS core functionality](#ros-core-functionality)
   - [Patches in ROS1](#patches-in-ros1)
   - [Patches in ROS2](#patches-in-ros2)
@@ -187,6 +188,24 @@ timer = rosros.create_timer(5, lambda: print("every 5 sec, starting now"), immed
 timer = rosros.create_timer(rosros.api.make_duration(5), lambda: print("every 5 sec"))
 ```
 
+### Bags
+
+rosros provides a unified interface for reading and writing ROS bags.
+
+Bag format is the custom ROS format in ROS1, and the SQLite database format in ROS2.
+
+```python
+bag = rosros.Bag("my.bag", mode="a")
+print(bag)  # Prints bag metainfo, equivalent to "rosbag info"
+
+bag.write("/my/topic", std_msgs.msg.Bool())
+
+for topic, message, stamp in bag:
+    print("[%s] %s:  %s" % (rosros.api.to_sec(stamp), topic, message))
+```
+
+
+
 
 ROS core functionality
 ----------------------
@@ -229,6 +248,11 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | `rosros.destroy_entity`             | closes the given publisher, subscriber, service client, service server, or timer instance  | `item`
 | `rosros.AnyMsg`                     | `rospy.AnyMsg` in ROS1, stand-in class with equivalent functionality in ROS2               | |
 |                                     |                                                                                            | |
+|                                     | **ROS bags**                                                                               | |
+| `rosros.Bag`                        | ROS bag reader and writer;                                                                 | |
+|                                     | `rosbag.Bag` in ROS1 with some additional functionality;                                   | |
+|                                     | equivalent class in ROS2, using the ROS2 default SQLite format                             | |
+|                                     |                                                                                            | |
 |                                     | **Information queries**                                                                    | |
 | `rosros.get_namespace`              | returns ROS node namespace                                                                 | |
 | `rosros.get_node_name`              | returns ROS node full name with namespace                                                  | |
@@ -258,6 +282,16 @@ Additional functionality patched onto `rospy` classes for convenience:
    returns whether service is currently available
 - `rospy.Subscriber:`
   callbacks are invoked with serialized message bytes if subscription was created with `raw=True`
+- `rosbag.Bag.get_message_definition(msg_or_type):`
+   returns ROS1 message type definition full text from bag
+- `rosbag.Bag.get_message_class(typename, typehash=None):`
+   returns ROS1 message class
+- `rosbag.Bag.get_message_type_hash(msg_or_type):`
+   returns ROS1 message type MD5 hash
+- `rosbag.Bag.get_topic_info():`
+  returns topic and message type metainfo as `{(topic, typename, typehash): count}`
+- `rosbag.Bag.reindex_file(f):`
+  reindexes bag file on disk; makes a temporary copy in file directory
 
 
 ### Patches in ROS2
@@ -282,7 +316,7 @@ API helpers
 Functionality for working with message types and data and metainfo.
 Can be used as stand-alone library functions without initializing rosros core.
 
-| Function                                | Description                                                                                   | Arguments
+| Name                                    | Description                                                                                   | Arguments
 | --------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------
 |                                         | **Message types and instances**                                                               | |
 | `rosros.api.get_message_class`          | returns ROS message / service class object, like `std_msgs.msg.Bool` for `"std_msgs/Bool"`    | `msg_or_type`
@@ -482,8 +516,11 @@ Using pytest, either ROS1 or ROS2 (roscore needs to be running if ROS1):
 Dependencies
 ------------
 
+- pyyaml (https://pypi.org/project/PyYAML)
+
 ROS1:
 - genpy
+- rosbag
 - roslib
 - rospy
 - rosservice
@@ -495,8 +532,8 @@ ROS2:
 - rosidl_runtime_py
 
 ROS2 test dependencies:
-- pytest
-- pytest-forked
+- pytest (https://pypi.org/project/pytest)
+- pytest-forked (https://pypi.org/project/pytest-forked)
 
 
 Attribution

@@ -8,15 +8,19 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    21.10.2022
+@modified    23.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
 import array
+import collections
+import datetime
 import inspect
+import io
 import logging
 import os
 import re
+import sqlite3
 import threading
 import time
 import traceback
@@ -40,6 +44,7 @@ import rclpy.time
 import rclpy.timer
 import rosidl_runtime_py.utilities
 from rclpy.impl.implementation_singleton import rclpy_implementation as rclpy_extension
+import yaml
 
 from . import parsing
 from . import patch
@@ -137,6 +142,390 @@ class ROSLogHandler(logging.Handler):
             self._logger.fatal(text)
         else:
             self._logger.info(text)
+
+
+
+class Bag:
+    """ROS2 bag interface, partially mimicking rosbag.Bag."""
+
+    ## Returned from read_messages() as (topic name, ROS message, rclpy.Time).
+    BagMessage = collections.namedtuple("BagMessage", "topic message timestamp")
+
+    ## Returned from get_type_and_topic_info() as
+    ## (typename, message count, connection count, median frequency).
+    TopicTuple = collections.namedtuple("TopicTuple", ["msg_type", "message_count",
+                                                       "connections", "frequency"])
+
+    ## Returned from get_type_and_topic_info() as ({typename: typehash}, {topic name: TopicTuple}).
+    TypesAndTopicsTuple = collections.namedtuple("TypesAndTopicsTuple", ["msg_types", "topics"])
+
+    ## ROS2 bag SQLite schema
+    CREATE_SQL = """
+CREATE TABLE IF NOT EXISTS messages (
+  id        INTEGER PRIMARY KEY,
+  topic_id  INTEGER NOT NULL,
+  timestamp INTEGER NOT NULL,
+  data      BLOB    NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS topics (
+  id                   INTEGER PRIMARY KEY,
+  name                 TEXT    NOT NULL,
+  type                 TEXT    NOT NULL,
+  serialization_format TEXT    NOT NULL,
+  offered_qos_profiles TEXT    NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
+    """
+
+    def __init__(self, filename, mode="a", *_, **__):
+        """
+        @param   filename  bag file path to open
+        @param   mode      mode to open file in, one of "r", "w", "a";
+                           file will be overwritten if "w", and unwriteable if "r"
+        """
+        self._db       = None  # sqlite3.Connection instance
+        self._mode     = mode
+        self._dbtopics = {}    # {(topic, typename): {id, name, type} topics-table row}
+        self._types    = {}    # {typename: typehash or None if lookup failed}
+        self._counts   = {}    # {(topic, typename, typehash): message count}
+        self._qoses    = {}    # {(topic, typename): [{qos profile dict}]}
+
+        ## Bagfile path
+        self.filename = filename
+
+        if "w" == mode and os.path.exists(filename):
+            os.remove(filename)
+        self._db = sqlite3.connect(filename, isolation_level=None, check_same_thread=False)
+        self._db.row_factory = lambda cursor, row: dict(sqlite3.Row(cursor, row))
+        if "r" != mode: self._db.executescript(self.CREATE_SQL)
+
+
+    def __iter__(self):
+        """Iterates over all messages in the bag."""
+        return self.read_messages()
+
+
+    def __enter__(self):
+        """Context manager entry."""
+        return self
+
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """Context manager exit, closes bag."""
+        self.close()
+
+
+    def get_message_count(self):
+        """Returns the number of messages in the bag."""
+        if self._has_table("messages"):
+            row = self._db.execute("SELECT COUNT(*) AS count FROM messages").fetchone()
+            return row["count"]
+        return None
+
+
+    def get_start_time(self):
+        """Returns the start time of the bag, as UNIX timestamp."""
+        if self._has_table("messages"):
+            row = self._db.execute("SELECT MIN(timestamp) AS val FROM messages").fetchone()
+            if row["val"] is None: return None
+            secs, nsecs = divmod(row["val"], 10**9)
+            return secs + nsecs / 1E9
+        return None
+
+
+    def get_end_time(self):
+        """Returns the end time of the bag, as UNIX timestamp."""
+        if self._has_table("messages"):
+            row = self._db.execute("SELECT MAX(timestamp) AS val FROM messages").fetchone()
+            if row["val"] is None: return None
+            secs, nsecs = divmod(row["val"], 10**9)
+            return secs + nsecs / 1E9
+        return None
+
+
+    def get_topic_info(self, counts=False):
+        """
+        Returns topic and message type metainfo as {(topic, typename, typehash): count}.
+
+        @param   counts  whether to return actual message counts instead of None
+        """
+        DEFAULTCOUNT = 0 if counts else None
+        if not self._counts and self._has_table("topics"):
+            for row in self._db.execute("SELECT * FROM topics ORDER BY name"):
+                topic, typename, typehash = row["name"], canonical(row["type"]), None
+                try:
+                    typehash = self._types[typename] if typename in self._types else \
+                               get_message_type_hash(typename)
+                except Exception:
+                    logger.warning("Error getting message type MD5 hash for %r.",
+                                   typename, exc_info=True)
+                self._dbtopics[(topic, typename)] = row
+                self._counts[(topic, typename, typehash)] = DEFAULTCOUNT
+                self._types.setdefault(typename, typehash)
+
+        if counts and self._has_table("messages") and not any(self._counts.values()):
+            countkeys = {v["id"]: (t, n, self._types.get(n))
+                         for (t, n), v in self._dbtopics.items()}
+            for row in self._db.execute("SELECT topic_id, COUNT(*) AS count FROM messages "
+                                        "GROUP BY topic_id"):
+                if row["topic_id"] in countkeys:
+                    self._counts[countkeys[row["topic_id"]]] = row["count"]
+
+        return dict(self._counts)
+
+
+    def get_type_and_topic_info(self, topic_filters=None):
+        """
+        Returns thorough metainfo on topic and message types.
+
+        @param   topic_filters  list of topics or a single topic to filter by, if at all
+        @return                 TypesAndTopicsTuple(msg_types, topics) namedtuple,
+                                msg_types as dict of {typename: typehash},
+                                topics as a dict of {topic: TopicTuple() namedtuple}.
+        """
+        counts = self.get_topic_info(counts=True)
+        topics = topic_filters
+        topics = topics if isinstance(topics, (list, set, tuple)) else [topics] if topics else []
+        msgtypes = {n: h for t, n, h in counts if not topics or t in topics}
+        topicdict = {}
+
+        def median(vals):
+            """Returns median value from given sorted numbers."""
+            vlen = len(vals)
+            return None if not vlen else vals[vlen // 2] if vlen % 2 else \
+                   float(vals[vlen // 2 - 1] + vals[vlen // 2]) / 2
+
+        for (t, n, _), c in sorted(counts.items()):
+            if topics and t not in topics: continue  # for
+            mymedian = None
+            if c > 1:
+                args = (self._dbtopics[(t, n)]["id"], )
+                cursor = self._db.execute("SELECT timestamp FROM messages WHERE topic_id = ?", args)
+                stamps = sorted(x["timestamp"] / 1E9 for x in cursor)
+                mymedian = median(sorted(s1 - s0 for s1, s0 in zip(stamps[1:], stamps[:-1])))
+            freq = 1.0 / mymedian if mymedian else None
+            topicdict[t] = self.TopicTuple(n, c, len(self.get_qoses(t, n) or []), freq)
+
+        return self.TypesAndTopicsTuple(msgtypes, topicdict)
+
+
+    def get_qoses(self, topic, typename):
+        """Returns topic Quality-of-Service profiles as a list of dicts, or None if not available."""
+        topickey = (topic, typename)
+        if topickey not in self._qoses and topickey in self._dbtopics:
+            topicrow = self._dbtopics[topickey]
+            try:
+                if topicrow.get("offered_qos_profiles"):
+                    self._qoses[topickey] = yaml.safe_load(topicrow["offered_qos_profiles"])
+            except Exception as e:
+                logger.warning("Error parsing quality of service for topic %r: %r", topic, e)
+        self._qoses.setdefault(topickey, None)
+        return self._qoses[topickey]
+
+
+    def get_message_class(self, typename, typehash=None):
+        """Returns ROS2 message type class."""
+        return get_message_class(typename)
+
+
+    def get_message_definition(self, msg_or_type):
+        """Returns ROS2 message type definition full text, including subtype definitions."""
+        return get_message_definition(msg_or_type)
+
+
+    def get_message_type_hash(self, msg_or_type):
+        """Returns ROS2 message type MD5 hash."""
+        return get_message_type_hash(msg_or_type)
+
+
+    def read_messages(self, topics=None, start_time=None, end_time=None, raw=False, *_, **__):
+        """
+        Yields messages from the bag, optionally filtered by topic and timestamp.
+
+        @param   topics      list of topics or a single topic to filter by, if at all
+        @param   start_time  earliest timestamp of message to return, as UNIX timestamp
+        @param   end_time    latest timestamp of message to return, as UNIX timestamp
+        @param   raw         if True, then returned messages are tuples of
+                             (typename, bytes, typehash, typeclass)
+        @return              generator of BagMessage(topic, message, rclpy.time.Time) namedtuples
+        """
+        self.get_topic_info()
+        if not self._dbtopics or (topics is not None and not topics):
+            return
+
+        sql, exprs, args = "SELECT * FROM messages", [], ()
+        if topics:
+            topics = topics if isinstance(topics, (list, tuple)) else [topics]
+            topic_ids = [x["id"] for (topic, _), x in self._dbtopics.items() if topic in topics]
+            exprs += ["topic_id IN (%s)" % ", ".join(map(str, topic_ids))]
+        if start_time is not None:
+            exprs += ["timestamp >= ?"]
+            args  += (start_time.nanoseconds, )
+        if end_time is not None:
+            exprs += ["timestamp <= ?"]
+            args  += (end_time.nanoseconds, )
+        sql += ((" WHERE " + " AND ".join(exprs)) if exprs else "")
+        sql += " ORDER BY timestamp"
+
+        topicmap   = {v["id"]: v for v in self._dbtopics.values()}
+        msgtypes   = {}     # {typename: cls}
+        for row in self._db.execute(sql, args):
+            tdata = topicmap[row["topic_id"]]
+            topic, typename = tdata["name"], tdata["type"]
+            if not raw and msgtypes.get(typename, typename) is None: continue # for row
+            typehash = self._types.get(typename)
+
+            try:
+                cls = msgtypes[typename] if typename in msgtypes else \
+                      msgtypes.setdefault(typename, get_message_class(typename))
+                if raw: msg = (typename, row["data"], typehash, cls)
+                else:   msg = rclpy.serialization.deserialize_message(row["data"], cls)
+            except Exception as e:
+                msgtypes.setdefault(typename, None)
+                logger.warning("Error loading type %r in topic %r: %s", typename, topic, e)
+                if raw: msg = (typename, row["data"], typehash, None)
+                elif set(n for n, c in msgtypes.items() if c is None) \
+                  == set(n for _, n in self._dbtopics):
+                    break  # for row
+                else: continue  # for row
+            stamp = rclpy.time.Time(nanoseconds=row["timestamp"])
+
+            yield self.BagMessage(topic, msg, stamp)
+            if not self._db:
+                break  # for row
+
+
+    def write(self, topic, msg, stamp=None, raw=False, qoses=None, **__):
+        """
+        Writes a message to the bag.
+
+        @param   topic  name of topic
+        @param   msg    ROS2 message
+        @param   stamp  rclpy.time.Time of message publication, if not using wall time
+        @param   raw    if true, msg is expected as a tuple starting with
+                        (typename, bytes, typehash, )
+        @param   qoses  list of Quality-of-Service profile dictionaries for topic, if any;
+                        inserted to topics-table only if first message for topic in bag
+        """
+        if "r" == self._mode:
+            raise io.UnsupportedOperation("write")
+
+        self.get_topic_info()
+        if raw:
+            typename, binary, typehash = msg[:3]
+        else:
+            typename = get_message_type(msg)
+            typehash = get_message_type_hash(msg)
+            binary   = serialize_message(msg)
+        topickey = (topic, typename)
+        cursor = self._db.cursor()
+        if topickey not in self._dbtopics:
+            from . import api  # Late import to avoid circular
+            full_typename = api.make_full_typename(typename)
+            sql = "INSERT INTO topics (name, type, serialization_format, offered_qos_profiles) " \
+                  "VALUES (?, ?, ?, ?)"
+            qoses = yaml.safe_dump(qoses) if isinstance(qoses, (list, tuple)) else ""
+            args = (topic, full_typename, "cdr", qoses)
+            cursor.execute(sql, args)
+            tdata = {"id": cursor.lastrowid, "name": topic, "type": full_typename,
+                     "serialization_format": "cdr", "offered_qos_profiles": qoses}
+            self._dbtopics[topickey] = tdata
+
+        timestamp = time.time_ns() if stamp is None else stamp.nanoseconds
+        sql = "INSERT INTO messages (topic_id, timestamp, data) VALUES (?, ?, ?)"
+        args = (self._dbtopics[topickey]["id"], timestamp, binary)
+        cursor.execute(sql, args)
+        countkey = (topic, typename, typehash)
+        if isinstance(self._counts.get(countkey), int): self._counts[countkey] += 1
+
+
+    def close(self):
+        """Closes the bag file."""
+        if self._db:
+            self._db.close()
+            self._db = None
+
+
+    def flush(self):
+        """Does nothing (ROS1 API conformity stand-in)."""
+
+
+    @property
+    def size(self):
+        """Returns current file size."""
+        return os.path.getsize(self.filename) if os.path.isfile(self.filename) else None
+
+
+    @property
+    def mode(self):
+        """Returns file open mode."""
+        return self._mode
+
+
+    def _has_table(self, name):
+        """Returns whether specified table exists in database."""
+        sql = "SELECT 1 FROM sqlite_master WHERE type = ? AND name = ?"
+        return bool(self._db.execute(sql, ("table", name)).fetchone())
+
+
+    def __str__(self):
+        """Returns informative text for bag, with a full overview of topics and types."""
+
+        indent  = lambda s, n: ("\n%s" % (" " * n)).join(s.splitlines())
+        # Returns UNIX timestamp as "Dec 22 2021 23:13:44.44"
+        fmttime = lambda x: datetime.datetime.fromtimestamp(x).strftime("%b %d %Y %H:%M:%S.%f")[:-4]
+        def fmtdur(secs):
+            """Returns duration seconds as text like "1hr 1:12s (3672s)" or "51.8s"."""
+            result = ""
+            hh, rem = divmod(secs, 3600)
+            mm, ss  = divmod(rem, 60)
+            if hh: result += "%dhr " % hh
+            if mm: result += "%d:"   % mm
+            result += "%ds" % ss
+            if hh or mm: result += " (%ds)" % secs
+            return result
+
+        entries = {}
+        counts = self.get_topic_info(counts=True)
+        start, end = self.get_start_time(), self.get_end_time()
+
+        entries["path"] = self.filename
+        if None not in (start, end):
+            entries["duration"] = fmtdur(end - start)
+            entries["start"] = "%s (%.2f)" % (fmttime(start), start)
+            entries["end"]   = "%s (%.2f)" % (fmttime(end),   end)
+        entries["size"] = util.format_bytes(self.size)
+        if any(counts.values()):
+            entries["messages"] = str(sum(counts.values()))
+        if counts:
+            nhs = sorted(set((n, h) for _, n, h in counts))
+            namew = max(len(n) for n, _ in nhs)
+            # "pkg/Msg <PAD>[typehash]"
+            entries["types"] = "\n".join("%s%s [%s]" % (n, " " * (namew - len(n)), h) for n, h in nhs)
+        if counts:
+            topicw = max(len(t) for t, _, _ in counts)
+            typew  = max(len(n) for _, n, _ in counts)
+            countw = max(len(str(c)) for c in counts.values())
+            lines = []
+            for (t, n, _), c in sorted(counts.items()):
+                qq = self.get_qoses(t, n) or []
+                # "/my/topic<PAD>"
+                line  = "%s%s" % (t, " " * (topicw - len(t)))
+                # "   <PAD>13 msgs" or "   <PAD>1 msg "
+                line += "   %s%s msg%s" % (" " * (countw - len(str(c))), c, " " if 1 == c else "s")
+                # "    : pkg/Msg"
+                line += "    : %s" % n
+                # "<PAD> (2 connections)" if >1 connections
+                line += "%s (%s connections)" % (" " * (typew - len(n)), len(qq)) if len(qq) > 1 else ""
+                lines.append(line)
+            entries["topics"] = "\n".join(lines)
+
+        labelw = max(map(len, entries))
+        return "\n".join("%s:%s %s" % (k, " " * (labelw - len(k)), indent(v, labelw + 2))
+                         for k, v in entries.items())
+
 
 
 class Mutex:
@@ -1041,7 +1430,7 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "AnyMsg", "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR",
+    "AnyMsg", "Bag", "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR",
     "PRIVATE_PREFIX", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
     "canonical", "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "deserialize_message",

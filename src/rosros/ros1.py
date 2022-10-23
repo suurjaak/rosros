@@ -8,21 +8,24 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    21.10.2022
+@modified    23.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
+import collections
 import functools
 import inspect
 import io
 import logging
 import os
 import re
+import shutil
 import threading
 import time
 import traceback
 
 import genpy
+import rosbag
 import roslib
 import rospy
 import rospy.core
@@ -30,6 +33,7 @@ import rospy.names
 import rospy.rostime
 import rosservice
 
+from . import parsing
 from . import patch
 from . import rclify
 from . import util
@@ -75,6 +79,7 @@ SPINNER = None
 logger = util.ThrottledLogger(logging.getLogger(__name__))
 
 
+
 class ROSLogHandler(logging.Handler):
     """Logging handler that forwards logging messages to ROS1 logger."""
 
@@ -97,6 +102,218 @@ class ROSLogHandler(logging.Handler):
 
 
 
+class Bag(rosbag.Bag):
+    """ROS1 bag reader and writer."""
+
+    # {(typename, typehash): message type class}
+    __TYPES    = {}
+
+    ## {(typename, typehash): type definition text}
+    __TYPEDEFS = {}
+
+    # {(typename, typehash): whether subtype definitions parsed}
+    __PARSEDS = {}
+
+
+    def __init__(self, f, mode="r",
+                 compression=rosbag.Compression.NONE, chunk_threshold=768 * 1024,
+                 allow_unindexed=False, options=None, skip_index=False):
+        """
+        Opens a ROS1 bag file.
+
+        @param   f                bag file path to open
+        @param   mode             mode to open bag in, one of "r", "w", "a"
+        @param   compression      bag write compression mode, one of Compression
+        @param   chunk_threshold  minimum number of uncompressed bytes per chunk to write
+        @param   allow_unindexed  allow opening unindexed bags
+        @param   options          optional dict with values for "compression" and "chunk_threshold"
+        @param   skip_index       skip reading the connection index records on open
+        """
+        super().__init__(f, mode, compression, chunk_threshold,
+                         allow_unindexed, options, skip_index)
+        self.__topics = {}  # {(topic, typename, typehash): message count}
+        self.__populate_meta()
+
+
+    def get_message_definition(self, msg_or_type):
+        """Returns ROS1 message type definition full text from bag, including subtype definitions."""
+        if is_ros_message(msg_or_type):
+            return self.__TYPEDEFS.get((msg_or_type._type, msg_or_type._md5sum))
+        typename = msg_or_type
+        return next((d for (n, h), d in self.__TYPEDEFS.items() if n == typename), None)
+
+
+    def get_message_class(self, typename, typehash=None):
+        """
+        Returns ROS1 message class for typename, or None if unknown type.
+
+        Generates class dynamically if not already generated.
+
+        @param   typehash  message type definition hash, if any
+        """
+        self.__ensure_typedef(typename, typehash)
+        typekey = (typename, typehash or next((h for n, h in self.__TYPES if n == typename), None))
+        if typekey not in self.__TYPES and typekey in self.__TYPEDEFS:
+            for n, c in genpy.dynamic.generate_dynamic(typename, self.__TYPEDEFS[typekey]).items():
+                self.__TYPES[(n, c._md5sum)] = c
+        return self.__TYPES.get(typekey)
+
+
+    def get_message_type_hash(self, msg_or_type):
+        """Returns ROS1 message type MD5 hash."""
+        if is_ros_message(msg_or_type): return msg_or_type._md5sum
+        typename = msg_or_type
+        typehash = next((h for n, h in self.__TYPEDEFS if n == typename), None)
+        if not typehash:
+            self.__ensure_typedef(typename)
+            typehash = next((h for n, h in self.__TYPEDEFS if n == typename), None)
+        return typehash
+ 
+
+    def get_qoses(self, topic, typename):
+        """Returns None (ROS2 bag API conformity stand-in)."""
+        return None
+
+
+    def get_topic_info(self, *_, **__):
+        """Returns topic and message type metainfo as {(topic, typename, typehash): count}."""
+        return dict(self.__topics)
+
+
+    def read_messages(self, topics=None, start_time=None, end_time=None, connection_filter=None, raw=False):
+        """
+        Yields messages from the bag, optionally filtered by topic, timestamp and connection details.
+
+        @param   topics             list of topics or a single topic.
+                                    If an empty list is given, all topics will be read.
+        @param   start_time         earliest timestamp of messages to return
+        @param   end_time           latest timestamp of messages to return
+        @param   connection_filter  function to filter connections to include
+        @param   raw                if True, then returned messages are tuples of
+                                    (typename, bytes, md5sum, typeclass)
+                                    or (typename, bytes, md5sum, position, typeclass),
+                                    depending on file format version
+        @return                     generator of BagMessage(topic, message, timestamp) namedtuples
+        """
+        hashtypes = {}
+        for n, h in self.__TYPEDEFS: hashtypes.setdefault(h, []).append(n)
+        read_topics = topics if isinstance(topics, list) else [topics] if topics else None
+        dupes = {t: (n, h) for t, n, h in self.__topics
+                 if (read_topics is None or t in read_topics) and len(hashtypes.get(h, [])) > 1}
+
+        kwargs = dict(topics=topics, start_time=start_time, end_time=end_time,
+                      connection_filter=connection_filter, raw=raw)
+        if not dupes:
+            for topic, msg, stamp in super().read_messages(**kwargs):
+                yield rosbag.bag.BagMessage(topic, msg, stamp)
+            return
+
+        for topic, msg, stamp in super().read_messages(**kwargs):
+            # Workaround for rosbag bug of using wrong type for identical type hashes
+            if topic in dupes:
+                typename, typehash = (msg[0], msg[2]) if raw else (msg._type, msg._md5sum)
+                if dupes[topic] != (typename, typehash):
+                    if raw:
+                        msg = msg[:-1] + (self.get_message_class(typename, typehash), )
+                    else:
+                        msg = self.__convert_message(msg, *dupes[topic])
+            yield rosbag.bag.BagMessage(topic, msg, stamp)
+
+
+    def write(self, topic, msg, t=None, raw=False, connection_header=None, **__):
+        """
+        Writes a message to the bag.
+
+        @param    topic              name of topic
+        @param    msg                ROS message to write, or tuple if raw
+        @param    t                  message timestamp if not using current wall time
+        @param    raw                if true, msg is expected
+                                     as (typename, bytes, typehash, typeclass)
+                                     or (typename, bytes, typehash, position, typeclass)
+        @param    connection_header  custom connection header dict if any,
+                                     as {"topic", "type", "md5sum", "message_definition"}
+        """
+        return super().write(topic, msg, t, raw, connection_header)
+
+
+    def __convert_message(self, msg, typename2, typehash2=None):
+        """Returns message converted to given type; fields must match."""
+        msg2 = self.get_message_class(typename2, typehash2)()
+        fields2 = get_message_fields(msg2)
+        for fname, ftypename in get_message_fields(msg).items():
+            v1 = v2 = getattr(msg, fname)
+            if ftypename != fields2.get(fname, ftypename):
+                v2 = self.__convert_message(v1, fields2[fname])
+            setattr(msg2, fname, v2)
+        return msg2
+
+
+    def __populate_meta(self):
+        """Populates topics and message type definitions and hashes."""
+        result = collections.Counter()  # {(topic, typename, typehash): count}
+        counts = collections.Counter()  # {connection ID: count}
+        for c in self._chunks:
+            for c_id, count in c.connection_counts.items():
+                counts[c_id] += count
+        for c in self._connections.values():
+            result[(c.topic, c.datatype, c.md5sum)] += counts[c.id]
+            self.__TYPEDEFS[(c.datatype, c.md5sum)] = c.msg_def
+        self.__topics = dict(result)
+
+
+    def __ensure_typedef(self, typename, typehash=None):
+        """Parses subtype definition from any full definition where available, if not loaded."""
+        typehash = typehash or next((h for n, h in self.__TYPEDEFS if n == typename), None)
+        typekey = (typename, typehash)
+        if typekey not in self.__TYPEDEFS:
+            for (roottype, roothash), rootdef in list(self.__TYPEDEFS.items()):
+                rootkey = (roottype, roothash)
+                if self.__PARSEDS.get(rootkey): continue  # for (roottype, roothash)
+
+                subdefs = tuple(parsing.parse_definition_subtypes(rootdef).items())
+                subhashes = {n: parsing.calculate_definition_hash(n, d, subdefs)
+                             for n, d in subdefs}
+                self.__TYPEDEFS.update(((n, subhashes[n]), d) for n, d in subdefs)
+                self.__PARSEDS.update(((n, h), True) for n, h in subhashes.items())
+                self.__PARSEDS[rootkey] = True
+                if typekey in self.__TYPEDEFS:
+                    break  # for (roottype, roothash)
+            self.__TYPEDEFS.setdefault(typekey, "")
+
+
+    @staticmethod
+    def reindex_file(f):
+        """
+        Reindexes bag file on disk.
+
+        Makes a temporary copy in file directory.
+        """
+        with rosbag.Bag(f, allow_unindexed=True, skip_index=True) as inbag:
+            inplace = (inbag.version > 102)
+
+        f2 = util.unique_path("%s.orig%s") % os.path.splitext(f)
+        shutil.copy(f, f2)
+        inbag, outbag = None, None
+        try:
+            inbag  = rosbag.Bag(f2, allow_unindexed=True) if not inplace else None
+            outbag = rosbag.Bag(f, mode="a" if inplace else "w", allow_unindexed=True)
+            # v102: build index from inbag, write all messages to outbag.
+            # Later versions: re-build index in outbag file in-place.
+            for _ in (outbag if inplace else inbag).reindex(): pass
+            if not inplace:
+                for (topic, msg, t, header) in inbag.read_messages(return_connection_header=True):
+                    outbag.write(topic, msg, t, connection_header=header)
+        except BaseException:  # Ensure steady state even on KeyboardInterrupt/SystemExit
+            inbag and inbag.close()
+            outbag and outbag.close()
+            shutil.move(f2, f)  # Restore original from temporary copy
+            raise
+        inbag and inbag.close()
+        outbag and outbag.close()
+        os.remove(f2)  # Drop temporary copy
+
+
+
 class Mutex:
     """Container for local mutexes."""
 
@@ -105,6 +322,7 @@ class Mutex:
 
     ## Mutex for `start_spin()`
     SPIN_START = threading.RLock()
+
 
 
 def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True):
@@ -796,7 +1014,7 @@ def to_sec_nsec(val):
 
 
 __all__ = [
-    "AnyMsg", "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
+    "AnyMsg", "Bag", "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
     "PY_LOG_LEVEL_TO_ROSPY_LEVEL", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
     "canonical", "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "deserialize_message",

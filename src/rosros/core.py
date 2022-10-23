@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    21.10.2022
+@modified    23.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -24,6 +24,9 @@ ros = ros1 or ros2
 
 ## rospy.AnyMsg in ROS1, equivalent stand-in in ROS2
 AnyMsg = ros.AnyMsg
+
+## rosbag.Bag in ROS1 (with some additional functionality), equivalent class in ROS2
+Bag = ros.Bag
 
 
 def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True,
@@ -364,7 +367,7 @@ def register_init(node=None):
 
 
 __all__ = [
-    "ros1", "ros2", "AnyMsg",
+    "ros1", "ros2", "AnyMsg", "Bag",
     "create_client", "create_publisher", "create_rate", "create_service",
     "create_subscriber", "create_timer", "delete_param", "destroy_entity",
     "get_logger", "get_namespace", "get_node_name", "get_nodes", "get_param",
