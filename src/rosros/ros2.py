@@ -342,7 +342,7 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
 
     def read_messages(self, topics=None, start_time=None, end_time=None, raw=False, *_, **__):
         """
-        Yields messages from the bag, optionally filtered by topic and timestamp.
+        Yields messages from the bag in chronological order.
 
         @param   topics      list of topics or a single topic to filter by, if at all
         @param   start_time  earliest timestamp of message to return, as UNIX timestamp

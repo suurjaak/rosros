@@ -182,8 +182,8 @@ class Bag(rosbag.Bag):
 
     def read_messages(self, topics=None, start_time=None, end_time=None, connection_filter=None, raw=False):
         """
-        Yields messages from the bag, optionally filtered by topic, timestamp and connection details.
-
+        Yields messages from the bag in chronological order.
+        
         @param   topics             list of topics or a single topic.
                                     If an empty list is given, all topics will be read.
         @param   start_time         earliest timestamp of messages to return
