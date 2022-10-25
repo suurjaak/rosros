@@ -376,7 +376,7 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
         msgtypes   = {}     # {typename: cls}
         for row in self._db.execute(sql, args):
             tdata = topicmap[row["topic_id"]]
-            topic, typename = tdata["name"], tdata["type"]
+            topic, typename = tdata["name"], canonical(tdata["type"])
             if not raw and msgtypes.get(typename, typename) is None: continue # for row
             typehash = self._types.get(typename)
 
