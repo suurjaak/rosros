@@ -123,6 +123,9 @@ class Bag(rosbag.Bag):
     the other type has enough bytes to be deserialized as that first type.
     """
 
+    ## Default extension for bag files
+    EXTENSION = ".bag"
+
     # {(typename, typehash): message type class}
     __TYPES    = {}
 

@@ -148,6 +148,9 @@ class ROSLogHandler(logging.Handler):
 class Bag:
     """ROS2 bag interface, partially mimicking rosbag.Bag."""
 
+    ## Default extension for bag files
+    EXTENSION = ".db3"
+
     ## Returned from read_messages() as (topic name, ROS message, rclpy.Time).
     BagMessage = collections.namedtuple("BagMessage", "topic message timestamp")
 
