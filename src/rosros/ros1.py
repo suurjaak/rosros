@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    23.10.2022
+@modified    25.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -152,7 +152,8 @@ class Bag(rosbag.Bag):
         @param   typehash  message type definition hash, if any
         """
         self.__ensure_typedef(typename, typehash)
-        typekey = (typename, typehash or next((h for n, h in self.__TYPES if n == typename), None))
+        typehash = typehash or next((h for n, h in self.__TYPEDEFS if n == typename), None)
+        typekey = (typename, typehash)
         if typekey not in self.__TYPES and typekey in self.__TYPEDEFS:
             for n, c in genpy.dynamic.generate_dynamic(typename, self.__TYPEDEFS[typekey]).items():
                 self.__TYPES[(n, c._md5sum)] = c
