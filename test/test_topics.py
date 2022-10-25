@@ -78,7 +78,7 @@ class TestTopics(testbase.TestBase):
 
 
     def tearDown(self):
-        """Shuts down publishers and subscribers.."""
+        """Shuts down publishers and subscribers."""
         for k in list(self._pubs): self._pubs.pop(k).unregister()
         for k in list(self._subs): self._subs.pop(k).unregister()
         super().tearDown()
