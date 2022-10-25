@@ -103,7 +103,25 @@ class ROSLogHandler(logging.Handler):
 
 
 class Bag(rosbag.Bag):
-    """ROS1 bag reader and writer."""
+    """
+    ROS1 bag reader and writer.
+    
+    Extends `rosbag.Bag` with more conveniences, and smooths over the rosbag bug
+    of yielding messages of wrong type, if message types in different topics
+    have different packages but identical fields and hashes.
+
+    Does **not** smooth over the rosbag bug of writing different types to one topic.
+
+    rosbag does allow writing messages of different types to one topic,
+    just like live ROS topics can have multiple message types published
+    to one topic. And their serialized bytes will actually be in the bag,
+    but rosbag will only register the first type for this topic (unless it is
+    explicitly given another connection header with metadata on the other type).
+
+    All messages yielded will be deserialized by rosbag as that first type,
+    and whether reading will raise an exception or not depends on whether 
+    the other type has enough bytes to be deserialized as that first type.
+    """
 
     # {(typename, typehash): message type class}
     __TYPES    = {}
