@@ -535,6 +535,10 @@ ROS2 test dependencies:
 - pytest (https://pypi.org/project/pytest)
 - pytest-forked (https://pypi.org/project/pytest-forked)
 
+For generating API documentation:
+
+- doxypypy (https://pypi.org/project/doxypypy)
+
 
 Attribution
 -----------
