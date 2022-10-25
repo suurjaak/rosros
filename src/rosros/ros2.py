@@ -400,13 +400,14 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
                 break  # for row
 
 
-    def write(self, topic, msg, stamp=None, raw=False, qoses=None, **__):
+    def write(self, topic, msg, t=None, raw=False, qoses=None, **__):
         """
         Writes a message to the bag.
 
         @param   topic  name of topic
         @param   msg    ROS2 message
-        @param   stamp  rclpy.time.Time of message publication, if not using wall time
+        @param   t      message timestamp if not using current wall time,
+                        can be `rclpy.Time` or `builtin_interfaces.msg.Time` or int/float UNIX epoch
         @param   raw    if true, msg is expected as a tuple starting with
                         (typename, bytes, typehash, )
         @param   qoses  list of Quality-of-Service profile dictionaries for topic, if any;
@@ -436,7 +437,7 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
                      "serialization_format": "cdr", "offered_qos_profiles": qoses}
             self._dbtopics[topickey] = tdata
 
-        timestamp = time.time_ns() if stamp is None else stamp.nanoseconds
+        timestamp = time.time_ns() if t is None else to_nsec(t)
         sql = "INSERT INTO messages (topic_id, timestamp, data) VALUES (?, ?, ?)"
         args = (self._dbtopics[topickey]["id"], timestamp, binary)
         cursor.execute(sql, args)

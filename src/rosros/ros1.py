@@ -248,13 +248,15 @@ class Bag(rosbag.Bag):
 
         @param    topic              name of topic
         @param    msg                ROS message to write, or tuple if raw
-        @param    t                  message timestamp if not using current wall time
+        @param    t                  message timestamp if not using current wall time,
+                                     can be `rospy.Time` or int/float UNIX epoch
         @param    raw                if true, msg is expected
                                      as (typename, bytes, typehash, typeclass)
                                      or (typename, bytes, typehash, position, typeclass)
         @param    connection_header  custom connection header dict if any,
                                      as {"topic", "type", "md5sum", "message_definition"}
         """
+        t = make_time(t) if isinstance(t, (float, int)) else t
         return super().write(topic, msg, t, raw, connection_header)
 
 
