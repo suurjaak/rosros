@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    21.10.2022
+@modified    26.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -420,6 +420,11 @@ def to_sec_nsec(val):
     return ros.to_sec_nsec(val)
 
 
+def to_time(val):
+    """Returns value as ROS time if convertible (int/float/duration/datetime/decimal), else value."""
+    return ros.to_time(val)
+
+
 __all__ = [
     "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX", "ROS_ALIAS_TYPES",
     "ROS_BUILTIN_CTORS", "ROS_BUILTIN_TYPES", "ROS_COMMON_TYPES", "ROS_NUMERIC_TYPES",
@@ -431,5 +436,5 @@ __all__ = [
     "get_service_response_class", "get_type_alias", "is_ros_message", "is_ros_service",
     "is_ros_time", "make_duration", "make_full_typename", "make_time", "message_to_dict",
     "scalar", "serialize_message", "time_message", "to_datetime", "to_decimal", "to_nsec",
-    "to_sec", "to_sec_nsec"
+    "to_sec", "to_sec_nsec", "to_time"
 ]

@@ -8,11 +8,13 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    25.10.2022
+@modified    26.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
 import collections
+import datetime
+import decimal
 import functools
 import inspect
 import io
@@ -208,8 +210,12 @@ class Bag(rosbag.Bag):
         
         @param   topics             list of topics or a single topic.
                                     If an empty list is given, all topics will be read.
-        @param   start_time         earliest timestamp of messages to return
+        @param   start_time         earliest timestamp of messages to return,
+                                    as `rospy.Time` or convertible
+                                    (int/float/duration/datetime/decimal)
         @param   end_time           latest timestamp of messages to return
+                                    as `rospy.Time` or convertible
+                                    (int/float/duration/datetime/decimal)
         @param   connection_filter  function to filter connections to include
         @param   raw                if True, then returned messages are tuples of
                                     (typename, bytes, md5sum, typeclass)
@@ -223,7 +229,7 @@ class Bag(rosbag.Bag):
         dupes = {t: (n, h) for t, n, h in self.__topics
                  if (read_topics is None or t in read_topics) and len(hashtypes.get(h, [])) > 1}
 
-        kwargs = dict(topics=topics, start_time=start_time, end_time=end_time,
+        kwargs = dict(topics=topics, start_time=to_time(start_time), end_time=to_time(end_time),
                       connection_filter=connection_filter, raw=raw)
         if not dupes:
             for topic, msg, stamp in super().read_messages(**kwargs):
@@ -249,15 +255,15 @@ class Bag(rosbag.Bag):
         @param    topic              name of topic
         @param    msg                ROS message to write, or tuple if raw
         @param    t                  message timestamp if not using current wall time,
-                                     can be `rospy.Time` or int/float UNIX epoch
+                                     as `rospy.Time` or convertible
+                                     (int/float/duration/datetime/decimal)
         @param    raw                if true, msg is expected
                                      as (typename, bytes, typehash, typeclass)
                                      or (typename, bytes, typehash, position, typeclass)
         @param    connection_header  custom connection header dict if any,
                                      as {"topic", "type", "md5sum", "message_definition"}
         """
-        t = make_time(t) if isinstance(t, (float, int)) else t
-        return super().write(topic, msg, t, raw, connection_header)
+        return super().write(topic, msg, to_time(t), raw, connection_header)
 
 
     def __convert_message(self, msg, typename2, typehash2=None):
@@ -1037,6 +1043,20 @@ def to_sec_nsec(val):
     return (val.secs, val.nsecs) if isinstance(val, genpy.TVal) else val
 
 
+def to_time(val):
+    """Returns value as ROS1 time if convertible (int/float/duration/datetime/decimal), else value."""
+    result = val
+    if isinstance(val, decimal.Decimal):
+        result = rospy.Time(int(val), float(val % 1) * 10**9)
+    elif isinstance(val, datetime.datetime):
+        result = rospy.Time(int(val.timestamp()), 1000 * val.microsecond)
+    elif isinstance(val, (float, int)):
+        result = rospy.Time(val)
+    elif isinstance(val, rospy.Duration):
+        result = rospy.Time(val.secs, val.nsecs)
+    return result
+
+
 __all__ = [
     "AnyMsg", "Bag", "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
     "PY_LOG_LEVEL_TO_ROSPY_LEVEL", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
@@ -1051,5 +1071,5 @@ __all__ = [
     "is_ros_service", "is_ros_time", "make_duration", "make_time", "ok", "register_init",
     "remap_name", "resolve_name", "scalar", "serialize_message", "set_param", "shutdown",
     "spin", "spin_once", "spin_until_future_complete", "start_spin", "to_nsec", "to_sec",
-    "to_sec_nsec"
+    "to_sec_nsec", "to_time"
 ]

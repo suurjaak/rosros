@@ -8,13 +8,14 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    25.10.2022
+@modified    26.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
 import array
 import collections
 import datetime
+import decimal
 import inspect
 import io
 import logging
@@ -348,8 +349,12 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
         Yields messages from the bag in chronological order.
 
         @param   topics      list of topics or a single topic to filter by, if at all
-        @param   start_time  earliest timestamp of message to return, as UNIX timestamp
-        @param   end_time    latest timestamp of message to return, as UNIX timestamp
+        @param   start_time  earliest timestamp of message to return,
+                             as `rclpy.Time` or convertible
+                             (int/float/duration/datetime/decimal/builtin_interfaces.Time)
+        @param   end_time    latest timestamp of message to return,
+                             as `rclpy.Time` or convertible
+                             (int/float/duration/datetime/decimal/builtin_interfaces.Time)
         @param   raw         if True, then returned messages are tuples of
                              (typename, bytes, typehash, typeclass)
         @return              generator of BagMessage(topic, message, rclpy.time.Time) namedtuples
@@ -365,10 +370,10 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
             exprs += ["topic_id IN (%s)" % ", ".join(map(str, topic_ids))]
         if start_time is not None:
             exprs += ["timestamp >= ?"]
-            args  += (start_time.nanoseconds, )
+            args  += (to_nsec(to_time(start_time)), )
         if end_time is not None:
             exprs += ["timestamp <= ?"]
-            args  += (end_time.nanoseconds, )
+            args  += (to_nsec(to_time(end_time)), )
         sql += ((" WHERE " + " AND ".join(exprs)) if exprs else "")
         sql += " ORDER BY timestamp"
 
@@ -407,7 +412,8 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
         @param   topic  name of topic
         @param   msg    ROS2 message
         @param   t      message timestamp if not using current wall time,
-                        can be `rclpy.Time` or `builtin_interfaces.msg.Time` or int/float UNIX epoch
+                        as `rclpy.Time` or convertible
+                        (int/float/duration/datetime/decimal/builtin_interfaces.Time)
         @param   raw    if true, msg is expected as a tuple starting with
                         (typename, bytes, typehash, )
         @param   qoses  list of Quality-of-Service profile dictionaries for topic, if any;
@@ -437,7 +443,7 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
                      "serialization_format": "cdr", "offered_qos_profiles": qoses}
             self._dbtopics[topickey] = tdata
 
-        timestamp = time.time_ns() if t is None else to_nsec(t)
+        timestamp = time.time_ns() if t is None else to_nsec(to_time(t))
         sql = "INSERT INTO messages (topic_id, timestamp, data) VALUES (?, ?, ?)"
         args = (self._dbtopics[topickey]["id"], timestamp, binary)
         cursor.execute(sql, args)
@@ -659,7 +665,7 @@ def has_param(name):
 
 def get_param(name, default=None, autoset=True):
     """
-    Returns parameter value from current ROS1 node.
+    Returns parameter value from current ROS2 node.
 
     @param   default     optional default to return if parameter unknown
     @param   autoset     set default value to node parameter if unknown
@@ -1336,10 +1342,10 @@ def get_service_response_class(srv_or_type):
 
 def is_ros_message(val):
     """
-    Returns whether value is a ROS1 message or service request/response class or instance.
+    Returns whether value is a ROS2 message or service request/response class or instance.
 
     @param   val  like `std_msgs.msg.Bool()` or `std_srvs.srv.SetBoolRequest`
-    @return       True if value is a ROS1 message or service request/response class or instance,
+    @return       True if value is a ROS2 message or service request/response class or instance,
                   False otherwise
     """
     return isinstance(val, AnyMsg) or inspect.isclass(val) and issubclass(val, AnyMsg) or \
@@ -1438,6 +1444,26 @@ def to_sec_nsec(val):
     return (val.sec, val.nanosec)  # builtin_interfaces.msg.Time/Duration
 
 
+def to_time(val):
+    """
+    Returns value as ROS2 time if convertible, else value.
+
+    Convertible types: int/float/duration/datetime/decimal/builtin_interfaces.Time.
+    """
+    result = val
+    if isinstance(val, decimal.Decimal):
+        result = make_time(int(val), float(val % 1) * 10**9)
+    elif isinstance(val, datetime.datetime):
+        result = make_time(int(val.timestamp()), 1000 * val.microsecond)
+    elif isinstance(val, (float, int)):
+        result = make_time(val)
+    elif isinstance(val, rclpy.duration.Duration):
+        result = make_time(nsecs=val.nanoseconds)
+    elif isinstance(val, tuple(ROS_TIME_MESSAGES.values())):
+        result = make_time(val.sec, val.nanosec)
+    return result
+
+
 __all__ = [
     "AnyMsg", "Bag", "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR",
     "PRIVATE_PREFIX", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
@@ -1453,5 +1479,5 @@ __all__ = [
     "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
     "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "spin",
     "spin_once", "spin_until_future_complete", "start_spin", "time_message", "to_nsec",
-    "to_sec", "to_sec_nsec"
+    "to_sec", "to_sec_nsec", "to_time"
 ]
