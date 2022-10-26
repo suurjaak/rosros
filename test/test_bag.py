@@ -106,7 +106,7 @@ class TestBag(testbase.TestBase):
                 bag = bag1 if seq % 2 else bag2
                 self.write_message(bag, seq, *topickey)
                 topickey = choose_write_topic()
-                time.sleep(0.05)  # Spread out timestamps
+                time.sleep(0.01)  # Spread out timestamps
                 seq += 1
         logger.info("Wrote %s messages to bag #1, %s messages to bag #2.",
                     sum(len(tt) for tt in self._stamps[bag1.filename].values()),
@@ -190,9 +190,17 @@ class TestBag(testbase.TestBase):
 
     def verify_globals(self, bag):
         """Verifies global data getters like total count."""
+        alltopics = [t for t, _ in self._expecteds[bag.filename]]
         self.assertEqual(bag.get_message_count(),
                          sum(len(mm) for mm in self._expecteds[bag.filename].values()),
                          "Unexpected result from Bag.get_message_count().")
+        self.assertEqual(bag.get_message_count(alltopics),
+                         sum(len(mm) for mm in self._expecteds[bag.filename].values()),
+                         "Unexpected result from Bag.get_message_count(%s)." % alltopics)
+        for i, ((topic, _), mm) in enumerate(self._expecteds[bag.filename].items()):
+            self.assertEqual(bag.get_message_count(topic if i % 2 else [topic]), len(mm),
+                             "Unexpected result from Bag.get_message_count(%s)." % topic)
+
         self.assertEqual(bag.get_start_time(),
                          min(g or r for tt in self._stamps[bag.filename].values() for r, g in tt),
                          "Unexpected result from Bag.get_start_time().")

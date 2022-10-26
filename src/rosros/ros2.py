@@ -221,10 +221,20 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
         self.close()
 
 
-    def get_message_count(self):
-        """Returns the number of messages in the bag."""
+    def get_message_count(self, topic_filters=None):
+        """
+        Returns the number of messages in the bag.
+
+
+        @param   topic_filters  list of topics or a single topic to filter by, if at all
+        """
         if self._has_table("messages"):
-            row = self._db.execute("SELECT COUNT(*) AS count FROM messages").fetchone()
+            sql, args, topics = "SELECT COUNT(*) AS count FROM messages", (), topic_filters
+            if topics:
+                args = tuple(topics) if isinstance(topics, (list, set, tuple)) else (topics, )
+                argstr = ", ".join("?" * len(args))
+                sql += " WHERE topic_id IN (SELECT id FROM topics WHERE name IN (%s))" % argstr
+            row = self._db.execute(sql, args).fetchone()
             return row["count"]
         return None
 
@@ -365,7 +375,7 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
 
         sql, exprs, args = "SELECT * FROM messages", [], ()
         if topics:
-            topics = topics if isinstance(topics, (list, tuple)) else [topics]
+            topics = topics if isinstance(topics, (list, set, tuple)) else [topics]
             topic_ids = [x["id"] for (topic, _), x in self._dbtopics.items() if topic in topics]
             exprs += ["topic_id IN (%s)" % ", ".join(map(str, topic_ids))]
         if start_time is not None:
