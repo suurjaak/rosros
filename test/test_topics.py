@@ -22,6 +22,7 @@ import rosros
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from test import testbase, testnode
+from test.testbase import ROS2
 
 logger = logging.getLogger()
 
@@ -49,6 +50,7 @@ class TestTopics(testbase.TestBase):
     def setUp(self):
         """Opens publishers and subscribers."""
         super().setUp()
+        latcheds = []
         for opts in testnode.DEFAULTS.get("subscribe", {}).values():
             if "action" not in opts or "publish" != opts["action"].get("category"):
                 continue  # for opts
@@ -57,7 +59,7 @@ class TestTopics(testbase.TestBase):
             action = opts["action"]
             handler = functools.partial(self.on_message, action["name"])
             logger.info("Opening subscriber to %r as %s.",
-                        action["name"], "raw " if raw else action["type"])
+                        action["name"], "raw" if raw else action["type"])
             sub = rosros.create_subscriber(action["name"], action["type"], handler, raw=raw)
             logger.info("Opening %spublisher to %r as %s.",
                         "latched " if latch else "", opts["name"], opts["type"])
@@ -69,11 +71,14 @@ class TestTopics(testbase.TestBase):
                 self._raw_cls[action["name"]] = rosros.api.get_message_class(action["type"])
             if latch:
                 self._latch_pub = pub
+                latcheds.append(opts["name"])
 
         logger.info("Publishing to latched %r.", self._latch_pub.name)
         self._latch_pub.publish(self._latch_pub.data_class())
 
-        self.run_test_node()
+        # In ROS2, publishers and subscribers MUST have same QoS for latched topics to work.
+        args = ["--latch-subscribe %s" % t for t in latcheds] if ROS2 and latcheds else ()
+        self.run_test_node(*args)
         rosros.start_spin()
 
 

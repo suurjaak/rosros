@@ -3,6 +3,11 @@
 """
 Test node to test against, uses rosros API to provide topics and services.
 
+Supported command-line arguments:
+
+--no-topics              ignore publioh and subscribe configuration
+--latch-subscribe TOPIC  open subscription to topic with QoS durability=TRANSIENT_LOCAL
+
 ------------------------------------------------------------------------------
 This file is part of rosros - simple unified interface to ROS1 / ROS2.
 Released under the BSD License.
@@ -12,6 +17,7 @@ Released under the BSD License.
 @modified    27.10.2022
 ------------------------------------------------------------------------------
 """
+import copy
 import functools
 import logging
 import os
@@ -240,7 +246,12 @@ class TestNode():
 
 
 if "__main__" == __name__:
-    params = dict(DEFAULTS)
+    params = copy.deepcopy(DEFAULTS)
+    if "--latch-subscribe" in sys.argv:
+        topic = sys.argv[sys.argv.index("--latch-subscribe") + 1]
+        for opts in params.get("subscribe", {}).values():
+            if opts["name"] == topic:
+                opts["qos"].update(durability=1)  # DurabilityPolicy.TRANSIENT_LOCAL
     if "--no-topics" in sys.argv:
         params.pop("publish", None)
         params.pop("subscribe", None)
