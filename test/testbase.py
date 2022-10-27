@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.04.2022
-@modified    25.06.2022
+@modified    27.10.2022
 ------------------------------------------------------------------------------
 """
 import contextlib
@@ -99,11 +99,16 @@ class TestBase(unittest.TestCase):
         except Exception: logger.exception("Error tearing down test.")
         os._exit(1)
 
-    def run_test_node(self):
-        """Launches testnode in a subprocess."""
+    def run_test_node(self, *args):
+        """
+        Launches testnode in a subprocess.
+
+        @param   args  additional command-line arguments to testnode
+        """
         if self._proc: return
-        logger.debug("Executing %r.", self.NODE_CMD)
-        self._proc = subprocess.Popen(self.NODE_CMD, shell=True, cwd=os.path.dirname(__file__))
+        cmd = " ".join((self.NODE_CMD, ) + args)
+        logger.debug("Executing %r.", cmd)
+        self._proc = subprocess.Popen(cmd, shell=True, cwd=os.path.dirname(__file__))
 
     def shutdown_test_node(self):
         """Shuts down testnode in ROS2, if any."""

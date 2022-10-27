@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.04.2022
-@modified    12.04.2022
+@modified    27.10.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -46,7 +46,7 @@ class TestServices(testbase.TestBase):
     def setUp(self):
         """Opens service servers and clients."""
         super().setUp()
-        self.run_test_node()
+        self.run_test_node("--no-topics")
 
         for opts in testnode.DEFAULTS.get("service", {}).values():
             if "action" not in opts or "service" != opts["action"].get("category"):
@@ -80,6 +80,10 @@ class TestServices(testbase.TestBase):
         for name, cli in self._clis.items():
             logger.info("Waiting for service %r.", name)
             cli.wait_for_service(5)
+
+        logger.info("Verifying service client service_is_ready().")
+        for name, cli in self._clis.items():
+            self.assertTrue(cli.service_is_ready(), "Unexpected result from service_is_ready().")
 
         for name, cli in self._clis.items():
             logger.info("Invoking service at %r.", name)

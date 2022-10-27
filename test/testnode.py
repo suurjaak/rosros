@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    21.10.2022
+@modified    27.10.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -240,7 +240,11 @@ class TestNode():
 
 
 if "__main__" == __name__:
+    params = dict(DEFAULTS)
+    if "--no-topics" in sys.argv:
+        params.pop("publish", None)
+        params.pop("subscribe", None)
     try:
-        TestNode(params=DEFAULTS)
+        TestNode(params=params)
         rosros.spin()
     except KeyboardInterrupt: pass
