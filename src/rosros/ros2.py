@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    26.10.2022
+@modified    27.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -387,8 +387,9 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
         sql += ((" WHERE " + " AND ".join(exprs)) if exprs else "")
         sql += " ORDER BY timestamp"
 
-        topicmap   = {v["id"]: v for v in self._dbtopics.values()}
-        msgtypes   = {}     # {typename: cls}
+        topicmap = {v["id"]: v for v in self._dbtopics.values()}
+        msgtypes = {}  # {typename: cls}
+        topicset = set(topics or [t for t, _ in self._dbtopics])
         for row in self._db.execute(sql, args):
             tdata = topicmap[row["topic_id"]]
             topic, typename = tdata["name"], canonical(tdata["type"])
@@ -404,8 +405,7 @@ CREATE INDEX IF NOT EXISTS timestamp_idx ON messages (timestamp ASC);
                 msgtypes.setdefault(typename, None)
                 logger.warning("Error loading type %r in topic %r: %s", typename, topic, e)
                 if raw: msg = (typename, row["data"], typehash, None)
-                elif set(n for n, c in msgtypes.items() if c is None) \
-                  == set(n for _, n in self._dbtopics):
+                elif set(n for n, c in msgtypes.items() if c is None) == topicset:
                     break  # for row
                 else: continue  # for row
             stamp = rclpy.time.Time(nanoseconds=row["timestamp"])
