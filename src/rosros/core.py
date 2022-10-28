@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    23.10.2022
+@modified    28.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -181,12 +181,17 @@ def create_publisher(topic, cls_or_typename, latch=False, queue_size=0, **qosarg
     @param   queue_size       queue size of outgoing messages (0 or None: infinite)
                               (sets QoS `depth` in ROS2)
     @param   qosargs          additional key-value arguments for ROS2
-                              `QoSProfile`, like `reliability` (ignored in ROS1)
+                              `QoSProfile`, like `reliability` (uses only `depth`
+                              and `durability`=TRANSIENT_LOCAL in ROS1)
     @return                   `rospy.Publisher` or `rclpy.publisher.Publisher`,
                               either will support keyword arguments in `publish()`
                               and have `get_num_connections()`
     """
-    if ros1: return ros1.create_publisher(topic, cls_or_typename, latch, queue_size)
+    if ros1:
+        queue_size = qosargs.get("depth", queue_size)
+        if qosargs.get("durability") == 1:  # DurabilityPolicy.TRANSIENT_LOCAL
+            latch = True
+        return ros1.create_publisher(topic, cls_or_typename, latch, queue_size)
     return ros2.create_publisher(topic, cls_or_typename, latch, queue_size, **qosargs)
 
 
@@ -206,7 +211,7 @@ def create_subscriber(topic, cls_or_typename, callback, callback_args=None,
     @param   raw              invoke callback with serialized message bytes,
                               make subscription with AnyMsg in ROS1
     @param   qosargs          additional key-value arguments for ROS2
-                              `QoSProfile`, like `reliability` (ignored in ROS1).
+                              `QoSProfile`, like `reliability` (uses only `depth` in ROS1).
                               `__autodetect` will look up current publishers on the topic
                               and create a compatible QoS.
     @return                   `rospy.Subscriber` or `rclpy.subscription.Subscription`

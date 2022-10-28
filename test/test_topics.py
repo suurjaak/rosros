@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    22.10.2022
+@modified    28.10.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -55,7 +55,9 @@ class TestTopics(testbase.TestBase):
             if "action" not in opts or "publish" != opts["action"].get("category"):
                 continue  # for opts
             raw = not self._raw_sub
-            latch = not self._latch_pub
+            latch, latcharg, qosargs = not self._latch_pub, False, {}
+            # Use ROS2 parameters in ROS1 and vice versa
+            if latch: latcharg, qosargs = (True, {}) if ROS2 else (False, {"durability": 1})
             action = opts["action"]
             handler = functools.partial(self.on_message, action["name"])
             logger.info("Opening subscriber to %r as %s.",
@@ -63,7 +65,7 @@ class TestTopics(testbase.TestBase):
             sub = rosros.create_subscriber(action["name"], action["type"], handler, raw=raw)
             logger.info("Opening %spublisher to %r as %s.",
                         "latched " if latch else "", opts["name"], opts["type"])
-            pub = rosros.create_publisher(opts["name"], opts["type"], latch=latch)
+            pub = rosros.create_publisher(opts["name"], opts["type"], latch=latcharg, **qosargs)
             self._subs[action["name"]], self._pubs[opts["name"]] = sub, pub
             self._exps[action["name"]] = action.get("value", {})
             if raw:
