@@ -367,7 +367,15 @@ Can be used as stand-alone library functions without initializing rosros core.
 | `rosros.api.make_full_typename`         | returns `"pkg/msg/Type"` or `"pkg/srv/Type"` for `"pkg/Type"`                                 | `typename, category="msg"`
 | `rosros.api.scalar`                     | returns scalar type from ROS message data type, like `"uint8"` from `uint8`-array;            | `typename`
 |                                         | in ROS2, returns unbounded type, e.g. `"string"` from `"string<=10[<=5]"`.                    | |
-
+|                                         |                                                                                               | |
+|                                         | **Miscellaneous**                                                                             | |
+| `rosros.api.format_param_name`          | returns parameter name with correct separator for ROS version, and leading sigils stripped    | `name`
+| `rosros.api.PARAM_SEPARATOR`            | separator char between ROS parameter namespace parts                                          | |
+| `rosros.api.ROS_BUILTIN_TYPES`          | list of ROS built-in numeric and string type names, like `["string", "uint8", ..]`            | |
+| `rosros.api.ROS_NUMERIC_TYPES`          | list of ROS built-in numeric type names, like `["bool", "int8", ..]`                          | |
+| `rosros.api.ROS_STRING_TYPES`           | list of ROS built-in string type names                                                        | |
+| `rosros.api.ROS_TIME_CLASSES`           | ROS time/duration types mapped to type names                                                  | |
+| `rosros.api.ROS_TIME_TYPES`             | list of ROS built-in time/duration type names                                                 | |
 
 
 Converting an existing package
@@ -538,7 +546,8 @@ ROS2 test dependencies:
 
 For generating API documentation:
 
-- doxypypy (https://pypi.org/project/doxypypy)
+- doxypypy (https://pypi.org/project/doxypypy;
+            needs latest master: `pip install git+https://github.com/Feneric/doxypypy`)
 
 
 Attribution
