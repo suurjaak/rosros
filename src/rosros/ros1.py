@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    26.10.2022
+@modified    28.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -804,6 +804,7 @@ def resolve_name(name, namespace=None):
 # -------------------------------- GENERAL API --------------------------------
 
 
+@util.memoize
 def canonical(typename):
     """Returns "pkg/Type" for "pkg/subdir/Type"."""
     if typename.count("/") > 1:
@@ -811,6 +812,7 @@ def canonical(typename):
     return typename
 
 
+@util.memoize
 def format_param_name(name):
     """Returns parameter name using "/" separator, and leading root or private sigils stripped."""
     return name.replace(".", PARAM_SEPARATOR).lstrip("~" + PARAM_SEPARATOR)
@@ -1019,6 +1021,7 @@ def deserialize_message(raw, cls_or_typename):
     return get_message_class(cls_or_typename)().deserialize(raw)
 
 
+@util.memoize
 def scalar(typename):
     """
     Returns scalar type from ROS message data type, like "uint8" from "uint8[100]".

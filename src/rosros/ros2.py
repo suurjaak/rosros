@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    27.10.2022
+@modified    28.10.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -1116,6 +1116,7 @@ def _resolve_name(name, namespace=None):
 # -------------------------------- GENERAL API --------------------------------
 
 
+@util.memoize
 def canonical(typename):
     """
     Returns "pkg/Type" for "pkg/msg/Type", standardizes various ROS2 formats.
@@ -1152,6 +1153,7 @@ def canonical(typename):
     return DDS_TYPES.get(typename, typename) + suffix
 
 
+@util.memoize
 def format_param_name(name):
     """Returns parameter name using "." separator, and leading root or private sigils stripped."""
     return name.replace("/", PARAM_SEPARATOR).lstrip(PRIVATE_PREFIX + PARAM_SEPARATOR)
@@ -1299,6 +1301,7 @@ def get_message_value(msg, name):
     return v
 
 
+@util.memoize
 def get_package_share_directory(name):
     """
     Returns the share directory of the package.
@@ -1396,6 +1399,7 @@ def deserialize_message(raw, cls_or_typename):
     return rclpy.serialization.deserialize_message(raw, get_message_class(cls_or_typename))
 
 
+@util.memoize
 def scalar(typename):
     """
     Returns unbounded scalar type from ROS2 message data type
