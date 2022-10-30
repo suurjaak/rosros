@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rosros | ROS core functionality</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rosros</h1>
+        <p>Simple unified interface to ROS1 / ROS2 Python API</p>
+        <p class="view">
+          <a href="index.html">Index</a><br />
+          <a href="install.html">Installation</a><br />
+          <a href="usage.html">Example usage</a><br />
+          <a href="core.html#/">ROS core functionality</a><br />
+          <span class="subview">
+            <a href="#patches-in-ros1">Patches in ROS1</a><br />
+            <a href="#patches-in-ros2">Patches in ROS2</a><br />
+          </span>
+          <a href="helpers.html">ROS API helpers</a><br />
+          <a href="convert.html">Converting an existing package</a><br />
+          <br />
+          <a href="api">API documentation</a><br />
+          <a href="https://github.com/suurjaak/rosros">View the Project on GitHub <small>suurjaak/rosros</small></a>
+        </p>
+      </header>
+      <section>
+
+<h2 id="/">ROS core functionality</h2>
+
+<p>
+Functionality for creating and operating a ROS node.
+</p>
+
+<p>
+Objects returned are standard <code>rospy</code> / <code>rclpy</code> API objects, patched with
+additional members for a unified interface <b><em>conforming to ROS1 API</em></b>.
+</p>
+
+
+<table>
+<tr><th>Name                                           </th><th>Description                                                                                       </th><th>Arguments</th></tr>
+
+<tr><td>                                               </td><td><b>Startup, spin and shutdown</b>                                                                 </td><td></td></tr>
+<tr><td><code>rosros.init_node</code>                  </td><td>initializes ROS and creates ROS node                                                              </td><td><code>name, args=None, namespace=None, anonymous=True, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False</code></td></tr>
+<tr><td><code>rosros.start_spin</code>                 </td><td>sets ROS node spinning forever in a background thread                                             </td><td></td></tr>
+<tr><td><code>rosros.spin</code>                       </td><td>spins ROS node forever                                                                            </td><td></td></tr>
+<tr><td><code>rosros.spin_once</code>                  </td><td>waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2            </td><td><code>timeout=None</code></td></tr>
+<tr><td><code>rosros.spin_until_future_complete</code> </td><td>spins ROS until future complete or timeout reached or ROS shut down                               </td><td><code>future, timeout=None</code></td></tr>
+<tr><td><code>rosros.ok</code>                         </td><td>returns whether ROS has been initialized and is not shut down                                     </td><td></td></tr>
+<tr><td><code>rosros.shutdown</code>                   </td><td>shuts down live ROS node, if any                                                                  </td><td></td></tr>
+<tr><td>                                               </td><td>                                                                                                  </td><td></td></tr>
+<tr><td>                                               </td><td><b>Parameters</b>                                                                                 </td><td></td></tr>
+<tr><td><code>rosros.init_params</code>                </td><td>sets all parameters on node from defaults dictionary, returns full parameters dictionary.         </td><td><code>defaults=None, **defaultkws</code></td></tr>
+<tr><td>                                               </td><td>In ROS2, auto-declares unregistered parameters.                                                   </td><td></td></tr>
+<tr><td><code>rosros.has_param</code>                  </td><td>returns whether the parameter exists                                                              </td><td><code>name</code></td></tr>
+<tr><td><code>rosros.get_param</code>                  </td><td>returns parameter value from current ROS node                                                     </td><td><code>name, default=None, autoset=True</code></td></tr>
+<tr><td><code>rosros.get_param_names</code>            </td><td>returns the names of all current ROS node parameters                                              </td><td></td></tr>
+<tr><td><code>rosros.get_params</code>                 </td><td>returns the current ROS node parameters, by default as nested dictionary                          </td><td><code>nested=True</code></td></tr>
+<tr><td><code>rosros.set_param</code>                  </td><td>sets a parameter on the node.                                                                     </td><td><code>name, value, descriptor=None</code></td></tr>
+<tr><td>                                               </td><td>In ROS2, parameter will be auto-declared if unknown so far.                                       </td><td></td></tr>
+<tr><td><code>rosros.delete_param</code>               </td><td>deletes parameter from the node                                                                   </td><td><code>name</code></td></tr>
+<tr><td>                                               </td><td>                                                                                                  </td><td></td></tr>
+<tr><td>                                               </td><td><b>Topics, services, timers and rates</b>                                                         </td><td></td></tr>
+<tr><td><code>rosros.create_publisher</code>           </td><td>returns a ROS publisher instance                                                                  </td><td><code>topic, cls_or_typename, latch=False, queue_size=0, **qosargs</code></td></tr>
+<tr><td><code>rosros.create_subscriber</code>          </td><td>returns a ROS subscriber instance                                                                 </td><td><code>topic, cls_or_typename, callback, callback_args=None, queue_size=0, raw=False, **qosargs</code></td></tr>
+<tr><td><code>rosros.create_service</code>             </td><td>returns a ROS service server instance, for providing a service                                    </td><td><code>service, cls_or_typename, callback, **qosargs</code></td></tr>
+<tr><td><code>rosros.create_client</code>              </td><td>returns a ROS service client instance, for invoking a service                                     </td><td><code>service, cls_or_typename, **qosargs</code></td></tr>
+<tr><td><code>rosros.create_timer</code>               </td><td>returns a ROS timer instance                                                                      </td><td><code>period, callback, oneshot=False, immediate=False</code></td></tr>
+<tr><td><code>rosros.create_rate</code>                </td><td>returns a ROS rate instance, for sleeping at a fixed rate                                         </td><td><code>frequency</code></td></tr>
+<tr><td><code>rosros.destroy_entity</code>             </td><td>closes the given publisher, subscriber, service client, service server, or timer instance         </td><td><code>item</code></td></tr>
+<tr><td><code>rosros.AnyMsg</code>                     </td><td><code>rospy.AnyMsg</code> in ROS1, stand-in class with equivalent functionality in ROS2           </td><td></td></tr>
+<tr><td>                                               </td><td>                                                                                                  </td><td></td></tr>
+<tr><td>                                               </td><td><b>ROS bags</b>                                                                                   </td><td></td></tr>
+<tr><td><code>rosros.Bag</code>                        </td><td>ROS bag reader and writer;                                                                        </td><td></td></tr>
+<tr><td>                                               </td><td><code>rosbag.Bag</code> in ROS1 with some additional functionality;                               </td><td></td></tr>
+<tr><td>                                               </td><td>equivalent class in ROS2, using the ROS2 default SQLite format                                    </td><td></td></tr>
+<tr><td>                                               </td><td>                                                                                                  </td><td></td></tr>
+<tr><td>                                               </td><td><b>Information queries</b>                                                                        </td><td></td></tr>
+<tr><td><code>rosros.get_namespace</code>              </td><td>returns ROS node namespace                                                                        </td><td></td></tr>
+<tr><td><code>rosros.get_node_name</code>              </td><td>returns ROS node full name with namespace                                                         </td><td></td></tr>
+<tr><td><code>rosros.get_nodes</code>                  </td><td>returns all ROS nodes, as <code>[node full name, ]</code>                                         </td><td></td></tr>
+<tr><td><code>rosros.get_topics</code>                 </td><td>returns all available ROS topics, as <code>[(topic name, [type name, ]), ]</code>                 </td><td></td></tr>
+<tr><td><code>rosros.get_services</code>               </td><td>returns all available ROS services, as <code>[(service name, [type name, ]), ]</code>             </td><td></td></tr>
+<tr><td><code>rosros.remap_name</code>                 </td><td>returns the absolute remapped topic/service name if mapping exists                                </td><td><code>name, namespace=None</code></td></tr>
+<tr><td><code>rosros.resolve_name</code>               </td><td>returns absolute remapped name, namespaced under current node if relative or private              </td><td><code>name, namespace=None</code></td></tr>
+<tr><td>                                               </td><td>                                                                                                  </td><td></td></tr>
+<tr><td>                                               </td><td><b>Miscellaneous</b>                                                                              </td><td></td></tr>
+<tr><td><code>rosros.get_logger</code>                 </td><td>returns <code>logging.Logger</code> for logging to ROS log handler;                               </td><td></td></tr>
+<tr><td>                                               </td><td>logger supports additional keywords <code>__once__, __throttle__, __throttle_identical__</code>   </td><td></td></tr>
+<tr><td><code>rosros.get_rostime</code>                </td><td>returns ROS time instance for current ROS clock time                                              </td><td></td></tr>
+<tr><td><code>rosros.register_init</code>              </td><td>informs <code>rosros</code> of ROS having been initialized outside of <code>init_node()</code>.   </td><td><code>node=None</code></td></tr>
+<tr><td>                                               </td><td>Giving node as argument is mandatory in ROS2.                                                     </td><td></td></tr>
+</table>
+
+
+
+<h3 id="patches-in-ros1">Patches in ROS1</h3>
+
+<p>
+Additional functionality patched onto <code>rospy</code> classes for convenience:
+</p>
+
+<ul>
+  <li>
+  <code>rospy.ServiceProxy.call_async(*args, **kwargs)</code>:
+  <br />
+  makes service call in a background thread, returns <code>asyncio.Future</code>-like response
+  </li>
+  <li>
+  <code>rospy.ServiceProxy.wait_for_service(timeout=None, timeout_sec=None)</code>:
+  waits for service to become available, returns <code>True</code>, or <code>False</code> on timeout
+  </li>
+  <li><code>rospy.ServiceProxy.service_is_ready()</code>:
+  <br />
+  returns whether service is currently available
+  <li>
+  <code>rospy.Subscriber</code>:
+  <br />
+  callbacks are invoked with serialized message bytes if subscription was created with <code>raw=True</code>
+  <li>
+  <code>rosbag.Bag.get_message_definition(msg_or_type)</code>:
+  <br />
+  returns ROS1 message type definition full text from bag
+  <li>
+  <code>rosbag.Bag.get_message_class(typename, typehash=None)</code>:
+  <br />
+  returns ROS1 message class
+  <li>
+  <code>rosbag.Bag.get_message_type_hash(msg_or_type)</code>:
+  <br />
+  returns ROS1 message type MD5 hash
+  <li>
+  <code>rosbag.Bag.get_topic_info()</code>:
+  <br />
+  returns topic and message type metainfo as <code>{(topic, typename, typehash): count}</code>
+  <li>
+  <code>rosbag.Bag.reindex_file(f)</code>:
+  <br />
+  reindexes bag file on disk; makes a temporary copy in file directory
+</ul>
+
+
+<h3 id="patches-in-ros2">Patches in ROS2</h3>
+
+<p>
+The following classes are patched with full conformity to their equivalents in ROS:
+</p>
+
+<ul>
+  <li><code>rclpy.client.Client</code></li>
+  <li><code>rclpy.publisher.Publisher</code></li>
+  <li><code>cclpy.service.Service</code></li>
+  <li><code>rclpy.subscription.Subscription</code></li>
+  <li><code>rclpy.duration.Duration</code></li>
+  <li><code>rclpy.time.Time</code></li>
+  <li><code>rclpy.timer.Rate</code></li>
+  <li><code>rclpy.timer.Timer</code></li>
+</ul>
+
+<p>
+E.g. durations support <code>+-*/</code> arithmetic,
+and publisher / subscriber provide <code>.md5sum</code> for message type hash.
+</p>
+
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/suurjaak">suurjaak</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="js/scale.fix.js"></script>
+
+  </body>
+</html>

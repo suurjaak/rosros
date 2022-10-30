@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rosros | Example usage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rosros</h1>
+        <p>Simple unified interface to ROS1 / ROS2 Python API</p>
+        <p class="view">
+          <a href="index.html">Index</a><br />
+          <a href="install.html">Installation</a><br />
+          <a href="usage.html#/">Example usage</a><br />
+          <span class="subview">
+            <a href="#parameters">Parameters</a><br />
+            <a href="#ctor-args">Constructor args in publishers and services</a><br />
+            <a href="#timers">Timers</a><br />
+            <a href="#bags">Bags</a><br />
+          </span>
+          <a href="core.html">ROS core functionality</a><br />
+          <a href="helpers.html">ROS API helpers</a><br />
+          <a href="convert.html">Converting an existing package</a><br />
+          <br />
+          <a href="api">API documentation</a><br />
+          <a href="https://github.com/suurjaak/rosros">View the Project on GitHub <small>suurjaak/rosros</small></a>
+        </p>
+      </header>
+      <section>
+
+<h2 id="/">Example usage</h2>
+
+<p>
+A simple node that publishes a message on receiving a service request:
+</p>
+
+<pre>
+import rosros
+
+def on_trigger(req):
+    pub.publish(True)
+    return {"success": True, "message": "Triggered!"}
+
+rosros.init_node("mynode")
+params = rosros.init_params(service="/trigger", topic="/triggerings")
+srv = rosros.create_service(params["service"], "std_srvs/Trigger", on_trigger)
+pub = rosros.create_publisher(params["topic"], "std_msgs/Bool", latch=True, queue_size=2)
+rosros.spin()
+</pre>
+
+<p>
+Equivalent ROS1 code using rospy:
+</p>
+
+<pre class="collapsible">
+<code class="comment"># ROS1:</code>
+import rospy, std_msgs.msg, std_srvs.srv
+
+def on_trigger(req):
+    pub.publish(True)
+    return {"success": True, "message": "Triggered!"}
+
+rospy.init_node("mynode")
+service = rospy.get_param("~service", "/trigger")
+topic   = rospy.get_param("~topic",   "/triggerings")
+rospy.set_param("~service", service)
+rospy.set_param("~topic",   topic)
+srv = rospy.Service(service, std_srvs.srv.Trigger, on_trigger)
+pub = rospy.Publisher(topic, std_msgs.msg.Bool, latch=True, queue_size=2)
+rospy.spin()<a class="toggle"></a>
+</pre>
+
+
+<p>
+Equivalent ROS2 code using rclpy:
+</p>
+
+<pre class="collapsible">
+<code class="comment"># ROS2:</code>
+import rclpy, rclpy.qos, std_msgs.msg, std_srvs.srv
+
+def on_trigger(req, resp):
+    pub.publish(std_msgs.msg.Bool(data=True))
+    resp.success = True
+    resp.message = "Triggered!"
+    return resp
+
+rclpy.init()
+node = rclpy.create_node("mynode")
+service = node.get_parameter_or("service", rclpy.Parameter("", value="/trigger")).value
+topic   = node.get_parameter_or("topic",   rclpy.Parameter("", value="/triggerings")).value
+if not node.has_parameter("service"):
+    node.declare_parameter("service", service)
+if not node.has_parameter("topic"):
+    node.declare_parameter("topic", topic)
+srv = node.create_service(std_srvs.srv.Trigger, service, on_trigger)
+qos = rclpy.qos.QoSProfile(depth=2, durability=rclpy.qos.DurabilityPolicy.TRANSIENT_LOCAL)
+pub = node.create_publisher(std_msgs.msg.Bool, topic, qos)
+rclpy.spin(node)<a class="toggle"></a>
+</pre>
+
+<p>
+Any ROS2-only extras used will be ignored under ROS1, like topic QoS reliability.
+</p>
+
+
+<h3 id="parameters">Parameters</h3>
+
+<p>
+rosros provides a convenient way to auto-load all node parameters,
+and override or populate additional parameters from a nested dictionary.
+</p>
+
+<pre>
+rosros.init_node("mynode")
+# If the given defaults were not among existing node parameters,
+# they will be auto-declared on the node.
+params = rosros.init_params({"my": {"nested": {"param1": 5, "param2": True}}})
+</pre>
+
+
+<h3 id="ctor-args">Constructor args in publishers and services</h3>
+
+<p>
+rosros provides short-hand convenience wrappers for publishing messages,
+invoking services and returning service responses, without needing to
+create the message or service request/response class instance explicitly.
+</p>
+
+<p>
+ROS1 already provides this short-hand in <code>rospy</code>,
+but ROS2 API requires the instances to be created explicitly.
+</p>
+
+<p>
+In rosros:
+</p>
+
+<pre>
+pub = rosros.create_publisher("/topic", "std_msgs/Bool")
+pub.publish(True)
+pub.publish(data=True)
+pub.publish()
+
+# Service callback need not accept any parameters if request object is irrelevant
+srv = rosros.create_service("/service", "std_srvs/SetBool", lambda: {"message": "Triggered!"})
+
+cli = rosros.create_client("/service", "std_srvs/SetBool")
+cli.call(True)
+cli.call(data=True)
+cli(True)
+</pre>
+
+<p>
+Equivalent ROS1 code using rospy:
+</p>
+
+<pre class="collapsible">
+<code class="comment"># ROS1:</code>
+pub = rospy.Publisher("/topic", std_msgs.msg.Bool, queue_size=0)
+pub.publish(True)
+pub.publish(data=True)
+pub.publish()
+
+srv = rospy.Service("/service", std_srvs.srv.SetBool, lambda req: {"message": "Triggered!"})
+
+cli = rospy.ServiceProxy("/service", std_srvs.srv.SetBool)
+cli.call(True)
+cli.call(data=True)
+cli(True)<a class="toggle"></a>
+</pre>
+
+<p>
+Equivalent ROS2 code using rospy:
+</p>
+
+<pre class="collapsible">
+<code class="comment"># ROS2:</code>
+pub = mynode.create_publisher(std_msgs.msg.Bool, "/topic", 0)
+pub.publish(std_msgs.msg.Bool(data=True))
+pub.publish(std_msgs.msg.Bool(data=True))
+pub.publish(std_msgs.msg.Bool())
+
+def callback(req, resp):
+  resp.message = "Triggered!"
+  return resp
+srv = mynode.create_service(std_srvs.srv.SetBool, "/service", callback)
+
+cli = mynode.create_client(std_srvs.srv.SetBool, "/service")
+cli.call(std_srvs.srv.SetBool.Request(data=True))<a class="toggle"></a>
+</pre>
+
+
+<h3 id="timers">Timers</h3>
+
+<p>
+rosros provides convenience one-shot timers in ROS2 like ROS1 does.
+</p>
+
+<p>
+Additionally, rosros provides an option to start invoking the timer callback
+immediately, instead of waiting one period before first call.
+</p>
+
+<pre>
+timer = rosros.create_timer(2, lambda: print("just once, after 2 sec"), oneshot=True)
+
+timer = rosros.create_timer(5, lambda: print("every 5 sec, starting now"), immediate=True)
+
+# Can take seconds, can take an explicit Duration object
+timer = rosros.create_timer(rosros.api.make_duration(5), lambda: print("every 5 sec"))
+</pre>
+
+
+<h3 id="bags">Bags</h3>
+
+<p>
+rosros provides a unified interface for reading and writing ROS bags.
+</p>
+
+<p>
+Bag format is the custom ROS format in ROS1, and the SQLite database format in ROS2.
+</p>
+
+<pre>
+bag = rosros.Bag("my.bag", mode="a")
+print(bag)  # Prints bag metainfo, equivalent to "rosbag info"
+
+bag.write("/my/topic", std_msgs.msg.Bool())
+
+for topic, message, stamp in bag:
+    print("[%s] %s:  %s" % (rosros.api.to_sec(stamp), topic, message))
+</pre>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/suurjaak">suurjaak</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="js/scale.fix.js"></script>
+    <script type="text/javascript"> bindToggles(); </script>
+
+  </body>
+</html>

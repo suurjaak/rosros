@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rosros | ROS API helpers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rosros</h1>
+        <p>Simple unified interface to ROS1 / ROS2 Python API</p>
+        <p class="view">
+          <a href="index.html">Index</a><br />
+          <a href="install.html">Installation</a><br />
+          <a href="usage.html">Example usage</a><br />
+          <a href="core.html">ROS core functionality</a><br />
+          <a href="helpers.html">ROS API helpers</a><br />
+          <a href="convert.html">Converting an existing package</a><br />
+          <br />
+          <a href="api">API documentation</a><br />
+          <a href="https://github.com/suurjaak/rosros">View the Project on GitHub <small>suurjaak/rosros</small></a>
+        </p>
+      </header>
+      <section>
+
+<h2 id="/">ROS API helpers</h2>
+
+<p>
+Functionality for working with message types and data and metainfo.
+Can be used as stand-alone library functions without initializing rosros core.
+</p>
+
+
+<table>
+<tr><th>Name                                              </th><th>Description                                                                                                                    </th><th>Arguments</td></tr>
+<tr><td>                                                  </td><td>                                                                                                                               </td><td></td></tr>
+<tr><td>                                                  </td><td><b>Message types and instances</b>                                                                                             </td><td></td></tr>
+<tr><td><code>rosros.api.get_message_class</code>         </td><td>returns ROS message / service class object, like <code>std_msgs.msg.Bool</code> for <code>"std_msgs/Bool"</code>               </td><td><code>msg_or_type</code></td></tr>
+<tr><td><code>rosros.api.get_message_definition</code>    </td><td>returns ROS message or service request/response type definition text,                                                          </td><td><code>msg_or_type, full=True</code></td></tr>
+<tr><td>                                                  </td><td>by default including message subtype definitions                                                                               </td><td></td></tr>
+<tr><td><code>rosros.api.get_message_fields</code>        </td><td>returns <code>{field name: field type name}</code> if ROS message or service request/response, else <code>{}</code>            </td><td><code>val</code></td></tr>
+<tr><td><code>rosros.api.get_message_header</code>        </td><td>returns message <code>Header</code>-attribute if any, else <code>None</code>                                                   </td><td><code>val</code></td></tr>
+<tr><td><code>rosros.api.get_message_type</code>          </td><td>returns ROS message / service canonical type name, like <code>"std_msgs/Header"</code>                                         </td><td><code>msg_or_cls</code></td></tr>
+<tr><td>                                                  </td><td>or <code>"*"</code> for <code>AnyMsg</code>                                                                                    </td><td></td></tr>
+<tr><td><code>rosros.api.get_message_type_hash</code>     </td><td>returns ROS message / service type MD5 hash                                                                                    </td><td><code>msg_or_type</code></td></tr>
+<tr><td><code>rosros.api.get_message_value</code>         </td><td>returns message attribute value, with numeric arrays converted to lists                                                        </td><td><code>msg, name</code></td></tr>
+<tr><td><code>rosros.api.is_ros_message</code>            </td><td>returns whether value is a ROS message or service request/response class or instance                                           </td><td><code>val</code></td></tr>
+<tr><td>                                                  </td><td>                                                                                                                               </td><td></td></tr>
+<tr><td>                                                  </td><td><b>Message conversion</b>                                                                                                      </td><td></td></tr>
+<tr><td><code>rosros.api.deserialize_message</code>       </td><td>returns ROS message or service request/response instantiated from serialized binary                                            </td><td><code>raw, cls_or_typename</code></td></tr>
+<tr><td><code>rosros.api.dict_to_message</code>           </td><td>returns given ROS message populated from Python dictionary                                                                     </td><td><code>dct, msg</code></td></tr>
+<tr><td><code>rosros.api.message_to_dict</code>           </td><td>returns ROS message as nested Python dictionary;                                                                               </td><td><code>msg, replace=None</code></td></tr>
+<tr><td>                                                  </td><td>with optional replacements for certain values like <code>{math.nan: None}</code>                                               </td><td></td></tr>
+<tr><td><code>rosros.api.message_to_str</code>            </td><td>returns ROS message as an evaluatable string, e.g. <code>"std_msgs.msg.UInt8(data=0)"</code>                                   </td><td><code>msg, indent=None</code></td></tr>
+<tr><td><code>rosros.api.serialize_message</code>         </td><td>returns ROS message or service request/response as a serialized binary of <code>bytes()</code>                                 </td><td><code>msg</code></td></tr>
+<tr><td>                                                  </td><td>                                                                                                                               </td><td></td></tr>
+<tr><td>                                                  </td><td><b>Service classes and definitions</b>                                                                                         </td><td></td></tr>
+<tr><td><code>rosros.api.get_service_definition</code>    </td><td>returns ROS service type definition text                                                                                       </td><td><code>srv_or_type</code></td></tr>
+<tr><td><code>rosros.api.get_service_request_class</code> </td><td>returns ROS service request class object                                                                                       </td><td><code>srv_or_type</code></td></tr>
+<tr><td><code>rosros.api.get_service_response_class</code></td><td>returns ROS service response class object                                                                                      </td><td><code>srv_or_type</code></td></tr>
+<tr><td><code>rosros.api.is_ros_service</code>            </td><td>returns whether value is a ROS service class object                                                                            </td><td><code>val</code></td></tr>
+<tr><td>                                                  </td><td>                                                                                                                               </td><td></td></tr>
+<tr><td>                                                  </td><td><b>Time and duration</b>                                                                                                       </td><td></td></tr>
+<tr><td><code>rosros.api.is_ros_time</code>               </td><td>returns whether value is a ROS time/duration                                                                                   </td><td><code>val</code></td></tr>
+<tr><td><code>rosros.api.make_duration</code>             </td><td>returns a ROS duration                                                                                                         </td><td><code>secs=0, nsecs=0</code></td></tr>
+<tr><td><code>rosros.api.make_time</code>                 </td><td>returns a ROS time                                                                                                             </td><td><code>secs=0, nsecs=0</code></td></tr>
+<tr><td><code>rosros.api.time_category</code>             </td><td>returns "time" or "duration" for time/duration type, else value                                                                </td><td><code>msg_or_type</code></td></tr>
+<tr><td><code>rosros.api.time_message</code>              </td><td>returns ROS2 time/duration from <code>rclpy</code> as <code>builtin_interfaces</code> or vice versa,                           </td><td><code>val, to_message=True, clock_type=None</code></td></tr>
+<tr><td>                                                  </td><td>or value if not convertible                                                                                                    </td><td></td></tr>
+<tr><td><code>rosros.api.to_datetime</code>               </td><td>returns value as <code>datetime.datetime</code> if value is ROS time/duration, else value                                      </td><td><code>val</code></td></tr>
+<tr><td><code>rosros.api.to_decimal</code>                </td><td>returns value as <code>decimal.Decimal</code> if value is ROS time/duration, else value                                        </td><td><code>val</code></td></tr>
+<tr><td><code>rosros.api.to_nsec</code>                   </td><td>returns value in nanoseconds if value is ROS time/duration, else value                                                         </td><td><code>val</code></td></tr>
+<tr><td><code>rosros.api.to_sec</code>                    </td><td>returns value in seconds if value is ROS time/duration, else value                                                             </td><td><code>val</code></td></tr>
+<tr><td><code>rosros.api.to_sec_nsec</code>               </td><td>returns value in (seconds, nanoseconds) if value is ROS time/duration, else value                                              </td><td><code>val</code>                     </td></tr>
+<tr><td><code>rosros.api.to_time</code>                   </td><td>returns value as ROS time if convertible (int/float/duration/datetime/decimal), else value                                     </td><td><code>val</code>                     </td></tr>
+<tr><td>                                                  </td><td>                                                                                                                               </td><td></td></tr>
+<tr><td>                                                  </td><td><b>Class and type names</b>                                                                                                    </td><td></td></tr>
+<tr><td><code>rosros.api.canonical</code>                 </td><td>returns <code>"pkg/Type"</code> for <code>"pkg/subdir/Type"</code>                                                             </td><td><code>typename</code></td></tr>
+<tr><td><code>rosros.api.get_alias_type</code>            </td><td>returns ROS built-in type for alias like <code>"char"</code>, if any; reverse of <code>get_type_alias()</code>.                </td><td><code>typename</code></td></tr>
+<tr><td>                                                  </td><td>In ROS1, <code>byte</code> and <code>char</code> are aliases for <code>int8</code> and <code>uint8</code>; in ROS2 the reverse.</td><td></td></tr>
+<tr><td><code>rosros.api.get_type_alias</code>            </td><td>returns alias like <code>"char"</code> for ROS built-in type, if any; reverse of <code>get_alias_type()</code>.                </td><td><code>typename</code></td></tr>
+<tr><td>                                                  </td><td>In ROS1, <code>byte</code> and <code>char</code> are aliases for <code>int8</code> and <code>uint8</code>; in ROS2 the reverse.</td><td></td></tr>
+<tr><td><code>rosros.api.make_full_typename</code>        </td><td>returns <code>"pkg/msg/Type"</code> or <code>"pkg/srv/Type"</code> for <code>"pkg/Type"</code>                                 </td><td><code>typename, category="msg"</code></td></tr>
+<tr><td><code>rosros.api.scalar</code>                    </td><td>returns scalar type from ROS message data type, like <code>"uint8"</code> from <code>uint8</code>-array;                       </td><td><code>typename</code></td></tr>
+<tr><td>                                                  </td><td>in ROS2, returns unbounded type, e.g. <code>"string"</code> from <code>"string&lt;=10[&lt;=5]"</code>.                         </td><td></td></tr>
+<tr><td>                                                  </td><td>                                                                                                                               </td><td></td></tr>
+<tr><td>                                                  </td><td><b>Miscellaneous</b>                                                                                                           </td><td></td></tr>
+<tr><td><code>rosros.api.format_param_name</code>         </td><td>returns parameter name with correct separator for ROS version, and leading sigils stripped                                     </td><td><code>name</code></td></tr>
+<tr><td><code>rosros.api.PARAM_SEPARATOR</code>           </td><td>separator char between ROS parameter namespace parts                                                                           </td><td></td></tr>
+<tr><td><code>rosros.api.ROS_BUILTIN_TYPES</code>         </td><td>list of ROS built-in numeric and string type names, like <code>["string", "uint8", ..]</code>                                  </td><td></td></tr>
+<tr><td><code>rosros.api.ROS_NUMERIC_TYPES</code>         </td><td>list of ROS built-in numeric type names, like <code>["bool", "int8", ..]</code>                                                </td><td></td></tr>
+<tr><td><code>rosros.api.ROS_STRING_TYPES</code>          </td><td>list of ROS built-in string type names                                                                                         </td><td></td></tr>
+<tr><td><code>rosros.api.ROS_TIME_CLASSES</code>          </td><td>ROS time/duration types mapped to type names                                                                                   </td><td></td></tr>
+<tr><td><code>rosros.api.ROS_TIME_TYPES</code>            </td><td>list of ROS built-in time/duration type names                                                                                  </td><td>
+</table>
+
+
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/suurjaak">suurjaak</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="js/scale.fix.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rosros | Converting an existing package</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rosros</h1>
+        <p>Simple unified interface to ROS1 / ROS2 Python API</p>
+        <p class="view">
+          <a href="index.html">Index</a><br />
+          <a href="install.html">Installation</a><br />
+          <a href="usage.html">Example usage</a><br />
+          <a href="core.html">ROS core functionality</a><br />
+          <a href="helpers.html">ROS API helpers</a><br />
+          <a href="convert.html#/">Converting an existing package</a><br />
+          <span class="subview">
+            <a href="#ros1">Existing ROS1 package to ROS1/ROS2</a><br />
+            <a href="#ros2">Existing ROS2 package to ROS1/ROS2</a><br />
+          </span>
+          <br />
+          <a href="api">API documentation</a><br />
+          <a href="https://github.com/suurjaak/rosros">View the Project on GitHub <small>suurjaak/rosros</small></a>
+        </p>
+      </header>
+      <section>
+
+<h2 id="/">Converting an existing package</h2>
+
+
+<h3 id="ros1">Existing ROS1 package to ROS1/ROS2 package</h3>
+
+<p>
+rosros can be used as a (mostly) drop-in replacement for rospy
+to make a ROS1 package equally usable under ROS2 - if the code relies only
+on <code>rospy</code>, and does not go too deeply into using ROS1 specifics like <code>rosgraph</code>.
+</p>
+
+<p>
+<code>rospy</code> imports can be replaced with <code>rosros.rospify</code>, e.g.
+</p>
+
+<pre>
+import threading
+from rosros import rospify as rospy
+from std_msgs.msg import String
+
+rospy.init_node("talker", anonymous=True)
+pub = rospy.Publisher("chatter", String, queue_size=10)
+rate = rospy.Rate(10)  # 10hz
+threading.Thread(target=rospy.spin).start()  # Concession for ROS2: spin is always needed
+while not rospy.is_shutdown():
+    hello_str = "hello world %s" % rospy.get_time()
+    rospy.loginfo(hello_str)
+    pub.publish(hello_str)
+    rate.sleep()
+</pre>
+
+<p>
+In ROS1 it provides <code>rospy</code>, and in ROS2 it provides matching API classes and functions.
+</p>
+
+<p>
+Main behavioral differences of <code>rospify</code> in ROS2 vs ROS1:
+<ul>
+  <li><code>Subscriber.get_num_connections()</code> always returns 0, as ROS2 does not provide this information</li>
+  <li>subscribing with <code>AnyMsg</code> needs the publisher existing</li>
+  <li>parameter operations always apply to node parameters, as ROS2 has no global parameters</li>
+  <li>functions registered in <code>on_shutdown()</code> are called after node shutdown, not before</li>
+  <li><code>rosros.rospify.get_master()</code> requires local node to be initialized, unlike <code>rospy.get_master()</code></li>
+  <li><code>rosros.rospify.SubscribeListener</code> does nothing</li>
+</ul>
+
+
+<h3 id="ros2">Existing ROS2 package to ROS1/ROS2 package</h3>
+
+<p>
+rosros can also be used as a (mostly) drop-in replacement for rclpy
+to make a ROS2 package equally usable under ROS1 - if the code mainly relies on
+<code>rclpy</code> module and does not go deep into using ROS2 specifics like <code>builtin_interfaces</code>.
+</p>
+
+<p>
+<code>rclpy</code> imports can be replaced with <code>rosros.rclify</code>, e.g.
+</p>
+
+<pre>
+from rosros import rclify as rclpy
+from std_msgs.msg import String
+
+class MinimalPublisher(rclpy.node.Node):
+    def __init__(self):
+        super().__init__("minimal_publisher")
+        self.publisher_ = self.create_publisher(String, "chatter", 10)
+        timer_period = 0.1  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.i = 0
+    def timer_callback(self):
+        msg = String()
+        msg.data = "Hello World: %d" % self.i
+        self.publisher_.publish(msg)
+        self.get_logger().info('Publishing: "%s"' % msg.data)
+        self.i += 1
+
+rclpy.init()
+minimal_publisher = MinimalPublisher()
+rclpy.spin(minimal_publisher)
+</pre>
+
+<p>
+In ROS2, <code>rclify</code> provides <code>rclpy</code>, and in ROS1 it provides
+matching API modules and classes and functions.
+</p>
+
+<p>
+Covers all the parts of <code>rclpy.node</code> that are supportable in ROS1, focused on:
+<br />
+creating nodes, publishing and subscribing topics, providing and invoking services,
+working with rates and timers.
+</p>
+
+<p>
+Main behavioral differences of <code>rclify</code> in ROS1 vs ROS2:
+</p>
+<ul>
+  <li>one single node as always in ROS1</li>
+  <li>QoS profiles ignore all options except <code>depth</code> (taken as <code>queue_size</code>),
+      <br />
+      and <code>durability</code> equaling <code>TRANSIENT_LOCAL</code> (taken as <code>latch=True</code>)</li>
+  <li>no contexts, no executors, no waitables</li>
+  <li>no callback groups, no guard conditions, no middleware events</li>
+</ul>
+
+<p>
+Methods pertaining to unsupported functionality do nothing and return <code>None</code>.
+<br />
+Unsupported arguments in methods are ignored.
+</p>
+
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/suurjaak">suurjaak</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="js/scale.fix.js"></script>
+
+  </body>
+</html>

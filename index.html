@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rosros</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rosros</h1>
+        <p>Simple unified interface to ROS1 / ROS2 Python API</p>
+        <p class="view">
+          <a href="index.html">Index</a><br />
+          <a href="install.html">Installation</a><br />
+          <a href="usage.html">Example usage</a><br />
+          <a href="core.html">ROS core functionality</a><br />
+          <a href="helpers.html">ROS API helpers</a><br />
+          <a href="convert.html">Converting an existing package</a><br />
+          <br />
+          <a href="api">API documentation</a><br />
+          <a href="https://github.com/suurjaak/rosros">View the Project on GitHub <small>suurjaak/rosros</small></a>
+        </p>
+      </header>
+      <section>
+
+<h2>Simple unified interface to ROS1 / ROS2 Python API</h2>
+
+<p>
+Auto-detects ROS version from run-time environment,
+and provides equivalent functionality in either ROS version.
+</p>
+
+<p>
+Main use-cases:
+<ul>
+  <li>helper library for working with ROS messages and data types</li>
+  <li>replacement for ROS1 / ROS2 Python API</li>
+  <li>drop-in replacement for rospy to convert a ROS1 package to a ROS1/ROS2 package</li>
+  <li>drop-in replacement for rclpy to convert a ROS2 package to a ROS1/ROS2 package</li>
+</ul>
+</p>
+
+<p>
+Requires the corresponding ROS Python libraries: rospy family for ROS1, rclpy for ROS2.
+</p>
+
+
+<h2>Example usage</h2>
+
+<p>
+A simple node that publishes a message on receiving a service request:
+</p>
+
+<pre>
+import rosros
+
+def on_trigger(req):
+    pub.publish(True)
+    return {"success": True, "message": "Triggered!"}
+
+rosros.init_node("mynode")
+params = rosros.init_params(service="/trigger", topic="/triggerings")
+srv = rosros.create_service(params["service"], "std_srvs/Trigger", on_trigger)
+pub = rosros.create_publisher(params["topic"], "std_msgs/Bool", latch=True, queue_size=2)
+rosros.spin()
+</pre>
+
+
+<h2>Attribution</h2>
+
+<p>rosros is written in Python.</p>
+
+<p>
+This package includes partially copied and modified code from <code>rclpy</code> core library,
+released under the Apache-2.0 license.
+See <a href="https://github.com/suurjaak/rosros/blob/master/doc/3rd-party%20licences.txt">3rd-party licences.txt</a> for full details.
+</p>
+
+<h2>License</h2>
+
+<p>
+(The 3-Clause BSD License)
+</p>
+
+<p>
+Copyright (C) 2022 by Erki Suurjaak. All rights reserved.
+</p>
+
+<p>
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+</p>
+
+<ol>
+<li>
+    Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+</li>
+<li>
+    Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+</li>
+<li>
+    Neither the name of the copyright holder nor the names of its contributors
+    may be used to endorse or promote products derived from this software without
+    specific prior written permission.
+</li>
+</ol>
+
+<p>
+This software is provided by the copyright holders and contributors "as is" and
+any express or implied warranties, including, but not limited to, the implied
+warranties of merchantability and fitness for a particular purpose are
+disclaimed. In no event shall the copyright holder or contributors be liable for
+any direct, indirect, incidental, special, exemplary, or consequential damages
+(including, but not limited to, procurement of substitute goods or services;
+loss of use, data, or profits; or business interruption) however caused and on
+any theory of liability, whether in contract, strict liability, or tort
+(including negligence or otherwise) arising in any way out of the use of this
+software, even if advised of the possibility of such damage.
+</p>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/suurjaak">suurjaak</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="js/scale.fix.js"></script>
+
+  </body>
+</html>

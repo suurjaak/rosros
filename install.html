@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rosros | Installation</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rosros</h1>
+        <p>Simple unified interface to ROS1 / ROS2 Python API</p>
+        <p class="view">
+          <a href="index.html">Index</a><br />
+          <a href="install.html#/">Installation</a><br />
+          <span class="subview">
+            <a href="#using-pip">Using pip</a><br />
+            <a href="#using-catkin">Using catkin</a><br />
+            <a href="#using-colcon">Using colcon</a><br />
+            <a href="#dependencies">Dependencies</a><br />
+          </span>
+          <a href="usage.html">Example usage</a><br />
+          <a href="core.html">ROS core functionality</a><br />
+          <a href="helpers.html">ROS API helpers</a><br />
+          <a href="convert.html">Converting an existing package</a><br />
+          <br />
+          <a href="api">API documentation</a><br />
+          <a href="https://github.com/suurjaak/rosros">View the Project on GitHub <small>suurjaak/rosros</small></a>
+        </p>
+      </header>
+      <section>
+
+<h2 id="/">Installation</h2>
+
+<p>
+rosros is written in Python.
+</p>
+
+<p>
+Developed and tested under ROS1 noetic and ROS2 foxy,
+<br />
+it should also work in later ROS2 versions. 
+</p>
+
+<h3 id="using-pip">Using pip</h3>
+
+<pre>
+pip install rosros
+</pre>
+
+<p>This will make the <code>rosros</code> library available to Python packages.</p>
+
+<p>Requires ROS Python packages<br />
+(ROS1: rospy, roslib, rosbag, rosservice, genpy;<br />
+ ROS2: rclpy, rosidl_parser, rosidl_runtime_py, builtin_interfaces).</p>
+
+
+<h3 id="using-catkin">Using catkin</h3>
+
+<p>In a ROS1 workspace, under the source directory:</p>
+
+<pre>
+git clone https://github.com/suurjaak/rosros.git
+cd rosros
+catkin build --this
+</pre>
+
+<p>This will make the <code>rosros</code> library available in the ROS1 workspace.</p>
+
+
+<h3 id="using-colcon">Using colcon</h3>
+
+<p>In a ROS2 workspace, at the workspace root:</p>
+
+<pre>
+git clone https://github.com/suurjaak/rosros.git src/rosros
+colcon build --packages-select rosros
+</pre>
+
+<p>
+<p>This will make the <code>rosros</code> library available in the ROS2 workspace.</p>
+</p>
+
+
+<h3 id="dependencies">Dependencies</h3>
+
+rosros requires Python 3.8+, and the following 3rd-party Python packages:
+<ul>
+  <li>pyyaml (<a href="https://pypi.org/project/PyYAML">pypi.org/project/PyYAML</a>)</li>
+  <li>ROS1: rospy, roslib, rosbag, rosservice, genpy</li>
+  <li>ROS2: rclpy, rosidl_parser, rosidl_runtime_py, ament_index_python, builtin_interfaces</li>
+</ul>
+
+Optional, ROS2 test dependencies:
+<ul>
+  <li>pyyaml (<a href="https://pypi.org/project/pytest">pypi.org/project/pytest</a>)</li>
+  <li>pyyaml (<a href="https://pypi.org/project/pytest-forked">pypi.org/project/pytest-forked</a>)</li>
+</ul>
+
+Optional, for generating API documentation:
+<ul>
+  <li>doxypypy (<a href="https://pypi.org/project/doxypypy">pypi.org/project/doxypypy</a>)
+      <br />
+      needs latest master: <code>pip install git+https://github.com/Feneric/doxypypy</code>
+  </li>
+</ul>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/suurjaak">suurjaak</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="js/scale.fix.js"></script>
+
+  </body>
+</html>
