@@ -16,6 +16,8 @@ Main use-cases:
 Requires the corresponding ROS Python libraries: `rospy` family for ROS1,
 `rclpy` for ROS2.
 
+Full API documentation available at https://suurjaak.github.io/rosros.
+
 - [Example usage](#example-usage)
   - [Parameters](#parameters)
   - [Constructor args in publishers and services](#constructor-args-in-publishers-and-services)
@@ -277,7 +279,7 @@ Additional functionality patched onto `rospy` classes for convenience:
 - `rospy.ServiceProxy.call_async(*args, **kwargs):`
   makes service call in a background thread, returns `asyncio.Future`-like response
 - `rospy.ServiceProxy.wait_for_service(timeout=None, timeout_sec=None):`
-  waits for service to become available, returns `True`, or `False`on timeout
+  waits for service to become available, returns `True`, or `False` on timeout
 - `rospy.ServiceProxy.service_is_ready():`
    returns whether service is currently available
 - `rospy.Subscriber:`
@@ -307,7 +309,7 @@ The following classes are patched with full conformity to their equivalents in R
 - `rclpy.timer.Rate`
 - `rclpy.timer.Timer`
 
-E.g. durations support `+-*/`arithmetic, and publisher / subscriber provide `.md5sum` for message type hash.
+E.g. durations support `+-*/` arithmetic, and publisher / subscriber provide `.md5sum` for message type hash.
 
 
 API helpers
@@ -475,8 +477,8 @@ Installation
 This will make the `rosros` library available to Python packages.
 
 Requires ROS Python packages
-(ROS1: rospy, roslib, rosservice, genpy;
- ROS2: rclpy, rosidl_parser, rosidl_runtime_py, builtin_interfaces).
+(ROS1: rospy, roslib, rosbag, rosservice, genpy;
+ ROS2: rclpy, rosidl_parser, rosidl_runtime_py, ament_index_python, builtin_interfaces).
 
 
 ### Using catkin
@@ -535,6 +537,7 @@ ROS1:
 - rosservice
 
 ROS2:
+- ament_index_python
 - builtin_interfaces
 - rclpy
 - rosidl_parser
