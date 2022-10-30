@@ -1,0 +1,6 @@
+<map id="TransportTerminated" name="TransportTerminated">
+<area shape="rect" id="node1" title="Internal exception for representing exceptions that occur establishing transports." alt="" coords="9,229,165,256"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_exception.html" title="Internal class for representing broken connections." alt="" coords="13,155,160,181"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_internal_exception.html" title="Base class for exceptions that are internal to the ROS system." alt="" coords="5,80,168,107"/>
+<area shape="rect" id="node4" href="$class_exception.html" title=" " alt="" coords="43,5,130,32"/>
+</map>

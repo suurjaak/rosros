@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,81,133"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1clock_1_1_clock_type.html" title="Enum for clock type." alt="" coords="175,31,263,57"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_enum.html" title="Base for QoS Policy enumerations." alt="" coords="157,81,281,108"/>
+<area shape="rect" id="node8" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_kind.html" title="Enum for types of QoS policies that a Publisher or Subscription can set." alt="" coords="161,132,277,159"/>
+<area shape="rect" id="node9" href="$classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_type_enum.html" title="Enum for possible types of topic endpoints." alt="" coords="129,183,308,209"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rclify_1_1qos_1_1_durability_policy.html" title="Enum for QoS Durability settings." alt="" coords="357,5,482,32"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rclify_1_1qos_1_1_history_policy.html" title="Enum for QoS History settings." alt="" coords="365,56,473,83"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rclify_1_1qos_1_1_liveliness_policy.html" title="Enum for QoS Liveliness settings." alt="" coords="356,107,483,133"/>
+<area shape="rect" id="node7" href="$classrosros_1_1rclify_1_1qos_1_1_reliability_policy.html" title="Enum for QoS Reliability settings." alt="" coords="356,157,483,184"/>
+</map>

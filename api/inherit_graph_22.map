@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,157,55,184"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1service_1_1_service.html" title="Stand&#45;in for `rospy.Service`, wrapping the creation of ROS2 service." alt="" coords="121,5,191,32"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1service_1_1_service_proxy.html" title="Stand&#45;in for `rospy.ServiceProxy`, wrapping the creation of ROS2 service client." alt="" coords="103,56,209,83"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rospify_1_1timer_1_1_rate.html" title="Stand&#45;in for `rospy.Rate`, wrapping the creation of ROS2 rate instance." alt="" coords="130,107,182,133"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1timer_1_1_timer.html" title="Stand&#45;in for `rospy.Timer`, wrapping the creation of ROS2 timer instance." alt="" coords="127,157,185,184"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rospify_1_1topics_1_1_message.html" title="Abstract base class of Message data classes auto&#45;generated from msg files." alt="" coords="116,208,196,235"/>
+<area shape="rect" id="node8" href="$classrosros_1_1rospify_1_1topics_1_1_publisher.html" title="Stand&#45;in for `rospy.Publisher`, wrapping the creation of ROS2 publisher." alt="" coords="115,259,197,285"/>
+<area shape="rect" id="node9" href="$classrosros_1_1rospify_1_1topics_1_1_subscriber.html" title="Stand&#45;in for `rospy.Subscriber`, wrapping the creation of ROS2 subscription." alt="" coords="111,309,201,336"/>
+<area shape="rect" id="node7" href="$classrosros_1_1rospify_1_1msg_1_1_any_msg.html" title="Stand&#45;in for `rospy.AnyMsg`." alt="" coords="257,208,332,235"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Subscriber" name="Subscriber">
+<area shape="rect" id="node1" title="Stand&#45;in for `rospy.Subscriber`, wrapping the creation of ROS2 subscription." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="26,5,75,32"/>
+</map>

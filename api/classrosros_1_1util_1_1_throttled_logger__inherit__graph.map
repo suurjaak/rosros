@@ -1,0 +1,4 @@
+<map id="ThrottledLogger" name="ThrottledLogger">
+<area shape="rect" id="node1" title="Logger wrapper with support for throttling logged messages per call site." alt="" coords="5,80,131,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="35,5,101,32"/>
+</map>

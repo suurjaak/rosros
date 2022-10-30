@@ -1,0 +1,5 @@
+<map id="ROSSerializationException" name="ROSSerializationException">
+<area shape="rect" id="node1" title="Exception for errors initializing ROS state." alt="" coords="5,155,200,181"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html" title="Base exception class for ROS clients." alt="" coords="46,80,159,107"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="59,5,146,32"/>
+</map>

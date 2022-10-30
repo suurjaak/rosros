@@ -1,0 +1,5 @@
+<map id="InvalidParameterValueException" name="InvalidParameterValueException">
+<area shape="rect" id="node1" title="Raised when a parameter is rejected by a user callback or when applying a descriptor." alt="" coords="5,155,240,181"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="45,80,200,107"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="79,5,166,32"/>
+</map>

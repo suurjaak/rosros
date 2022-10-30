@@ -1,0 +1,5 @@
+<map id="ROSInitException" name="ROSInitException">
+<area shape="rect" id="node1" title="Exception for operations that interrupted, e.g." alt="" coords="5,155,140,181"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html" title="Base exception class for ROS clients." alt="" coords="16,80,129,107"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="29,5,116,32"/>
+</map>
