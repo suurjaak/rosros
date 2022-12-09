@@ -416,7 +416,7 @@ class TestRospify(testbase.TestBase):
         self.assertTrue(callable(getattr(t1, "shutdown")),
                         "Unexpected value for Timer.shutdown.")
         t1.shutdown()
-        time.sleep(1)
+        time.sleep(2)
         self.assertFalse(t1.is_alive(), "Unexpected value for Timer.is_alive().")
         self.assertFalse(t2.is_alive(), "Unexpected value for Timer.is_alive().")
         t1.join()
