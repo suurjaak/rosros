@@ -1,32 +1,34 @@
 <map id="Exception" name="Exception">
-<area shape="rect" id="node1" title=" " alt="" coords="5,491,92,517"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title="Raised when a topic name, node name, or namespace are invalid." alt="" coords="166,107,357,133"/>
-<area shape="rect" id="node7" href="$classrosros_1_1rclify_1_1exceptions_1_1_not_initialized_exception.html" title="Raised when the rclpy implementation is accessed before rclpy.init()." alt="" coords="175,187,348,213"/>
-<area shape="rect" id="node8" href="$classrosros_1_1rclify_1_1exceptions_1_1_no_type_support_imported_exception.html" title="Raised when there is no type support imported." alt="" coords="140,237,383,264"/>
-<area shape="rect" id="node9" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="184,288,339,315"/>
-<area shape="rect" id="node15" href="$classrosros_1_1rclify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Raised when an operation is canceled by rclpy shutting down." alt="" coords="463,545,633,572"/>
-<area shape="rect" id="node16" href="$classrosros_1_1rclify_1_1executors_1_1_condition_reached_exception.html" title="API stand&#45;in for ROS2 compatibility, all spinning is performed by sleep." alt="" coords="159,389,363,416"/>
-<area shape="rect" id="node17" href="$classrosros_1_1rclify_1_1executors_1_1_external_shutdown_exception.html" title="Future has been completed." alt="" coords="159,440,363,467"/>
-<area shape="rect" id="node18" href="$classrosros_1_1rclify_1_1executors_1_1_shutdown_exception.html" title="Context has been shutdown." alt="" coords="186,491,337,517"/>
-<area shape="rect" id="node19" href="$classrosros_1_1rclify_1_1executors_1_1_timeout_exception.html" title="Signal that a timeout occurred." alt="" coords="192,541,331,568"/>
-<area shape="rect" id="node20" href="$classrosros_1_1rclify_1_1node_1_1_node_name_non_existent_error.html" title="Thrown when a node name is not found." alt="" coords="159,592,364,619"/>
-<area shape="rect" id="node21" href="$classrosros_1_1rclify_1_1qos_1_1_invalid_qo_s_profile_exception.html" title="Raised when constructing a QoSProfile with invalid arguments." alt="" coords="162,643,361,669"/>
-<area shape="rect" id="node22" href="$classrosros_1_1rospify_1_1exceptions_1_1_parameter_invalid.html" title=" " alt="" coords="194,693,329,720"/>
-<area shape="rect" id="node23" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html" title="Base exception class for ROS clients." alt="" coords="205,744,318,771"/>
-<area shape="rect" id="node26" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_internal_exception.html" title="Base class for exceptions that are internal to the ROS system." alt="" coords="180,795,343,821"/>
-<area shape="rect" id="node30" href="$classrosros_1_1rospify_1_1service_1_1_service_exception.html" title="Exception class for service&#45;related errors." alt="" coords="194,845,329,872"/>
-<area shape="rect" id="node3" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_namespace_exception.html" title="Raised when a namespace is invalid." alt="" coords="445,5,651,32"/>
-<area shape="rect" id="node4" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_node_name_exception.html" title="Raised when a node name is invalid." alt="" coords="447,56,649,83"/>
-<area shape="rect" id="node5" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_service_name_exception.html" title="Raised when a service name is invalid." alt="" coords="439,107,657,133"/>
-<area shape="rect" id="node6" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_topic_name_exception.html" title="Raised when a topic name is invalid." alt="" coords="447,157,649,184"/>
-<area shape="rect" id="node10" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_exception.html" title="Raised when a parameter to be declared has an invalid name." alt="" coords="449,208,647,235"/>
-<area shape="rect" id="node11" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_value_exception.html" title="Raised when a parameter is rejected by a user callback or when applying a descriptor." alt="" coords="431,259,665,285"/>
-<area shape="rect" id="node12" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_already_declared_exception.html" title="Raised when declaring a parameter that had been declared before." alt="" coords="449,310,647,351"/>
-<area shape="rect" id="node13" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_immutable_exception.html" title="Raised when a read&#45;only parameter is modified." alt="" coords="435,376,661,403"/>
-<area shape="rect" id="node14" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_not_declared_exception.html" title="Raised when handling an undeclared parameter when it is not allowed." alt="" coords="431,427,665,453"/>
-<area shape="rect" id="node24" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html" title="Exception for operations that interrupted, e.g." alt="" coords="481,693,615,720"/>
-<area shape="rect" id="node25" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_serialization_exception.html" title="Exception for errors initializing ROS state." alt="" coords="451,744,645,771"/>
-<area shape="rect" id="node27" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_exception.html" title="Internal class for representing broken connections." alt="" coords="475,795,621,821"/>
-<area shape="rect" id="node28" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_init_error.html" title="Exception that is raised when a parameter fails validation checks." alt="" coords="724,769,859,796"/>
-<area shape="rect" id="node29" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_terminated.html" title="Internal exception for representing exceptions that occur establishing transports." alt="" coords="713,820,869,847"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,633,92,659"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title="Raised when a topic name, node name, or namespace are invalid." alt="" coords="166,136,357,177"/>
+<area shape="rect" id="node7" href="$classrosros_1_1rclify_1_1exceptions_1_1_not_initialized_exception.html" title="Raised when the rclpy implementation is accessed before rclpy.init()." alt="" coords="173,233,349,275"/>
+<area shape="rect" id="node8" href="$classrosros_1_1rclify_1_1exceptions_1_1_no_type_support_imported_exception.html" title="Raised when there is no type support imported." alt="" coords="140,299,383,340"/>
+<area shape="rect" id="node9" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="173,364,349,405"/>
+<area shape="rect" id="node15" href="$classrosros_1_1rclify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Raised when an operation is canceled by rclpy shutting down." alt="" coords="173,429,349,471"/>
+<area shape="rect" id="node16" href="$classrosros_1_1rclify_1_1executors_1_1_condition_reached_exception.html" title="API stand&#45;in for ROS2 compatibility, all spinning is performed by sleep." alt="" coords="159,495,363,536"/>
+<area shape="rect" id="node17" href="$classrosros_1_1rclify_1_1executors_1_1_external_shutdown_exception.html" title="Future has been completed." alt="" coords="159,560,363,601"/>
+<area shape="rect" id="node18" href="$classrosros_1_1rclify_1_1executors_1_1_shutdown_exception.html" title="Context has been shutdown." alt="" coords="177,625,346,667"/>
+<area shape="rect" id="node19" href="$classrosros_1_1rclify_1_1executors_1_1_timeout_exception.html" title="Signal that a timeout occurred." alt="" coords="177,691,346,732"/>
+<area shape="rect" id="node20" href="$classrosros_1_1rclify_1_1node_1_1_node_name_non_existent_error.html" title="Thrown when a node name is not found." alt="" coords="156,756,367,797"/>
+<area shape="rect" id="node21" href="$classrosros_1_1rclify_1_1qos_1_1_invalid_qo_s_profile_exception.html" title="Raised when constructing a QoSProfile with invalid arguments." alt="" coords="175,821,347,863"/>
+<area shape="rect" id="node22" href="$classrosros_1_1rospify_1_1exceptions_1_1_parameter_invalid.html" title=" " alt="" coords="167,887,355,928"/>
+<area shape="rect" id="node23" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html" title="Base exception class for ROS clients." alt="" coords="167,952,355,993"/>
+<area shape="rect" id="node28" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_internal_exception.html" title="Base class for exceptions that are internal to the ROS system." alt="" coords="167,1017,355,1059"/>
+<area shape="rect" id="node32" href="$classrosros_1_1rospify_1_1service_1_1_service_exception.html" title="Exception class for service&#45;related errors." alt="" coords="155,1083,367,1124"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_namespace_exception.html" title="Raised when a namespace is invalid." alt="" coords="459,5,665,47"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_node_name_exception.html" title="Raised when a node name is invalid." alt="" coords="461,71,663,112"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_service_name_exception.html" title="Raised when a service name is invalid." alt="" coords="453,136,671,177"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_topic_name_exception.html" title="Raised when a topic name is invalid." alt="" coords="461,201,663,243"/>
+<area shape="rect" id="node10" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_exception.html" title="Raised when a parameter to be declared has an invalid name." alt="" coords="463,267,661,308"/>
+<area shape="rect" id="node11" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_value_exception.html" title="Raised when a parameter is rejected by a user callback or when applying a descriptor." alt="" coords="445,332,679,373"/>
+<area shape="rect" id="node12" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_already_declared_exception.html" title="Raised when declaring a parameter that had been declared before." alt="" coords="431,397,693,439"/>
+<area shape="rect" id="node13" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_immutable_exception.html" title="Raised when a read&#45;only parameter is modified." alt="" coords="449,463,675,504"/>
+<area shape="rect" id="node14" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_not_declared_exception.html" title="Raised when handling an undeclared parameter when it is not allowed." alt="" coords="445,528,679,569"/>
+<area shape="rect" id="node24" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html" title="Exception for operations that interrupted, e.g." alt="" coords="468,853,656,895"/>
+<area shape="rect" id="node25" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Exception if time moved backwards." alt="" coords="468,919,656,960"/>
+<area shape="rect" id="node27" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_serialization_exception.html" title="Exception for errors initializing ROS state." alt="" coords="465,984,659,1025"/>
+<area shape="rect" id="node26" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="741,919,1001,960"/>
+<area shape="rect" id="node29" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_exception.html" title="Internal class for representing broken connections." alt="" coords="468,1049,656,1091"/>
+<area shape="rect" id="node30" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_init_error.html" title="Exception that is raised when a parameter fails validation checks." alt="" coords="777,1016,965,1057"/>
+<area shape="rect" id="node31" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_terminated.html" title="Internal exception for representing exceptions that occur establishing transports." alt="" coords="777,1081,965,1123"/>
 </map>

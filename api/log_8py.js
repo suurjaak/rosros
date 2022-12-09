@@ -23,7 +23,7 @@ var log_8py =
     [ "logwarn_once", "log_8py.html#a03414a8a709fe164d833cffe4989e9c7", null ],
     [ "logwarn_throttle", "log_8py.html#aa971e13e2d2e79ef378663eb22c6bd8b", null ],
     [ "logwarn_throttle_identical", "log_8py.html#a28ead902ddc0508cbff9f8c3a5643658", null ],
-    [ "__all__", "log_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ],
-    [ "logerror", "log_8py.html#a9fdbddcb200eba82b7e1a30fcdfa58eb", null ],
-    [ "logout", "log_8py.html#a9ef26a54292a17b29ac23e053a94e263", null ]
+    [ "__all__", "log_8py.html#a4ced3a42d177c5f69dc840deb04691e3", null ],
+    [ "logerror", "log_8py.html#a0f1b5e93c3272cb1e63084ea81809b01", null ],
+    [ "logout", "log_8py.html#ada692a15136ea7193cebca802a000569", null ]
 ];

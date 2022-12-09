@@ -1,6 +1,5 @@
 var namespacerosros_1_1rospify =
 [
-    [ "client", "namespacerosros_1_1rospify_1_1client.html", "namespacerosros_1_1rospify_1_1client" ],
     [ "exceptions", "namespacerosros_1_1rospify_1_1exceptions.html", "namespacerosros_1_1rospify_1_1exceptions" ],
     [ "log", "namespacerosros_1_1rospify_1_1log.html", "namespacerosros_1_1rospify_1_1log" ],
     [ "msg", "namespacerosros_1_1rospify_1_1msg.html", "namespacerosros_1_1rospify_1_1msg" ],

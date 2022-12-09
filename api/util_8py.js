@@ -2,7 +2,7 @@ var util_8py =
 [
     [ "ThrottledLogger", "classrosros_1_1util_1_1_throttled_logger.html", "classrosros_1_1util_1_1_throttled_logger" ],
     [ "drop_zeros", "util_8py.html#a693e7c064eea326b1ef41d06974bb6d3", null ],
-    [ "ensure_object", "util_8py.html#aa906bab31eb26c43704d445455c67ae0", null ],
+    [ "ensure_object", "util_8py.html#a808ab6c04c5f2bc3009d4f5571f7bc8d", null ],
     [ "flatten_dict", "util_8py.html#a278d13a2294963189be835906d77dea3", null ],
     [ "format_bytes", "util_8py.html#a0e9e85e045b36e0927a078e0d1fc21bf", null ],
     [ "get_arity", "util_8py.html#a08f37eed56dc76b4c3616f730317fd1e", null ],
@@ -17,5 +17,5 @@ var util_8py =
     [ "start_future", "util_8py.html#a05ee747077857c51e1f6bd28cd8bc6cc", null ],
     [ "unique_path", "util_8py.html#a09e02e15f00a02c6b43f9ce7c214f28d", null ],
     [ "wrap_arity", "util_8py.html#a981418afc166c71feb3522fe8f242aa2", null ],
-    [ "__all__", "util_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ]
+    [ "__all__", "util_8py.html#ab317f231b6925a52d5a4c8e480942267", null ]
 ];

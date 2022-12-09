@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: src/rosros/rospify/msg.py Source File</title>
+<title>rosros: rosros/rospify/msg.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('msg_8py_source.html',''); initResizabl
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">from</span> . topics <span class="keyword">import</span> Message</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1msg.html#ad0f16d337f7ce8b7f75da40ea293662d">   20</a></span>&#160;Header = std_msgs.msg.Header</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1msg.html#a62487aa6f296c0f18c8f2cd8c02e57b4">   20</a></span>&#160;Header = std_msgs.msg.Header</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">class </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html">AnyMsg</a>(<a class="code" href="classrosros_1_1rospify_1_1topics_1_1_message.html">Message</a>):</div>
@@ -127,51 +127,51 @@ $(document).ready(function(){initNavTree('msg_8py_source.html',''); initResizabl
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    _full_text  = <span class="stringliteral">&quot;&quot;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    __slots__   = [<span class="stringliteral">&quot;_buff&quot;</span>]</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a4cc27522685aafad0a3d7248e74d670a">__init__</a>(self, *args):</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#af486a998540acd02d7dc80133460f98b">__init__</a>(self, *args):</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">        Constructor. Does not accept any arguments.</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> len(args) != 0:</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">exceptions.ROSException</a>(<span class="stringliteral">&quot;AnyMsg does not accept arguments&quot;</span>)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a61ebe5c926ea987bc40401be7d15303a">_buff</a> = <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad2ac4570db0421734347bd4ee9c4586e">_buff</a> = <span class="keywordtype">None</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a1b935ae609be59ae697f22c699352165">serialize</a>(self, buff):</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a587e80617609a519453c2368de9c0062">serialize</a>(self, buff):</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;AnyMsg provides an implementation so that a node can forward messages w/o (de)serialization.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a61ebe5c926ea987bc40401be7d15303a">_buff</a> <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad2ac4570db0421734347bd4ee9c4586e">_buff</a> <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">exceptions.ROSException</a>(<span class="stringliteral">&quot;AnyMsg is not initialized&quot;</span>)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        buff.write(self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a61ebe5c926ea987bc40401be7d15303a">_buff</a>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        buff.write(self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad2ac4570db0421734347bd4ee9c4586e">_buff</a>)</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a294c351a8a79ba9ec5092670d54f662b">deserialize</a>(self, str):</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a4cc27522685aafad0a3d7248e74d670a">   56</a></span>&#160;        <span class="stringliteral">&quot;&quot;&quot;Copies raw buffer into self._buff, returns self.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a61ebe5c926ea987bc40401be7d15303a">_buff</a> = str</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad7608483aeeb5f82d54316ab0a675c20">deserialize</a>(self, str):</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#af486a998540acd02d7dc80133460f98b">   56</a></span>&#160;        <span class="stringliteral">&quot;&quot;&quot;Copies raw buffer into self._buff, returns self.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        self.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad2ac4570db0421734347bd4ee9c4586e">_buff</a> = str</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> self</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    @classmethod</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a1b935ae609be59ae697f22c699352165">   61</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a580f652b5d23dec4e4a486e9978993e0">__subclasshook__</a>(cls, C):</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a587e80617609a519453c2368de9c0062">   61</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a170e03da3cb2693bb7c40173330cd3f4">__subclasshook__</a>(cls, C):</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;Returns true if C is AnyMsg or descendant, else `NotImplemented`.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> getattr(C, <span class="stringliteral">&quot;_type&quot;</span>, <span class="keywordtype">None</span>) == cls.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a764da2ec98ce16c6c276bbffc5cf0728">_type</a>: <span class="keywordflow">return</span> <span class="keyword">True</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> getattr(C, <span class="stringliteral">&quot;_type&quot;</span>, <span class="keywordtype">None</span>) == cls.<a class="code" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a6c52ce4ca6420f5a353d5396dc4a5c0e">_type</a>: <span class="keywordflow">return</span> <span class="keyword">True</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> NotImplemented</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a294c351a8a79ba9ec5092670d54f662b">   67</a></span>&#160;__all__ = [</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad7608483aeeb5f82d54316ab0a675c20">   67</a></span>&#160;__all__ = [</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="stringliteral">&quot;AnyMsg&quot;</span>, <span class="stringliteral">&quot;Header&quot;</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;]</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_ad7608483aeeb5f82d54316ab0a675c20"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad7608483aeeb5f82d54316ab0a675c20">rosros.rospify.msg.AnyMsg.deserialize</a></div><div class="ttdeci">def deserialize(self, str)</div><div class="ttdoc">Copies raw buffer into self._buff, returns self.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00067">msg.py:67</a></div></div>
+<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_ad2ac4570db0421734347bd4ee9c4586e"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#ad2ac4570db0421734347bd4ee9c4586e">rosros.rospify.msg.AnyMsg._buff</a></div><div class="ttdeci">_buff</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00059">msg.py:59</a></div></div>
 <div class="ttc" id="aclassrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">rosros.rospify.exceptions.ROSException</a></div><div class="ttdoc">Base exception class for ROS clients.</div><div class="ttdef"><b>Definition:</b> <a href="rospify_2exceptions_8py_source.html#l00054">exceptions.py:54</a></div></div>
 <div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html">rosros.rospify.msg.AnyMsg</a></div><div class="ttdoc">Stand-in for `rospy.AnyMsg`.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00034">msg.py:34</a></div></div>
-<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a764da2ec98ce16c6c276bbffc5cf0728"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a764da2ec98ce16c6c276bbffc5cf0728">rosros.rospify.msg.AnyMsg._type</a></div><div class="ttdeci">string _type</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00042">msg.py:42</a></div></div>
-<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a4cc27522685aafad0a3d7248e74d670a"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a4cc27522685aafad0a3d7248e74d670a">rosros.rospify.msg.AnyMsg.__init__</a></div><div class="ttdeci">def __init__(self, *args)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00056">msg.py:56</a></div></div>
-<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a294c351a8a79ba9ec5092670d54f662b"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a294c351a8a79ba9ec5092670d54f662b">rosros.rospify.msg.AnyMsg.deserialize</a></div><div class="ttdeci">def deserialize(self, str)</div><div class="ttdoc">Copies raw buffer into self._buff, returns self.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00067">msg.py:67</a></div></div>
+<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_af486a998540acd02d7dc80133460f98b"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#af486a998540acd02d7dc80133460f98b">rosros.rospify.msg.AnyMsg.__init__</a></div><div class="ttdeci">def __init__(self, *args)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00056">msg.py:56</a></div></div>
+<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a6c52ce4ca6420f5a353d5396dc4a5c0e"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a6c52ce4ca6420f5a353d5396dc4a5c0e">rosros.rospify.msg.AnyMsg._type</a></div><div class="ttdeci">string _type</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00042">msg.py:42</a></div></div>
 <div class="ttc" id="aclassrosros_1_1rospify_1_1topics_1_1_message_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1topics_1_1_message.html">rosros.rospify.topics.Message</a></div><div class="ttdoc">Abstract base class of Message data classes auto-generated from msg files.</div><div class="ttdef"><b>Definition:</b> <a href="topics_8py_source.html#l00024">topics.py:24</a></div></div>
-<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a580f652b5d23dec4e4a486e9978993e0"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a580f652b5d23dec4e4a486e9978993e0">rosros.rospify.msg.AnyMsg.__subclasshook__</a></div><div class="ttdeci">def __subclasshook__(cls, C)</div><div class="ttdoc">Returns true if C is AnyMsg or descendant, else `NotImplemented`.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00073">msg.py:73</a></div></div>
-<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a1b935ae609be59ae697f22c699352165"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a1b935ae609be59ae697f22c699352165">rosros.rospify.msg.AnyMsg.serialize</a></div><div class="ttdeci">def serialize(self, buff)</div><div class="ttdoc">AnyMsg provides an implementation so that a node can forward messages w/o (de)serialization.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00061">msg.py:61</a></div></div>
-<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a61ebe5c926ea987bc40401be7d15303a"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a61ebe5c926ea987bc40401be7d15303a">rosros.rospify.msg.AnyMsg._buff</a></div><div class="ttdeci">_buff</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00059">msg.py:59</a></div></div>
+<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a170e03da3cb2693bb7c40173330cd3f4"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a170e03da3cb2693bb7c40173330cd3f4">rosros.rospify.msg.AnyMsg.__subclasshook__</a></div><div class="ttdeci">def __subclasshook__(cls, C)</div><div class="ttdoc">Returns true if C is AnyMsg or descendant, else `NotImplemented`.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00073">msg.py:73</a></div></div>
+<div class="ttc" id="aclassrosros_1_1rospify_1_1msg_1_1_any_msg_html_a587e80617609a519453c2368de9c0062"><div class="ttname"><a href="classrosros_1_1rospify_1_1msg_1_1_any_msg.html#a587e80617609a519453c2368de9c0062">rosros.rospify.msg.AnyMsg.serialize</a></div><div class="ttdeci">def serialize(self, buff)</div><div class="ttdoc">AnyMsg provides an implementation so that a node can forward messages w/o (de)serialization.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8py_source.html#l00061">msg.py:61</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_93e29dcaf104ee9d295c2d3321fb8206.html">rosros</a></li><li class="navelem"><a class="el" href="dir_e16229acc52d7157f13527bee18a7883.html">rospify</a></li><li class="navelem"><a class="el" href="msg_8py.html">msg.py</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="dir_6ea09fe58e335c1fd95c7cd91755b755.html">rospify</a></li><li class="navelem"><a class="el" href="msg_8py.html">msg.py</a></li>
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

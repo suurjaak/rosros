@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['anymsg_628',['AnyMsg',['../classrosros_1_1rospify_1_1msg_1_1_any_msg.html',1,'rosros::rospify::msg']]]
+  ['bag_632',['Bag',['../classrosros_1_1ros1_1_1_bag.html',1,'rosros.ros1.Bag'],['../classrosros_1_1ros2_1_1_bag.html',1,'rosros.ros2.Bag']]]
 ];

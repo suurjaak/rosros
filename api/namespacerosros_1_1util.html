@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -105,9 +105,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a693e7c064eea326b1ef41d06974bb6d3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1util.html#a693e7c064eea326b1ef41d06974bb6d3">drop_zeros</a> (v, replace=&quot;&quot;)</td></tr>
 <tr class="memdesc:a693e7c064eea326b1ef41d06974bb6d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drops or replaces trailing zeros and empty decimal separator, if any.  <a href="namespacerosros_1_1util.html#a693e7c064eea326b1ef41d06974bb6d3">More...</a><br /></td></tr>
 <tr class="separator:a693e7c064eea326b1ef41d06974bb6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa906bab31eb26c43704d445455c67ae0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1util.html#aa906bab31eb26c43704d445455c67ae0">ensure_object</a> (obj_or_cls, attributes, *args, **kwargs)</td></tr>
-<tr class="memdesc:aa906bab31eb26c43704d445455c67ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures result is an object of specified type.  <a href="namespacerosros_1_1util.html#aa906bab31eb26c43704d445455c67ae0">More...</a><br /></td></tr>
-<tr class="separator:aa906bab31eb26c43704d445455c67ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a808ab6c04c5f2bc3009d4f5571f7bc8d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1util.html#a808ab6c04c5f2bc3009d4f5571f7bc8d">ensure_object</a> (obj_or_cls, attributes, populate_object=None, *args, **kwargs)</td></tr>
+<tr class="memdesc:a808ab6c04c5f2bc3009d4f5571f7bc8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures result is an object of specified type.  <a href="namespacerosros_1_1util.html#a808ab6c04c5f2bc3009d4f5571f7bc8d">More...</a><br /></td></tr>
+<tr class="separator:a808ab6c04c5f2bc3009d4f5571f7bc8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a278d13a2294963189be835906d77dea3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1util.html#a278d13a2294963189be835906d77dea3">flatten_dict</a> (dct, sep=&quot;.&quot;)</td></tr>
 <tr class="memdesc:a278d13a2294963189be835906d77dea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flattens a nested dictionary to a flat dictionary, with nested keys joined with separator.  <a href="namespacerosros_1_1util.html#a278d13a2294963189be835906d77dea3">More...</a><br /></td></tr>
 <tr class="separator:a278d13a2294963189be835906d77dea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,8 +186,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa906bab31eb26c43704d445455c67ae0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa906bab31eb26c43704d445455c67ae0">&#9670;&nbsp;</a></span>ensure_object()</h2>
+<a id="a808ab6c04c5f2bc3009d4f5571f7bc8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a808ab6c04c5f2bc3009d4f5571f7bc8d">&#9670;&nbsp;</a></span>ensure_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,6 +203,12 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>attributes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>populate_object</em> = <code>None</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -227,17 +233,19 @@ Functions</h2></td></tr>
 <p>Ensures result is an object of specified type. </p>
 <p>Intended for wrapping convenience functions giving or returning object as attribute list or dictionary instead of instantiated object.</p>
 <p>If first positional argument is an instance of specified class, it is populated from positional and keyword arguments.</p>
+<p>If first positional argument is a dictionary, it is taken as keyword arguments.</p>
 <p>`obj_or_cls` may be a class to instantiate, or the class instance to populate if instance not in first positional argument. Instance attributes will be given in constructor as keyword arguments.</p>
 <p>E.g. `ensure_object(std_msgs.msg.Bool, ["data"], True)`. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj_or_cls</td><td>object class or instance </td></tr>
     <tr><td class="paramname">attributes</td><td>iterable of object attribute names to combine positional arguments from, or a callable returning iterable </td></tr>
+    <tr><td class="paramname">populate_object</td><td>function(dict, obj) to populate object from dictionary </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>object of specified class, populated from positional and keyword arguments, created if not given </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00204">204</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00207">207</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -277,7 +285,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>flat dictionary like {"my.nested.key": value} </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00227">227</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00231">231</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -321,7 +329,7 @@ Functions</h2></td></tr>
 
 <p>Returns a formatted byte size (like 421.40 MB), trailing zeros optionally removed. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00238">238</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00242">242</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -359,7 +367,7 @@ Functions</h2></td></tr>
 
 <p>Returns the maximum number of arguments the function takes, -1 if variable number. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00250">250</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00254">254</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -399,7 +407,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>(value, value parent container, key in parent container) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00274">274</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00278">278</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -445,7 +453,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00297">297</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00301">301</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -477,7 +485,7 @@ Functions</h2></td></tr>
 
 <p>Returns a nested dictionary from path, like {"nested": {"path": value}}. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00324">324</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00328">328</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -500,7 +508,7 @@ Functions</h2></td></tr>
 <p>Returns a results-caching wrapper for the function. </p>
 <p>All arguments to function must be hashable. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00314">314</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00318">318</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -533,7 +541,7 @@ Functions</h2></td></tr>
 <p>Merges d2 into d1, recursively for nested dicts. </p>
 <dl class="section return"><dt>Returns</dt><dd>updated d1 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00338">338</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00342">342</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -555,7 +563,7 @@ Functions</h2></td></tr>
 
 <p>Returns arguments joined into a namespace name, starting and separated with "/". </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00347">347</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00351">351</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -577,7 +585,7 @@ Functions</h2></td></tr>
 
 <p>Returns argument split into (namespace, name), like "/a/b/c" as ("/a/b", "c"). </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00352">352</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00356">356</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -630,7 +638,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00368">368</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00372">372</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -670,7 +678,7 @@ Functions</h2></td></tr>
 <p>Future will be done when function returns or raises.</p>
 <p>Future is not executed with asyncio. Background thread is not daemonic. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00394">394</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00398">398</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -708,7 +716,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00411">411</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00415">415</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -731,7 +739,7 @@ Functions</h2></td></tr>
 <p>Returns wrapper for invoking function with its maximum supported number of arguments. </p>
 <p>E.g. `wrap_arity(abs)(-1, -2)` will return result of `abs(-1)`. </p>
 
-<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00436">436</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00440">440</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 
 </div>
 </div>
@@ -741,7 +749,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1util.html">util</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

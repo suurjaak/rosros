@@ -1,5 +1,5 @@
-<map id="InvalidNodeNameException" name="InvalidNodeNameException">
-<area shape="rect" id="node1" title="Raised when a node name is invalid." alt="" coords="5,155,208,181"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title="Raised when a topic name, node name, or namespace are invalid." alt="" coords="11,80,202,107"/>
+<map id="rosros.rclify.exceptions.InvalidNodeNameException" name="rosros.rclify.exceptions.InvalidNodeNameException">
+<area shape="rect" id="node1" title="Raised when a node name is invalid." alt="" coords="5,169,208,211"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title="Raised when a topic name, node name, or namespace are invalid." alt="" coords="11,80,202,121"/>
 <area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="63,5,150,32"/>
 </map>

@@ -1,5 +1,5 @@
-<map id="ParameterImmutableException" name="ParameterImmutableException">
-<area shape="rect" id="node1" title="Raised when a read&#45;only parameter is modified." alt="" coords="5,155,231,181"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="41,80,195,107"/>
+<map id="rosros.rclify.exceptions.ParameterImmutableException" name="rosros.rclify.exceptions.ParameterImmutableException">
+<area shape="rect" id="node1" title="Raised when a read&#45;only parameter is modified." alt="" coords="5,169,231,211"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="30,80,206,121"/>
 <area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="75,5,161,32"/>
 </map>

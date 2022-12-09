@@ -1,7 +1,7 @@
-<map id="ROSInternalException" name="ROSInternalException">
-<area shape="rect" id="node1" title="Base class for exceptions that are internal to the ROS system." alt="" coords="75,80,238,107"/>
-<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_exception.html" title="Internal class for representing broken connections." alt="" coords="83,155,230,181"/>
-<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="113,5,200,32"/>
-<area shape="rect" id="node4" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_init_error.html" title="Exception that is raised when a parameter fails validation checks." alt="" coords="5,229,140,256"/>
-<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_terminated.html" title="Internal exception for representing exceptions that occur establishing transports." alt="" coords="164,229,320,256"/>
+<map id="rosros.rospify.exceptions.ROSInternalException" name="rosros.rospify.exceptions.ROSInternalException">
+<area shape="rect" id="node1" title="Base class for exceptions that are internal to the ROS system." alt="" coords="140,39,328,80"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_exception.html" title="Internal class for representing broken connections." alt="" coords="376,39,564,80"/>
+<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="5,46,92,73"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_init_error.html" title="Exception that is raised when a parameter fails validation checks." alt="" coords="612,5,800,47"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_terminated.html" title="Internal exception for representing exceptions that occur establishing transports." alt="" coords="612,71,800,112"/>
 </map>

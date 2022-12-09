@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: Node Class Reference</title>
+<title>rosros: rosros.rclify.node.Node Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -89,220 +89,220 @@ $(document).ready(function(){initNavTree('classrosros_1_1rclify_1_1node_1_1_node
 <a href="#properties">Properties</a> &#124;
 <a href="classrosros_1_1rclify_1_1node_1_1_node-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Node Class Reference</div>  </div>
+<div class="title">rosros.rclify.node.Node Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6968aa75f82c8dbd26ec2e88bd711a5e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a6968aa75f82c8dbd26ec2e88bd711a5e">__init__</a> (self, node_name, *<a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a261f9f58ccbeaa962c4e675e4212c9cc">context</a>=None, cli_args=None, namespace=None, use_global_arguments=True, enable_rosout=True, start_parameter_services=None, parameter_overrides=None, allow_undeclared_parameters=False, automatically_declare_parameters_from_overrides=False)</td></tr>
-<tr class="memdesc:a6968aa75f82c8dbd26ec2e88bd711a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a ROS1 node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a6968aa75f82c8dbd26ec2e88bd711a5e">More...</a><br /></td></tr>
-<tr class="separator:a6968aa75f82c8dbd26ec2e88bd711a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e4f3e255c9dfa37fa9122531b849e10"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a2e4f3e255c9dfa37fa9122531b849e10">add_on_set_parameters_callback</a> (self, callback)</td></tr>
-<tr class="memdesc:a2e4f3e255c9dfa37fa9122531b849e10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a callback in front to the list of callbacks.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a2e4f3e255c9dfa37fa9122531b849e10">More...</a><br /></td></tr>
-<tr class="separator:a2e4f3e255c9dfa37fa9122531b849e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59e1112872f2dfcb44388e39c4406d1d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a59e1112872f2dfcb44388e39c4406d1d">add_waitable</a> (self, waitable)</td></tr>
-<tr class="memdesc:a59e1112872f2dfcb44388e39c4406d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a59e1112872f2dfcb44388e39c4406d1d">More...</a><br /></td></tr>
-<tr class="separator:a59e1112872f2dfcb44388e39c4406d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfd9ef976040f42967ddf771f35c62f4"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#abfd9ef976040f42967ddf771f35c62f4">count_publishers</a> (self, topic_name)</td></tr>
-<tr class="memdesc:abfd9ef976040f42967ddf771f35c62f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of publishers on a given topic, globally.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#abfd9ef976040f42967ddf771f35c62f4">More...</a><br /></td></tr>
-<tr class="separator:abfd9ef976040f42967ddf771f35c62f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82cb1ac6ecd2746a06a6505ffb1151fe"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a82cb1ac6ecd2746a06a6505ffb1151fe">count_subscribers</a> (self, topic_name)</td></tr>
-<tr class="memdesc:a82cb1ac6ecd2746a06a6505ffb1151fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of subscribers on a given topic.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a82cb1ac6ecd2746a06a6505ffb1151fe">More...</a><br /></td></tr>
-<tr class="separator:a82cb1ac6ecd2746a06a6505ffb1151fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace95126c88c36a07ac80d8ad30c9d768"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ace95126c88c36a07ac80d8ad30c9d768">create_client</a> (self, srv_type, srv_name, *qos_profile=None, callback_group=None)</td></tr>
-<tr class="memdesc:ace95126c88c36a07ac80d8ad30c9d768"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new service client.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ace95126c88c36a07ac80d8ad30c9d768">More...</a><br /></td></tr>
-<tr class="separator:ace95126c88c36a07ac80d8ad30c9d768"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf8f7e452bb6e5fef2d895d73543227e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#aaf8f7e452bb6e5fef2d895d73543227e">create_guard_condition</a> (self, callback, callback_group=None)</td></tr>
-<tr class="memdesc:aaf8f7e452bb6e5fef2d895d73543227e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing and returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#aaf8f7e452bb6e5fef2d895d73543227e">More...</a><br /></td></tr>
-<tr class="separator:aaf8f7e452bb6e5fef2d895d73543227e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a501854621962b6b5fe5de97b9ce4f63a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a501854621962b6b5fe5de97b9ce4f63a">create_publisher</a> (self, msg_type, topic, qos_profile, *callback_group=None, event_callbacks=None)</td></tr>
-<tr class="memdesc:a501854621962b6b5fe5de97b9ce4f63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new publisher.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a501854621962b6b5fe5de97b9ce4f63a">More...</a><br /></td></tr>
-<tr class="separator:a501854621962b6b5fe5de97b9ce4f63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a810f3cd59e02f5bcc14fe2858cf5c756"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a810f3cd59e02f5bcc14fe2858cf5c756">create_rate</a> (self, frequency, clock=None)</td></tr>
-<tr class="memdesc:a810f3cd59e02f5bcc14fe2858cf5c756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a rate object.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a810f3cd59e02f5bcc14fe2858cf5c756">More...</a><br /></td></tr>
-<tr class="separator:a810f3cd59e02f5bcc14fe2858cf5c756"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6285cd4e97cb519c845abaadaa45598d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a6285cd4e97cb519c845abaadaa45598d">create_service</a> (self, srv_type, srv_name, callback, *qos_profile=None, callback_group=None)</td></tr>
-<tr class="memdesc:a6285cd4e97cb519c845abaadaa45598d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new service server.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a6285cd4e97cb519c845abaadaa45598d">More...</a><br /></td></tr>
-<tr class="separator:a6285cd4e97cb519c845abaadaa45598d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afda325f08209178f7e1de655269546ef"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#afda325f08209178f7e1de655269546ef">create_subscription</a> (self, msg_type, topic, callback, qos_profile, *callback_group=None, event_callbacks=None, raw=False)</td></tr>
-<tr class="memdesc:afda325f08209178f7e1de655269546ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new subscription.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#afda325f08209178f7e1de655269546ef">More...</a><br /></td></tr>
-<tr class="separator:afda325f08209178f7e1de655269546ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a063893cb910137db2961485eab38b20f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a063893cb910137db2961485eab38b20f">create_timer</a> (self, timer_period_sec, callback, callback_group=None, clock=None)</td></tr>
-<tr class="memdesc:a063893cb910137db2961485eab38b20f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new timer.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a063893cb910137db2961485eab38b20f">More...</a><br /></td></tr>
-<tr class="separator:a063893cb910137db2961485eab38b20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f37adf351757a749a1c52ea1ac6a53"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#aa2f37adf351757a749a1c52ea1ac6a53">declare_parameter</a> (self, name, value=None, descriptor=None, ignore_override=False)</td></tr>
-<tr class="memdesc:aa2f37adf351757a749a1c52ea1ac6a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets and initializes a node parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#aa2f37adf351757a749a1c52ea1ac6a53">More...</a><br /></td></tr>
-<tr class="separator:aa2f37adf351757a749a1c52ea1ac6a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0de11d6923dcea337bb9796bcd8a7f0d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a0de11d6923dcea337bb9796bcd8a7f0d">declare_parameters</a> (self, namespace, parameters, ignore_override=False)</td></tr>
-<tr class="memdesc:a0de11d6923dcea337bb9796bcd8a7f0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a list of parameters.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a0de11d6923dcea337bb9796bcd8a7f0d">More...</a><br /></td></tr>
-<tr class="separator:a0de11d6923dcea337bb9796bcd8a7f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6da81a26e1b426201483441ef22276a6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a6da81a26e1b426201483441ef22276a6">describe_parameter</a> (self, name)</td></tr>
-<tr class="memdesc:a6da81a26e1b426201483441ef22276a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameter descriptor of a given parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a6da81a26e1b426201483441ef22276a6">More...</a><br /></td></tr>
-<tr class="separator:a6da81a26e1b426201483441ef22276a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab386320c1bce44e64d2ba72ec856103b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ab386320c1bce44e64d2ba72ec856103b">describe_parameters</a> (self, names)</td></tr>
-<tr class="memdesc:ab386320c1bce44e64d2ba72ec856103b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameter descriptors of a given list of parameters.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ab386320c1bce44e64d2ba72ec856103b">More...</a><br /></td></tr>
-<tr class="separator:ab386320c1bce44e64d2ba72ec856103b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12cbd9afaf7ff4828978e559a21d2432"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a12cbd9afaf7ff4828978e559a21d2432">destroy_client</a> (self, client)</td></tr>
-<tr class="memdesc:a12cbd9afaf7ff4828978e559a21d2432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a service client created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a12cbd9afaf7ff4828978e559a21d2432">More...</a><br /></td></tr>
-<tr class="separator:a12cbd9afaf7ff4828978e559a21d2432"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a701ff8e112e8b89cab9b87e69386dab2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a701ff8e112e8b89cab9b87e69386dab2">destroy_guard_condition</a> (self, guard)</td></tr>
-<tr class="memdesc:a701ff8e112e8b89cab9b87e69386dab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a701ff8e112e8b89cab9b87e69386dab2">More...</a><br /></td></tr>
-<tr class="separator:a701ff8e112e8b89cab9b87e69386dab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4390c6b403a62e4a029796c047d3eec"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ae4390c6b403a62e4a029796c047d3eec">destroy_node</a> (self)</td></tr>
-<tr class="memdesc:ae4390c6b403a62e4a029796c047d3eec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the node and shuts down rospy.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ae4390c6b403a62e4a029796c047d3eec">More...</a><br /></td></tr>
-<tr class="separator:ae4390c6b403a62e4a029796c047d3eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a3342cb75f410b285518edf5d0f7a9f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a0a3342cb75f410b285518edf5d0f7a9f">destroy_publisher</a> (self, publisher)</td></tr>
-<tr class="memdesc:a0a3342cb75f410b285518edf5d0f7a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a publisher created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a0a3342cb75f410b285518edf5d0f7a9f">More...</a><br /></td></tr>
-<tr class="separator:a0a3342cb75f410b285518edf5d0f7a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c5e554f29e464f96e4c19fb364ef1f2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a7c5e554f29e464f96e4c19fb364ef1f2">destroy_rate</a> (self, rate)</td></tr>
-<tr class="memdesc:a7c5e554f29e464f96e4c19fb364ef1f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a7c5e554f29e464f96e4c19fb364ef1f2">More...</a><br /></td></tr>
-<tr class="separator:a7c5e554f29e464f96e4c19fb364ef1f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77a06768c2eff5df0310c7f4b5fc2212"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a77a06768c2eff5df0310c7f4b5fc2212">destroy_service</a> (self, service)</td></tr>
-<tr class="memdesc:a77a06768c2eff5df0310c7f4b5fc2212"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a service server created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a77a06768c2eff5df0310c7f4b5fc2212">More...</a><br /></td></tr>
-<tr class="separator:a77a06768c2eff5df0310c7f4b5fc2212"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b248d52b49b0e53ead98c6f8394af94"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a4b248d52b49b0e53ead98c6f8394af94">destroy_subscription</a> (self, subscription)</td></tr>
-<tr class="memdesc:a4b248d52b49b0e53ead98c6f8394af94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a subscription created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a4b248d52b49b0e53ead98c6f8394af94">More...</a><br /></td></tr>
-<tr class="separator:a4b248d52b49b0e53ead98c6f8394af94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f4c82e918234d211f71f9376f4480a8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a9f4c82e918234d211f71f9376f4480a8">destroy_timer</a> (self, timer)</td></tr>
-<tr class="memdesc:a9f4c82e918234d211f71f9376f4480a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a timer created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a9f4c82e918234d211f71f9376f4480a8">More...</a><br /></td></tr>
-<tr class="separator:a9f4c82e918234d211f71f9376f4480a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb773cc35bc297e3cd9ae21dc6982ced"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#acb773cc35bc297e3cd9ae21dc6982ced">get_client_names_and_types_by_node</a> (self, node_name, node_namespace)</td></tr>
-<tr class="memdesc:acb773cc35bc297e3cd9ae21dc6982ced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an empty list (ROS2 API compatibility stand-in)  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#acb773cc35bc297e3cd9ae21dc6982ced">More...</a><br /></td></tr>
-<tr class="separator:acb773cc35bc297e3cd9ae21dc6982ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa91639ce1383fd570fbcc9f7b5fbfd36"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#aa91639ce1383fd570fbcc9f7b5fbfd36">get_clock</a> (self)</td></tr>
-<tr class="memdesc:aa91639ce1383fd570fbcc9f7b5fbfd36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns `clock.Clock` using ROS time.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#aa91639ce1383fd570fbcc9f7b5fbfd36">More...</a><br /></td></tr>
-<tr class="separator:aa91639ce1383fd570fbcc9f7b5fbfd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67cebed1cec2cf86898be4b2e6e917f4"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a67cebed1cec2cf86898be4b2e6e917f4">get_logger</a> (self)</td></tr>
-<tr class="memdesc:a67cebed1cec2cf86898be4b2e6e917f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node's logger.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a67cebed1cec2cf86898be4b2e6e917f4">More...</a><br /></td></tr>
-<tr class="separator:a67cebed1cec2cf86898be4b2e6e917f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae13ea075e8de9101d02c0316ccb2ce79"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ae13ea075e8de9101d02c0316ccb2ce79">get_name</a> (self)</td></tr>
-<tr class="memdesc:ae13ea075e8de9101d02c0316ccb2ce79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the node, without namespace.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ae13ea075e8de9101d02c0316ccb2ce79">More...</a><br /></td></tr>
-<tr class="separator:ae13ea075e8de9101d02c0316ccb2ce79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbec20d7dd3828d8498476aa4589a90a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#acbec20d7dd3828d8498476aa4589a90a">get_namespace</a> (self)</td></tr>
-<tr class="memdesc:acbec20d7dd3828d8498476aa4589a90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the namespace of the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#acbec20d7dd3828d8498476aa4589a90a">More...</a><br /></td></tr>
-<tr class="separator:acbec20d7dd3828d8498476aa4589a90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1eb75670506cb5605a9b83e74e0d1e6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ad1eb75670506cb5605a9b83e74e0d1e6">get_node_names</a> (self)</td></tr>
-<tr class="memdesc:ad1eb75670506cb5605a9b83e74e0d1e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of names for discovered nodes.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ad1eb75670506cb5605a9b83e74e0d1e6">More...</a><br /></td></tr>
-<tr class="separator:ad1eb75670506cb5605a9b83e74e0d1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cfd054de2380e268e9d7615442c4265"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a5cfd054de2380e268e9d7615442c4265">get_node_names_and_namespaces</a> (self)</td></tr>
-<tr class="memdesc:a5cfd054de2380e268e9d7615442c4265"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of names and namespaces for discovered nodes.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a5cfd054de2380e268e9d7615442c4265">More...</a><br /></td></tr>
-<tr class="separator:a5cfd054de2380e268e9d7615442c4265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a769491047abf6e48532e233f4514a168"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a769491047abf6e48532e233f4514a168">get_node_names_and_namespaces_with_enclaves</a> (self)</td></tr>
-<tr class="memdesc:a769491047abf6e48532e233f4514a168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of names, namespaces and enclaves for discovered nodes.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a769491047abf6e48532e233f4514a168">More...</a><br /></td></tr>
-<tr class="separator:a769491047abf6e48532e233f4514a168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4355465aa74d899cca25b4ca17082ef0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a4355465aa74d899cca25b4ca17082ef0">get_parameter</a> (self, name)</td></tr>
-<tr class="memdesc:a4355465aa74d899cca25b4ca17082ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a parameter by name.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a4355465aa74d899cca25b4ca17082ef0">More...</a><br /></td></tr>
-<tr class="separator:a4355465aa74d899cca25b4ca17082ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07bc61735c7c135b2ec3a691b163cf36"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a07bc61735c7c135b2ec3a691b163cf36">get_parameter_or</a> (self, name, alternative_value=None)</td></tr>
-<tr class="memdesc:a07bc61735c7c135b2ec3a691b163cf36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a parameter or the alternative value.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a07bc61735c7c135b2ec3a691b163cf36">More...</a><br /></td></tr>
-<tr class="separator:a07bc61735c7c135b2ec3a691b163cf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0787c24279d1a4125facba139b09e433"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a0787c24279d1a4125facba139b09e433">get_parameters</a> (self, names)</td></tr>
-<tr class="memdesc:a0787c24279d1a4125facba139b09e433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of parameters.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a0787c24279d1a4125facba139b09e433">More...</a><br /></td></tr>
-<tr class="separator:a0787c24279d1a4125facba139b09e433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18e3274850694616b8f9074cf00600fa"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a18e3274850694616b8f9074cf00600fa">get_parameters_by_prefix</a> (self, prefix)</td></tr>
-<tr class="memdesc:a18e3274850694616b8f9074cf00600fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get parameters that have a given prefix in their names as a dictionary.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a18e3274850694616b8f9074cf00600fa">More...</a><br /></td></tr>
-<tr class="separator:a18e3274850694616b8f9074cf00600fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1229a9d85c8b102a833559dac5a96fd"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ac1229a9d85c8b102a833559dac5a96fd">get_publisher_names_and_types_by_node</a> (self, node_name, node_namespace, no_demangle=False)</td></tr>
-<tr class="memdesc:ac1229a9d85c8b102a833559dac5a96fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of discovered topics for publishers of a remote node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ac1229a9d85c8b102a833559dac5a96fd">More...</a><br /></td></tr>
-<tr class="separator:ac1229a9d85c8b102a833559dac5a96fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ee1f8805dbcedd548c59a8bb49bfd3a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a7ee1f8805dbcedd548c59a8bb49bfd3a">get_publishers_info_by_topic</a> (self, topic_name, no_mangle=False)</td></tr>
-<tr class="memdesc:a7ee1f8805dbcedd548c59a8bb49bfd3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of publishers on a given topic.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a7ee1f8805dbcedd548c59a8bb49bfd3a">More...</a><br /></td></tr>
-<tr class="separator:a7ee1f8805dbcedd548c59a8bb49bfd3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1438c9506c68cdb6927315267e2f1853"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a1438c9506c68cdb6927315267e2f1853">get_service_names_and_types</a> (self)</td></tr>
-<tr class="memdesc:a1438c9506c68cdb6927315267e2f1853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of available services.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a1438c9506c68cdb6927315267e2f1853">More...</a><br /></td></tr>
-<tr class="separator:a1438c9506c68cdb6927315267e2f1853"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9522168ab6f5c9126efd513c9ec919d1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a9522168ab6f5c9126efd513c9ec919d1">get_service_names_and_types_by_node</a> (self, node_name, node_namespace)</td></tr>
-<tr class="memdesc:a9522168ab6f5c9126efd513c9ec919d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of discovered service server topics for a remote node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a9522168ab6f5c9126efd513c9ec919d1">More...</a><br /></td></tr>
-<tr class="separator:a9522168ab6f5c9126efd513c9ec919d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abead92610be2c9dc9f6c223599500250"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#abead92610be2c9dc9f6c223599500250">get_subscriber_names_and_types_by_node</a> (self, node_name, node_namespace, no_demangle=False)</td></tr>
-<tr class="memdesc:abead92610be2c9dc9f6c223599500250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of discovered topics for subscriptions of a remote node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#abead92610be2c9dc9f6c223599500250">More...</a><br /></td></tr>
-<tr class="separator:abead92610be2c9dc9f6c223599500250"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0000c74a0c7d361ca393c3deb1997106"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a0000c74a0c7d361ca393c3deb1997106">get_subscriptions_info_by_topic</a> (self, topic_name, no_mangle=False)</td></tr>
-<tr class="memdesc:a0000c74a0c7d361ca393c3deb1997106"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of subscriptions on a given topic.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a0000c74a0c7d361ca393c3deb1997106">More...</a><br /></td></tr>
-<tr class="separator:a0000c74a0c7d361ca393c3deb1997106"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c55b00f21f5bf5a617754307dea18e4"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a8c55b00f21f5bf5a617754307dea18e4">get_topic_names_and_types</a> (self, no_demangle=False)</td></tr>
-<tr class="memdesc:a8c55b00f21f5bf5a617754307dea18e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of available topic names and types.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a8c55b00f21f5bf5a617754307dea18e4">More...</a><br /></td></tr>
-<tr class="separator:a8c55b00f21f5bf5a617754307dea18e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c476ee23dc5a1965f2120b897b985c3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3c476ee23dc5a1965f2120b897b985c3">has_parameter</a> (self, name)</td></tr>
-<tr class="memdesc:a3c476ee23dc5a1965f2120b897b985c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether parameter exists.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a3c476ee23dc5a1965f2120b897b985c3">More...</a><br /></td></tr>
-<tr class="separator:a3c476ee23dc5a1965f2120b897b985c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29fc6eecf021f6d5354461981aa2fe84"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a29fc6eecf021f6d5354461981aa2fe84">remove_on_set_parameters_callback</a> (self, callback)</td></tr>
-<tr class="memdesc:a29fc6eecf021f6d5354461981aa2fe84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a callback from list of callbacks.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a29fc6eecf021f6d5354461981aa2fe84">More...</a><br /></td></tr>
-<tr class="separator:a29fc6eecf021f6d5354461981aa2fe84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17767d1adc0471eda6dc1e6895ce13ef"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a17767d1adc0471eda6dc1e6895ce13ef">remove_waitable</a> (self, waitable)</td></tr>
-<tr class="memdesc:a17767d1adc0471eda6dc1e6895ce13ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a17767d1adc0471eda6dc1e6895ce13ef">More...</a><br /></td></tr>
-<tr class="separator:a17767d1adc0471eda6dc1e6895ce13ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1238e011f1bb46b9d2d60e718507d9e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ad1238e011f1bb46b9d2d60e718507d9e">set_descriptor</a> (self, name, descriptor, alternative_value=None)</td></tr>
-<tr class="memdesc:ad1238e011f1bb46b9d2d60e718507d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new descriptor for a given parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ad1238e011f1bb46b9d2d60e718507d9e">More...</a><br /></td></tr>
-<tr class="separator:ad1238e011f1bb46b9d2d60e718507d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f30f6ce41a187feb21ab82927e766c8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a1f30f6ce41a187feb21ab82927e766c8">set_parameters</a> (self, parameter_list)</td></tr>
-<tr class="memdesc:a1f30f6ce41a187feb21ab82927e766c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set parameters for the node, and return the result for the set action.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a1f30f6ce41a187feb21ab82927e766c8">More...</a><br /></td></tr>
-<tr class="separator:a1f30f6ce41a187feb21ab82927e766c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e914a688df77443edda6cf918188427"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a1e914a688df77443edda6cf918188427">set_parameters_atomically</a> (self, parameter_list)</td></tr>
-<tr class="memdesc:a1e914a688df77443edda6cf918188427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the given parameters, all at one time, and then aggregate result.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a1e914a688df77443edda6cf918188427">More...</a><br /></td></tr>
-<tr class="separator:a1e914a688df77443edda6cf918188427"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73a21ca654b710fb2e3cde952f53cfaf"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a73a21ca654b710fb2e3cde952f53cfaf">set_parameters_callback</a> (self, callback)</td></tr>
-<tr class="memdesc:a73a21ca654b710fb2e3cde952f53cfaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a set parameters callback.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a73a21ca654b710fb2e3cde952f53cfaf">More...</a><br /></td></tr>
-<tr class="separator:a73a21ca654b710fb2e3cde952f53cfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc5025e9d3681b2162cbfd58f947dc9e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#afc5025e9d3681b2162cbfd58f947dc9e">undeclare_parameter</a> (self, name)</td></tr>
-<tr class="memdesc:afc5025e9d3681b2162cbfd58f947dc9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a previously set parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#afc5025e9d3681b2162cbfd58f947dc9e">More...</a><br /></td></tr>
-<tr class="separator:afc5025e9d3681b2162cbfd58f947dc9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e212a392e008c0d5be591ca85f3004"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a99e212a392e008c0d5be591ca85f3004">__init__</a> (self, node_name, *<a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3b83c67cf18f6b46a08454867d82d136">context</a>=None, cli_args=None, namespace=None, use_global_arguments=True, enable_rosout=True, start_parameter_services=None, parameter_overrides=None, allow_undeclared_parameters=False, automatically_declare_parameters_from_overrides=False)</td></tr>
+<tr class="memdesc:a99e212a392e008c0d5be591ca85f3004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a ROS1 node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a99e212a392e008c0d5be591ca85f3004">More...</a><br /></td></tr>
+<tr class="separator:a99e212a392e008c0d5be591ca85f3004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8794e2addc71173dbd0bad48040ee66"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ab8794e2addc71173dbd0bad48040ee66">add_on_set_parameters_callback</a> (self, callback)</td></tr>
+<tr class="memdesc:ab8794e2addc71173dbd0bad48040ee66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a callback in front to the list of callbacks.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ab8794e2addc71173dbd0bad48040ee66">More...</a><br /></td></tr>
+<tr class="separator:ab8794e2addc71173dbd0bad48040ee66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac86273632dff19515554586132eea755"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ac86273632dff19515554586132eea755">add_waitable</a> (self, waitable)</td></tr>
+<tr class="memdesc:ac86273632dff19515554586132eea755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ac86273632dff19515554586132eea755">More...</a><br /></td></tr>
+<tr class="separator:ac86273632dff19515554586132eea755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a703406d3bf533ca6af6cd068da2b3975"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a703406d3bf533ca6af6cd068da2b3975">count_publishers</a> (self, topic_name)</td></tr>
+<tr class="memdesc:a703406d3bf533ca6af6cd068da2b3975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of publishers on a given topic, globally.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a703406d3bf533ca6af6cd068da2b3975">More...</a><br /></td></tr>
+<tr class="separator:a703406d3bf533ca6af6cd068da2b3975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ef4334c3cbe070fd5ed1714dfc3278"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#aa5ef4334c3cbe070fd5ed1714dfc3278">count_subscribers</a> (self, topic_name)</td></tr>
+<tr class="memdesc:aa5ef4334c3cbe070fd5ed1714dfc3278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of subscribers on a given topic.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#aa5ef4334c3cbe070fd5ed1714dfc3278">More...</a><br /></td></tr>
+<tr class="separator:aa5ef4334c3cbe070fd5ed1714dfc3278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f9d63fe5936dbc85fa72d345f397a4f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a8f9d63fe5936dbc85fa72d345f397a4f">create_client</a> (self, srv_type, srv_name, *qos_profile=None, callback_group=None)</td></tr>
+<tr class="memdesc:a8f9d63fe5936dbc85fa72d345f397a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new service client.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a8f9d63fe5936dbc85fa72d345f397a4f">More...</a><br /></td></tr>
+<tr class="separator:a8f9d63fe5936dbc85fa72d345f397a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acad5ac12262d8c201af592131e586943"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#acad5ac12262d8c201af592131e586943">create_guard_condition</a> (self, callback, callback_group=None)</td></tr>
+<tr class="memdesc:acad5ac12262d8c201af592131e586943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing and returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#acad5ac12262d8c201af592131e586943">More...</a><br /></td></tr>
+<tr class="separator:acad5ac12262d8c201af592131e586943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dd9d3649a7889a0ffc39a019fd86458"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a1dd9d3649a7889a0ffc39a019fd86458">create_publisher</a> (self, msg_type, topic, qos_profile, *callback_group=None, event_callbacks=None)</td></tr>
+<tr class="memdesc:a1dd9d3649a7889a0ffc39a019fd86458"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new publisher.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a1dd9d3649a7889a0ffc39a019fd86458">More...</a><br /></td></tr>
+<tr class="separator:a1dd9d3649a7889a0ffc39a019fd86458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dfccd3ddd9b03c0c56414c523f52a99"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a7dfccd3ddd9b03c0c56414c523f52a99">create_rate</a> (self, frequency, clock=None)</td></tr>
+<tr class="memdesc:a7dfccd3ddd9b03c0c56414c523f52a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a rate object.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a7dfccd3ddd9b03c0c56414c523f52a99">More...</a><br /></td></tr>
+<tr class="separator:a7dfccd3ddd9b03c0c56414c523f52a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae527b8debae01f5dda098d2b9070ef37"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ae527b8debae01f5dda098d2b9070ef37">create_service</a> (self, srv_type, srv_name, callback, *qos_profile=None, callback_group=None)</td></tr>
+<tr class="memdesc:ae527b8debae01f5dda098d2b9070ef37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new service server.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ae527b8debae01f5dda098d2b9070ef37">More...</a><br /></td></tr>
+<tr class="separator:ae527b8debae01f5dda098d2b9070ef37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa225c44f3bcf519fd856a04dc730d605"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#aa225c44f3bcf519fd856a04dc730d605">create_subscription</a> (self, msg_type, topic, callback, qos_profile, *callback_group=None, event_callbacks=None, raw=False)</td></tr>
+<tr class="memdesc:aa225c44f3bcf519fd856a04dc730d605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new subscription.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#aa225c44f3bcf519fd856a04dc730d605">More...</a><br /></td></tr>
+<tr class="separator:aa225c44f3bcf519fd856a04dc730d605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a051cad70a28f9b3964ca0a7fe4fb8a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a2a051cad70a28f9b3964ca0a7fe4fb8a">create_timer</a> (self, timer_period_sec, callback, callback_group=None, clock=None)</td></tr>
+<tr class="memdesc:a2a051cad70a28f9b3964ca0a7fe4fb8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new timer.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a2a051cad70a28f9b3964ca0a7fe4fb8a">More...</a><br /></td></tr>
+<tr class="separator:a2a051cad70a28f9b3964ca0a7fe4fb8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822a4cbc9c7716d39e1e3824917a417a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a822a4cbc9c7716d39e1e3824917a417a">declare_parameter</a> (self, name, value=None, descriptor=None, ignore_override=False)</td></tr>
+<tr class="memdesc:a822a4cbc9c7716d39e1e3824917a417a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets and initializes a node parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a822a4cbc9c7716d39e1e3824917a417a">More...</a><br /></td></tr>
+<tr class="separator:a822a4cbc9c7716d39e1e3824917a417a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4899f6ea1acf3274dac63b4abcf1d99d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a4899f6ea1acf3274dac63b4abcf1d99d">declare_parameters</a> (self, namespace, parameters, ignore_override=False)</td></tr>
+<tr class="memdesc:a4899f6ea1acf3274dac63b4abcf1d99d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a list of parameters.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a4899f6ea1acf3274dac63b4abcf1d99d">More...</a><br /></td></tr>
+<tr class="separator:a4899f6ea1acf3274dac63b4abcf1d99d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8a1ff8f83e2bf5f5acf2876fc5a6061"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ab8a1ff8f83e2bf5f5acf2876fc5a6061">describe_parameter</a> (self, name)</td></tr>
+<tr class="memdesc:ab8a1ff8f83e2bf5f5acf2876fc5a6061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameter descriptor of a given parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ab8a1ff8f83e2bf5f5acf2876fc5a6061">More...</a><br /></td></tr>
+<tr class="separator:ab8a1ff8f83e2bf5f5acf2876fc5a6061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad42088a58b57528f73b6ee7d7c7aa360"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ad42088a58b57528f73b6ee7d7c7aa360">describe_parameters</a> (self, names)</td></tr>
+<tr class="memdesc:ad42088a58b57528f73b6ee7d7c7aa360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parameter descriptors of a given list of parameters.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ad42088a58b57528f73b6ee7d7c7aa360">More...</a><br /></td></tr>
+<tr class="separator:ad42088a58b57528f73b6ee7d7c7aa360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a691de8e453efaa614a106f654f43d37e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a691de8e453efaa614a106f654f43d37e">destroy_client</a> (self, client)</td></tr>
+<tr class="memdesc:a691de8e453efaa614a106f654f43d37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a service client created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a691de8e453efaa614a106f654f43d37e">More...</a><br /></td></tr>
+<tr class="separator:a691de8e453efaa614a106f654f43d37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf5ed016329adb2faf2b69b43f05d9c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#adcf5ed016329adb2faf2b69b43f05d9c">destroy_guard_condition</a> (self, guard)</td></tr>
+<tr class="memdesc:adcf5ed016329adb2faf2b69b43f05d9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#adcf5ed016329adb2faf2b69b43f05d9c">More...</a><br /></td></tr>
+<tr class="separator:adcf5ed016329adb2faf2b69b43f05d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d0d71e5719590d7b8fbc8d2feeb7258"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a1d0d71e5719590d7b8fbc8d2feeb7258">destroy_node</a> (self)</td></tr>
+<tr class="memdesc:a1d0d71e5719590d7b8fbc8d2feeb7258"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the node and shuts down rospy.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a1d0d71e5719590d7b8fbc8d2feeb7258">More...</a><br /></td></tr>
+<tr class="separator:a1d0d71e5719590d7b8fbc8d2feeb7258"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdfc5ceca9d0c40406322588ee69955a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#afdfc5ceca9d0c40406322588ee69955a">destroy_publisher</a> (self, publisher)</td></tr>
+<tr class="memdesc:afdfc5ceca9d0c40406322588ee69955a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a publisher created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#afdfc5ceca9d0c40406322588ee69955a">More...</a><br /></td></tr>
+<tr class="separator:afdfc5ceca9d0c40406322588ee69955a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2873129235df5558f4cd82d25b851519"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a2873129235df5558f4cd82d25b851519">destroy_rate</a> (self, rate)</td></tr>
+<tr class="memdesc:a2873129235df5558f4cd82d25b851519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a2873129235df5558f4cd82d25b851519">More...</a><br /></td></tr>
+<tr class="separator:a2873129235df5558f4cd82d25b851519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f5f3e27efde91d48d9ec4b68f47241"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ab9f5f3e27efde91d48d9ec4b68f47241">destroy_service</a> (self, service)</td></tr>
+<tr class="memdesc:ab9f5f3e27efde91d48d9ec4b68f47241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a service server created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ab9f5f3e27efde91d48d9ec4b68f47241">More...</a><br /></td></tr>
+<tr class="separator:ab9f5f3e27efde91d48d9ec4b68f47241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8a4b265033cdbfb9e1445289e81f37b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ac8a4b265033cdbfb9e1445289e81f37b">destroy_subscription</a> (self, subscription)</td></tr>
+<tr class="memdesc:ac8a4b265033cdbfb9e1445289e81f37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a subscription created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ac8a4b265033cdbfb9e1445289e81f37b">More...</a><br /></td></tr>
+<tr class="separator:ac8a4b265033cdbfb9e1445289e81f37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6468ed56854caa78e636186c315083c5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a6468ed56854caa78e636186c315083c5">destroy_timer</a> (self, timer)</td></tr>
+<tr class="memdesc:a6468ed56854caa78e636186c315083c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a timer created by the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a6468ed56854caa78e636186c315083c5">More...</a><br /></td></tr>
+<tr class="separator:a6468ed56854caa78e636186c315083c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11c1396bfddd7fe132731ca97e6b55dc"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a11c1396bfddd7fe132731ca97e6b55dc">get_client_names_and_types_by_node</a> (self, node_name, node_namespace)</td></tr>
+<tr class="memdesc:a11c1396bfddd7fe132731ca97e6b55dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an empty list (ROS2 API compatibility stand-in)  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a11c1396bfddd7fe132731ca97e6b55dc">More...</a><br /></td></tr>
+<tr class="separator:a11c1396bfddd7fe132731ca97e6b55dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac508083ceace5991224204ae88d00a2e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ac508083ceace5991224204ae88d00a2e">get_clock</a> (self)</td></tr>
+<tr class="memdesc:ac508083ceace5991224204ae88d00a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns `clock.Clock` using ROS time.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ac508083ceace5991224204ae88d00a2e">More...</a><br /></td></tr>
+<tr class="separator:ac508083ceace5991224204ae88d00a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a939ba0e5d767cb521c3795a82372d40f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a939ba0e5d767cb521c3795a82372d40f">get_logger</a> (self)</td></tr>
+<tr class="memdesc:a939ba0e5d767cb521c3795a82372d40f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node's logger.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a939ba0e5d767cb521c3795a82372d40f">More...</a><br /></td></tr>
+<tr class="separator:a939ba0e5d767cb521c3795a82372d40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a168200ff258a8de21a02c5eb981effd4"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a168200ff258a8de21a02c5eb981effd4">get_name</a> (self)</td></tr>
+<tr class="memdesc:a168200ff258a8de21a02c5eb981effd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the node, without namespace.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a168200ff258a8de21a02c5eb981effd4">More...</a><br /></td></tr>
+<tr class="separator:a168200ff258a8de21a02c5eb981effd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e255cf9e32c34fb6820754b7a107e24"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a2e255cf9e32c34fb6820754b7a107e24">get_namespace</a> (self)</td></tr>
+<tr class="memdesc:a2e255cf9e32c34fb6820754b7a107e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the namespace of the node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a2e255cf9e32c34fb6820754b7a107e24">More...</a><br /></td></tr>
+<tr class="separator:a2e255cf9e32c34fb6820754b7a107e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac17b1b9ec43fb3a256803cdf45756abf"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ac17b1b9ec43fb3a256803cdf45756abf">get_node_names</a> (self)</td></tr>
+<tr class="memdesc:ac17b1b9ec43fb3a256803cdf45756abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of names for discovered nodes.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ac17b1b9ec43fb3a256803cdf45756abf">More...</a><br /></td></tr>
+<tr class="separator:ac17b1b9ec43fb3a256803cdf45756abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ecbacb6b38d736fd67b7f8fe9740455"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3ecbacb6b38d736fd67b7f8fe9740455">get_node_names_and_namespaces</a> (self)</td></tr>
+<tr class="memdesc:a3ecbacb6b38d736fd67b7f8fe9740455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of names and namespaces for discovered nodes.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a3ecbacb6b38d736fd67b7f8fe9740455">More...</a><br /></td></tr>
+<tr class="separator:a3ecbacb6b38d736fd67b7f8fe9740455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a700c00afab06f9c3fc656af4f992b627"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a700c00afab06f9c3fc656af4f992b627">get_node_names_and_namespaces_with_enclaves</a> (self)</td></tr>
+<tr class="memdesc:a700c00afab06f9c3fc656af4f992b627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of names, namespaces and enclaves for discovered nodes.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a700c00afab06f9c3fc656af4f992b627">More...</a><br /></td></tr>
+<tr class="separator:a700c00afab06f9c3fc656af4f992b627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd0581a17de4ecffa794de9c3c8c5cb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a4fd0581a17de4ecffa794de9c3c8c5cb">get_parameter</a> (self, name)</td></tr>
+<tr class="memdesc:a4fd0581a17de4ecffa794de9c3c8c5cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a parameter by name.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a4fd0581a17de4ecffa794de9c3c8c5cb">More...</a><br /></td></tr>
+<tr class="separator:a4fd0581a17de4ecffa794de9c3c8c5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1262be9b9482f7d750d4236ab9c07a8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#af1262be9b9482f7d750d4236ab9c07a8">get_parameter_or</a> (self, name, alternative_value=None)</td></tr>
+<tr class="memdesc:af1262be9b9482f7d750d4236ab9c07a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a parameter or the alternative value.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#af1262be9b9482f7d750d4236ab9c07a8">More...</a><br /></td></tr>
+<tr class="separator:af1262be9b9482f7d750d4236ab9c07a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19f33b72c7fcc758b310fcfdebddf703"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a19f33b72c7fcc758b310fcfdebddf703">get_parameters</a> (self, names)</td></tr>
+<tr class="memdesc:a19f33b72c7fcc758b310fcfdebddf703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of parameters.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a19f33b72c7fcc758b310fcfdebddf703">More...</a><br /></td></tr>
+<tr class="separator:a19f33b72c7fcc758b310fcfdebddf703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83b54967a427e95c5d6aa6163b8b182e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a83b54967a427e95c5d6aa6163b8b182e">get_parameters_by_prefix</a> (self, prefix)</td></tr>
+<tr class="memdesc:a83b54967a427e95c5d6aa6163b8b182e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get parameters that have a given prefix in their names as a dictionary.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a83b54967a427e95c5d6aa6163b8b182e">More...</a><br /></td></tr>
+<tr class="separator:a83b54967a427e95c5d6aa6163b8b182e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01aa81da734dcf3c45410686ef260653"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a01aa81da734dcf3c45410686ef260653">get_publisher_names_and_types_by_node</a> (self, node_name, node_namespace, no_demangle=False)</td></tr>
+<tr class="memdesc:a01aa81da734dcf3c45410686ef260653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of discovered topics for publishers of a remote node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a01aa81da734dcf3c45410686ef260653">More...</a><br /></td></tr>
+<tr class="separator:a01aa81da734dcf3c45410686ef260653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad794e5726506b12a54582592b400efd2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ad794e5726506b12a54582592b400efd2">get_publishers_info_by_topic</a> (self, topic_name, no_mangle=False)</td></tr>
+<tr class="memdesc:ad794e5726506b12a54582592b400efd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of publishers on a given topic.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ad794e5726506b12a54582592b400efd2">More...</a><br /></td></tr>
+<tr class="separator:ad794e5726506b12a54582592b400efd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb3202bcf747a8e0bf4f249de9aa4314"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#adb3202bcf747a8e0bf4f249de9aa4314">get_service_names_and_types</a> (self)</td></tr>
+<tr class="memdesc:adb3202bcf747a8e0bf4f249de9aa4314"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of available services.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#adb3202bcf747a8e0bf4f249de9aa4314">More...</a><br /></td></tr>
+<tr class="separator:adb3202bcf747a8e0bf4f249de9aa4314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99efc444442a167e4e7233ca841c4df9"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a99efc444442a167e4e7233ca841c4df9">get_service_names_and_types_by_node</a> (self, node_name, node_namespace)</td></tr>
+<tr class="memdesc:a99efc444442a167e4e7233ca841c4df9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of discovered service server topics for a remote node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a99efc444442a167e4e7233ca841c4df9">More...</a><br /></td></tr>
+<tr class="separator:a99efc444442a167e4e7233ca841c4df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b3c240e7941965fb16e9adacf3601f0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a8b3c240e7941965fb16e9adacf3601f0">get_subscriber_names_and_types_by_node</a> (self, node_name, node_namespace, no_demangle=False)</td></tr>
+<tr class="memdesc:a8b3c240e7941965fb16e9adacf3601f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of discovered topics for subscriptions of a remote node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a8b3c240e7941965fb16e9adacf3601f0">More...</a><br /></td></tr>
+<tr class="separator:a8b3c240e7941965fb16e9adacf3601f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1485b2bdb7086593c400da1e4a2175b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ad1485b2bdb7086593c400da1e4a2175b">get_subscriptions_info_by_topic</a> (self, topic_name, no_mangle=False)</td></tr>
+<tr class="memdesc:ad1485b2bdb7086593c400da1e4a2175b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of subscriptions on a given topic.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ad1485b2bdb7086593c400da1e4a2175b">More...</a><br /></td></tr>
+<tr class="separator:ad1485b2bdb7086593c400da1e4a2175b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c49d1bcaaca5b4edea4ebc52da832ec"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3c49d1bcaaca5b4edea4ebc52da832ec">get_topic_names_and_types</a> (self, no_demangle=False)</td></tr>
+<tr class="memdesc:a3c49d1bcaaca5b4edea4ebc52da832ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of available topic names and types.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a3c49d1bcaaca5b4edea4ebc52da832ec">More...</a><br /></td></tr>
+<tr class="separator:a3c49d1bcaaca5b4edea4ebc52da832ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f1f282337d06b190260b56cd739bdb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a03f1f282337d06b190260b56cd739bdb">has_parameter</a> (self, name)</td></tr>
+<tr class="memdesc:a03f1f282337d06b190260b56cd739bdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether parameter exists.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a03f1f282337d06b190260b56cd739bdb">More...</a><br /></td></tr>
+<tr class="separator:a03f1f282337d06b190260b56cd739bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0eb68bb8057c9001223a64d9398e41e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#aa0eb68bb8057c9001223a64d9398e41e">remove_on_set_parameters_callback</a> (self, callback)</td></tr>
+<tr class="memdesc:aa0eb68bb8057c9001223a64d9398e41e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a callback from list of callbacks.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#aa0eb68bb8057c9001223a64d9398e41e">More...</a><br /></td></tr>
+<tr class="separator:aa0eb68bb8057c9001223a64d9398e41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d8d5305342ee37ae2ec526fc8918f34"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a5d8d5305342ee37ae2ec526fc8918f34">remove_waitable</a> (self, waitable)</td></tr>
+<tr class="memdesc:a5d8d5305342ee37ae2ec526fc8918f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a5d8d5305342ee37ae2ec526fc8918f34">More...</a><br /></td></tr>
+<tr class="separator:a5d8d5305342ee37ae2ec526fc8918f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97dcfe04ab8a6f5d303c803d12ec51af"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a97dcfe04ab8a6f5d303c803d12ec51af">set_descriptor</a> (self, name, descriptor, alternative_value=None)</td></tr>
+<tr class="memdesc:a97dcfe04ab8a6f5d303c803d12ec51af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new descriptor for a given parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a97dcfe04ab8a6f5d303c803d12ec51af">More...</a><br /></td></tr>
+<tr class="separator:a97dcfe04ab8a6f5d303c803d12ec51af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3240424441c8fe01342844ab3fff9a75"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3240424441c8fe01342844ab3fff9a75">set_parameters</a> (self, parameter_list)</td></tr>
+<tr class="memdesc:a3240424441c8fe01342844ab3fff9a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set parameters for the node, and return the result for the set action.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a3240424441c8fe01342844ab3fff9a75">More...</a><br /></td></tr>
+<tr class="separator:a3240424441c8fe01342844ab3fff9a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d70d15ef50a319d559584308122325"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a72d70d15ef50a319d559584308122325">set_parameters_atomically</a> (self, parameter_list)</td></tr>
+<tr class="memdesc:a72d70d15ef50a319d559584308122325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the given parameters, all at one time, and then aggregate result.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a72d70d15ef50a319d559584308122325">More...</a><br /></td></tr>
+<tr class="separator:a72d70d15ef50a319d559584308122325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3df682293a52f2a122fc295647a9da49"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3df682293a52f2a122fc295647a9da49">set_parameters_callback</a> (self, callback)</td></tr>
+<tr class="memdesc:a3df682293a52f2a122fc295647a9da49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a set parameters callback.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a3df682293a52f2a122fc295647a9da49">More...</a><br /></td></tr>
+<tr class="separator:a3df682293a52f2a122fc295647a9da49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f8e6fa0ea6453fa0d84a82c6937cc12"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3f8e6fa0ea6453fa0d84a82c6937cc12">undeclare_parameter</a> (self, name)</td></tr>
+<tr class="memdesc:a3f8e6fa0ea6453fa0d84a82c6937cc12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a previously set parameter.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a3f8e6fa0ea6453fa0d84a82c6937cc12">More...</a><br /></td></tr>
+<tr class="separator:a3f8e6fa0ea6453fa0d84a82c6937cc12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a1cebf90b96f66a3d46cccf776b5245e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a1cebf90b96f66a3d46cccf776b5245e0">PARAM_REL_TOL</a> = 1e-6</td></tr>
-<tr class="memdesc:a1cebf90b96f66a3d46cccf776b5245e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative tolerance for floating-point parameter range steps.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a1cebf90b96f66a3d46cccf776b5245e0">More...</a><br /></td></tr>
-<tr class="separator:a1cebf90b96f66a3d46cccf776b5245e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5cb2b469f51d58966b8d4384c236f30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ab5cb2b469f51d58966b8d4384c236f30">PARAM_REL_TOL</a> = 1e-6</td></tr>
+<tr class="memdesc:ab5cb2b469f51d58966b8d4384c236f30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative tolerance for floating-point parameter range steps.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ab5cb2b469f51d58966b8d4384c236f30">More...</a><br /></td></tr>
+<tr class="separator:ab5cb2b469f51d58966b8d4384c236f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a4058051e3069ff2943649d921f089458"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a4058051e3069ff2943649d921f089458">clients</a> = property</td></tr>
-<tr class="memdesc:a4058051e3069ff2943649d921f089458"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields clients that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a4058051e3069ff2943649d921f089458">More...</a><br /></td></tr>
-<tr class="separator:a4058051e3069ff2943649d921f089458"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a261f9f58ccbeaa962c4e675e4212c9cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a261f9f58ccbeaa962c4e675e4212c9cc">context</a> = property</td></tr>
-<tr class="memdesc:a261f9f58ccbeaa962c4e675e4212c9cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a261f9f58ccbeaa962c4e675e4212c9cc">More...</a><br /></td></tr>
-<tr class="separator:a261f9f58ccbeaa962c4e675e4212c9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49a714b155c851d0af19624465f89e4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a49a714b155c851d0af19624465f89e4b">default_callback_group</a> = property</td></tr>
-<tr class="memdesc:a49a714b155c851d0af19624465f89e4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a49a714b155c851d0af19624465f89e4b">More...</a><br /></td></tr>
-<tr class="separator:a49a714b155c851d0af19624465f89e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10dc5a794b998e68e49f378273ec7346"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a10dc5a794b998e68e49f378273ec7346">executor</a> = property</td></tr>
-<tr class="memdesc:a10dc5a794b998e68e49f378273ec7346"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a10dc5a794b998e68e49f378273ec7346">More...</a><br /></td></tr>
-<tr class="separator:a10dc5a794b998e68e49f378273ec7346"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5bc77291434ffd06aa142d917d86f78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#af5bc77291434ffd06aa142d917d86f78">guards</a> = property</td></tr>
-<tr class="memdesc:af5bc77291434ffd06aa142d917d86f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#af5bc77291434ffd06aa142d917d86f78">More...</a><br /></td></tr>
-<tr class="separator:af5bc77291434ffd06aa142d917d86f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a643699f14a4a669b38e41baeb9bb28dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a643699f14a4a669b38e41baeb9bb28dc">handle</a> = property</td></tr>
-<tr class="memdesc:a643699f14a4a669b38e41baeb9bb28dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a643699f14a4a669b38e41baeb9bb28dc">More...</a><br /></td></tr>
-<tr class="separator:a643699f14a4a669b38e41baeb9bb28dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a819f758c5a41224b61ecc8f80ece4fe8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a819f758c5a41224b61ecc8f80ece4fe8">publishers</a> = property</td></tr>
-<tr class="memdesc:a819f758c5a41224b61ecc8f80ece4fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields publishers that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a819f758c5a41224b61ecc8f80ece4fe8">More...</a><br /></td></tr>
-<tr class="separator:a819f758c5a41224b61ecc8f80ece4fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf3c8aa9017e52dd041b7e2c3327621"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a0bf3c8aa9017e52dd041b7e2c3327621">services</a> = property</td></tr>
-<tr class="memdesc:a0bf3c8aa9017e52dd041b7e2c3327621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields services that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a0bf3c8aa9017e52dd041b7e2c3327621">More...</a><br /></td></tr>
-<tr class="separator:a0bf3c8aa9017e52dd041b7e2c3327621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64b907de245db18a366394e98af6ced"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#aa64b907de245db18a366394e98af6ced">subscriptions</a> = property</td></tr>
-<tr class="memdesc:aa64b907de245db18a366394e98af6ced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields subscriptions that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#aa64b907de245db18a366394e98af6ced">More...</a><br /></td></tr>
-<tr class="separator:aa64b907de245db18a366394e98af6ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc4e64394d03a6e790f8e52c674534d9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#acc4e64394d03a6e790f8e52c674534d9">timers</a> = property</td></tr>
-<tr class="memdesc:acc4e64394d03a6e790f8e52c674534d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields timers that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#acc4e64394d03a6e790f8e52c674534d9">More...</a><br /></td></tr>
-<tr class="separator:acc4e64394d03a6e790f8e52c674534d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a307d1e90e1fdcc8faccdf3f553ddda53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a307d1e90e1fdcc8faccdf3f553ddda53">waitables</a> = property</td></tr>
-<tr class="memdesc:a307d1e90e1fdcc8faccdf3f553ddda53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a307d1e90e1fdcc8faccdf3f553ddda53">More...</a><br /></td></tr>
-<tr class="separator:a307d1e90e1fdcc8faccdf3f553ddda53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a905a2aff9bfbdcc142505fb9e42e1e5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a905a2aff9bfbdcc142505fb9e42e1e5c">clients</a> = property</td></tr>
+<tr class="memdesc:a905a2aff9bfbdcc142505fb9e42e1e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields clients that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a905a2aff9bfbdcc142505fb9e42e1e5c">More...</a><br /></td></tr>
+<tr class="separator:a905a2aff9bfbdcc142505fb9e42e1e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b83c67cf18f6b46a08454867d82d136"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a3b83c67cf18f6b46a08454867d82d136">context</a> = property</td></tr>
+<tr class="memdesc:a3b83c67cf18f6b46a08454867d82d136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a3b83c67cf18f6b46a08454867d82d136">More...</a><br /></td></tr>
+<tr class="separator:a3b83c67cf18f6b46a08454867d82d136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af613d0e483a6a8e66fe033566a209c99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#af613d0e483a6a8e66fe033566a209c99">default_callback_group</a> = property</td></tr>
+<tr class="memdesc:af613d0e483a6a8e66fe033566a209c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#af613d0e483a6a8e66fe033566a209c99">More...</a><br /></td></tr>
+<tr class="separator:af613d0e483a6a8e66fe033566a209c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64c61d5bcfed43a896f7e34a6f30739d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a64c61d5bcfed43a896f7e34a6f30739d">executor</a> = property</td></tr>
+<tr class="memdesc:a64c61d5bcfed43a896f7e34a6f30739d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a64c61d5bcfed43a896f7e34a6f30739d">More...</a><br /></td></tr>
+<tr class="separator:a64c61d5bcfed43a896f7e34a6f30739d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23d39774904327916ddc97c2b2f643c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a23d39774904327916ddc97c2b2f643c8">guards</a> = property</td></tr>
+<tr class="memdesc:a23d39774904327916ddc97c2b2f643c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a23d39774904327916ddc97c2b2f643c8">More...</a><br /></td></tr>
+<tr class="separator:a23d39774904327916ddc97c2b2f643c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a8272dd04dc55cb3941b7a816054029"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a5a8272dd04dc55cb3941b7a816054029">handle</a> = property</td></tr>
+<tr class="memdesc:a5a8272dd04dc55cb3941b7a816054029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a5a8272dd04dc55cb3941b7a816054029">More...</a><br /></td></tr>
+<tr class="separator:a5a8272dd04dc55cb3941b7a816054029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada334f1470b3b0ad7f97ed8cc172e3a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ada334f1470b3b0ad7f97ed8cc172e3a6">publishers</a> = property</td></tr>
+<tr class="memdesc:ada334f1470b3b0ad7f97ed8cc172e3a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields publishers that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ada334f1470b3b0ad7f97ed8cc172e3a6">More...</a><br /></td></tr>
+<tr class="separator:ada334f1470b3b0ad7f97ed8cc172e3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65477604c50ee1cd54f9f967f0c23ea2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a65477604c50ee1cd54f9f967f0c23ea2">services</a> = property</td></tr>
+<tr class="memdesc:a65477604c50ee1cd54f9f967f0c23ea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields services that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a65477604c50ee1cd54f9f967f0c23ea2">More...</a><br /></td></tr>
+<tr class="separator:a65477604c50ee1cd54f9f967f0c23ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50152e405b5c328093d0c405a1c13bfd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a50152e405b5c328093d0c405a1c13bfd">subscriptions</a> = property</td></tr>
+<tr class="memdesc:a50152e405b5c328093d0c405a1c13bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields subscriptions that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a50152e405b5c328093d0c405a1c13bfd">More...</a><br /></td></tr>
+<tr class="separator:a50152e405b5c328093d0c405a1c13bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8aa08b614685550e09fb934c500ed88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#ad8aa08b614685550e09fb934c500ed88">timers</a> = property</td></tr>
+<tr class="memdesc:ad8aa08b614685550e09fb934c500ed88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields timers that have been created on this node.  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#ad8aa08b614685550e09fb934c500ed88">More...</a><br /></td></tr>
+<tr class="separator:ad8aa08b614685550e09fb934c500ed88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a238a4f474f971177c2fbbd136dcd19ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html#a238a4f474f971177c2fbbd136dcd19ec">waitables</a> = property</td></tr>
+<tr class="memdesc:a238a4f474f971177c2fbbd136dcd19ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields (ROS2 API compatibility stand-in).  <a href="classrosros_1_1rclify_1_1node_1_1_node.html#a238a4f474f971177c2fbbd136dcd19ec">More...</a><br /></td></tr>
+<tr class="separator:a238a4f474f971177c2fbbd136dcd19ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="node_8py_source.html#l00063">63</a> of file <a class="el" href="node_8py_source.html">node.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6968aa75f82c8dbd26ec2e88bd711a5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6968aa75f82c8dbd26ec2e88bd711a5e">&#9670;&nbsp;</a></span>__init__()</h2>
+<a id="a99e212a392e008c0d5be591ca85f3004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99e212a392e008c0d5be591ca85f3004">&#9670;&nbsp;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def __init__ </td>
+          <td class="memname">def rosros.rclify.node.Node.__init__ </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -397,14 +397,14 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2e4f3e255c9dfa37fa9122531b849e10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e4f3e255c9dfa37fa9122531b849e10">&#9670;&nbsp;</a></span>add_on_set_parameters_callback()</h2>
+<a id="ab8794e2addc71173dbd0bad48040ee66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8794e2addc71173dbd0bad48040ee66">&#9670;&nbsp;</a></span>add_on_set_parameters_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def add_on_set_parameters_callback </td>
+          <td class="memname">def rosros.rclify.node.Node.add_on_set_parameters_callback </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -435,14 +435,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a59e1112872f2dfcb44388e39c4406d1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59e1112872f2dfcb44388e39c4406d1d">&#9670;&nbsp;</a></span>add_waitable()</h2>
+<a id="ac86273632dff19515554586132eea755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac86273632dff19515554586132eea755">&#9670;&nbsp;</a></span>add_waitable()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def add_waitable </td>
+          <td class="memname">def rosros.rclify.node.Node.add_waitable </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -467,14 +467,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="abfd9ef976040f42967ddf771f35c62f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfd9ef976040f42967ddf771f35c62f4">&#9670;&nbsp;</a></span>count_publishers()</h2>
+<a id="a703406d3bf533ca6af6cd068da2b3975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a703406d3bf533ca6af6cd068da2b3975">&#9670;&nbsp;</a></span>count_publishers()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def count_publishers </td>
+          <td class="memname">def rosros.rclify.node.Node.count_publishers </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -506,14 +506,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a82cb1ac6ecd2746a06a6505ffb1151fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82cb1ac6ecd2746a06a6505ffb1151fe">&#9670;&nbsp;</a></span>count_subscribers()</h2>
+<a id="aa5ef4334c3cbe070fd5ed1714dfc3278"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ef4334c3cbe070fd5ed1714dfc3278">&#9670;&nbsp;</a></span>count_subscribers()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def count_subscribers </td>
+          <td class="memname">def rosros.rclify.node.Node.count_subscribers </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -545,14 +545,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ace95126c88c36a07ac80d8ad30c9d768"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace95126c88c36a07ac80d8ad30c9d768">&#9670;&nbsp;</a></span>create_client()</h2>
+<a id="a8f9d63fe5936dbc85fa72d345f397a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f9d63fe5936dbc85fa72d345f397a4f">&#9670;&nbsp;</a></span>create_client()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_client </td>
+          <td class="memname">def rosros.rclify.node.Node.create_client </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -605,14 +605,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aaf8f7e452bb6e5fef2d895d73543227e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf8f7e452bb6e5fef2d895d73543227e">&#9670;&nbsp;</a></span>create_guard_condition()</h2>
+<a id="acad5ac12262d8c201af592131e586943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acad5ac12262d8c201af592131e586943">&#9670;&nbsp;</a></span>create_guard_condition()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_guard_condition </td>
+          <td class="memname">def rosros.rclify.node.Node.create_guard_condition </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -643,14 +643,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a501854621962b6b5fe5de97b9ce4f63a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a501854621962b6b5fe5de97b9ce4f63a">&#9670;&nbsp;</a></span>create_publisher()</h2>
+<a id="a1dd9d3649a7889a0ffc39a019fd86458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dd9d3649a7889a0ffc39a019fd86458">&#9670;&nbsp;</a></span>create_publisher()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_publisher </td>
+          <td class="memname">def rosros.rclify.node.Node.create_publisher </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -710,14 +710,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a810f3cd59e02f5bcc14fe2858cf5c756"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a810f3cd59e02f5bcc14fe2858cf5c756">&#9670;&nbsp;</a></span>create_rate()</h2>
+<a id="a7dfccd3ddd9b03c0c56414c523f52a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dfccd3ddd9b03c0c56414c523f52a99">&#9670;&nbsp;</a></span>create_rate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_rate </td>
+          <td class="memname">def rosros.rclify.node.Node.create_rate </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -756,14 +756,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a6285cd4e97cb519c845abaadaa45598d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6285cd4e97cb519c845abaadaa45598d">&#9670;&nbsp;</a></span>create_service()</h2>
+<a id="ae527b8debae01f5dda098d2b9070ef37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae527b8debae01f5dda098d2b9070ef37">&#9670;&nbsp;</a></span>create_service()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_service </td>
+          <td class="memname">def rosros.rclify.node.Node.create_service </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -823,14 +823,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="afda325f08209178f7e1de655269546ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afda325f08209178f7e1de655269546ef">&#9670;&nbsp;</a></span>create_subscription()</h2>
+<a id="aa225c44f3bcf519fd856a04dc730d605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa225c44f3bcf519fd856a04dc730d605">&#9670;&nbsp;</a></span>create_subscription()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_subscription </td>
+          <td class="memname">def rosros.rclify.node.Node.create_subscription </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -904,14 +904,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a063893cb910137db2961485eab38b20f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a063893cb910137db2961485eab38b20f">&#9670;&nbsp;</a></span>create_timer()</h2>
+<a id="a2a051cad70a28f9b3964ca0a7fe4fb8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a051cad70a28f9b3964ca0a7fe4fb8a">&#9670;&nbsp;</a></span>create_timer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_timer </td>
+          <td class="memname">def rosros.rclify.node.Node.create_timer </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -964,14 +964,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aa2f37adf351757a749a1c52ea1ac6a53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2f37adf351757a749a1c52ea1ac6a53">&#9670;&nbsp;</a></span>declare_parameter()</h2>
+<a id="a822a4cbc9c7716d39e1e3824917a417a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a822a4cbc9c7716d39e1e3824917a417a">&#9670;&nbsp;</a></span>declare_parameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def declare_parameter </td>
+          <td class="memname">def rosros.rclify.node.Node.declare_parameter </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1032,14 +1032,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a0de11d6923dcea337bb9796bcd8a7f0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0de11d6923dcea337bb9796bcd8a7f0d">&#9670;&nbsp;</a></span>declare_parameters()</h2>
+<a id="a4899f6ea1acf3274dac63b4abcf1d99d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4899f6ea1acf3274dac63b4abcf1d99d">&#9670;&nbsp;</a></span>declare_parameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def declare_parameters </td>
+          <td class="memname">def rosros.rclify.node.Node.declare_parameters </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1096,14 +1096,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a6da81a26e1b426201483441ef22276a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6da81a26e1b426201483441ef22276a6">&#9670;&nbsp;</a></span>describe_parameter()</h2>
+<a id="ab8a1ff8f83e2bf5f5acf2876fc5a6061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8a1ff8f83e2bf5f5acf2876fc5a6061">&#9670;&nbsp;</a></span>describe_parameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def describe_parameter </td>
+          <td class="memname">def rosros.rclify.node.Node.describe_parameter </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1141,14 +1141,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ab386320c1bce44e64d2ba72ec856103b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab386320c1bce44e64d2ba72ec856103b">&#9670;&nbsp;</a></span>describe_parameters()</h2>
+<a id="ad42088a58b57528f73b6ee7d7c7aa360"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad42088a58b57528f73b6ee7d7c7aa360">&#9670;&nbsp;</a></span>describe_parameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def describe_parameters </td>
+          <td class="memname">def rosros.rclify.node.Node.describe_parameters </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1186,14 +1186,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a12cbd9afaf7ff4828978e559a21d2432"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12cbd9afaf7ff4828978e559a21d2432">&#9670;&nbsp;</a></span>destroy_client()</h2>
+<a id="a691de8e453efaa614a106f654f43d37e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a691de8e453efaa614a106f654f43d37e">&#9670;&nbsp;</a></span>destroy_client()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_client </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_client </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1219,14 +1219,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a701ff8e112e8b89cab9b87e69386dab2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a701ff8e112e8b89cab9b87e69386dab2">&#9670;&nbsp;</a></span>destroy_guard_condition()</h2>
+<a id="adcf5ed016329adb2faf2b69b43f05d9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcf5ed016329adb2faf2b69b43f05d9c">&#9670;&nbsp;</a></span>destroy_guard_condition()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_guard_condition </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_guard_condition </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1252,14 +1252,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ae4390c6b403a62e4a029796c047d3eec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4390c6b403a62e4a029796c047d3eec">&#9670;&nbsp;</a></span>destroy_node()</h2>
+<a id="a1d0d71e5719590d7b8fbc8d2feeb7258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d0d71e5719590d7b8fbc8d2feeb7258">&#9670;&nbsp;</a></span>destroy_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_node </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_node </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1276,14 +1276,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a0a3342cb75f410b285518edf5d0f7a9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a3342cb75f410b285518edf5d0f7a9f">&#9670;&nbsp;</a></span>destroy_publisher()</h2>
+<a id="afdfc5ceca9d0c40406322588ee69955a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdfc5ceca9d0c40406322588ee69955a">&#9670;&nbsp;</a></span>destroy_publisher()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_publisher </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_publisher </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1309,14 +1309,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a7c5e554f29e464f96e4c19fb364ef1f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c5e554f29e464f96e4c19fb364ef1f2">&#9670;&nbsp;</a></span>destroy_rate()</h2>
+<a id="a2873129235df5558f4cd82d25b851519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2873129235df5558f4cd82d25b851519">&#9670;&nbsp;</a></span>destroy_rate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_rate </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_rate </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1342,14 +1342,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a77a06768c2eff5df0310c7f4b5fc2212"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77a06768c2eff5df0310c7f4b5fc2212">&#9670;&nbsp;</a></span>destroy_service()</h2>
+<a id="ab9f5f3e27efde91d48d9ec4b68f47241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f5f3e27efde91d48d9ec4b68f47241">&#9670;&nbsp;</a></span>destroy_service()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_service </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_service </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1375,14 +1375,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a4b248d52b49b0e53ead98c6f8394af94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b248d52b49b0e53ead98c6f8394af94">&#9670;&nbsp;</a></span>destroy_subscription()</h2>
+<a id="ac8a4b265033cdbfb9e1445289e81f37b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8a4b265033cdbfb9e1445289e81f37b">&#9670;&nbsp;</a></span>destroy_subscription()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_subscription </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_subscription </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1408,14 +1408,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a9f4c82e918234d211f71f9376f4480a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f4c82e918234d211f71f9376f4480a8">&#9670;&nbsp;</a></span>destroy_timer()</h2>
+<a id="a6468ed56854caa78e636186c315083c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6468ed56854caa78e636186c315083c5">&#9670;&nbsp;</a></span>destroy_timer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def destroy_timer </td>
+          <td class="memname">def rosros.rclify.node.Node.destroy_timer </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1441,14 +1441,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="acb773cc35bc297e3cd9ae21dc6982ced"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb773cc35bc297e3cd9ae21dc6982ced">&#9670;&nbsp;</a></span>get_client_names_and_types_by_node()</h2>
+<a id="a11c1396bfddd7fe132731ca97e6b55dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c1396bfddd7fe132731ca97e6b55dc">&#9670;&nbsp;</a></span>get_client_names_and_types_by_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_client_names_and_types_by_node </td>
+          <td class="memname">def rosros.rclify.node.Node.get_client_names_and_types_by_node </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1487,14 +1487,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aa91639ce1383fd570fbcc9f7b5fbfd36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa91639ce1383fd570fbcc9f7b5fbfd36">&#9670;&nbsp;</a></span>get_clock()</h2>
+<a id="ac508083ceace5991224204ae88d00a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac508083ceace5991224204ae88d00a2e">&#9670;&nbsp;</a></span>get_clock()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_clock </td>
+          <td class="memname">def rosros.rclify.node.Node.get_clock </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1509,14 +1509,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a67cebed1cec2cf86898be4b2e6e917f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67cebed1cec2cf86898be4b2e6e917f4">&#9670;&nbsp;</a></span>get_logger()</h2>
+<a id="a939ba0e5d767cb521c3795a82372d40f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a939ba0e5d767cb521c3795a82372d40f">&#9670;&nbsp;</a></span>get_logger()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_logger </td>
+          <td class="memname">def rosros.rclify.node.Node.get_logger </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1531,14 +1531,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ae13ea075e8de9101d02c0316ccb2ce79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae13ea075e8de9101d02c0316ccb2ce79">&#9670;&nbsp;</a></span>get_name()</h2>
+<a id="a168200ff258a8de21a02c5eb981effd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a168200ff258a8de21a02c5eb981effd4">&#9670;&nbsp;</a></span>get_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_name </td>
+          <td class="memname">def rosros.rclify.node.Node.get_name </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1553,14 +1553,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="acbec20d7dd3828d8498476aa4589a90a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbec20d7dd3828d8498476aa4589a90a">&#9670;&nbsp;</a></span>get_namespace()</h2>
+<a id="a2e255cf9e32c34fb6820754b7a107e24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e255cf9e32c34fb6820754b7a107e24">&#9670;&nbsp;</a></span>get_namespace()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_namespace </td>
+          <td class="memname">def rosros.rclify.node.Node.get_namespace </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1575,14 +1575,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ad1eb75670506cb5605a9b83e74e0d1e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1eb75670506cb5605a9b83e74e0d1e6">&#9670;&nbsp;</a></span>get_node_names()</h2>
+<a id="ac17b1b9ec43fb3a256803cdf45756abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac17b1b9ec43fb3a256803cdf45756abf">&#9670;&nbsp;</a></span>get_node_names()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_node_names </td>
+          <td class="memname">def rosros.rclify.node.Node.get_node_names </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1598,14 +1598,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a5cfd054de2380e268e9d7615442c4265"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cfd054de2380e268e9d7615442c4265">&#9670;&nbsp;</a></span>get_node_names_and_namespaces()</h2>
+<a id="a3ecbacb6b38d736fd67b7f8fe9740455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ecbacb6b38d736fd67b7f8fe9740455">&#9670;&nbsp;</a></span>get_node_names_and_namespaces()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_node_names_and_namespaces </td>
+          <td class="memname">def rosros.rclify.node.Node.get_node_names_and_namespaces </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1621,14 +1621,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a769491047abf6e48532e233f4514a168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a769491047abf6e48532e233f4514a168">&#9670;&nbsp;</a></span>get_node_names_and_namespaces_with_enclaves()</h2>
+<a id="a700c00afab06f9c3fc656af4f992b627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a700c00afab06f9c3fc656af4f992b627">&#9670;&nbsp;</a></span>get_node_names_and_namespaces_with_enclaves()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_node_names_and_namespaces_with_enclaves </td>
+          <td class="memname">def rosros.rclify.node.Node.get_node_names_and_namespaces_with_enclaves </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1644,14 +1644,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a4355465aa74d899cca25b4ca17082ef0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4355465aa74d899cca25b4ca17082ef0">&#9670;&nbsp;</a></span>get_parameter()</h2>
+<a id="a4fd0581a17de4ecffa794de9c3c8c5cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd0581a17de4ecffa794de9c3c8c5cb">&#9670;&nbsp;</a></span>get_parameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_parameter </td>
+          <td class="memname">def rosros.rclify.node.Node.get_parameter </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1689,14 +1689,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a07bc61735c7c135b2ec3a691b163cf36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07bc61735c7c135b2ec3a691b163cf36">&#9670;&nbsp;</a></span>get_parameter_or()</h2>
+<a id="af1262be9b9482f7d750d4236ab9c07a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1262be9b9482f7d750d4236ab9c07a8">&#9670;&nbsp;</a></span>get_parameter_or()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_parameter_or </td>
+          <td class="memname">def rosros.rclify.node.Node.get_parameter_or </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1735,14 +1735,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a0787c24279d1a4125facba139b09e433"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0787c24279d1a4125facba139b09e433">&#9670;&nbsp;</a></span>get_parameters()</h2>
+<a id="a19f33b72c7fcc758b310fcfdebddf703"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19f33b72c7fcc758b310fcfdebddf703">&#9670;&nbsp;</a></span>get_parameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_parameters </td>
+          <td class="memname">def rosros.rclify.node.Node.get_parameters </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1780,14 +1780,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a18e3274850694616b8f9074cf00600fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18e3274850694616b8f9074cf00600fa">&#9670;&nbsp;</a></span>get_parameters_by_prefix()</h2>
+<a id="a83b54967a427e95c5d6aa6163b8b182e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b54967a427e95c5d6aa6163b8b182e">&#9670;&nbsp;</a></span>get_parameters_by_prefix()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_parameters_by_prefix </td>
+          <td class="memname">def rosros.rclify.node.Node.get_parameters_by_prefix </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1821,14 +1821,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ac1229a9d85c8b102a833559dac5a96fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1229a9d85c8b102a833559dac5a96fd">&#9670;&nbsp;</a></span>get_publisher_names_and_types_by_node()</h2>
+<a id="a01aa81da734dcf3c45410686ef260653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01aa81da734dcf3c45410686ef260653">&#9670;&nbsp;</a></span>get_publisher_names_and_types_by_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_publisher_names_and_types_by_node </td>
+          <td class="memname">def rosros.rclify.node.Node.get_publisher_names_and_types_by_node </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1881,14 +1881,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ee1f8805dbcedd548c59a8bb49bfd3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ee1f8805dbcedd548c59a8bb49bfd3a">&#9670;&nbsp;</a></span>get_publishers_info_by_topic()</h2>
+<a id="ad794e5726506b12a54582592b400efd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad794e5726506b12a54582592b400efd2">&#9670;&nbsp;</a></span>get_publishers_info_by_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_publishers_info_by_topic </td>
+          <td class="memname">def rosros.rclify.node.Node.get_publishers_info_by_topic </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -1928,14 +1928,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a1438c9506c68cdb6927315267e2f1853"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1438c9506c68cdb6927315267e2f1853">&#9670;&nbsp;</a></span>get_service_names_and_types()</h2>
+<a id="adb3202bcf747a8e0bf4f249de9aa4314"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3202bcf747a8e0bf4f249de9aa4314">&#9670;&nbsp;</a></span>get_service_names_and_types()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_service_names_and_types </td>
+          <td class="memname">def rosros.rclify.node.Node.get_service_names_and_types </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -1951,14 +1951,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a9522168ab6f5c9126efd513c9ec919d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9522168ab6f5c9126efd513c9ec919d1">&#9670;&nbsp;</a></span>get_service_names_and_types_by_node()</h2>
+<a id="a99efc444442a167e4e7233ca841c4df9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99efc444442a167e4e7233ca841c4df9">&#9670;&nbsp;</a></span>get_service_names_and_types_by_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_service_names_and_types_by_node </td>
+          <td class="memname">def rosros.rclify.node.Node.get_service_names_and_types_by_node </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2004,14 +2004,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="abead92610be2c9dc9f6c223599500250"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abead92610be2c9dc9f6c223599500250">&#9670;&nbsp;</a></span>get_subscriber_names_and_types_by_node()</h2>
+<a id="a8b3c240e7941965fb16e9adacf3601f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b3c240e7941965fb16e9adacf3601f0">&#9670;&nbsp;</a></span>get_subscriber_names_and_types_by_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_subscriber_names_and_types_by_node </td>
+          <td class="memname">def rosros.rclify.node.Node.get_subscriber_names_and_types_by_node </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2064,14 +2064,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a0000c74a0c7d361ca393c3deb1997106"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0000c74a0c7d361ca393c3deb1997106">&#9670;&nbsp;</a></span>get_subscriptions_info_by_topic()</h2>
+<a id="ad1485b2bdb7086593c400da1e4a2175b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1485b2bdb7086593c400da1e4a2175b">&#9670;&nbsp;</a></span>get_subscriptions_info_by_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_subscriptions_info_by_topic </td>
+          <td class="memname">def rosros.rclify.node.Node.get_subscriptions_info_by_topic </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2112,14 +2112,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a8c55b00f21f5bf5a617754307dea18e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c55b00f21f5bf5a617754307dea18e4">&#9670;&nbsp;</a></span>get_topic_names_and_types()</h2>
+<a id="a3c49d1bcaaca5b4edea4ebc52da832ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c49d1bcaaca5b4edea4ebc52da832ec">&#9670;&nbsp;</a></span>get_topic_names_and_types()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_topic_names_and_types </td>
+          <td class="memname">def rosros.rclify.node.Node.get_topic_names_and_types </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2151,14 +2151,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a3c476ee23dc5a1965f2120b897b985c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c476ee23dc5a1965f2120b897b985c3">&#9670;&nbsp;</a></span>has_parameter()</h2>
+<a id="a03f1f282337d06b190260b56cd739bdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f1f282337d06b190260b56cd739bdb">&#9670;&nbsp;</a></span>has_parameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def has_parameter </td>
+          <td class="memname">def rosros.rclify.node.Node.has_parameter </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2189,14 +2189,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a29fc6eecf021f6d5354461981aa2fe84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29fc6eecf021f6d5354461981aa2fe84">&#9670;&nbsp;</a></span>remove_on_set_parameters_callback()</h2>
+<a id="aa0eb68bb8057c9001223a64d9398e41e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0eb68bb8057c9001223a64d9398e41e">&#9670;&nbsp;</a></span>remove_on_set_parameters_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def remove_on_set_parameters_callback </td>
+          <td class="memname">def rosros.rclify.node.Node.remove_on_set_parameters_callback </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2233,14 +2233,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a17767d1adc0471eda6dc1e6895ce13ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17767d1adc0471eda6dc1e6895ce13ef">&#9670;&nbsp;</a></span>remove_waitable()</h2>
+<a id="a5d8d5305342ee37ae2ec526fc8918f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d8d5305342ee37ae2ec526fc8918f34">&#9670;&nbsp;</a></span>remove_waitable()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def remove_waitable </td>
+          <td class="memname">def rosros.rclify.node.Node.remove_waitable </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2265,14 +2265,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ad1238e011f1bb46b9d2d60e718507d9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1238e011f1bb46b9d2d60e718507d9e">&#9670;&nbsp;</a></span>set_descriptor()</h2>
+<a id="a97dcfe04ab8a6f5d303c803d12ec51af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97dcfe04ab8a6f5d303c803d12ec51af">&#9670;&nbsp;</a></span>set_descriptor()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def set_descriptor </td>
+          <td class="memname">def rosros.rclify.node.Node.set_descriptor </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2326,14 +2326,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a1f30f6ce41a187feb21ab82927e766c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f30f6ce41a187feb21ab82927e766c8">&#9670;&nbsp;</a></span>set_parameters()</h2>
+<a id="a3240424441c8fe01342844ab3fff9a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3240424441c8fe01342844ab3fff9a75">&#9670;&nbsp;</a></span>set_parameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def set_parameters </td>
+          <td class="memname">def rosros.rclify.node.Node.set_parameters </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2375,14 +2375,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a1e914a688df77443edda6cf918188427"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e914a688df77443edda6cf918188427">&#9670;&nbsp;</a></span>set_parameters_atomically()</h2>
+<a id="a72d70d15ef50a319d559584308122325"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d70d15ef50a319d559584308122325">&#9670;&nbsp;</a></span>set_parameters_atomically()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def set_parameters_atomically </td>
+          <td class="memname">def rosros.rclify.node.Node.set_parameters_atomically </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2424,14 +2424,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a73a21ca654b710fb2e3cde952f53cfaf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73a21ca654b710fb2e3cde952f53cfaf">&#9670;&nbsp;</a></span>set_parameters_callback()</h2>
+<a id="a3df682293a52f2a122fc295647a9da49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3df682293a52f2a122fc295647a9da49">&#9670;&nbsp;</a></span>set_parameters_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def set_parameters_callback </td>
+          <td class="memname">def rosros.rclify.node.Node.set_parameters_callback </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2462,14 +2462,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="afc5025e9d3681b2162cbfd58f947dc9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc5025e9d3681b2162cbfd58f947dc9e">&#9670;&nbsp;</a></span>undeclare_parameter()</h2>
+<a id="a3f8e6fa0ea6453fa0d84a82c6937cc12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8e6fa0ea6453fa0d84a82c6937cc12">&#9670;&nbsp;</a></span>undeclare_parameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def undeclare_parameter </td>
+          <td class="memname">def rosros.rclify.node.Node.undeclare_parameter </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -2501,8 +2501,8 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1cebf90b96f66a3d46cccf776b5245e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cebf90b96f66a3d46cccf776b5245e0">&#9670;&nbsp;</a></span>PARAM_REL_TOL</h2>
+<a id="ab5cb2b469f51d58966b8d4384c236f30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5cb2b469f51d58966b8d4384c236f30">&#9670;&nbsp;</a></span>PARAM_REL_TOL</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2511,7 +2511,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int PARAM_REL_TOL = 1e-6</td>
+          <td class="memname">int rosros.rclify.node.Node.PARAM_REL_TOL = 1e-6</td>
         </tr>
       </table>
   </td>
@@ -2528,8 +2528,8 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a4058051e3069ff2943649d921f089458"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4058051e3069ff2943649d921f089458">&#9670;&nbsp;</a></span>clients</h2>
+<a id="a905a2aff9bfbdcc142505fb9e42e1e5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a905a2aff9bfbdcc142505fb9e42e1e5c">&#9670;&nbsp;</a></span>clients</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2538,7 +2538,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">clients = property</td>
+          <td class="memname">rosros.rclify.node.Node.clients = property</td>
         </tr>
       </table>
   </td>
@@ -2554,8 +2554,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a261f9f58ccbeaa962c4e675e4212c9cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a261f9f58ccbeaa962c4e675e4212c9cc">&#9670;&nbsp;</a></span>context</h2>
+<a id="a3b83c67cf18f6b46a08454867d82d136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b83c67cf18f6b46a08454867d82d136">&#9670;&nbsp;</a></span>context</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2564,7 +2564,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">context = property</td>
+          <td class="memname">rosros.rclify.node.Node.context = property</td>
         </tr>
       </table>
   </td>
@@ -2580,8 +2580,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a49a714b155c851d0af19624465f89e4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49a714b155c851d0af19624465f89e4b">&#9670;&nbsp;</a></span>default_callback_group</h2>
+<a id="af613d0e483a6a8e66fe033566a209c99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af613d0e483a6a8e66fe033566a209c99">&#9670;&nbsp;</a></span>default_callback_group</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2590,7 +2590,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">default_callback_group = property</td>
+          <td class="memname">rosros.rclify.node.Node.default_callback_group = property</td>
         </tr>
       </table>
   </td>
@@ -2606,8 +2606,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a10dc5a794b998e68e49f378273ec7346"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10dc5a794b998e68e49f378273ec7346">&#9670;&nbsp;</a></span>executor</h2>
+<a id="a64c61d5bcfed43a896f7e34a6f30739d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64c61d5bcfed43a896f7e34a6f30739d">&#9670;&nbsp;</a></span>executor</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2616,7 +2616,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">executor = property</td>
+          <td class="memname">rosros.rclify.node.Node.executor = property</td>
         </tr>
       </table>
   </td>
@@ -2632,8 +2632,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="af5bc77291434ffd06aa142d917d86f78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5bc77291434ffd06aa142d917d86f78">&#9670;&nbsp;</a></span>guards</h2>
+<a id="a23d39774904327916ddc97c2b2f643c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23d39774904327916ddc97c2b2f643c8">&#9670;&nbsp;</a></span>guards</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2642,7 +2642,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">guards = property</td>
+          <td class="memname">rosros.rclify.node.Node.guards = property</td>
         </tr>
       </table>
   </td>
@@ -2658,8 +2658,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a643699f14a4a669b38e41baeb9bb28dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a643699f14a4a669b38e41baeb9bb28dc">&#9670;&nbsp;</a></span>handle</h2>
+<a id="a5a8272dd04dc55cb3941b7a816054029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a8272dd04dc55cb3941b7a816054029">&#9670;&nbsp;</a></span>handle</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2668,7 +2668,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">handle = property</td>
+          <td class="memname">rosros.rclify.node.Node.handle = property</td>
         </tr>
       </table>
   </td>
@@ -2684,8 +2684,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a819f758c5a41224b61ecc8f80ece4fe8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a819f758c5a41224b61ecc8f80ece4fe8">&#9670;&nbsp;</a></span>publishers</h2>
+<a id="ada334f1470b3b0ad7f97ed8cc172e3a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada334f1470b3b0ad7f97ed8cc172e3a6">&#9670;&nbsp;</a></span>publishers</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2694,7 +2694,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">publishers = property</td>
+          <td class="memname">rosros.rclify.node.Node.publishers = property</td>
         </tr>
       </table>
   </td>
@@ -2710,8 +2710,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a0bf3c8aa9017e52dd041b7e2c3327621"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bf3c8aa9017e52dd041b7e2c3327621">&#9670;&nbsp;</a></span>services</h2>
+<a id="a65477604c50ee1cd54f9f967f0c23ea2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65477604c50ee1cd54f9f967f0c23ea2">&#9670;&nbsp;</a></span>services</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2720,7 +2720,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">services = property</td>
+          <td class="memname">rosros.rclify.node.Node.services = property</td>
         </tr>
       </table>
   </td>
@@ -2736,8 +2736,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aa64b907de245db18a366394e98af6ced"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa64b907de245db18a366394e98af6ced">&#9670;&nbsp;</a></span>subscriptions</h2>
+<a id="a50152e405b5c328093d0c405a1c13bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50152e405b5c328093d0c405a1c13bfd">&#9670;&nbsp;</a></span>subscriptions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2746,7 +2746,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">subscriptions = property</td>
+          <td class="memname">rosros.rclify.node.Node.subscriptions = property</td>
         </tr>
       </table>
   </td>
@@ -2762,8 +2762,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="acc4e64394d03a6e790f8e52c674534d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc4e64394d03a6e790f8e52c674534d9">&#9670;&nbsp;</a></span>timers</h2>
+<a id="ad8aa08b614685550e09fb934c500ed88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8aa08b614685550e09fb934c500ed88">&#9670;&nbsp;</a></span>timers</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2772,7 +2772,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">timers = property</td>
+          <td class="memname">rosros.rclify.node.Node.timers = property</td>
         </tr>
       </table>
   </td>
@@ -2788,8 +2788,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a307d1e90e1fdcc8faccdf3f553ddda53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a307d1e90e1fdcc8faccdf3f553ddda53">&#9670;&nbsp;</a></span>waitables</h2>
+<a id="a238a4f474f971177c2fbbd136dcd19ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a238a4f474f971177c2fbbd136dcd19ec">&#9670;&nbsp;</a></span>waitables</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2798,7 +2798,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">waitables = property</td>
+          <td class="memname">rosros.rclify.node.Node.waitables = property</td>
         </tr>
       </table>
   </td>
@@ -2815,7 +2815,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/rosros/rclify/<a class="el" href="node_8py_source.html">node.py</a></li>
+<li>rosros/rclify/<a class="el" href="node_8py_source.html">node.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -2823,7 +2823,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1rclify.html">rclify</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1rclify_1_1node.html">node</a></li><li class="navelem"><a class="el" href="classrosros_1_1rclify_1_1node_1_1_node.html">Node</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

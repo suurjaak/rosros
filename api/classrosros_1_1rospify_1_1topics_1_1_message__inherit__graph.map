@@ -1,5 +1,5 @@
-<map id="Message" name="Message">
-<area shape="rect" id="node1" title="Abstract base class of Message data classes auto&#45;generated from msg files." alt="" coords="5,80,85,107"/>
-<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1msg_1_1_any_msg.html" title="Stand&#45;in for `rospy.AnyMsg`." alt="" coords="8,155,83,181"/>
-<area shape="rect" id="node2" title=" " alt="" coords="21,5,70,32"/>
+<map id="rosros.rospify.topics.Message" name="rosros.rospify.topics.Message">
+<area shape="rect" id="node1" title="Abstract base class of Message data classes auto&#45;generated from msg files." alt="" coords="5,80,220,107"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1msg_1_1_any_msg.html" title="Stand&#45;in for `rospy.AnyMsg`." alt="" coords="14,155,211,181"/>
+<area shape="rect" id="node2" title=" " alt="" coords="88,5,137,32"/>
 </map>

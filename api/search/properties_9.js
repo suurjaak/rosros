@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['publishers_1268',['publishers',['../classrosros_1_1rclify_1_1node_1_1_node.html#a819f758c5a41224b61ecc8f80ece4fe8',1,'rosros::rclify::node::Node']]]
+  ['publishers_1276',['publishers',['../classrosros_1_1rclify_1_1node_1_1_node.html#ada334f1470b3b0ad7f97ed8cc172e3a6',1,'rosros::rclify::node::Node']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: Executor Class Reference</title>
+<title>rosros: rosros.rclify.executors.Executor Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -88,73 +88,73 @@ $(document).ready(function(){initNavTree('classrosros_1_1rclify_1_1executors_1_1
 <a href="#properties">Properties</a> &#124;
 <a href="classrosros_1_1rclify_1_1executors_1_1_executor-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Executor Class Reference</div>  </div>
+<div class="title">rosros.rclify.executors.Executor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Inheritance diagram for Executor:</div>
+Inheritance diagram for rosros.rclify.executors.Executor:</div>
 <div class="dyncontent">
-<div class="center"><img src="classrosros_1_1rclify_1_1executors_1_1_executor__inherit__graph.png" border="0" usemap="#_executor_inherit__map" alt="Inheritance graph"/></div>
-<map name="_executor_inherit__map" id="_executor_inherit__map">
-<area shape="rect" title=" " alt="" coords="153,5,231,32"/>
-<area shape="rect" href="classrosros_1_1rclify_1_1executors_1_1_multi_threaded_executor.html" title=" " alt="" coords="5,80,179,107"/>
-<area shape="rect" href="classrosros_1_1rclify_1_1executors_1_1_single_threaded_executor.html" title="API stand&#45;in for ROS2 compatibility." alt="" coords="203,80,383,107"/>
+<div class="center"><img src="classrosros_1_1rclify_1_1executors_1_1_executor__inherit__graph.png" border="0" usemap="#rosros_8rclify_8executors_8_executor_inherit__map" alt="Inheritance graph"/></div>
+<map name="rosros_8rclify_8executors_8_executor_inherit__map" id="rosros_8rclify_8executors_8_executor_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,39,175,80"/>
+<area shape="rect" href="classrosros_1_1rclify_1_1executors_1_1_multi_threaded_executor.html" title=" " alt="" coords="226,5,399,47"/>
+<area shape="rect" href="classrosros_1_1rclify_1_1executors_1_1_single_threaded_executor.html" title="API stand&#45;in for ROS2 compatibility." alt="" coords="223,71,403,112"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1b7786f7364bf587af8133964e9670bd"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a1b7786f7364bf587af8133964e9670bd">__init__</a> (self, *<a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a261f9f58ccbeaa962c4e675e4212c9cc">context</a>=None)</td></tr>
-<tr class="separator:a1b7786f7364bf587af8133964e9670bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd311558aae8bf4d61a05f8074692bf2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#afd311558aae8bf4d61a05f8074692bf2">add_node</a> (self, node)</td></tr>
-<tr class="memdesc:afd311558aae8bf4d61a05f8074692bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a node to this executor.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#afd311558aae8bf4d61a05f8074692bf2">More...</a><br /></td></tr>
-<tr class="separator:afd311558aae8bf4d61a05f8074692bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ba4735f07344a73d1e4ae9203417bf7"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a6ba4735f07344a73d1e4ae9203417bf7">create_task</a> (self, callback, *args, **kwargs)</td></tr>
-<tr class="memdesc:a6ba4735f07344a73d1e4ae9203417bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a callback or coroutine to be executed during spin, returns a Future.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a6ba4735f07344a73d1e4ae9203417bf7">More...</a><br /></td></tr>
-<tr class="separator:a6ba4735f07344a73d1e4ae9203417bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fa5c9d555891fafeb0ea7b13327d709"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a9fa5c9d555891fafeb0ea7b13327d709">get_nodes</a> (self)</td></tr>
-<tr class="memdesc:a9fa5c9d555891fafeb0ea7b13327d709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return nodes that have been added to this executor.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a9fa5c9d555891fafeb0ea7b13327d709">More...</a><br /></td></tr>
-<tr class="separator:a9fa5c9d555891fafeb0ea7b13327d709"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71d94b858777f16f52eabe1218133ef2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a71d94b858777f16f52eabe1218133ef2">remove_node</a> (self, node)</td></tr>
-<tr class="memdesc:a71d94b858777f16f52eabe1218133ef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop managing this node's callbacks.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a71d94b858777f16f52eabe1218133ef2">More...</a><br /></td></tr>
-<tr class="separator:a71d94b858777f16f52eabe1218133ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52726a2761ee24dca43388ce704c42ca"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a52726a2761ee24dca43388ce704c42ca">shutdown</a> (self, timeout_sec=None)</td></tr>
-<tr class="memdesc:a52726a2761ee24dca43388ce704c42ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down ROS.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a52726a2761ee24dca43388ce704c42ca">More...</a><br /></td></tr>
-<tr class="separator:a52726a2761ee24dca43388ce704c42ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4d838e8d70bc28ec77adbea45078998"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#ae4d838e8d70bc28ec77adbea45078998">spin</a> (self)</td></tr>
-<tr class="memdesc:ae4d838e8d70bc28ec77adbea45078998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until ROS shut down.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#ae4d838e8d70bc28ec77adbea45078998">More...</a><br /></td></tr>
-<tr class="separator:ae4d838e8d70bc28ec77adbea45078998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55bed87b734f956c3f59238043aa71a1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a55bed87b734f956c3f59238043aa71a1">spin_once</a> (self, timeout_sec=None)</td></tr>
-<tr class="memdesc:a55bed87b734f956c3f59238043aa71a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until timeout, or forever if timeout None or negative, or until ROS shutdown.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a55bed87b734f956c3f59238043aa71a1">More...</a><br /></td></tr>
-<tr class="separator:a55bed87b734f956c3f59238043aa71a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9458bdb486425d69e28f870c0bcfb6de"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a9458bdb486425d69e28f870c0bcfb6de">spin_once_until_future_complete</a> (self, future, timeout_sec=None)</td></tr>
-<tr class="memdesc:a9458bdb486425d69e28f870c0bcfb6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until future complete or timeout reached or ROS shut down.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a9458bdb486425d69e28f870c0bcfb6de">More...</a><br /></td></tr>
-<tr class="separator:a9458bdb486425d69e28f870c0bcfb6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa041e42a73508f62480cc4db389a081c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#aa041e42a73508f62480cc4db389a081c">spin_until_future_complete</a> (self, future, timeout_sec=None)</td></tr>
-<tr class="memdesc:aa041e42a73508f62480cc4db389a081c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until future complete or timeout reached or ROS shut down.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#aa041e42a73508f62480cc4db389a081c">More...</a><br /></td></tr>
-<tr class="separator:aa041e42a73508f62480cc4db389a081c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3876d9aefb1d0f2b11772a7baea5a2e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#aa3876d9aefb1d0f2b11772a7baea5a2e">wake</a> (self)</td></tr>
-<tr class="memdesc:aa3876d9aefb1d0f2b11772a7baea5a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 compatibility stand-in).  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#aa3876d9aefb1d0f2b11772a7baea5a2e">More...</a><br /></td></tr>
-<tr class="separator:aa3876d9aefb1d0f2b11772a7baea5a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5abcb28480cadb1b8173f2cdca1743d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#ab5abcb28480cadb1b8173f2cdca1743d">__init__</a> (self, *<a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#ac844f4aaf8e743ffdeeefe62c80dd6b9">context</a>=None)</td></tr>
+<tr class="separator:ab5abcb28480cadb1b8173f2cdca1743d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8bb546654c637b9c428ad7dbb2cb08"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a8c8bb546654c637b9c428ad7dbb2cb08">add_node</a> (self, node)</td></tr>
+<tr class="memdesc:a8c8bb546654c637b9c428ad7dbb2cb08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a node to this executor.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a8c8bb546654c637b9c428ad7dbb2cb08">More...</a><br /></td></tr>
+<tr class="separator:a8c8bb546654c637b9c428ad7dbb2cb08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f08dc3452462b85c66de15768e5199"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a03f08dc3452462b85c66de15768e5199">create_task</a> (self, callback, *args, **kwargs)</td></tr>
+<tr class="memdesc:a03f08dc3452462b85c66de15768e5199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a callback or coroutine to be executed during spin, returns a Future.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a03f08dc3452462b85c66de15768e5199">More...</a><br /></td></tr>
+<tr class="separator:a03f08dc3452462b85c66de15768e5199"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b15891e5e52b6b738297880295e06e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a64b15891e5e52b6b738297880295e06e">get_nodes</a> (self)</td></tr>
+<tr class="memdesc:a64b15891e5e52b6b738297880295e06e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return nodes that have been added to this executor.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a64b15891e5e52b6b738297880295e06e">More...</a><br /></td></tr>
+<tr class="separator:a64b15891e5e52b6b738297880295e06e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc625b80690fd59a385e3c8a59092cf"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a2cc625b80690fd59a385e3c8a59092cf">remove_node</a> (self, node)</td></tr>
+<tr class="memdesc:a2cc625b80690fd59a385e3c8a59092cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop managing this node's callbacks.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a2cc625b80690fd59a385e3c8a59092cf">More...</a><br /></td></tr>
+<tr class="separator:a2cc625b80690fd59a385e3c8a59092cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff62f05e6bcb14752f5a047129589f20"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#aff62f05e6bcb14752f5a047129589f20">shutdown</a> (self, timeout_sec=None)</td></tr>
+<tr class="memdesc:aff62f05e6bcb14752f5a047129589f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down ROS.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#aff62f05e6bcb14752f5a047129589f20">More...</a><br /></td></tr>
+<tr class="separator:aff62f05e6bcb14752f5a047129589f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03bc369446c5e90f7b5881bd5c0120ad"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a03bc369446c5e90f7b5881bd5c0120ad">spin</a> (self)</td></tr>
+<tr class="memdesc:a03bc369446c5e90f7b5881bd5c0120ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until ROS shut down.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a03bc369446c5e90f7b5881bd5c0120ad">More...</a><br /></td></tr>
+<tr class="separator:a03bc369446c5e90f7b5881bd5c0120ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214fca0be49887f7f569a715ae7874f0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a214fca0be49887f7f569a715ae7874f0">spin_once</a> (self, timeout_sec=None)</td></tr>
+<tr class="memdesc:a214fca0be49887f7f569a715ae7874f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until timeout, or forever if timeout None or negative, or until ROS shutdown.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a214fca0be49887f7f569a715ae7874f0">More...</a><br /></td></tr>
+<tr class="separator:a214fca0be49887f7f569a715ae7874f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb755d59c21da0ef5badbfa18086742"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a0bb755d59c21da0ef5badbfa18086742">spin_once_until_future_complete</a> (self, future, timeout_sec=None)</td></tr>
+<tr class="memdesc:a0bb755d59c21da0ef5badbfa18086742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until future complete or timeout reached or ROS shut down.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a0bb755d59c21da0ef5badbfa18086742">More...</a><br /></td></tr>
+<tr class="separator:a0bb755d59c21da0ef5badbfa18086742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a707ee367f8ef713920554a4bc64a4286"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a707ee367f8ef713920554a4bc64a4286">spin_until_future_complete</a> (self, future, timeout_sec=None)</td></tr>
+<tr class="memdesc:a707ee367f8ef713920554a4bc64a4286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits until future complete or timeout reached or ROS shut down.  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a707ee367f8ef713920554a4bc64a4286">More...</a><br /></td></tr>
+<tr class="separator:a707ee367f8ef713920554a4bc64a4286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f7a1d5fd683ce33b85cb7109372f7f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a24f7a1d5fd683ce33b85cb7109372f7f">wake</a> (self)</td></tr>
+<tr class="memdesc:a24f7a1d5fd683ce33b85cb7109372f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does nothing (ROS2 compatibility stand-in).  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a24f7a1d5fd683ce33b85cb7109372f7f">More...</a><br /></td></tr>
+<tr class="separator:a24f7a1d5fd683ce33b85cb7109372f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a261f9f58ccbeaa962c4e675e4212c9cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a261f9f58ccbeaa962c4e675e4212c9cc">context</a> = property</td></tr>
-<tr class="memdesc:a261f9f58ccbeaa962c4e675e4212c9cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns context given in constructor, or None ((ROS2 compatibility stand-in).  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#a261f9f58ccbeaa962c4e675e4212c9cc">More...</a><br /></td></tr>
-<tr class="separator:a261f9f58ccbeaa962c4e675e4212c9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac844f4aaf8e743ffdeeefe62c80dd6b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html#ac844f4aaf8e743ffdeeefe62c80dd6b9">context</a> = property</td></tr>
+<tr class="memdesc:ac844f4aaf8e743ffdeeefe62c80dd6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns context given in constructor, or None ((ROS2 compatibility stand-in).  <a href="classrosros_1_1rclify_1_1executors_1_1_executor.html#ac844f4aaf8e743ffdeeefe62c80dd6b9">More...</a><br /></td></tr>
+<tr class="separator:ac844f4aaf8e743ffdeeefe62c80dd6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="executors_8py_source.html#l00035">35</a> of file <a class="el" href="executors_8py_source.html">executors.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1b7786f7364bf587af8133964e9670bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b7786f7364bf587af8133964e9670bd">&#9670;&nbsp;</a></span>__init__()</h2>
+<a id="ab5abcb28480cadb1b8173f2cdca1743d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5abcb28480cadb1b8173f2cdca1743d">&#9670;&nbsp;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def __init__ </td>
+          <td class="memname">def rosros.rclify.executors.Executor.__init__ </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -184,14 +184,14 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afd311558aae8bf4d61a05f8074692bf2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd311558aae8bf4d61a05f8074692bf2">&#9670;&nbsp;</a></span>add_node()</h2>
+<a id="a8c8bb546654c637b9c428ad7dbb2cb08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c8bb546654c637b9c428ad7dbb2cb08">&#9670;&nbsp;</a></span>add_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def add_node </td>
+          <td class="memname">def rosros.rclify.executors.Executor.add_node </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -223,14 +223,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ba4735f07344a73d1e4ae9203417bf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ba4735f07344a73d1e4ae9203417bf7">&#9670;&nbsp;</a></span>create_task()</h2>
+<a id="a03f08dc3452462b85c66de15768e5199"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f08dc3452462b85c66de15768e5199">&#9670;&nbsp;</a></span>create_task()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def create_task </td>
+          <td class="memname">def rosros.rclify.executors.Executor.create_task </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -273,14 +273,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a9fa5c9d555891fafeb0ea7b13327d709"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fa5c9d555891fafeb0ea7b13327d709">&#9670;&nbsp;</a></span>get_nodes()</h2>
+<a id="a64b15891e5e52b6b738297880295e06e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64b15891e5e52b6b738297880295e06e">&#9670;&nbsp;</a></span>get_nodes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_nodes </td>
+          <td class="memname">def rosros.rclify.executors.Executor.get_nodes </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -295,14 +295,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a71d94b858777f16f52eabe1218133ef2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71d94b858777f16f52eabe1218133ef2">&#9670;&nbsp;</a></span>remove_node()</h2>
+<a id="a2cc625b80690fd59a385e3c8a59092cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cc625b80690fd59a385e3c8a59092cf">&#9670;&nbsp;</a></span>remove_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def remove_node </td>
+          <td class="memname">def rosros.rclify.executors.Executor.remove_node </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -333,14 +333,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a52726a2761ee24dca43388ce704c42ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52726a2761ee24dca43388ce704c42ca">&#9670;&nbsp;</a></span>shutdown()</h2>
+<a id="aff62f05e6bcb14752f5a047129589f20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff62f05e6bcb14752f5a047129589f20">&#9670;&nbsp;</a></span>shutdown()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def shutdown </td>
+          <td class="memname">def rosros.rclify.executors.Executor.shutdown </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -372,14 +372,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ae4d838e8d70bc28ec77adbea45078998"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4d838e8d70bc28ec77adbea45078998">&#9670;&nbsp;</a></span>spin()</h2>
+<a id="a03bc369446c5e90f7b5881bd5c0120ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03bc369446c5e90f7b5881bd5c0120ad">&#9670;&nbsp;</a></span>spin()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def spin </td>
+          <td class="memname">def rosros.rclify.executors.Executor.spin </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -394,14 +394,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a55bed87b734f956c3f59238043aa71a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55bed87b734f956c3f59238043aa71a1">&#9670;&nbsp;</a></span>spin_once()</h2>
+<a id="a214fca0be49887f7f569a715ae7874f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a214fca0be49887f7f569a715ae7874f0">&#9670;&nbsp;</a></span>spin_once()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def spin_once </td>
+          <td class="memname">def rosros.rclify.executors.Executor.spin_once </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -432,14 +432,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a9458bdb486425d69e28f870c0bcfb6de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9458bdb486425d69e28f870c0bcfb6de">&#9670;&nbsp;</a></span>spin_once_until_future_complete()</h2>
+<a id="a0bb755d59c21da0ef5badbfa18086742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bb755d59c21da0ef5badbfa18086742">&#9670;&nbsp;</a></span>spin_once_until_future_complete()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def spin_once_until_future_complete </td>
+          <td class="memname">def rosros.rclify.executors.Executor.spin_once_until_future_complete </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -477,14 +477,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aa041e42a73508f62480cc4db389a081c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa041e42a73508f62480cc4db389a081c">&#9670;&nbsp;</a></span>spin_until_future_complete()</h2>
+<a id="a707ee367f8ef713920554a4bc64a4286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a707ee367f8ef713920554a4bc64a4286">&#9670;&nbsp;</a></span>spin_until_future_complete()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def spin_until_future_complete </td>
+          <td class="memname">def rosros.rclify.executors.Executor.spin_until_future_complete </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -522,14 +522,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="aa3876d9aefb1d0f2b11772a7baea5a2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3876d9aefb1d0f2b11772a7baea5a2e">&#9670;&nbsp;</a></span>wake()</h2>
+<a id="a24f7a1d5fd683ce33b85cb7109372f7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f7a1d5fd683ce33b85cb7109372f7f">&#9670;&nbsp;</a></span>wake()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def wake </td>
+          <td class="memname">def rosros.rclify.executors.Executor.wake </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -545,8 +545,8 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a261f9f58ccbeaa962c4e675e4212c9cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a261f9f58ccbeaa962c4e675e4212c9cc">&#9670;&nbsp;</a></span>context</h2>
+<a id="ac844f4aaf8e743ffdeeefe62c80dd6b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac844f4aaf8e743ffdeeefe62c80dd6b9">&#9670;&nbsp;</a></span>context</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -555,7 +555,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">context = property</td>
+          <td class="memname">rosros.rclify.executors.Executor.context = property</td>
         </tr>
       </table>
   </td>
@@ -572,7 +572,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/rosros/rclify/<a class="el" href="executors_8py_source.html">executors.py</a></li>
+<li>rosros/rclify/<a class="el" href="executors_8py_source.html">executors.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -580,7 +580,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1rclify.html">rclify</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1rclify_1_1executors.html">executors</a></li><li class="navelem"><a class="el" href="classrosros_1_1rclify_1_1executors_1_1_executor.html">Executor</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

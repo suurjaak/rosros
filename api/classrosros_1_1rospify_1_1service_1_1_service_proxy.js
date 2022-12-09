@@ -1,5 +1,5 @@
 var classrosros_1_1rospify_1_1service_1_1_service_proxy =
 [
-    [ "__new__", "classrosros_1_1rospify_1_1service_1_1_service_proxy.html#aad26e43a02d636d33131aff477bc5fc8", null ],
-    [ "__subclasshook__", "classrosros_1_1rospify_1_1service_1_1_service_proxy.html#a580f652b5d23dec4e4a486e9978993e0", null ]
+    [ "__new__", "classrosros_1_1rospify_1_1service_1_1_service_proxy.html#afa92c3eeefa5f7761a315f9b465bcf0f", null ],
+    [ "__subclasshook__", "classrosros_1_1rospify_1_1service_1_1_service_proxy.html#a4350b020fd163853379bd312bf8fb780", null ]
 ];

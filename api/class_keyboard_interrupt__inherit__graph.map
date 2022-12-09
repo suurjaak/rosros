@@ -1,5 +1,5 @@
 <map id="KeyboardInterrupt" name="KeyboardInterrupt">
 <area shape="rect" id="node1" title=" " alt="" coords="66,5,205,32"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Exception if time moved backwards." alt="" coords="51,80,220,107"/>
-<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="5,155,265,181"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Exception if time moved backwards." alt="" coords="41,80,229,121"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="5,169,265,211"/>
 </map>

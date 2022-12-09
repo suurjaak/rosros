@@ -1,7 +1,7 @@
-<map id="ROSInterruptException" name="ROSInterruptException">
-<area shape="rect" id="node1" title="Exception if time moved backwards." alt="" coords="52,155,221,181"/>
-<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="7,229,267,256"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html" title="Base exception class for ROS clients." alt="" coords="5,80,119,107"/>
-<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="19,5,105,32"/>
-<area shape="rect" id="node4" href="$class_keyboard_interrupt.html" title=" " alt="" coords="143,80,282,107"/>
+<map id="rosros.rospify.exceptions.ROSInterruptException" name="rosros.rospify.exceptions.ROSInterruptException">
+<area shape="rect" id="node1" title="Exception if time moved backwards." alt="" coords="99,169,287,211"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="63,259,323,300"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html" title="Base exception class for ROS clients." alt="" coords="5,80,193,121"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="56,5,143,32"/>
+<area shape="rect" id="node4" href="$class_keyboard_interrupt.html" title=" " alt="" coords="218,87,357,114"/>
 </map>

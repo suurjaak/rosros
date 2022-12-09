@@ -24,7 +24,6 @@ var NAVTREE =
 [
   [ "rosros", "index.html", [
     [ "Packages", "namespaces.html", [
-      [ "Internal Modules", "index.html#autotoc_md0", null ],
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
         [ "All", "namespacemembers.html", "namespacemembers_dup" ],
@@ -51,11 +50,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"classrosros_1_1rclify_1_1qos_1_1_durability_policy.html#a3a3f7f05081d274ef83ed669efc1c328",
-"core_8py.html#a004a4aae28bf04e9a30f554c2035d9fd",
-"patch_8py.html#a14b4dc1a0827a8184fbcd071711eb817",
-"ros2_8py.html#a9ecbaff9073d891fa21c19b5a6215844"
+"____init_____8py.html",
+"classrosros_1_1rclify_1_1parameter_1_1_set_parameters_result.html#a1e21d390bdc0580dd08d8d7618287b05",
+"clock_8py.html",
+"patch_8py.html#a1cab9a3a492f65891685b137313e98ee",
+"ros2_8py.html#a8f7831e94e0d6d84bf5c190a63f23eb8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

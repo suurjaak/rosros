@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: src/rosros/rospify/client.py Source File</title>
+<title>rosros: rosros/rospify/client.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('client_8py_source.html',''); initResiz
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral"></span> </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">@author      Erki Suurjaak</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@created     30.05.2022</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@modified    19.06.2022</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@modified    09.12.2022</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
@@ -115,11 +115,11 @@ $(document).ready(function(){initNavTree('client_8py_source.html',''); initResiz
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"># Log levels corresponding to rosgraph_msgs.Log constants</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a48f76a8c0dc23567f303ed6aa221e078">   29</a></span>&#160;DEBUG =  1</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a5ccbba8803c4e08f1a8d52cc79abe68f">   30</a></span>&#160;INFO  =  2</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#ae642a14fcfcd8e507e7862a4baa8e096">   31</a></span>&#160;WARN  =  4</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a59902cbbaff65b4bb85a63546ab4e52f">   32</a></span>&#160;ERROR =  8</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#aca030e7233dddbf8f33c9f4fc108b5bd">   33</a></span>&#160;FATAL = 16</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a1e9f27c2ebc10d6bb2e5cfa3f677452d">   29</a></span>&#160;DEBUG =  1</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a44b6d02fc52a34059846393124f27e7f">   30</a></span>&#160;INFO  =  2</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a281159e13506d01f3641acfd991a7197">   31</a></span>&#160;WARN  =  4</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a69969334ff486aba4744e59c4a8c8033">   32</a></span>&#160;ERROR =  8</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#aa19637357805bcb7dae7e860801e59ff">   33</a></span>&#160;FATAL = 16</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
@@ -133,10 +133,10 @@ $(document).ready(function(){initNavTree('client_8py_source.html',''); initResiz
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"># class to distinguish whether or not user has passed us a default value</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">class </span><a class="code" href="classrosros_1_1rospify_1_1client_1_1__unspecified.html">_unspecified</a>: <span class="keyword">pass</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">class </span>_unspecified: <span class="keyword">pass</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classrosros_1_1rospify_1_1client_1_1__unspecified.html">   50</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a670be8435bfd2e617d0938ddae6c2f87">delete_param</a>(param_name):</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a670be8435bfd2e617d0938ddae6c2f87">delete_param</a>(param_name):</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">    Deletes a parameter on the node.</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral"></span> </div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('client_8py_source.html',''); initResiz
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;get_param_cached = get_param</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#ac906e67171aca0147d3b425abcaa56b7">   96</a></span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#ad2475eec430ce2a795bd731b9092c14a">   96</a></span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a33ca24ca763a76e3c94ac696613cfc36">get_param_names</a>():</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns a list of node parameter names, with absolute namespace.&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a33ca24ca763a76e3c94ac696613cfc36">   99</a></span>&#160;    ns = util.namejoin(<a class="code" href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">get_namespace</a>(), <a class="code" href="namespacerosros_1_1rospify_1_1names.html#a278b9bcefdbac8c2dcb0645b2841993b">get_name</a>())</div>
@@ -224,165 +224,165 @@ $(document).ready(function(){initNavTree('client_8py_source.html',''); initResiz
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="stringliteral"></span> </div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="stringliteral">    @throws  ROSInitException  if initialization/registration fails</span></div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="stringliteral">    @throws  ValueError        if name is invalid</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a7cdd90a5348a3301e1ad3fe1c7da8745">  138</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span> <span class="keywordflow">not</span> name:</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">raise</span> ValueError(<span class="stringliteral">&quot;name must not be empty&quot;</span>)</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">if</span> <span class="stringliteral">&quot;/&quot;</span> <span class="keywordflow">in</span> name:</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">raise</span> ValueError(<span class="stringliteral">&quot;namespaces are not allowed in node names&quot;</span>)</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    log_level = _ROSPY_LOG_LEVEL_TO_PY_LEVEL.get(log_level, log_level)</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">try</span>: ros2.init_node(name, argv, anonymous=anonymous, log_level=log_level,</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        enable_rosout=<span class="keywordflow">not</span> disable_rosout)</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html">exceptions.ROSInitException</a>() <span class="keyword">from</span> e</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="stringliteral">    @return                    `rclpy.node.Node`</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a7cdd90a5348a3301e1ad3fe1c7da8745">  139</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">if</span> <span class="keywordflow">not</span> name:</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">raise</span> ValueError(<span class="stringliteral">&quot;name must not be empty&quot;</span>)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">if</span> <span class="stringliteral">&quot;/&quot;</span> <span class="keywordflow">in</span> name:</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">raise</span> ValueError(<span class="stringliteral">&quot;namespaces are not allowed in node names&quot;</span>)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    log_level = _ROSPY_LOG_LEVEL_TO_PY_LEVEL.get(log_level, log_level)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">try</span>: <span class="keywordflow">return</span> ros2.init_node(name, argv, anonymous=anonymous, log_level=log_level,</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                               enable_rosout=<span class="keywordflow">not</span> disable_rosout)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html">exceptions.ROSInitException</a>() <span class="keyword">from</span> e</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a4bb4d7b6ced40820d94e4948adf05a09">myargv</a>(argv=None):</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="stringliteral">    Returns command-line arguments with remappings removed.</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="stringliteral">    @param   argv  arguments to use if not `sys.argv`</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="stringliteral">    @return        list of arguments with remappings removed</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a4bb4d7b6ced40820d94e4948adf05a09">  158</a></span>&#160;    REMAP_RGX = re.compile(<span class="stringliteral">r&quot;^([\~\/a-z]|_|__)[\w\/]*:=.*&quot;</span>, re.I)</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    argv = list(sys.argv <span class="keywordflow">if</span> argv <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">else</span> argv)</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">while</span> <span class="stringliteral">&quot;--remap&quot;</span> <span class="keywordflow">in</span> argv:</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        idx = argv.index(<span class="stringliteral">&quot;--remap&quot;</span>)</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        argv.pop(idx)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">while</span> len(argv) &gt; idx <span class="keywordflow">and</span> REMAP_RGX.match(argv[idx]):</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            argv.pop(idx)</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span> argv</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a4bb4d7b6ced40820d94e4948adf05a09">myargv</a>(argv=None):</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="stringliteral">    Returns command-line arguments with remappings removed.</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="stringliteral">    @param   argv  arguments to use if not `sys.argv`</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="stringliteral">    @return        list of arguments with remappings removed</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a4bb4d7b6ced40820d94e4948adf05a09">  159</a></span>&#160;    REMAP_RGX = re.compile(<span class="stringliteral">r&quot;^([\~\/a-z]|_|__)[\w\/]*:=.*&quot;</span>, re.I)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    argv = list(sys.argv <span class="keywordflow">if</span> argv <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">else</span> argv)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">while</span> <span class="stringliteral">&quot;--remap&quot;</span> <span class="keywordflow">in</span> argv:</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        idx = argv.index(<span class="stringliteral">&quot;--remap&quot;</span>)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        argv.pop(idx)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">while</span> len(argv) &gt; idx <span class="keywordflow">and</span> REMAP_RGX.match(argv[idx]):</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            argv.pop(idx)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">return</span> argv</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a6febe9291749229363b41490a4786c3b">on_shutdown</a>(h):</div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a6febe9291749229363b41490a4786c3b">  169</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Registers function to be called on shutdown, after node has been torn down.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment"># ROS2 requires that the callback be a bound method</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keyword">class </span>Cls:</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">def </span>__init__(self, func):</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            self.func = func</div>
-<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a3699148440db7bdde6e95e16092363d1">  175</a></span>&#160;        <span class="keyword">def </span>callback(self):</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">return</span> self.func()</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    ros2.NODE.context.on_shutdown(Cls(h).callback)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a6febe9291749229363b41490a4786c3b">on_shutdown</a>(h):</div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a6febe9291749229363b41490a4786c3b">  170</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Registers function to be called on shutdown, after node has been torn down.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment"># ROS2 requires that the callback be a bound method</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keyword">class </span>Cls:</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">def </span>__init__(self, func):</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            self.func = func</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a8248182d9ecddeb6602691eb8feb0fc0">  176</a></span>&#160;        <span class="keyword">def </span>callback(self):</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">return</span> self.func()</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    ros2.NODE.context.on_shutdown(Cls(h).callback)</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#ad27657b135463ab72a24f2ed34e63fb5">search_param</a>(param_name):</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="stringliteral">    Search for a parameter on the node.</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="stringliteral">    @param   param_name  parameter name</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="stringliteral">    @return              key of matching parameter or None if no matching parameter</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#ad27657b135463ab72a24f2ed34e63fb5">  187</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    ns = util.namejoin(<a class="code" href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">get_namespace</a>(), <a class="code" href="namespacerosros_1_1rospify_1_1names.html#a278b9bcefdbac8c2dcb0645b2841993b">get_name</a>())</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">if</span> param_name.startswith(ns):</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        param_name = param_name[len(ns):]</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">return</span> util.namejoin(ns, param_name) <span class="keywordflow">if</span> param_name <span class="keywordflow">in</span> ros2.get_param_names() <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#ad27657b135463ab72a24f2ed34e63fb5">search_param</a>(param_name):</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="stringliteral">    Search for a parameter on the node.</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="stringliteral">    @param   param_name  parameter name</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="stringliteral">    @return              key of matching parameter or None if no matching parameter</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#ad27657b135463ab72a24f2ed34e63fb5">  188</a></span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    ns = util.namejoin(<a class="code" href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">get_namespace</a>(), <a class="code" href="namespacerosros_1_1rospify_1_1names.html#a278b9bcefdbac8c2dcb0645b2841993b">get_name</a>())</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">if</span> param_name.startswith(ns):</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        param_name = param_name[len(ns):]</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> util.namejoin(ns, param_name) <span class="keywordflow">if</span> param_name <span class="keywordflow">in</span> ros2.get_param_names() <span class="keywordflow">else</span> <span class="keywordtype">None</span></div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a5fe433de93a87202c60f6e01af1114b5">set_param</a>(param_name, param_value):</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="stringliteral">    Set a parameter on the node.</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="stringliteral">    If param_value is a dictionary, it will be treated as a parameter tree,</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="stringliteral">    where param_name is the namespace. For example:::</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="stringliteral">      {&quot;x&quot;: 1, &quot;y&quot;: 2, &quot;sub&quot;: {&quot;z&quot;: 3}}</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="stringliteral">    will set param_name.x=1, param_name.y=2, and param_name.sub.z=3.</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="stringliteral">    Furthermore, it will replace all existing parameters in the</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="stringliteral">    param_name namespace with the parameters in param_value. You must</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="stringliteral">    set parameters individually if you wish to perform a union update.</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="stringliteral">    @param   param_name    parameter name</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="stringliteral">    @param   param_value   parameter value</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="stringliteral">    @throws  ROSException  if setting parameter failed</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a5fe433de93a87202c60f6e01af1114b5">  212</a></span>&#160;        <span class="keywordflow">if</span> isinstance(param_value, dict):</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            ns = <span class="stringliteral">&quot;%s.&quot;</span> % param_name.strip(<span class="stringliteral">&quot;.&quot;</span>)</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">for</span> n <span class="keywordflow">in</span> [x <span class="keywordflow">for</span> x <span class="keywordflow">in</span> ros2.get_param_names() <span class="keywordflow">if</span> x.startswith(ns)]:</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                ros2.delete_param(n)</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">for</span> k, v <span class="keywordflow">in</span> util.flatten_dict({param_name: param_value}).items():</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                ros2.set_param(k, v)</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">else</span>: ros2.set_param(param_name, param_value)</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">exceptions.ROSException</a>() <span class="keyword">from</span> e</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a5fe433de93a87202c60f6e01af1114b5">set_param</a>(param_name, param_value):</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="stringliteral">    Set a parameter on the node.</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="stringliteral">    If param_value is a dictionary, it will be treated as a parameter tree,</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="stringliteral">    where param_name is the namespace. For example:::</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="stringliteral">      {&quot;x&quot;: 1, &quot;y&quot;: 2, &quot;sub&quot;: {&quot;z&quot;: 3}}</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="stringliteral">    will set param_name.x=1, param_name.y=2, and param_name.sub.z=3.</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="stringliteral">    Furthermore, it will replace all existing parameters in the</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="stringliteral">    param_name namespace with the parameters in param_value. You must</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="stringliteral">    set parameters individually if you wish to perform a union update.</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="stringliteral">    @param   param_name    parameter name</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="stringliteral">    @param   param_value   parameter value</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="stringliteral">    @throws  ROSException  if setting parameter failed</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a5fe433de93a87202c60f6e01af1114b5">  213</a></span>&#160;        <span class="keywordflow">if</span> isinstance(param_value, dict):</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            ns = <span class="stringliteral">&quot;%s.&quot;</span> % param_name.strip(<span class="stringliteral">&quot;.&quot;</span>)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keywordflow">for</span> n <span class="keywordflow">in</span> [x <span class="keywordflow">for</span> x <span class="keywordflow">in</span> ros2.get_param_names() <span class="keywordflow">if</span> x.startswith(ns)]:</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                ros2.delete_param(n)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">for</span> k, v <span class="keywordflow">in</span> util.flatten_dict({param_name: param_value}).items():</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                ros2.set_param(k, v)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">else</span>: ros2.set_param(param_name, param_value)</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">exceptions.ROSException</a>() <span class="keyword">from</span> e</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a5e79768e31865749887594987668c140">spin</a>():</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Spins ROS2 node forever.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a5e79768e31865749887594987668c140">  225</a></span>&#160;    ros2.spin()</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a5e79768e31865749887594987668c140">spin</a>():</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Spins ROS2 node forever.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a5e79768e31865749887594987668c140">  226</a></span>&#160;    ros2.spin()</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a269631db7b5abaced77490e06dd0e707">wait_for_message</a>(topic, topic_type, timeout=None):</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="stringliteral">    Receive one message from topic.</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="stringliteral">    This will create a new subscription to the topic, receive one message, then unsubscribe.</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="stringliteral">    @param   topic       name of topic</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="stringliteral">    @param   topic_type  topic type class</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="stringliteral">    @param   timeout     timeout time in seconds or ROS Duration</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="stringliteral">    @return              ROS message</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="stringliteral">    @throws  ROSException           if specified timeout is exceeded</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="stringliteral">    @throws  ROSInterruptException  if shutdown interrupts wait</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a269631db7b5abaced77490e06dd0e707">  242</a></span>&#160;    timeout = ros2.to_sec(timeout) <span class="keywordflow">if</span> timeout <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span> <span class="keywordflow">else</span> 2**31 - 1</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    sub, timer, rate = <span class="keywordtype">None</span>, <span class="keywordtype">None</span>, <span class="keywordtype">None</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keyword">def </span>on_message(msg):</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            msgs.append(msg)</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            ros2.destroy_entity(rate)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        msgs = []</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        timer = ros2.create_timer(timeout, callback=<span class="keywordtype">None</span>)</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        rate = rclpy.timer.Rate(timer, context=ros2.NODE.context)</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        sub = ros2.create_subscriber(topic, topic_type, on_message)</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> msgs: rate.sleep()</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> msgs:</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            err = <span class="stringliteral">&quot;timeout exceeded while waiting for message on topic %s&quot;</span> % topic</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">exceptions.ROSException</a>(err)</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">except</span> rclpy.exceptions.ROSInterruptException <span class="keyword">as</span> e:</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html">exceptions.ROSInterruptException</a>(*e.args) <span class="keyword">from</span> e</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">finally</span>:</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        ros2.destroy_entity(timer)</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        ros2.destroy_entity(sub)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1rospify_1_1client.html#a269631db7b5abaced77490e06dd0e707">wait_for_message</a>(topic, topic_type, timeout=None):</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="stringliteral">    Receive one message from topic.</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="stringliteral">    This will create a new subscription to the topic, receive one message, then unsubscribe.</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="stringliteral">    @param   topic       name of topic</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="stringliteral">    @param   topic_type  topic type class</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="stringliteral">    @param   timeout     timeout time in seconds or ROS Duration</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="stringliteral">    @return              ROS message</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="stringliteral">    @throws  ROSException           if specified timeout is exceeded</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="stringliteral">    @throws  ROSInterruptException  if shutdown interrupts wait</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="namespacerosros_1_1rospify_1_1client.html#a269631db7b5abaced77490e06dd0e707">  243</a></span>&#160;    timeout = ros2.to_sec(timeout) <span class="keywordflow">if</span> timeout <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span> <span class="keywordflow">else</span> 2**31 - 1</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    sub, timer, rate = <span class="keywordtype">None</span>, <span class="keywordtype">None</span>, <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keyword">def </span>on_message(msg):</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            msgs.append(msg)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            ros2.destroy_entity(rate)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        msgs = []</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        timer = ros2.create_timer(timeout, callback=<span class="keywordtype">None</span>)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        rate = rclpy.timer.Rate(timer, context=ros2.NODE.context)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        sub = ros2.create_subscriber(topic, topic_type, on_message)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> msgs: rate.sleep()</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> msgs:</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            err = <span class="stringliteral">&quot;timeout exceeded while waiting for message on topic %s&quot;</span> % topic</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">exceptions.ROSException</a>(err)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">except</span> rclpy.exceptions.ROSInterruptException <span class="keyword">as</span> e:</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">raise</span> <a class="code" href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html">exceptions.ROSInterruptException</a>(*e.args) <span class="keyword">from</span> e</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">finally</span>:</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        ros2.destroy_entity(timer)</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        ros2.destroy_entity(sub)</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;__all__ = [</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="stringliteral">&quot;delete_param&quot;</span>, <span class="stringliteral">&quot;get_master&quot;</span>, <span class="stringliteral">&quot;get_param&quot;</span>, <span class="stringliteral">&quot;get_param_cached&quot;</span>, <span class="stringliteral">&quot;get_param_names&quot;</span>,</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="stringliteral">&quot;get_published_topics&quot;</span>, <span class="stringliteral">&quot;has_param&quot;</span>, <span class="stringliteral">&quot;init_node&quot;</span>, <span class="stringliteral">&quot;myargv&quot;</span>, <span class="stringliteral">&quot;on_shutdown&quot;</span>,</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="stringliteral">&quot;search_param&quot;</span>, <span class="stringliteral">&quot;set_param&quot;</span>, <span class="stringliteral">&quot;spin&quot;</span>, <span class="stringliteral">&quot;wait_for_message&quot;</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;]</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;__all__ = [</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="stringliteral">&quot;delete_param&quot;</span>, <span class="stringliteral">&quot;get_master&quot;</span>, <span class="stringliteral">&quot;get_param&quot;</span>, <span class="stringliteral">&quot;get_param_cached&quot;</span>, <span class="stringliteral">&quot;get_param_names&quot;</span>,</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="stringliteral">&quot;get_published_topics&quot;</span>, <span class="stringliteral">&quot;has_param&quot;</span>, <span class="stringliteral">&quot;init_node&quot;</span>, <span class="stringliteral">&quot;myargv&quot;</span>, <span class="stringliteral">&quot;on_shutdown&quot;</span>,</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="stringliteral">&quot;search_param&quot;</span>, <span class="stringliteral">&quot;set_param&quot;</span>, <span class="stringliteral">&quot;spin&quot;</span>, <span class="stringliteral">&quot;wait_for_message&quot;</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;]</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_ac2f44073108aeaeeb8eda944c1e44dba"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#ac2f44073108aeaeeb8eda944c1e44dba">rosros.rospify.client.has_param</a></div><div class="ttdeci">def has_param(param_name)</div><div class="ttdoc">Test if parameter exists on the node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00069">client.py:69</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a6febe9291749229363b41490a4786c3b"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a6febe9291749229363b41490a4786c3b">rosros.rospify.client.on_shutdown</a></div><div class="ttdeci">def on_shutdown(h)</div><div class="ttdoc">Registers function to be called on shutdown, after node has been torn down.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00169">client.py:169</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a269631db7b5abaced77490e06dd0e707"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a269631db7b5abaced77490e06dd0e707">rosros.rospify.client.wait_for_message</a></div><div class="ttdeci">def wait_for_message(topic, topic_type, timeout=None)</div><div class="ttdoc">Receive one message from topic.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00242">client.py:242</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a6febe9291749229363b41490a4786c3b"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a6febe9291749229363b41490a4786c3b">rosros.rospify.client.on_shutdown</a></div><div class="ttdeci">def on_shutdown(h)</div><div class="ttdoc">Registers function to be called on shutdown, after node has been torn down.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00170">client.py:170</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a269631db7b5abaced77490e06dd0e707"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a269631db7b5abaced77490e06dd0e707">rosros.rospify.client.wait_for_message</a></div><div class="ttdeci">def wait_for_message(topic, topic_type, timeout=None)</div><div class="ttdoc">Receive one message from topic.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00243">client.py:243</a></div></div>
 <div class="ttc" id="aclassrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html">rosros.rospify.exceptions.ROSException</a></div><div class="ttdoc">Base exception class for ROS clients.</div><div class="ttdef"><b>Definition:</b> <a href="rospify_2exceptions_8py_source.html#l00054">exceptions.py:54</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a45dc2d546b14bad963f89fd43446a363"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a45dc2d546b14bad963f89fd43446a363">rosros.rospify.client.get_master</a></div><div class="ttdeci">def get_master(env=None)</div><div class="ttdoc">Returns a partial stand-in of `rospy.MasterProxy`.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00078">client.py:78</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a5e79768e31865749887594987668c140"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a5e79768e31865749887594987668c140">rosros.rospify.client.spin</a></div><div class="ttdeci">def spin()</div><div class="ttdoc">Spins ROS2 node forever.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00225">client.py:225</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a7cdd90a5348a3301e1ad3fe1c7da8745"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a7cdd90a5348a3301e1ad3fe1c7da8745">rosros.rospify.client.init_node</a></div><div class="ttdeci">def init_node(name, argv=None, anonymous=False, log_level=None, disable_rostime=None, disable_rosout=False, disable_signals=None, xmlrpc_port=None, tcpros_port=None)</div><div class="ttdoc">Inits ROS2 and creates ROS2 node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00138">client.py:138</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a5e79768e31865749887594987668c140"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a5e79768e31865749887594987668c140">rosros.rospify.client.spin</a></div><div class="ttdeci">def spin()</div><div class="ttdoc">Spins ROS2 node forever.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00226">client.py:226</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a7cdd90a5348a3301e1ad3fe1c7da8745"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a7cdd90a5348a3301e1ad3fe1c7da8745">rosros.rospify.client.init_node</a></div><div class="ttdeci">def init_node(name, argv=None, anonymous=False, log_level=None, disable_rostime=None, disable_rosout=False, disable_signals=None, xmlrpc_port=None, tcpros_port=None)</div><div class="ttdoc">Inits ROS2 and creates ROS2 node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00139">client.py:139</a></div></div>
 <div class="ttc" id="aclassrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html">rosros.rospify.exceptions.ROSInitException</a></div><div class="ttdoc">Exception for operations that interrupted, e.g.</div><div class="ttdef"><b>Definition:</b> <a href="rospify_2exceptions_8py_source.html#l00060">exceptions.py:60</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a33ca24ca763a76e3c94ac696613cfc36"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a33ca24ca763a76e3c94ac696613cfc36">rosros.rospify.client.get_param_names</a></div><div class="ttdeci">def get_param_names()</div><div class="ttdoc">Returns a list of node parameter names, with absolute namespace.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00099">client.py:99</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a26c4450ab2c6dc9cc4b2a0bea87b5cab"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a26c4450ab2c6dc9cc4b2a0bea87b5cab">rosros.rospify.client.get_published_topics</a></div><div class="ttdeci">def get_published_topics(namespace=&quot;/&quot;)</div><div class="ttdoc">Returns a list of published topics.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00112">client.py:112</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a5fe433de93a87202c60f6e01af1114b5"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a5fe433de93a87202c60f6e01af1114b5">rosros.rospify.client.set_param</a></div><div class="ttdeci">def set_param(param_name, param_value)</div><div class="ttdoc">Set a parameter on the node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00212">client.py:212</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_ad27657b135463ab72a24f2ed34e63fb5"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#ad27657b135463ab72a24f2ed34e63fb5">rosros.rospify.client.search_param</a></div><div class="ttdeci">def search_param(param_name)</div><div class="ttdoc">Search for a parameter on the node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00187">client.py:187</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a4bb4d7b6ced40820d94e4948adf05a09"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a4bb4d7b6ced40820d94e4948adf05a09">rosros.rospify.client.myargv</a></div><div class="ttdeci">def myargv(argv=None)</div><div class="ttdoc">Returns command-line arguments with remappings removed.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00158">client.py:158</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a5fe433de93a87202c60f6e01af1114b5"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a5fe433de93a87202c60f6e01af1114b5">rosros.rospify.client.set_param</a></div><div class="ttdeci">def set_param(param_name, param_value)</div><div class="ttdoc">Set a parameter on the node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00213">client.py:213</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_ad27657b135463ab72a24f2ed34e63fb5"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#ad27657b135463ab72a24f2ed34e63fb5">rosros.rospify.client.search_param</a></div><div class="ttdeci">def search_param(param_name)</div><div class="ttdoc">Search for a parameter on the node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00188">client.py:188</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a4bb4d7b6ced40820d94e4948adf05a09"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a4bb4d7b6ced40820d94e4948adf05a09">rosros.rospify.client.myargv</a></div><div class="ttdeci">def myargv(argv=None)</div><div class="ttdoc">Returns command-line arguments with remappings removed.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00159">client.py:159</a></div></div>
 <div class="ttc" id="aclassrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html">rosros.rospify.exceptions.ROSInterruptException</a></div><div class="ttdoc">Exception if time moved backwards.</div><div class="ttdef"><b>Definition:</b> <a href="rospify_2exceptions_8py_source.html#l00069">exceptions.py:69</a></div></div>
 <div class="ttc" id="aclassrosros_1_1rospify_1_1msproxy_1_1_master_proxy_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1msproxy_1_1_master_proxy.html">rosros.rospify.msproxy.MasterProxy</a></div><div class="ttdoc">Partial stand-in for `rospy.MasterProxy`.</div><div class="ttdef"><b>Definition:</b> <a href="msproxy_8py_source.html#l00018">msproxy.py:18</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1names_html_a278b9bcefdbac8c2dcb0645b2841993b"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1names.html#a278b9bcefdbac8c2dcb0645b2841993b">rosros.rospify.names.get_name</a></div><div class="ttdeci">def get_name()</div><div class="ttdoc">Returns fully resolved name of local node.</div><div class="ttdef"><b>Definition:</b> <a href="names_8py_source.html#l00017">names.py:17</a></div></div>
-<div class="ttc" id="aclassrosros_1_1rospify_1_1client_1_1__unspecified_html"><div class="ttname"><a href="classrosros_1_1rospify_1_1client_1_1__unspecified.html">rosros.rospify.client._unspecified</a></div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00050">client.py:50</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_ab048a760173f607918c37e89c5cec9ed"><div class="ttname"><a href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">rosros.core.get_namespace</a></div><div class="ttdeci">def get_namespace()</div><div class="ttdoc">Returns ROS node namespace.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00300">core.py:300</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ab048a760173f607918c37e89c5cec9ed"><div class="ttname"><a href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">rosros.core.get_namespace</a></div><div class="ttdeci">def get_namespace()</div><div class="ttdoc">Returns ROS node namespace.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00302">core.py:302</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a670be8435bfd2e617d0938ddae6c2f87"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a670be8435bfd2e617d0938ddae6c2f87">rosros.rospify.client.delete_param</a></div><div class="ttdeci">def delete_param(param_name)</div><div class="ttdoc">Deletes a parameter on the node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00060">client.py:60</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_acada1d798b9aebc3447d9232e981972b"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#acada1d798b9aebc3447d9232e981972b">rosros.rospify.client.get_param</a></div><div class="ttdeci">def get_param(param_name, default=_unspecified)</div><div class="ttdoc">Returns a parameter value from the node.</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00089">client.py:89</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_93e29dcaf104ee9d295c2d3321fb8206.html">rosros</a></li><li class="navelem"><a class="el" href="dir_e16229acc52d7157f13527bee18a7883.html">rospify</a></li><li class="navelem"><a class="el" href="client_8py.html">client.py</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="dir_6ea09fe58e335c1fd95c7cd91755b755.html">rospify</a></li><li class="navelem"><a class="el" href="client_8py.html">client.py</a></li>
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

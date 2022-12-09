@@ -1,4 +1,4 @@
-<map id="MutuallyExclusiveCallbackGroup" name="MutuallyExclusiveCallbackGroup">
-<area shape="rect" id="node1" title="API stand&#45;in for ROS2 compatibility." alt="" coords="5,80,203,121"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1callback__groups_1_1_callback_group.html" title="The base class for a callback group." alt="" coords="45,5,163,32"/>
+<map id="rosros.rclify.callback_groups.MutuallyExclusiveCallbackGroup" name="rosros.rclify.callback_groups.MutuallyExclusiveCallbackGroup">
+<area shape="rect" id="node1" title="API stand&#45;in for ROS2 compatibility." alt="" coords="5,95,296,136"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1callback__groups_1_1_callback_group.html" title="The base class for a callback group." alt="" coords="65,5,237,47"/>
 </map>

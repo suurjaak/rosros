@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: src/rosros/core.py Source File</title>
+<title>rosros: rosros/core.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -97,25 +97,25 @@ $(document).ready(function(){initNavTree('core_8py_source.html',''); initResizab
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral"></span> </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@author      Erki Suurjaak</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@created     11.02.2022</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    28.10.2022</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    09.12.2022</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> os</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ada88cbba5444b963e67669d5d1ba046d">   17</a></span>&#160;ros1 = ros2 = <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a746a8e03a4901d7bb4b4715885bbeae1">   17</a></span>&#160;ros1 = ros2 = <span class="keywordtype">None</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordflow">if</span> os.getenv(<span class="stringliteral">&quot;ROS_VERSION&quot;</span>) != <span class="stringliteral">&quot;2&quot;</span>:</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">from</span> . <span class="keyword">import</span> ros1</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordflow">else</span>:</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">from</span> . <span class="keyword">import</span> ros2</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ae04bb9701f1340e056c9859a46717688">   22</a></span>&#160;ros = ros1 <span class="keywordflow">or</span> ros2</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a659f43c04f10196c75f32dcc107c5996">   22</a></span>&#160;ros = ros1 <span class="keywordflow">or</span> ros2</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a89e8566feb43ee5a6b27ed7a59726175">   26</a></span>&#160;AnyMsg = ros.AnyMsg</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ac8223ebe7aa7bdf6bb05ee20c5c31f1e">   26</a></span>&#160;AnyMsg = ros.AnyMsg</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a18055f903763ad579fb5f585ff08abc9">   29</a></span>&#160;Bag = ros.Bag</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a8967612187d5da04e8e0affff10aba7e">   29</a></span>&#160;Bag = ros.Bag</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a361abc8b34eb77f4396517e68c192e7e">init_node</a>(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True,</div>
@@ -133,381 +133,383 @@ $(document).ready(function(){initNavTree('core_8py_source.html',''); initResizab
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral">    @param   enable_rosout  `False` to suppress auto-publication of rosout</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">    @param   multithreaded  ROS2 only, ignored in ROS1:</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">                            use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a361abc8b34eb77f4396517e68c192e7e">   47</a></span>&#160;<span class="stringliteral">    @param   reentrant      ROS2 only, ignored in ROS1:</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">                            use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> ros1: ros1.init_node(name, args, namespace, anonymous, log_level, enable_rosout)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">else</span>: ros2.init_node(name, args, namespace, anonymous, log_level, multithreaded, reentrant)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ab072b6aa117abf41001c20cc39cf460b">init_params</a>(defaults=None, **defaultkws):</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">    Sets all parameters on node from defaults dictionary.</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">    In ROS2, auto-declares unregistered parameters.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">    @param   reentrant      ROS2 only, ignored in ROS1:</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a361abc8b34eb77f4396517e68c192e7e">   48</a></span>&#160;<span class="stringliteral">                            use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">    @return                 `None` in ROS1, `rclpy.node.Node` in ROS2</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span> ros1: args = (name, args, namespace, anonymous, log_level, enable_rosout)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">else</span>:    args = (name, args, namespace, anonymous, log_level, multithreaded, reentrant)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> (ros1.init_node <span class="keywordflow">if</span> ros1 <span class="keywordflow">else</span> ros2.init_node)(*args)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ab072b6aa117abf41001c20cc39cf460b">init_params</a>(defaults=None, **defaultkws):</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">    Sets all parameters on node from defaults dictionary.</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">    @param   defaults    nested dictionary with suitable keys and values for ROS</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">                         (keys must be valid namespace names,</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">                          list values must not contain nested values)</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">    @param   defaultkws  parameters as key=value</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ab072b6aa117abf41001c20cc39cf460b">   64</a></span>&#160;<span class="stringliteral">    @return              full nested parameters dictionary, combined from given defaults</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">                         and externally set parameters on the node</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> ros.init_params(defaults, **defaultkws)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a70d1a66dd46463010c61bf833c12a5c3">delete_param</a>(name):</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">    Deletes parameter from the node.</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a70d1a66dd46463010c61bf833c12a5c3">   73</a></span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">    @param   name      full name of the parameter in node namespace</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">    @throws  KeyError  if parameter not set</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    ros.delete_param(name)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a26569718e6235361c723e4c2a88e1825">has_param</a>(name):</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a26569718e6235361c723e4c2a88e1825">   82</a></span>&#160;<span class="stringliteral">    Returns whether the parameter exists on the node.</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">    @param   name  full name of the parameter in node namespace</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ae2bc7a07dc762a31aab15a688b58f9a6">   86</a></span>&#160;    <span class="keywordflow">return</span> ros.has_param(name)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ae2bc7a07dc762a31aab15a688b58f9a6">get_param_names</a>():</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns the names of all parameters on the node.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> ros.get_params()</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a2487e8abfc48f6b9f57084024f75ead2">get_params</a>(nested=True):</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a2487e8abfc48f6b9f57084024f75ead2">   96</a></span>&#160;<span class="stringliteral">    Returns the current ROS node parameters, by default as nested dictionary.</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">    @param   nested  return a nested dictionary,</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">                     like `{&quot;my&quot;: {&quot;name&quot;: 1}}` vs {&quot;my.name&quot;: 1}</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> ros.get_params(nested)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a004a4aae28bf04e9a30f554c2035d9fd">get_param</a>(name, default=None, autoset=True):</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="stringliteral">    Returns parameter value from the node.</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a004a4aae28bf04e9a30f554c2035d9fd">  108</a></span>&#160;<span class="stringliteral">    @param   default   optional default to return if parameter unknown</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">    @param   autoset   set default value to node as parameter value if unknown</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="stringliteral">    @return            parameter value, or default if parameter was unknown</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="stringliteral">    @throws  KeyError  if parameter not set and default not given</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> ros.get_param(name, default, autoset)</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ae8591390d87fae4e6e096c9b602b1942">set_param</a>(name, value, descriptor=None):</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="stringliteral">    Sets a parameter on the node.</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ae8591390d87fae4e6e096c9b602b1942">  121</a></span>&#160;<span class="stringliteral">    In ROS2, parameter will be auto-declared if unknown so far.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">    In ROS2, auto-declares unregistered parameters.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">    @param   defaults    nested dictionary with suitable keys and values for ROS</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">                         (keys must be valid namespace names,</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">                          list values must not contain nested values)</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">    @param   defaultkws  parameters as key=value</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ab072b6aa117abf41001c20cc39cf460b">   66</a></span>&#160;<span class="stringliteral">    @return              full nested parameters dictionary, combined from given defaults</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">                         and externally set parameters on the node</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> ros.init_params(defaults, **defaultkws)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a70d1a66dd46463010c61bf833c12a5c3">delete_param</a>(name):</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">    Deletes parameter from the node.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a70d1a66dd46463010c61bf833c12a5c3">   75</a></span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">    @param   name      full name of the parameter in node namespace</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">    @throws  KeyError  if parameter not set</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    ros.delete_param(name)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a26569718e6235361c723e4c2a88e1825">has_param</a>(name):</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a26569718e6235361c723e4c2a88e1825">   84</a></span>&#160;<span class="stringliteral">    Returns whether the parameter exists on the node.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">    @param   name  full name of the parameter in node namespace</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ae2bc7a07dc762a31aab15a688b58f9a6">   88</a></span>&#160;    <span class="keywordflow">return</span> ros.has_param(name)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ae2bc7a07dc762a31aab15a688b58f9a6">get_param_names</a>():</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns the names of all parameters on the node.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> ros.get_params()</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a2487e8abfc48f6b9f57084024f75ead2">get_params</a>(nested=True):</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a2487e8abfc48f6b9f57084024f75ead2">   98</a></span>&#160;<span class="stringliteral">    Returns the current ROS node parameters, by default as nested dictionary.</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">    @param   nested  return a nested dictionary,</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral">                     like `{&quot;my&quot;: {&quot;name&quot;: 1}}` vs {&quot;my.name&quot;: 1}</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> ros.get_params(nested)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a004a4aae28bf04e9a30f554c2035d9fd">get_param</a>(name, default=None, autoset=True):</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral">    Returns parameter value from the node.</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a004a4aae28bf04e9a30f554c2035d9fd">  110</a></span>&#160;<span class="stringliteral">    @param   default   optional default to return if parameter unknown</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="stringliteral">    @param   autoset   set default value to node as parameter value if unknown</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="stringliteral">    @return            parameter value, or default if parameter was unknown</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="stringliteral">    @throws  KeyError  if parameter not set and default not given</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> ros.get_param(name, default, autoset)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ae8591390d87fae4e6e096c9b602b1942">set_param</a>(name, value, descriptor=None):</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="stringliteral">    Sets a parameter on the node.</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="stringliteral">    @param    name        full name of the parameter in node namespace</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="stringliteral">    @param    value       parameter value to set</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="stringliteral">    @param    descriptor  optional `rcl_interfaces.msg.ParameterDescriptor` in ROS2</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a454704e105f5827d69d0d7bfd2715374">  126</a></span>&#160;<span class="stringliteral">    @return               the set value</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.set_param(name, value)</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> ros2.set_param(name, value, descriptor)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a77ab9cb7560acef09069bed5d1374f5e">  131</a></span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a454704e105f5827d69d0d7bfd2715374">start_spin</a>():</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Sets ROS node spinning forever in a background thread.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    ros.start_spin()</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a77ab9cb7560acef09069bed5d1374f5e">spin</a>():</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Spins ROS node forever.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    ros.spin()</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a201ecc07bb3e05976fb1e788dc8591ff">  141</a></span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a201ecc07bb3e05976fb1e788dc8591ff">spin_once</a>(timeout=None):</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="stringliteral">    Waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2.</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="stringliteral">    @param  timeout  time to wait at most, as seconds or ROS duration;</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="stringliteral">                     None or &lt;0 waits forever</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    ros.spin_once(timeout)</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a0e91623fa073e3d80c97e6f174f27d03">  151</a></span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a0e91623fa073e3d80c97e6f174f27d03">spin_until_future_complete</a>(future, timeout=None):</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="stringliteral">    Spins ROS until future complete or timeout reached or ROS shut down.</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#abf58dbfa228d24f39270ce519b160b81">  155</a></span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="stringliteral">    @param  future       object with `asyncio.Future`-conforming interface to complete</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="stringliteral">    @param  timeout      time to wait, as seconds or ROS1 duration</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    ros.spin_until_future_complete(future, timeout)</div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#aab8c89ab3cca7245f7c279bb19589394">  160</a></span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#abf58dbfa228d24f39270ce519b160b81">ok</a>():</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns whether ROS has been initialized and is not shut down.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">return</span> ros.ok()</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#aab8c89ab3cca7245f7c279bb19589394">shutdown</a>():</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Shuts down live ROS node, if any.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    ros.shutdown()</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a65d95ce8401c2fbd7ea2feb2b1b61bc9">create_publisher</a>(topic, cls_or_typename, latch=False, queue_size=0, **qosargs):</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="stringliteral">    Returns a ROS publisher instance.</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="stringliteral">    @param   topic            name of topic to open</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS message class object like `std_msgs.msg.Bool`</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="stringliteral">                              or message type name like &quot;std_msgs/Bool&quot;</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="stringliteral">    @param   latch            provide last published message to new subscribers</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="stringliteral">                              (sets `DurabilityPolicy.TRANSIENT_LOCAL` in ROS2)</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a65d95ce8401c2fbd7ea2feb2b1b61bc9">  181</a></span>&#160;<span class="stringliteral">    @param   queue_size       queue size of outgoing messages (0 or None: infinite)</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="stringliteral">                              (sets QoS `depth` in ROS2)</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (uses only `depth`</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="stringliteral">                              and `durability`=TRANSIENT_LOCAL in ROS1)</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="stringliteral">    @return                   `rospy.Publisher` or `rclpy.publisher.Publisher`,</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="stringliteral">                              either will support keyword arguments in `publish()`</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="stringliteral">                              and have `get_num_connections()`</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">if</span> ros1:</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        queue_size = qosargs.get(<span class="stringliteral">&quot;depth&quot;</span>, queue_size)</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">if</span> qosargs.get(<span class="stringliteral">&quot;durability&quot;</span>) == 1:  <span class="comment"># DurabilityPolicy.TRANSIENT_LOCAL</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            latch = <span class="keyword">True</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">return</span> ros1.create_publisher(topic, cls_or_typename, latch, queue_size)</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> ros2.create_publisher(topic, cls_or_typename, latch, queue_size, **qosargs)</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ab0a58969e9fd33c8cd76c13e0851c9b5">create_subscriber</a>(topic, cls_or_typename, callback, callback_args=None,</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                      queue_size=0, raw=False, **qosargs):</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="stringliteral">    Returns a ROS subscriber instance.</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="stringliteral">    @param   topic            name of topic to listen to</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS message class object like `std_msgs.msg.Bool`</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="stringliteral">                              or message type name like &quot;std_msgs/Bool&quot;</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="stringliteral">    @param   callback         callback function, invoked with received message,</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="stringliteral">                              and with additional arguments if given</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ab0a58969e9fd33c8cd76c13e0851c9b5">  208</a></span>&#160;<span class="stringliteral">    @param   callback_args    additional arguments to pass to the callback, if any,</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="stringliteral">                              invoked as `callback(msg, callback_args)´</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="stringliteral">    @param   queue_size       queue size of incoming messages (0 or None: infinite)</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="stringliteral">    @param   raw              invoke callback with serialized message bytes,</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="stringliteral">                              make subscription with AnyMsg in ROS1</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (uses only `depth` in ROS1).</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="stringliteral">                              `__autodetect` will look up current publishers on the topic</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="stringliteral">                              and create a compatible QoS.</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="stringliteral">    @return                   `rospy.Subscriber` or `rclpy.subscription.Subscription`</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">if</span> ros1:</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        queue_size = qosargs.get(<span class="stringliteral">&quot;depth&quot;</span>, queue_size)</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">return</span> ros1.create_subscriber(topic, cls_or_typename, callback, callback_args,</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                      queue_size, raw)</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">return</span> ros2.create_subscriber(topic, cls_or_typename, callback, callback_args,</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                  queue_size, raw, **qosargs)</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a822a117e89e3df59926ad99e2354bc1e">create_service</a>(service, cls_or_typename, callback, **qosargs):</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="stringliteral">    Returns a ROS service server instance, for providing a service.</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="stringliteral">    @param   service          name of service to provide</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a822a117e89e3df59926ad99e2354bc1e">  232</a></span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS service class object like `std_srvs.srv.SetBool`</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="stringliteral">                              or service type name like `&quot;std_srvs/SetBool&quot;</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="stringliteral">    @param   callback         callback function, invoked with `(request, response)`,</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="stringliteral">                              expected to return the populated response,</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="stringliteral">                              or a list/tuple/dictionary for populating the response.</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="stringliteral">                              If the function only takes one argument,</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="stringliteral">                              it is invoked with `(request)`.</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (ignored in ROS1)</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="stringliteral">    @return                   `rospy.Service` or `rclpy.service.Service`</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.create_service(service, cls_or_typename, callback)</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">return</span> ros2.create_service(service, cls_or_typename, callback, **qosargs)</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a9283e039934d3c87a0c0cf829187f98b">create_client</a>(service, cls_or_typename, **qosargs):</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a9283e039934d3c87a0c0cf829187f98b">  249</a></span>&#160;<span class="stringliteral">    Returns a ROS service client instance, for invoking a service.</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="stringliteral">    @param   service          name of service to invoke</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS service class object like `std_srvs.srv.SetBool`</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="stringliteral">                              or service type name like `&quot;std_srvs/SetBool&quot;</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (ignored in ROS1)</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="stringliteral">    @return                   `rospy.ServiceProxy` or `rclpy.client.Client`,</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="stringliteral">                              either will have `call_async()` returning a future,</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="stringliteral">                              either will support keyword arguments in calls</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="stringliteral">                              and be callable itself</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.create_client(service, cls_or_typename)</div>
-<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a99e9da505d486a8e89a4dfac048a9a2c">  262</a></span>&#160;    <span class="keywordflow">return</span> ros2.create_client(service, cls_or_typename, **qosargs)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a99e9da505d486a8e89a4dfac048a9a2c">create_timer</a>(period, callback, oneshot=False, immediate=False):</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="stringliteral">    Returns a ROS timer instance.</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="stringliteral">    @param   period     desired period between callbacks, as seconds or ROS duration</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="stringliteral">    @param   callback   callback function invoked on timer, with no arguments</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="stringliteral">    @param   oneshot    whether to fire only once</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a4720d6aed312425f06db95407f48f870">  272</a></span>&#160;<span class="stringliteral">    @param   immediate  whether to fire once immediately instead of waiting one period</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="stringliteral">    @return             `rospy.Timer` or `rclpy.timer.Timer`</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.create_timer(period, callback, oneshot, immediate)</div>
-<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a0ea82b6e3b2eaedee082df74e45c8076">  276</a></span>&#160;    <span class="keywordflow">return</span> ros2.create_timer(period, callback, oneshot, immediate)</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a4720d6aed312425f06db95407f48f870">create_rate</a>(frequency):</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="stringliteral">    Returns a ROS rate instance, for sleeping at a fixed rate.</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="stringliteral">    @param   frequency  rate to sleep at, in Hz</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="stringliteral">    @return             `rospy.Rate` or `rclpy.rate.Rate`</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">return</span> ros.create_rate(frequency)</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a0ea82b6e3b2eaedee082df74e45c8076">destroy_entity</a>(item):</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Closes the given publisher, subscriber, service client, or service server instance.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ac4c130c9a3a50c6766b683ccf44f3bb1">  291</a></span>&#160;    <span class="keywordflow">return</span> ros.destroy_entity(item)</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ac4c130c9a3a50c6766b683ccf44f3bb1">get_logger</a>():</div>
-<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a0ef4f891b3b4760a86c79578977be9a2">  295</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="stringliteral">    Returns `logging.Logger` for logging to ROS log handler.</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="stringliteral">    Logging methods on the logger (`debug()`, `info()`, etc) accept additional keyword arguments:</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="stringliteral">    - `__once__`:                whether to log only once from call site</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">  300</a></span>&#160;<span class="stringliteral">    - `__throttle__`:            seconds to skip logging from call site for</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="stringliteral">    - `__throttle_identical__`:  whether to skip logging identical consecutive texts from call site</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="stringliteral">                                 (given log message excluding formatting arguments).</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="stringliteral">                                 Combines with `__throttle__` to skip duplicates for a period.</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a766101e37a6676c04ca54265ab7e5525">  305</a></span>&#160;    <span class="keywordflow">return</span> ros.get_logger()</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a0ef4f891b3b4760a86c79578977be9a2">get_rostime</a>():</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns ROS time instance for current ROS clock time.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a272ed3e2514904ca86858f93f0b04048">  310</a></span>&#160;    <span class="keywordflow">return</span> ros.get_rostime()</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">get_namespace</a>():</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns ROS node namespace.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ad10dc7c6d28a17c9168e8d377fbd690b">  315</a></span>&#160;    <span class="keywordflow">return</span> ros.get_namespace()</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a766101e37a6676c04ca54265ab7e5525">get_node_name</a>():</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns ROS node full name with namespace.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">return</span> ros.get_node_name()</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a272ed3e2514904ca86858f93f0b04048">get_nodes</a>():</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns all ROS nodes, as `[node full name, ]`.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordflow">return</span> ros.get_nodes()</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a45a297ce55306b772207393bc146537f">  327</a></span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ad10dc7c6d28a17c9168e8d377fbd690b">get_topics</a>():</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns all available ROS topics, as `[(topic name, [type name, ]), ]`.&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">return</span> ros.get_topics()</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a45a297ce55306b772207393bc146537f">get_services</a>(node=None, namespace=None, include_types=True):</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="stringliteral">    Returns all available ROS services, as `[(service name, [type name, ]), ]`.</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="stringliteral">    @param   node           full name of the node to return services for, if any</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#aef6ef0d6705e4bb23ebf9c1c0c979062">  338</a></span>&#160;<span class="stringliteral">    @param   namespace      full or partial namespace to scope services from</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="stringliteral">    @param   include_types  if false, type names will be returned as an empty list</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">return</span> ros.get_services(node, namespace, include_types)</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#aef6ef0d6705e4bb23ebf9c1c0c979062">remap_name</a>(name, namespace=None):</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="stringliteral">    Returns the absolute remapped topic/service name if mapping exists.</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a1e31c7a994a75cac735b1b3cc9576b33">  347</a></span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="stringliteral">    @param   name       name to seek exact remapping for</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="stringliteral">    @param   namespace  namespace to resolve relative and private names to,</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="stringliteral">                        by default current node namespace</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="stringliteral">    @return             remapped resolved name, or original if not mapped</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keywordflow">return</span> ros.remap_name(name, namespace)</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a6cc12ac922407fd2db263bf44c0075fa">  356</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a1e31c7a994a75cac735b1b3cc9576b33">resolve_name</a>(name, namespace=None):</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="stringliteral">    Returns absolute remapped name, namespaced under current node if relative or private.</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="stringliteral">    @param   namespace  namespace to use if not current node full name</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">return</span> ros.resolve_name(name, namespace)</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a6cc12ac922407fd2db263bf44c0075fa">register_init</a>(node=None):</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="stringliteral">    Informs `rosros` of ROS having been initialized outside of `init_node()`.</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="stringliteral">    @param   node  mandatory `rclpy.node.Node` in ROS2</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    ros1.register_init() <span class="keywordflow">if</span> ros1 <span class="keywordflow">else</span> ros2.register_init(node)</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;__all__ = [</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="stringliteral">&quot;ros1&quot;</span>, <span class="stringliteral">&quot;ros2&quot;</span>, <span class="stringliteral">&quot;AnyMsg&quot;</span>, <span class="stringliteral">&quot;Bag&quot;</span>,</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="stringliteral">&quot;create_client&quot;</span>, <span class="stringliteral">&quot;create_publisher&quot;</span>, <span class="stringliteral">&quot;create_rate&quot;</span>, <span class="stringliteral">&quot;create_service&quot;</span>,</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="stringliteral">&quot;create_subscriber&quot;</span>, <span class="stringliteral">&quot;create_timer&quot;</span>, <span class="stringliteral">&quot;delete_param&quot;</span>, <span class="stringliteral">&quot;destroy_entity&quot;</span>,</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="stringliteral">&quot;get_logger&quot;</span>, <span class="stringliteral">&quot;get_namespace&quot;</span>, <span class="stringliteral">&quot;get_node_name&quot;</span>, <span class="stringliteral">&quot;get_nodes&quot;</span>, <span class="stringliteral">&quot;get_param&quot;</span>,</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="stringliteral">&quot;get_param_names&quot;</span>, <span class="stringliteral">&quot;get_params&quot;</span>, <span class="stringliteral">&quot;get_rostime&quot;</span>, <span class="stringliteral">&quot;get_services&quot;</span>, <span class="stringliteral">&quot;get_topics&quot;</span>,</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="stringliteral">&quot;has_param&quot;</span>, <span class="stringliteral">&quot;init_node&quot;</span>, <span class="stringliteral">&quot;init_params&quot;</span>, <span class="stringliteral">&quot;ok&quot;</span>, <span class="stringliteral">&quot;register_init&quot;</span>, <span class="stringliteral">&quot;remap_name&quot;</span>,</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="stringliteral">&quot;resolve_name&quot;</span>, <span class="stringliteral">&quot;set_param&quot;</span>, <span class="stringliteral">&quot;shutdown&quot;</span>, <span class="stringliteral">&quot;spin&quot;</span>, <span class="stringliteral">&quot;spin_once&quot;</span>,</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="stringliteral">&quot;spin_until_future_complete&quot;</span>, <span class="stringliteral">&quot;start_spin&quot;</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;]</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ae8591390d87fae4e6e096c9b602b1942">  123</a></span>&#160;<span class="stringliteral">    In ROS2, parameter will be auto-declared if unknown so far.</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="stringliteral">    @param    name        full name of the parameter in node namespace</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="stringliteral">    @param    value       parameter value to set</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="stringliteral">    @param    descriptor  optional `rcl_interfaces.msg.ParameterDescriptor` in ROS2</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a454704e105f5827d69d0d7bfd2715374">  128</a></span>&#160;<span class="stringliteral">    @return               the set value</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.set_param(name, value)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> ros2.set_param(name, value, descriptor)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a77ab9cb7560acef09069bed5d1374f5e">  133</a></span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a454704e105f5827d69d0d7bfd2715374">start_spin</a>():</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Sets ROS node spinning forever in a background thread.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    ros.start_spin()</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a77ab9cb7560acef09069bed5d1374f5e">spin</a>():</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Spins ROS node forever.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    ros.spin()</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a201ecc07bb3e05976fb1e788dc8591ff">  143</a></span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a201ecc07bb3e05976fb1e788dc8591ff">spin_once</a>(timeout=None):</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="stringliteral">    Waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2.</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="stringliteral">    @param  timeout  time to wait at most, as seconds or ROS duration;</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="stringliteral">                     None or &lt;0 waits forever</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    ros.spin_once(timeout)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a0e91623fa073e3d80c97e6f174f27d03">  153</a></span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a0e91623fa073e3d80c97e6f174f27d03">spin_until_future_complete</a>(future, timeout=None):</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="stringliteral">    Spins ROS until future complete or timeout reached or ROS shut down.</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#abf58dbfa228d24f39270ce519b160b81">  157</a></span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="stringliteral">    @param  future       object with `asyncio.Future`-conforming interface to complete</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="stringliteral">    @param  timeout      time to wait, as seconds or ROS1 duration</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    ros.spin_until_future_complete(future, timeout)</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#aab8c89ab3cca7245f7c279bb19589394">  162</a></span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#abf58dbfa228d24f39270ce519b160b81">ok</a>():</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns whether ROS has been initialized and is not shut down.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">return</span> ros.ok()</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#aab8c89ab3cca7245f7c279bb19589394">shutdown</a>():</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Shuts down live ROS node, if any.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    ros.shutdown()</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a65d95ce8401c2fbd7ea2feb2b1b61bc9">create_publisher</a>(topic, cls_or_typename, latch=False, queue_size=0, **qosargs):</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="stringliteral">    Returns a ROS publisher instance.</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="stringliteral">    @param   topic            name of topic to open</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS message class object like `std_msgs.msg.Bool`</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="stringliteral">                              or message type name like &quot;std_msgs/Bool&quot;</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="stringliteral">    @param   latch            provide last published message to new subscribers</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="stringliteral">                              (sets `DurabilityPolicy.TRANSIENT_LOCAL` in ROS2)</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a65d95ce8401c2fbd7ea2feb2b1b61bc9">  183</a></span>&#160;<span class="stringliteral">    @param   queue_size       queue size of outgoing messages (0 or None: infinite)</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="stringliteral">                              (sets QoS `depth` in ROS2)</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (uses only `depth`</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="stringliteral">                              and `durability`=TRANSIENT_LOCAL in ROS1)</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="stringliteral">    @return                   `rospy.Publisher` or `rclpy.publisher.Publisher`,</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="stringliteral">                              either will support keyword arguments in `publish()`</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="stringliteral">                              and have `get_num_connections()`</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">if</span> ros1:</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        queue_size = qosargs.get(<span class="stringliteral">&quot;depth&quot;</span>, queue_size)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">if</span> qosargs.get(<span class="stringliteral">&quot;durability&quot;</span>) == 1:  <span class="comment"># DurabilityPolicy.TRANSIENT_LOCAL</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            latch = <span class="keyword">True</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">return</span> ros1.create_publisher(topic, cls_or_typename, latch, queue_size)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">return</span> ros2.create_publisher(topic, cls_or_typename, latch, queue_size, **qosargs)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ab0a58969e9fd33c8cd76c13e0851c9b5">create_subscriber</a>(topic, cls_or_typename, callback, callback_args=None,</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                      queue_size=0, raw=False, **qosargs):</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="stringliteral">    Returns a ROS subscriber instance.</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="stringliteral">    @param   topic            name of topic to listen to</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS message class object like `std_msgs.msg.Bool`</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="stringliteral">                              or message type name like &quot;std_msgs/Bool&quot;</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="stringliteral">    @param   callback         callback function, invoked with received message,</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="stringliteral">                              and with additional arguments if given</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ab0a58969e9fd33c8cd76c13e0851c9b5">  210</a></span>&#160;<span class="stringliteral">    @param   callback_args    additional arguments to pass to the callback, if any,</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="stringliteral">                              invoked as `callback(msg, callback_args)´</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="stringliteral">    @param   queue_size       queue size of incoming messages (0 or None: infinite)</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="stringliteral">    @param   raw              invoke callback with serialized message bytes,</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="stringliteral">                              make subscription with AnyMsg in ROS1</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (uses only `depth` in ROS1).</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="stringliteral">                              `__autodetect` will look up current publishers on the topic</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="stringliteral">                              and create a compatible QoS.</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="stringliteral">    @return                   `rospy.Subscriber` or `rclpy.subscription.Subscription`</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">if</span> ros1:</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        queue_size = qosargs.get(<span class="stringliteral">&quot;depth&quot;</span>, queue_size)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keywordflow">return</span> ros1.create_subscriber(topic, cls_or_typename, callback, callback_args,</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                      queue_size, raw)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> ros2.create_subscriber(topic, cls_or_typename, callback, callback_args,</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                  queue_size, raw, **qosargs)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a822a117e89e3df59926ad99e2354bc1e">create_service</a>(service, cls_or_typename, callback, **qosargs):</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="stringliteral">    Returns a ROS service server instance, for providing a service.</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="stringliteral">    @param   service          name of service to provide</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a822a117e89e3df59926ad99e2354bc1e">  234</a></span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS service class object like `std_srvs.srv.SetBool`</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="stringliteral">                              or service type name like `&quot;std_srvs/SetBool&quot;</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="stringliteral">    @param   callback         callback function, invoked with `(request, response)`,</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="stringliteral">                              expected to return the populated response,</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="stringliteral">                              or a list/tuple/dictionary for populating the response.</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="stringliteral">                              If the function only takes one argument,</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="stringliteral">                              it is invoked with `(request)`.</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (ignored in ROS1)</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="stringliteral">    @return                   `rospy.Service` or `rclpy.service.Service`</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.create_service(service, cls_or_typename, callback)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> ros2.create_service(service, cls_or_typename, callback, **qosargs)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a9283e039934d3c87a0c0cf829187f98b">create_client</a>(service, cls_or_typename, **qosargs):</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a9283e039934d3c87a0c0cf829187f98b">  251</a></span>&#160;<span class="stringliteral">    Returns a ROS service client instance, for invoking a service.</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="stringliteral">    @param   service          name of service to invoke</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="stringliteral">    @param   cls_or_typename  ROS service class object like `std_srvs.srv.SetBool`</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="stringliteral">                              or service type name like `&quot;std_srvs/SetBool&quot;</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="stringliteral">    @param   qosargs          additional key-value arguments for ROS2</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="stringliteral">                              `QoSProfile`, like `reliability` (ignored in ROS1)</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="stringliteral">    @return                   `rospy.ServiceProxy` or `rclpy.client.Client`,</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="stringliteral">                              either will have `call_async()` returning a future,</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="stringliteral">                              either will support keyword arguments in calls</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="stringliteral">                              and be callable itself</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.create_client(service, cls_or_typename)</div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a99e9da505d486a8e89a4dfac048a9a2c">  264</a></span>&#160;    <span class="keywordflow">return</span> ros2.create_client(service, cls_or_typename, **qosargs)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a99e9da505d486a8e89a4dfac048a9a2c">create_timer</a>(period, callback, oneshot=False, immediate=False):</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="stringliteral">    Returns a ROS timer instance.</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="stringliteral">    @param   period     desired period between callbacks, as seconds or ROS duration</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="stringliteral">    @param   callback   callback function invoked on timer, with no arguments</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="stringliteral">    @param   oneshot    whether to fire only once</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a4720d6aed312425f06db95407f48f870">  274</a></span>&#160;<span class="stringliteral">    @param   immediate  whether to fire once immediately instead of waiting one period</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="stringliteral">    @return             `rospy.Timer` or `rclpy.timer.Timer`</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">if</span> ros1: <span class="keywordflow">return</span> ros1.create_timer(period, callback, oneshot, immediate)</div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a0ea82b6e3b2eaedee082df74e45c8076">  278</a></span>&#160;    <span class="keywordflow">return</span> ros2.create_timer(period, callback, oneshot, immediate)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a4720d6aed312425f06db95407f48f870">create_rate</a>(frequency):</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="stringliteral">    Returns a ROS rate instance, for sleeping at a fixed rate.</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="stringliteral">    @param   frequency  rate to sleep at, in Hz</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="stringliteral">    @return             `rospy.Rate` or `rclpy.rate.Rate`</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">return</span> ros.create_rate(frequency)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a0ea82b6e3b2eaedee082df74e45c8076">destroy_entity</a>(item):</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Closes the given publisher, subscriber, service client, or service server instance.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ac4c130c9a3a50c6766b683ccf44f3bb1">  293</a></span>&#160;    <span class="keywordflow">return</span> ros.destroy_entity(item)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ac4c130c9a3a50c6766b683ccf44f3bb1">get_logger</a>():</div>
+<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a0ef4f891b3b4760a86c79578977be9a2">  297</a></span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="stringliteral">    Returns `logging.Logger` for logging to ROS log handler.</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="stringliteral">    Logging methods on the logger (`debug()`, `info()`, etc) accept additional keyword arguments:</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="stringliteral">    - `__once__`:                whether to log only once from call site</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">  302</a></span>&#160;<span class="stringliteral">    - `__throttle__`:            seconds to skip logging from call site for</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="stringliteral">    - `__throttle_identical__`:  whether to skip logging identical consecutive texts from call site</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="stringliteral">                                 (given log message excluding formatting arguments).</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="stringliteral">                                 Combines with `__throttle__` to skip duplicates for a period.</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a766101e37a6676c04ca54265ab7e5525">  307</a></span>&#160;    <span class="keywordflow">return</span> ros.get_logger()</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a0ef4f891b3b4760a86c79578977be9a2">get_rostime</a>():</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns ROS time instance for current ROS clock time.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a272ed3e2514904ca86858f93f0b04048">  312</a></span>&#160;    <span class="keywordflow">return</span> ros.get_rostime()</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">get_namespace</a>():</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns ROS node namespace.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#ad10dc7c6d28a17c9168e8d377fbd690b">  317</a></span>&#160;    <span class="keywordflow">return</span> ros.get_namespace()</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a766101e37a6676c04ca54265ab7e5525">get_node_name</a>():</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns ROS node full name with namespace.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">return</span> ros.get_node_name()</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a272ed3e2514904ca86858f93f0b04048">get_nodes</a>():</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns all ROS nodes, as `[node full name, ]`.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span> ros.get_nodes()</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a45a297ce55306b772207393bc146537f">  329</a></span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#ad10dc7c6d28a17c9168e8d377fbd690b">get_topics</a>():</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;Returns all available ROS topics, as `[(topic name, [type name, ]), ]`.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">return</span> ros.get_topics()</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a45a297ce55306b772207393bc146537f">get_services</a>(node=None, namespace=None, include_types=True):</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="stringliteral">    Returns all available ROS services, as `[(service name, [type name, ]), ]`.</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="stringliteral">    @param   node           full name of the node to return services for, if any</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#aef6ef0d6705e4bb23ebf9c1c0c979062">  340</a></span>&#160;<span class="stringliteral">    @param   namespace      full or partial namespace to scope services from</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="stringliteral">    @param   include_types  if false, type names will be returned as an empty list</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">return</span> ros.get_services(node, namespace, include_types)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#aef6ef0d6705e4bb23ebf9c1c0c979062">remap_name</a>(name, namespace=None):</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="stringliteral">    Returns the absolute remapped topic/service name if mapping exists.</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a1e31c7a994a75cac735b1b3cc9576b33">  349</a></span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="stringliteral">    @param   name       name to seek exact remapping for</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="stringliteral">    @param   namespace  namespace to resolve relative and private names to,</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="stringliteral">                        by default current node namespace</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="stringliteral">    @return             remapped resolved name, or original if not mapped</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordflow">return</span> ros.remap_name(name, namespace)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#a6cc12ac922407fd2db263bf44c0075fa">  358</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a1e31c7a994a75cac735b1b3cc9576b33">resolve_name</a>(name, namespace=None):</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="stringliteral">    Returns absolute remapped name, namespaced under current node if relative or private.</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="stringliteral">    @param   namespace  namespace to use if not current node full name</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">return</span> ros.resolve_name(name, namespace)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1core.html#a6cc12ac922407fd2db263bf44c0075fa">register_init</a>(node=None):</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="stringliteral">    Informs `rosros` of ROS having been initialized outside of `init_node()`.</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="stringliteral">    @param   node  mandatory `rclpy.node.Node` in ROS2</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    ros1.register_init() <span class="keywordflow">if</span> ros1 <span class="keywordflow">else</span> ros2.register_init(node)</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;__all__ = [</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="stringliteral">&quot;ros1&quot;</span>, <span class="stringliteral">&quot;ros2&quot;</span>, <span class="stringliteral">&quot;AnyMsg&quot;</span>, <span class="stringliteral">&quot;Bag&quot;</span>,</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="stringliteral">&quot;create_client&quot;</span>, <span class="stringliteral">&quot;create_publisher&quot;</span>, <span class="stringliteral">&quot;create_rate&quot;</span>, <span class="stringliteral">&quot;create_service&quot;</span>,</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="stringliteral">&quot;create_subscriber&quot;</span>, <span class="stringliteral">&quot;create_timer&quot;</span>, <span class="stringliteral">&quot;delete_param&quot;</span>, <span class="stringliteral">&quot;destroy_entity&quot;</span>,</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="stringliteral">&quot;get_logger&quot;</span>, <span class="stringliteral">&quot;get_namespace&quot;</span>, <span class="stringliteral">&quot;get_node_name&quot;</span>, <span class="stringliteral">&quot;get_nodes&quot;</span>, <span class="stringliteral">&quot;get_param&quot;</span>,</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="stringliteral">&quot;get_param_names&quot;</span>, <span class="stringliteral">&quot;get_params&quot;</span>, <span class="stringliteral">&quot;get_rostime&quot;</span>, <span class="stringliteral">&quot;get_services&quot;</span>, <span class="stringliteral">&quot;get_topics&quot;</span>,</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="stringliteral">&quot;has_param&quot;</span>, <span class="stringliteral">&quot;init_node&quot;</span>, <span class="stringliteral">&quot;init_params&quot;</span>, <span class="stringliteral">&quot;ok&quot;</span>, <span class="stringliteral">&quot;register_init&quot;</span>, <span class="stringliteral">&quot;remap_name&quot;</span>,</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="stringliteral">&quot;resolve_name&quot;</span>, <span class="stringliteral">&quot;set_param&quot;</span>, <span class="stringliteral">&quot;shutdown&quot;</span>, <span class="stringliteral">&quot;spin&quot;</span>, <span class="stringliteral">&quot;spin_once&quot;</span>,</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="stringliteral">&quot;spin_until_future_complete&quot;</span>, <span class="stringliteral">&quot;start_spin&quot;</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;]</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespacerosros_1_1core_html_ae2bc7a07dc762a31aab15a688b58f9a6"><div class="ttname"><a href="namespacerosros_1_1core.html#ae2bc7a07dc762a31aab15a688b58f9a6">rosros.core.get_param_names</a></div><div class="ttdeci">def get_param_names()</div><div class="ttdoc">Returns the names of all parameters on the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00086">core.py:86</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a77ab9cb7560acef09069bed5d1374f5e"><div class="ttname"><a href="namespacerosros_1_1core.html#a77ab9cb7560acef09069bed5d1374f5e">rosros.core.spin</a></div><div class="ttdeci">def spin()</div><div class="ttdoc">Spins ROS node forever.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00131">core.py:131</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a65d95ce8401c2fbd7ea2feb2b1b61bc9"><div class="ttname"><a href="namespacerosros_1_1core.html#a65d95ce8401c2fbd7ea2feb2b1b61bc9">rosros.core.create_publisher</a></div><div class="ttdeci">def create_publisher(topic, cls_or_typename, latch=False, queue_size=0, **qosargs)</div><div class="ttdoc">Returns a ROS publisher instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00181">core.py:181</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a26569718e6235361c723e4c2a88e1825"><div class="ttname"><a href="namespacerosros_1_1core.html#a26569718e6235361c723e4c2a88e1825">rosros.core.has_param</a></div><div class="ttdeci">def has_param(name)</div><div class="ttdoc">Returns whether the parameter exists on the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00082">core.py:82</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_abf58dbfa228d24f39270ce519b160b81"><div class="ttname"><a href="namespacerosros_1_1core.html#abf58dbfa228d24f39270ce519b160b81">rosros.core.ok</a></div><div class="ttdeci">def ok()</div><div class="ttdoc">Returns whether ROS has been initialized and is not shut down.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00155">core.py:155</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a70d1a66dd46463010c61bf833c12a5c3"><div class="ttname"><a href="namespacerosros_1_1core.html#a70d1a66dd46463010c61bf833c12a5c3">rosros.core.delete_param</a></div><div class="ttdeci">def delete_param(name)</div><div class="ttdoc">Deletes parameter from the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00073">core.py:73</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a454704e105f5827d69d0d7bfd2715374"><div class="ttname"><a href="namespacerosros_1_1core.html#a454704e105f5827d69d0d7bfd2715374">rosros.core.start_spin</a></div><div class="ttdeci">def start_spin()</div><div class="ttdoc">Sets ROS node spinning forever in a background thread.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00126">core.py:126</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a45a297ce55306b772207393bc146537f"><div class="ttname"><a href="namespacerosros_1_1core.html#a45a297ce55306b772207393bc146537f">rosros.core.get_services</a></div><div class="ttdeci">def get_services(node=None, namespace=None, include_types=True)</div><div class="ttdoc">Returns all available ROS services, as `[(service name, [type name, ]), ]`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00327">core.py:327</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a004a4aae28bf04e9a30f554c2035d9fd"><div class="ttname"><a href="namespacerosros_1_1core.html#a004a4aae28bf04e9a30f554c2035d9fd">rosros.core.get_param</a></div><div class="ttdeci">def get_param(name, default=None, autoset=True)</div><div class="ttdoc">Returns parameter value from the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00108">core.py:108</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_ac4c130c9a3a50c6766b683ccf44f3bb1"><div class="ttname"><a href="namespacerosros_1_1core.html#ac4c130c9a3a50c6766b683ccf44f3bb1">rosros.core.get_logger</a></div><div class="ttdeci">def get_logger()</div><div class="ttdoc">Returns `logging.Logger` for logging to ROS log handler.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00291">core.py:291</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a201ecc07bb3e05976fb1e788dc8591ff"><div class="ttname"><a href="namespacerosros_1_1core.html#a201ecc07bb3e05976fb1e788dc8591ff">rosros.core.spin_once</a></div><div class="ttdeci">def spin_once(timeout=None)</div><div class="ttdoc">Waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00141">core.py:141</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a0ea82b6e3b2eaedee082df74e45c8076"><div class="ttname"><a href="namespacerosros_1_1core.html#a0ea82b6e3b2eaedee082df74e45c8076">rosros.core.destroy_entity</a></div><div class="ttdeci">def destroy_entity(item)</div><div class="ttdoc">Closes the given publisher, subscriber, service client, or service server instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00276">core.py:276</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a822a117e89e3df59926ad99e2354bc1e"><div class="ttname"><a href="namespacerosros_1_1core.html#a822a117e89e3df59926ad99e2354bc1e">rosros.core.create_service</a></div><div class="ttdeci">def create_service(service, cls_or_typename, callback, **qosargs)</div><div class="ttdoc">Returns a ROS service server instance, for providing a service.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00232">core.py:232</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a0ef4f891b3b4760a86c79578977be9a2"><div class="ttname"><a href="namespacerosros_1_1core.html#a0ef4f891b3b4760a86c79578977be9a2">rosros.core.get_rostime</a></div><div class="ttdeci">def get_rostime()</div><div class="ttdoc">Returns ROS time instance for current ROS clock time.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00295">core.py:295</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a99e9da505d486a8e89a4dfac048a9a2c"><div class="ttname"><a href="namespacerosros_1_1core.html#a99e9da505d486a8e89a4dfac048a9a2c">rosros.core.create_timer</a></div><div class="ttdeci">def create_timer(period, callback, oneshot=False, immediate=False)</div><div class="ttdoc">Returns a ROS timer instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00262">core.py:262</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a0e91623fa073e3d80c97e6f174f27d03"><div class="ttname"><a href="namespacerosros_1_1core.html#a0e91623fa073e3d80c97e6f174f27d03">rosros.core.spin_until_future_complete</a></div><div class="ttdeci">def spin_until_future_complete(future, timeout=None)</div><div class="ttdoc">Spins ROS until future complete or timeout reached or ROS shut down.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00151">core.py:151</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a361abc8b34eb77f4396517e68c192e7e"><div class="ttname"><a href="namespacerosros_1_1core.html#a361abc8b34eb77f4396517e68c192e7e">rosros.core.init_node</a></div><div class="ttdeci">def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False)</div><div class="ttdoc">Initializes ROS and creates ROS node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00047">core.py:47</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_ab0a58969e9fd33c8cd76c13e0851c9b5"><div class="ttname"><a href="namespacerosros_1_1core.html#ab0a58969e9fd33c8cd76c13e0851c9b5">rosros.core.create_subscriber</a></div><div class="ttdeci">def create_subscriber(topic, cls_or_typename, callback, callback_args=None, queue_size=0, raw=False, **qosargs)</div><div class="ttdoc">Returns a ROS subscriber instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00208">core.py:208</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a4720d6aed312425f06db95407f48f870"><div class="ttname"><a href="namespacerosros_1_1core.html#a4720d6aed312425f06db95407f48f870">rosros.core.create_rate</a></div><div class="ttdeci">def create_rate(frequency)</div><div class="ttdoc">Returns a ROS rate instance, for sleeping at a fixed rate.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00272">core.py:272</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a272ed3e2514904ca86858f93f0b04048"><div class="ttname"><a href="namespacerosros_1_1core.html#a272ed3e2514904ca86858f93f0b04048">rosros.core.get_nodes</a></div><div class="ttdeci">def get_nodes()</div><div class="ttdoc">Returns all ROS nodes, as `[node full name, ]`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00310">core.py:310</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_ae8591390d87fae4e6e096c9b602b1942"><div class="ttname"><a href="namespacerosros_1_1core.html#ae8591390d87fae4e6e096c9b602b1942">rosros.core.set_param</a></div><div class="ttdeci">def set_param(name, value, descriptor=None)</div><div class="ttdoc">Sets a parameter on the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00121">core.py:121</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a766101e37a6676c04ca54265ab7e5525"><div class="ttname"><a href="namespacerosros_1_1core.html#a766101e37a6676c04ca54265ab7e5525">rosros.core.get_node_name</a></div><div class="ttdeci">def get_node_name()</div><div class="ttdoc">Returns ROS node full name with namespace.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00305">core.py:305</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_aef6ef0d6705e4bb23ebf9c1c0c979062"><div class="ttname"><a href="namespacerosros_1_1core.html#aef6ef0d6705e4bb23ebf9c1c0c979062">rosros.core.remap_name</a></div><div class="ttdeci">def remap_name(name, namespace=None)</div><div class="ttdoc">Returns the absolute remapped topic/service name if mapping exists.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00338">core.py:338</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a1e31c7a994a75cac735b1b3cc9576b33"><div class="ttname"><a href="namespacerosros_1_1core.html#a1e31c7a994a75cac735b1b3cc9576b33">rosros.core.resolve_name</a></div><div class="ttdeci">def resolve_name(name, namespace=None)</div><div class="ttdoc">Returns absolute remapped name, namespaced under current node if relative or private.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00347">core.py:347</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a2487e8abfc48f6b9f57084024f75ead2"><div class="ttname"><a href="namespacerosros_1_1core.html#a2487e8abfc48f6b9f57084024f75ead2">rosros.core.get_params</a></div><div class="ttdeci">def get_params(nested=True)</div><div class="ttdoc">Returns the current ROS node parameters, by default as nested dictionary.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00096">core.py:96</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_ab048a760173f607918c37e89c5cec9ed"><div class="ttname"><a href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">rosros.core.get_namespace</a></div><div class="ttdeci">def get_namespace()</div><div class="ttdoc">Returns ROS node namespace.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00300">core.py:300</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a6cc12ac922407fd2db263bf44c0075fa"><div class="ttname"><a href="namespacerosros_1_1core.html#a6cc12ac922407fd2db263bf44c0075fa">rosros.core.register_init</a></div><div class="ttdeci">def register_init(node=None)</div><div class="ttdoc">Informs `rosros` of ROS having been initialized outside of `init_node()`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00356">core.py:356</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_ab072b6aa117abf41001c20cc39cf460b"><div class="ttname"><a href="namespacerosros_1_1core.html#ab072b6aa117abf41001c20cc39cf460b">rosros.core.init_params</a></div><div class="ttdeci">def init_params(defaults=None, **defaultkws)</div><div class="ttdoc">Sets all parameters on node from defaults dictionary.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00064">core.py:64</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a9283e039934d3c87a0c0cf829187f98b"><div class="ttname"><a href="namespacerosros_1_1core.html#a9283e039934d3c87a0c0cf829187f98b">rosros.core.create_client</a></div><div class="ttdeci">def create_client(service, cls_or_typename, **qosargs)</div><div class="ttdoc">Returns a ROS service client instance, for invoking a service.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00249">core.py:249</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_aab8c89ab3cca7245f7c279bb19589394"><div class="ttname"><a href="namespacerosros_1_1core.html#aab8c89ab3cca7245f7c279bb19589394">rosros.core.shutdown</a></div><div class="ttdeci">def shutdown()</div><div class="ttdoc">Shuts down live ROS node, if any.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00160">core.py:160</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_ad10dc7c6d28a17c9168e8d377fbd690b"><div class="ttname"><a href="namespacerosros_1_1core.html#ad10dc7c6d28a17c9168e8d377fbd690b">rosros.core.get_topics</a></div><div class="ttdeci">def get_topics()</div><div class="ttdoc">Returns all available ROS topics, as `[(topic name, [type name, ]), ]`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00315">core.py:315</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ae2bc7a07dc762a31aab15a688b58f9a6"><div class="ttname"><a href="namespacerosros_1_1core.html#ae2bc7a07dc762a31aab15a688b58f9a6">rosros.core.get_param_names</a></div><div class="ttdeci">def get_param_names()</div><div class="ttdoc">Returns the names of all parameters on the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00088">core.py:88</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a77ab9cb7560acef09069bed5d1374f5e"><div class="ttname"><a href="namespacerosros_1_1core.html#a77ab9cb7560acef09069bed5d1374f5e">rosros.core.spin</a></div><div class="ttdeci">def spin()</div><div class="ttdoc">Spins ROS node forever.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00133">core.py:133</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a65d95ce8401c2fbd7ea2feb2b1b61bc9"><div class="ttname"><a href="namespacerosros_1_1core.html#a65d95ce8401c2fbd7ea2feb2b1b61bc9">rosros.core.create_publisher</a></div><div class="ttdeci">def create_publisher(topic, cls_or_typename, latch=False, queue_size=0, **qosargs)</div><div class="ttdoc">Returns a ROS publisher instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00183">core.py:183</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a26569718e6235361c723e4c2a88e1825"><div class="ttname"><a href="namespacerosros_1_1core.html#a26569718e6235361c723e4c2a88e1825">rosros.core.has_param</a></div><div class="ttdeci">def has_param(name)</div><div class="ttdoc">Returns whether the parameter exists on the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00084">core.py:84</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_abf58dbfa228d24f39270ce519b160b81"><div class="ttname"><a href="namespacerosros_1_1core.html#abf58dbfa228d24f39270ce519b160b81">rosros.core.ok</a></div><div class="ttdeci">def ok()</div><div class="ttdoc">Returns whether ROS has been initialized and is not shut down.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00157">core.py:157</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a70d1a66dd46463010c61bf833c12a5c3"><div class="ttname"><a href="namespacerosros_1_1core.html#a70d1a66dd46463010c61bf833c12a5c3">rosros.core.delete_param</a></div><div class="ttdeci">def delete_param(name)</div><div class="ttdoc">Deletes parameter from the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00075">core.py:75</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a454704e105f5827d69d0d7bfd2715374"><div class="ttname"><a href="namespacerosros_1_1core.html#a454704e105f5827d69d0d7bfd2715374">rosros.core.start_spin</a></div><div class="ttdeci">def start_spin()</div><div class="ttdoc">Sets ROS node spinning forever in a background thread.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00128">core.py:128</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a45a297ce55306b772207393bc146537f"><div class="ttname"><a href="namespacerosros_1_1core.html#a45a297ce55306b772207393bc146537f">rosros.core.get_services</a></div><div class="ttdeci">def get_services(node=None, namespace=None, include_types=True)</div><div class="ttdoc">Returns all available ROS services, as `[(service name, [type name, ]), ]`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00329">core.py:329</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a004a4aae28bf04e9a30f554c2035d9fd"><div class="ttname"><a href="namespacerosros_1_1core.html#a004a4aae28bf04e9a30f554c2035d9fd">rosros.core.get_param</a></div><div class="ttdeci">def get_param(name, default=None, autoset=True)</div><div class="ttdoc">Returns parameter value from the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00110">core.py:110</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ac4c130c9a3a50c6766b683ccf44f3bb1"><div class="ttname"><a href="namespacerosros_1_1core.html#ac4c130c9a3a50c6766b683ccf44f3bb1">rosros.core.get_logger</a></div><div class="ttdeci">def get_logger()</div><div class="ttdoc">Returns `logging.Logger` for logging to ROS log handler.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00293">core.py:293</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a201ecc07bb3e05976fb1e788dc8591ff"><div class="ttname"><a href="namespacerosros_1_1core.html#a201ecc07bb3e05976fb1e788dc8591ff">rosros.core.spin_once</a></div><div class="ttdeci">def spin_once(timeout=None)</div><div class="ttdoc">Waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00143">core.py:143</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a0ea82b6e3b2eaedee082df74e45c8076"><div class="ttname"><a href="namespacerosros_1_1core.html#a0ea82b6e3b2eaedee082df74e45c8076">rosros.core.destroy_entity</a></div><div class="ttdeci">def destroy_entity(item)</div><div class="ttdoc">Closes the given publisher, subscriber, service client, or service server instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00278">core.py:278</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a822a117e89e3df59926ad99e2354bc1e"><div class="ttname"><a href="namespacerosros_1_1core.html#a822a117e89e3df59926ad99e2354bc1e">rosros.core.create_service</a></div><div class="ttdeci">def create_service(service, cls_or_typename, callback, **qosargs)</div><div class="ttdoc">Returns a ROS service server instance, for providing a service.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00234">core.py:234</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a0ef4f891b3b4760a86c79578977be9a2"><div class="ttname"><a href="namespacerosros_1_1core.html#a0ef4f891b3b4760a86c79578977be9a2">rosros.core.get_rostime</a></div><div class="ttdeci">def get_rostime()</div><div class="ttdoc">Returns ROS time instance for current ROS clock time.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00297">core.py:297</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a99e9da505d486a8e89a4dfac048a9a2c"><div class="ttname"><a href="namespacerosros_1_1core.html#a99e9da505d486a8e89a4dfac048a9a2c">rosros.core.create_timer</a></div><div class="ttdeci">def create_timer(period, callback, oneshot=False, immediate=False)</div><div class="ttdoc">Returns a ROS timer instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00264">core.py:264</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a0e91623fa073e3d80c97e6f174f27d03"><div class="ttname"><a href="namespacerosros_1_1core.html#a0e91623fa073e3d80c97e6f174f27d03">rosros.core.spin_until_future_complete</a></div><div class="ttdeci">def spin_until_future_complete(future, timeout=None)</div><div class="ttdoc">Spins ROS until future complete or timeout reached or ROS shut down.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00153">core.py:153</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a361abc8b34eb77f4396517e68c192e7e"><div class="ttname"><a href="namespacerosros_1_1core.html#a361abc8b34eb77f4396517e68c192e7e">rosros.core.init_node</a></div><div class="ttdeci">def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False)</div><div class="ttdoc">Initializes ROS and creates ROS node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00048">core.py:48</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ab0a58969e9fd33c8cd76c13e0851c9b5"><div class="ttname"><a href="namespacerosros_1_1core.html#ab0a58969e9fd33c8cd76c13e0851c9b5">rosros.core.create_subscriber</a></div><div class="ttdeci">def create_subscriber(topic, cls_or_typename, callback, callback_args=None, queue_size=0, raw=False, **qosargs)</div><div class="ttdoc">Returns a ROS subscriber instance.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00210">core.py:210</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a4720d6aed312425f06db95407f48f870"><div class="ttname"><a href="namespacerosros_1_1core.html#a4720d6aed312425f06db95407f48f870">rosros.core.create_rate</a></div><div class="ttdeci">def create_rate(frequency)</div><div class="ttdoc">Returns a ROS rate instance, for sleeping at a fixed rate.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00274">core.py:274</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a272ed3e2514904ca86858f93f0b04048"><div class="ttname"><a href="namespacerosros_1_1core.html#a272ed3e2514904ca86858f93f0b04048">rosros.core.get_nodes</a></div><div class="ttdeci">def get_nodes()</div><div class="ttdoc">Returns all ROS nodes, as `[node full name, ]`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00312">core.py:312</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ae8591390d87fae4e6e096c9b602b1942"><div class="ttname"><a href="namespacerosros_1_1core.html#ae8591390d87fae4e6e096c9b602b1942">rosros.core.set_param</a></div><div class="ttdeci">def set_param(name, value, descriptor=None)</div><div class="ttdoc">Sets a parameter on the node.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00123">core.py:123</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a766101e37a6676c04ca54265ab7e5525"><div class="ttname"><a href="namespacerosros_1_1core.html#a766101e37a6676c04ca54265ab7e5525">rosros.core.get_node_name</a></div><div class="ttdeci">def get_node_name()</div><div class="ttdoc">Returns ROS node full name with namespace.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00307">core.py:307</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_aef6ef0d6705e4bb23ebf9c1c0c979062"><div class="ttname"><a href="namespacerosros_1_1core.html#aef6ef0d6705e4bb23ebf9c1c0c979062">rosros.core.remap_name</a></div><div class="ttdeci">def remap_name(name, namespace=None)</div><div class="ttdoc">Returns the absolute remapped topic/service name if mapping exists.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00340">core.py:340</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a1e31c7a994a75cac735b1b3cc9576b33"><div class="ttname"><a href="namespacerosros_1_1core.html#a1e31c7a994a75cac735b1b3cc9576b33">rosros.core.resolve_name</a></div><div class="ttdeci">def resolve_name(name, namespace=None)</div><div class="ttdoc">Returns absolute remapped name, namespaced under current node if relative or private.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00349">core.py:349</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a2487e8abfc48f6b9f57084024f75ead2"><div class="ttname"><a href="namespacerosros_1_1core.html#a2487e8abfc48f6b9f57084024f75ead2">rosros.core.get_params</a></div><div class="ttdeci">def get_params(nested=True)</div><div class="ttdoc">Returns the current ROS node parameters, by default as nested dictionary.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00098">core.py:98</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ab048a760173f607918c37e89c5cec9ed"><div class="ttname"><a href="namespacerosros_1_1core.html#ab048a760173f607918c37e89c5cec9ed">rosros.core.get_namespace</a></div><div class="ttdeci">def get_namespace()</div><div class="ttdoc">Returns ROS node namespace.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00302">core.py:302</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a6cc12ac922407fd2db263bf44c0075fa"><div class="ttname"><a href="namespacerosros_1_1core.html#a6cc12ac922407fd2db263bf44c0075fa">rosros.core.register_init</a></div><div class="ttdeci">def register_init(node=None)</div><div class="ttdoc">Informs `rosros` of ROS having been initialized outside of `init_node()`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00358">core.py:358</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ab072b6aa117abf41001c20cc39cf460b"><div class="ttname"><a href="namespacerosros_1_1core.html#ab072b6aa117abf41001c20cc39cf460b">rosros.core.init_params</a></div><div class="ttdeci">def init_params(defaults=None, **defaultkws)</div><div class="ttdoc">Sets all parameters on node from defaults dictionary.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00066">core.py:66</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_a9283e039934d3c87a0c0cf829187f98b"><div class="ttname"><a href="namespacerosros_1_1core.html#a9283e039934d3c87a0c0cf829187f98b">rosros.core.create_client</a></div><div class="ttdeci">def create_client(service, cls_or_typename, **qosargs)</div><div class="ttdoc">Returns a ROS service client instance, for invoking a service.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00251">core.py:251</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_aab8c89ab3cca7245f7c279bb19589394"><div class="ttname"><a href="namespacerosros_1_1core.html#aab8c89ab3cca7245f7c279bb19589394">rosros.core.shutdown</a></div><div class="ttdeci">def shutdown()</div><div class="ttdoc">Shuts down live ROS node, if any.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00162">core.py:162</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1core_html_ad10dc7c6d28a17c9168e8d377fbd690b"><div class="ttname"><a href="namespacerosros_1_1core.html#ad10dc7c6d28a17c9168e8d377fbd690b">rosros.core.get_topics</a></div><div class="ttdeci">def get_topics()</div><div class="ttdoc">Returns all available ROS topics, as `[(topic name, [type name, ]), ]`.</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00317">core.py:317</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_93e29dcaf104ee9d295c2d3321fb8206.html">rosros</a></li><li class="navelem"><a class="el" href="core_8py.html">core.py</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="core_8py.html">core.py</a></li>
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

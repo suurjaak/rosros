@@ -1,5 +1,6 @@
-var dir_e16229acc52d7157f13527bee18a7883 =
+var dir_6ea09fe58e335c1fd95c7cd91755b755 =
 [
+    [ "__init__.py", "rospify_2____init_____8py.html", null ],
     [ "client.py", "client_8py.html", "client_8py" ],
     [ "core.py", "rospify_2core_8py.html", "rospify_2core_8py" ],
     [ "exceptions.py", "rospify_2exceptions_8py.html", [

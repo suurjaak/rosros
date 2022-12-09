@@ -1,4 +1,4 @@
-<map id="NodeNameNonExistentError" name="NodeNameNonExistentError">
-<area shape="rect" id="node1" title="Thrown when a node name is not found." alt="" coords="5,80,211,107"/>
-<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="65,5,151,32"/>
+<map id="rosros.rclify.node.NodeNameNonExistentError" name="rosros.rclify.node.NodeNameNonExistentError">
+<area shape="rect" id="node1" title="Thrown when a node name is not found." alt="" coords="5,80,216,121"/>
+<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="67,5,154,32"/>
 </map>

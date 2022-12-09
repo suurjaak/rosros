@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: src/rosros/api.py Source File</title>
+<title>rosros: rosros/api.py Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -106,53 +106,53 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">import</span> inspect</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">import</span> os</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#ada88cbba5444b963e67669d5d1ba046d">   20</a></span>&#160;ros1 = ros2 = <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a86aa45bf6d167b81bee4c9a3127e2f14">   20</a></span>&#160;ros1 = ros2 = <span class="keywordtype">None</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordflow">if</span> os.getenv(<span class="stringliteral">&quot;ROS_VERSION&quot;</span>) == <span class="stringliteral">&quot;2&quot;</span>:</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">from</span> . <span class="keyword">import</span> ros2</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordflow">else</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">from</span> . <span class="keyword">import</span> ros1</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#ae04bb9701f1340e056c9859a46717688">   25</a></span>&#160;ros = ros1 <span class="keywordflow">or</span> ros2</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a7c4d7526845b5d63ca25e414ffcd86b0">   25</a></span>&#160;ros = ros1 <span class="keywordflow">or</span> ros2</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#aad4820166993e27d3663ebc667c215b1">   29</a></span>&#160;ROS_NUMERIC_TYPES = [<span class="stringliteral">&quot;byte&quot;</span>, <span class="stringliteral">&quot;char&quot;</span>, <span class="stringliteral">&quot;int8&quot;</span>, <span class="stringliteral">&quot;int16&quot;</span>, <span class="stringliteral">&quot;int32&quot;</span>, <span class="stringliteral">&quot;int64&quot;</span>, <span class="stringliteral">&quot;uint8&quot;</span>,</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a3a46ae60e8aa7a46aca529900a140586">   29</a></span>&#160;ROS_NUMERIC_TYPES = [<span class="stringliteral">&quot;byte&quot;</span>, <span class="stringliteral">&quot;char&quot;</span>, <span class="stringliteral">&quot;int8&quot;</span>, <span class="stringliteral">&quot;int16&quot;</span>, <span class="stringliteral">&quot;int32&quot;</span>, <span class="stringliteral">&quot;int64&quot;</span>, <span class="stringliteral">&quot;uint8&quot;</span>,</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                     <span class="stringliteral">&quot;uint16&quot;</span>, <span class="stringliteral">&quot;uint32&quot;</span>, <span class="stringliteral">&quot;uint64&quot;</span>, <span class="stringliteral">&quot;float32&quot;</span>, <span class="stringliteral">&quot;float64&quot;</span>, <span class="stringliteral">&quot;bool&quot;</span>]</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a0e4c7f2ec33433d578efba878ae795bb">   33</a></span>&#160;ROS_STRING_TYPES = [<span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;wstring&quot;</span>]</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#af7fe557cf1d3c312733d3a1f97fe0064">   33</a></span>&#160;ROS_STRING_TYPES = [<span class="stringliteral">&quot;string&quot;</span>, <span class="stringliteral">&quot;wstring&quot;</span>]</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a3ec8808a51fd8beb9d5e247f04d839c5">   36</a></span>&#160;ROS_BUILTIN_TYPES = ROS_NUMERIC_TYPES + ROS_STRING_TYPES</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a24fe5eaf4fa2437fc4fec093e63d635d">   36</a></span>&#160;ROS_BUILTIN_TYPES = ROS_NUMERIC_TYPES + ROS_STRING_TYPES</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a2a12af6118cc7da34a6b804ed0e27595">   39</a></span>&#160;ROS_BUILTIN_CTORS = {<span class="stringliteral">&quot;byte&quot;</span>:   int,  <span class="stringliteral">&quot;char&quot;</span>:   int, <span class="stringliteral">&quot;int8&quot;</span>:    int,   <span class="stringliteral">&quot;int16&quot;</span>:   int,</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a9fbe6cf4da53b7ab15c9c1edda60b5fb">   39</a></span>&#160;ROS_BUILTIN_CTORS = {<span class="stringliteral">&quot;byte&quot;</span>:   int,  <span class="stringliteral">&quot;char&quot;</span>:   int, <span class="stringliteral">&quot;int8&quot;</span>:    int,   <span class="stringliteral">&quot;int16&quot;</span>:   int,</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                     <span class="stringliteral">&quot;int32&quot;</span>:  int,  <span class="stringliteral">&quot;int64&quot;</span>:  int, <span class="stringliteral">&quot;uint8&quot;</span>:   int,   <span class="stringliteral">&quot;uint16&quot;</span>:  int,</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                     <span class="stringliteral">&quot;uint32&quot;</span>: int,  <span class="stringliteral">&quot;uint64&quot;</span>: int, <span class="stringliteral">&quot;float32&quot;</span>: float, <span class="stringliteral">&quot;float64&quot;</span>: float,</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                     <span class="stringliteral">&quot;bool&quot;</span>:   bool, <span class="stringliteral">&quot;string&quot;</span>: str, <span class="stringliteral">&quot;wstring&quot;</span>: str}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#abd051960c96aeec564632e58a3e57686">   45</a></span>&#160;ROS_TIME_TYPES = ros.ROS_TIME_TYPES</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#ac7bac673a822e0a00f83b7a03476884d">   45</a></span>&#160;ROS_TIME_TYPES = ros.ROS_TIME_TYPES</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#af5751f207805777aca9e764c74e01859">   48</a></span>&#160;ROS_TIME_CLASSES = ros.ROS_TIME_CLASSES</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#aa6ec5fd037fc61bd7a8ef097cea94b35">   48</a></span>&#160;ROS_TIME_CLASSES = ros.ROS_TIME_CLASSES</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a6558edc96936551738351cafb68d8248">   51</a></span>&#160;ROS_COMMON_TYPES = ROS_BUILTIN_TYPES + ROS_TIME_TYPES</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#ab0d338348453c664e766e6e351da3827">   51</a></span>&#160;ROS_COMMON_TYPES = ROS_BUILTIN_TYPES + ROS_TIME_TYPES</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a98fc5b51c6835cd0753b5f68b496a706">   54</a></span>&#160;ROS_ALIAS_TYPES = ros.ROS_ALIAS_TYPES</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a97dbd0aeb16d7573db598d0a11d754dd">   54</a></span>&#160;ROS_ALIAS_TYPES = ros.ROS_ALIAS_TYPES</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a64ce89655a260247f6ecbce5e795e1de">   57</a></span>&#160;PARAM_SEPARATOR = ros.PARAM_SEPARATOR</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a57a8f55bc988006bbc1493c5cbd49de6">   57</a></span>&#160;PARAM_SEPARATOR = ros.PARAM_SEPARATOR</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a7dfa14ed467afff7fc9dc03ceecff07a">   60</a></span>&#160;PRIVATE_PREFIX = ros.PRIVATE_PREFIX</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#abee5a4902a8c19ce35f4cbca9ecf2ec1">   60</a></span>&#160;PRIVATE_PREFIX = ros.PRIVATE_PREFIX</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a3b705ea2ce4bb9e53b6f81805cba62d7">   63</a></span>&#160;FAMILY = ros.FAMILY</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a5adc9d4304c872fd901d19e42bcd27d5">   63</a></span>&#160;FAMILY = ros.FAMILY</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a0bfdce35ad578d422d559f78494d5549">   66</a></span>&#160;ROSLogHandler = ros.ROSLogHandler</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a4b9dbae21dd7d8e68e63a41ccb88d83c">   66</a></span>&#160;ROSLogHandler = ros.ROSLogHandler</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="namespacerosros_1_1api.html#a454bae301a0198d3815211f5f43416ba">   69</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1api.html#a454bae301a0198d3815211f5f43416ba">canonical</a>(typename):</div>
@@ -566,8 +566,8 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_93e29dcaf104ee9d295c2d3321fb8206.html">rosros</a></li><li class="navelem"><a class="el" href="api_8py.html">api.py</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="api_8py.html">api.py</a></li>
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

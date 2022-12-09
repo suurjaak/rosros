@@ -1,8 +1,8 @@
-<map id="ROSException" name="ROSException">
-<area shape="rect" id="node1" title="Base exception class for ROS clients." alt="" coords="192,80,305,107"/>
-<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html" title="Exception for operations that interrupted, e.g." alt="" coords="5,155,140,181"/>
-<area shape="rect" id="node4" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Exception if time moved backwards." alt="" coords="164,155,333,181"/>
-<area shape="rect" id="node6" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_serialization_exception.html" title="Exception for errors initializing ROS state." alt="" coords="358,155,553,181"/>
-<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="205,5,292,32"/>
-<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="119,229,379,256"/>
+<map id="rosros.rospify.exceptions.ROSException" name="rosros.rospify.exceptions.ROSException">
+<area shape="rect" id="node1" title="Base exception class for ROS clients." alt="" coords="140,71,328,112"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html" title="Exception for operations that interrupted, e.g." alt="" coords="379,5,567,47"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Exception if time moved backwards." alt="" coords="379,71,567,112"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_serialization_exception.html" title="Exception for errors initializing ROS state." alt="" coords="376,136,571,177"/>
+<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="5,78,92,105"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="619,71,879,112"/>
 </map>

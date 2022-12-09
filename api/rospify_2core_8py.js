@@ -5,6 +5,6 @@ var rospify_2core_8py =
     [ "is_shutdown", "rospify_2core_8py.html#a82044f5715d39b7362990c9be52b3ded", null ],
     [ "parse_rosrpc_uri", "rospify_2core_8py.html#aa527d577249783866ff2bf5a1d9e0039", null ],
     [ "signal_shutdown", "rospify_2core_8py.html#a86919631763dcfbc7d8262031409e5be", null ],
-    [ "__all__", "rospify_2core_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ],
-    [ "ROSRPC", "rospify_2core_8py.html#a55d1d8a177fa711009d8e4d6adca547a", null ]
+    [ "__all__", "rospify_2core_8py.html#ac824a51d1ede0541a673a57a934b1fcb", null ],
+    [ "ROSRPC", "rospify_2core_8py.html#a44a952ca01b84730894ff0d6b833c17c", null ]
 ];

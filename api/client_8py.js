@@ -1,6 +1,5 @@
 var client_8py =
 [
-    [ "_unspecified", "classrosros_1_1rospify_1_1client_1_1__unspecified.html", null ],
     [ "delete_param", "client_8py.html#a670be8435bfd2e617d0938ddae6c2f87", null ],
     [ "get_master", "client_8py.html#a45dc2d546b14bad963f89fd43446a363", null ],
     [ "get_param", "client_8py.html#acada1d798b9aebc3447d9232e981972b", null ],
@@ -14,13 +13,13 @@ var client_8py =
     [ "set_param", "client_8py.html#a5fe433de93a87202c60f6e01af1114b5", null ],
     [ "spin", "client_8py.html#a5e79768e31865749887594987668c140", null ],
     [ "wait_for_message", "client_8py.html#a269631db7b5abaced77490e06dd0e707", null ],
-    [ "__all__", "client_8py.html#aa4a022e6ddacd362b83964da5cc5d044", null ],
-    [ "_ROSPY_LOG_LEVEL_TO_PY_LEVEL", "client_8py.html#ac54211d337e9571f14cc1821290563e3", null ],
-    [ "DEBUG", "client_8py.html#a48f76a8c0dc23567f303ed6aa221e078", null ],
-    [ "ERROR", "client_8py.html#a59902cbbaff65b4bb85a63546ab4e52f", null ],
-    [ "FATAL", "client_8py.html#aca030e7233dddbf8f33c9f4fc108b5bd", null ],
-    [ "func", "client_8py.html#a3699148440db7bdde6e95e16092363d1", null ],
-    [ "get_param_cached", "client_8py.html#ac906e67171aca0147d3b425abcaa56b7", null ],
-    [ "INFO", "client_8py.html#a5ccbba8803c4e08f1a8d52cc79abe68f", null ],
-    [ "WARN", "client_8py.html#ae642a14fcfcd8e507e7862a4baa8e096", null ]
+    [ "__all__", "client_8py.html#a793e61b36bb6cf9fc8d15166fa11b34c", null ],
+    [ "_ROSPY_LOG_LEVEL_TO_PY_LEVEL", "client_8py.html#a034094998191ea9ce010ca6273a0e6f6", null ],
+    [ "DEBUG", "client_8py.html#a1e9f27c2ebc10d6bb2e5cfa3f677452d", null ],
+    [ "ERROR", "client_8py.html#a69969334ff486aba4744e59c4a8c8033", null ],
+    [ "FATAL", "client_8py.html#aa19637357805bcb7dae7e860801e59ff", null ],
+    [ "func", "client_8py.html#a8248182d9ecddeb6602691eb8feb0fc0", null ],
+    [ "get_param_cached", "client_8py.html#ad2475eec430ce2a795bd731b9092c14a", null ],
+    [ "INFO", "client_8py.html#a44b6d02fc52a34059846393124f27e7f", null ],
+    [ "WARN", "client_8py.html#a281159e13506d01f3641acfd991a7197", null ]
 ];

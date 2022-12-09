@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: Bag Class Reference</title>
+<title>rosros: rosros.ros1.Bag Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -89,60 +89,60 @@ $(document).ready(function(){initNavTree('classrosros_1_1ros1_1_1_bag.html','');
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classrosros_1_1ros1_1_1_bag-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Bag Class Reference</div>  </div>
+<div class="title">rosros.ros1.Bag Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>ROS1 bag reader and writer.  
  <a href="classrosros_1_1ros1_1_1_bag.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for Bag:</div>
+Inheritance diagram for rosros.ros1.Bag:</div>
 <div class="dyncontent">
-<div class="center"><img src="classrosros_1_1ros1_1_1_bag__inherit__graph.png" border="0" usemap="#_bag_inherit__map" alt="Inheritance graph"/></div>
-<map name="_bag_inherit__map" id="_bag_inherit__map">
-<area shape="rect" title="ROS1 bag reader and writer." alt="" coords="5,80,52,107"/>
-<area shape="rect" title=" " alt="" coords="5,5,52,32"/>
+<div class="center"><img src="classrosros_1_1ros1_1_1_bag__inherit__graph.png" border="0" usemap="#rosros_8ros1_8_bag_inherit__map" alt="Inheritance graph"/></div>
+<map name="rosros_8ros1_8_bag_inherit__map" id="rosros_8ros1_8_bag_inherit__map">
+<area shape="rect" title="ROS1 bag reader and writer." alt="" coords="5,80,128,107"/>
+<area shape="rect" title=" " alt="" coords="17,5,116,32"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a477e787bbec6f134c0129be6e33d66a8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a477e787bbec6f134c0129be6e33d66a8">__init__</a> (self, f, mode=&quot;r&quot;, compression=rosbag.Compression.NONE, chunk_threshold=768 *1024, allow_unindexed=False, options=None, skip_index=False)</td></tr>
-<tr class="memdesc:a477e787bbec6f134c0129be6e33d66a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a ROS1 bag file.  <a href="classrosros_1_1ros1_1_1_bag.html#a477e787bbec6f134c0129be6e33d66a8">More...</a><br /></td></tr>
-<tr class="separator:a477e787bbec6f134c0129be6e33d66a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2227fec0734f04cb9dd9379d9789d63"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#aa2227fec0734f04cb9dd9379d9789d63">get_message_class</a> (self, typename, typehash=None)</td></tr>
-<tr class="memdesc:aa2227fec0734f04cb9dd9379d9789d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS1 message class for typename, or None if unknown type.  <a href="classrosros_1_1ros1_1_1_bag.html#aa2227fec0734f04cb9dd9379d9789d63">More...</a><br /></td></tr>
-<tr class="separator:aa2227fec0734f04cb9dd9379d9789d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dda5df5a8c0e2362b3b480d5755d8b2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a5dda5df5a8c0e2362b3b480d5755d8b2">get_message_definition</a> (self, msg_or_type)</td></tr>
-<tr class="memdesc:a5dda5df5a8c0e2362b3b480d5755d8b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS1 message type definition full text from bag, including subtype definitions.  <a href="classrosros_1_1ros1_1_1_bag.html#a5dda5df5a8c0e2362b3b480d5755d8b2">More...</a><br /></td></tr>
-<tr class="separator:a5dda5df5a8c0e2362b3b480d5755d8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac562e2c452db8b4317ffdf0fb2e59c7e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#ac562e2c452db8b4317ffdf0fb2e59c7e">get_message_type_hash</a> (self, msg_or_type)</td></tr>
-<tr class="memdesc:ac562e2c452db8b4317ffdf0fb2e59c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS1 message type MD5 hash.  <a href="classrosros_1_1ros1_1_1_bag.html#ac562e2c452db8b4317ffdf0fb2e59c7e">More...</a><br /></td></tr>
-<tr class="separator:ac562e2c452db8b4317ffdf0fb2e59c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e3795870e77fadd9d99dcdfd1edb7e9"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a2e3795870e77fadd9d99dcdfd1edb7e9">get_qoses</a> (self, topic, typename)</td></tr>
-<tr class="memdesc:a2e3795870e77fadd9d99dcdfd1edb7e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 bag API conformity stand-in).  <a href="classrosros_1_1ros1_1_1_bag.html#a2e3795870e77fadd9d99dcdfd1edb7e9">More...</a><br /></td></tr>
-<tr class="separator:a2e3795870e77fadd9d99dcdfd1edb7e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eaa0d0210a3512ab1837ca1ee0d4ca0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a8eaa0d0210a3512ab1837ca1ee0d4ca0">get_topic_info</a> (self, *_, **__)</td></tr>
-<tr class="memdesc:a8eaa0d0210a3512ab1837ca1ee0d4ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns topic and message type metainfo as {(topic, typename, typehash): count}.  <a href="classrosros_1_1ros1_1_1_bag.html#a8eaa0d0210a3512ab1837ca1ee0d4ca0">More...</a><br /></td></tr>
-<tr class="separator:a8eaa0d0210a3512ab1837ca1ee0d4ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1a86dd57f39bc18ecfe8f2d3b6f8f0e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#ab1a86dd57f39bc18ecfe8f2d3b6f8f0e">read_messages</a> (self, topics=None, start_time=None, end_time=None, connection_filter=None, raw=False)</td></tr>
-<tr class="memdesc:ab1a86dd57f39bc18ecfe8f2d3b6f8f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields messages from the bag in chronological order.  <a href="classrosros_1_1ros1_1_1_bag.html#ab1a86dd57f39bc18ecfe8f2d3b6f8f0e">More...</a><br /></td></tr>
-<tr class="separator:ab1a86dd57f39bc18ecfe8f2d3b6f8f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a8137db9c4730d06b8ad604a02992d2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a5a8137db9c4730d06b8ad604a02992d2">write</a> (self, topic, msg, t=None, raw=False, connection_header=None, **__)</td></tr>
-<tr class="memdesc:a5a8137db9c4730d06b8ad604a02992d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a message to the bag.  <a href="classrosros_1_1ros1_1_1_bag.html#a5a8137db9c4730d06b8ad604a02992d2">More...</a><br /></td></tr>
-<tr class="separator:a5a8137db9c4730d06b8ad604a02992d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6d7dcc19e2d91dd56f6138a02b2d555"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#af6d7dcc19e2d91dd56f6138a02b2d555">__init__</a> (self, f, mode=&quot;r&quot;, compression=rosbag.Compression.NONE, chunk_threshold=768 *1024, allow_unindexed=False, options=None, skip_index=False)</td></tr>
+<tr class="memdesc:af6d7dcc19e2d91dd56f6138a02b2d555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a ROS1 bag file.  <a href="classrosros_1_1ros1_1_1_bag.html#af6d7dcc19e2d91dd56f6138a02b2d555">More...</a><br /></td></tr>
+<tr class="separator:af6d7dcc19e2d91dd56f6138a02b2d555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80ba8735c01029be4209b8eeec0e8bb0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a80ba8735c01029be4209b8eeec0e8bb0">get_message_class</a> (self, typename, typehash=None)</td></tr>
+<tr class="memdesc:a80ba8735c01029be4209b8eeec0e8bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS1 message class for typename, or None if unknown type.  <a href="classrosros_1_1ros1_1_1_bag.html#a80ba8735c01029be4209b8eeec0e8bb0">More...</a><br /></td></tr>
+<tr class="separator:a80ba8735c01029be4209b8eeec0e8bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec96a9357d47984e908e7df89645be63"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#aec96a9357d47984e908e7df89645be63">get_message_definition</a> (self, msg_or_type)</td></tr>
+<tr class="memdesc:aec96a9357d47984e908e7df89645be63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS1 message type definition full text from bag, including subtype definitions.  <a href="classrosros_1_1ros1_1_1_bag.html#aec96a9357d47984e908e7df89645be63">More...</a><br /></td></tr>
+<tr class="separator:aec96a9357d47984e908e7df89645be63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a727a0feedcd74e83ead590ff31206df3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a727a0feedcd74e83ead590ff31206df3">get_message_type_hash</a> (self, msg_or_type)</td></tr>
+<tr class="memdesc:a727a0feedcd74e83ead590ff31206df3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS1 message type MD5 hash.  <a href="classrosros_1_1ros1_1_1_bag.html#a727a0feedcd74e83ead590ff31206df3">More...</a><br /></td></tr>
+<tr class="separator:a727a0feedcd74e83ead590ff31206df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d1ef3593a859d74911a3b8cbbed8b4"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a65d1ef3593a859d74911a3b8cbbed8b4">get_qoses</a> (self, topic, typename)</td></tr>
+<tr class="memdesc:a65d1ef3593a859d74911a3b8cbbed8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns None (ROS2 bag API conformity stand-in).  <a href="classrosros_1_1ros1_1_1_bag.html#a65d1ef3593a859d74911a3b8cbbed8b4">More...</a><br /></td></tr>
+<tr class="separator:a65d1ef3593a859d74911a3b8cbbed8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9189c6d31292dd0246ad1f1c3d7ecbb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#ac9189c6d31292dd0246ad1f1c3d7ecbb">get_topic_info</a> (self, *_, **__)</td></tr>
+<tr class="memdesc:ac9189c6d31292dd0246ad1f1c3d7ecbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns topic and message type metainfo as {(topic, typename, typehash): count}.  <a href="classrosros_1_1ros1_1_1_bag.html#ac9189c6d31292dd0246ad1f1c3d7ecbb">More...</a><br /></td></tr>
+<tr class="separator:ac9189c6d31292dd0246ad1f1c3d7ecbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aebd7daa6be0d3625e4a3d146fdfece"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a1aebd7daa6be0d3625e4a3d146fdfece">read_messages</a> (self, topics=None, start_time=None, end_time=None, connection_filter=None, raw=False)</td></tr>
+<tr class="memdesc:a1aebd7daa6be0d3625e4a3d146fdfece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields messages from the bag in chronological order.  <a href="classrosros_1_1ros1_1_1_bag.html#a1aebd7daa6be0d3625e4a3d146fdfece">More...</a><br /></td></tr>
+<tr class="separator:a1aebd7daa6be0d3625e4a3d146fdfece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b2b2e5e07ab0e7e0690fca2e1fbacc"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a55b2b2e5e07ab0e7e0690fca2e1fbacc">write</a> (self, topic, msg, t=None, raw=False, connection_header=None, **__)</td></tr>
+<tr class="memdesc:a55b2b2e5e07ab0e7e0690fca2e1fbacc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a message to the bag.  <a href="classrosros_1_1ros1_1_1_bag.html#a55b2b2e5e07ab0e7e0690fca2e1fbacc">More...</a><br /></td></tr>
+<tr class="separator:a55b2b2e5e07ab0e7e0690fca2e1fbacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a4296e1799290350242335dee0c8a6263"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a4296e1799290350242335dee0c8a6263">reindex_file</a> (f)</td></tr>
-<tr class="memdesc:a4296e1799290350242335dee0c8a6263"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reindexes bag file on disk.  <a href="classrosros_1_1ros1_1_1_bag.html#a4296e1799290350242335dee0c8a6263">More...</a><br /></td></tr>
-<tr class="separator:a4296e1799290350242335dee0c8a6263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45983c0b715eaeb6d6a7bae9dee00d3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#af45983c0b715eaeb6d6a7bae9dee00d3">reindex_file</a> (f)</td></tr>
+<tr class="memdesc:af45983c0b715eaeb6d6a7bae9dee00d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reindexes bag file on disk.  <a href="classrosros_1_1ros1_1_1_bag.html#af45983c0b715eaeb6d6a7bae9dee00d3">More...</a><br /></td></tr>
+<tr class="separator:af45983c0b715eaeb6d6a7bae9dee00d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a4e4fe36d016ef611f38e13bacb49347c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a4e4fe36d016ef611f38e13bacb49347c">EXTENSION</a> = &quot;.bag&quot;</td></tr>
-<tr class="memdesc:a4e4fe36d016ef611f38e13bacb49347c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default extension for bag files.  <a href="classrosros_1_1ros1_1_1_bag.html#a4e4fe36d016ef611f38e13bacb49347c">More...</a><br /></td></tr>
-<tr class="separator:a4e4fe36d016ef611f38e13bacb49347c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018b9ae16c837523b01783d0b9b08e0b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1ros1_1_1_bag.html#a018b9ae16c837523b01783d0b9b08e0b">EXTENSION</a> = &quot;.bag&quot;</td></tr>
+<tr class="memdesc:a018b9ae16c837523b01783d0b9b08e0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default extension for bag files.  <a href="classrosros_1_1ros1_1_1_bag.html#a018b9ae16c837523b01783d0b9b08e0b">More...</a><br /></td></tr>
+<tr class="separator:a018b9ae16c837523b01783d0b9b08e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ROS1 bag reader and writer. </p>
@@ -153,14 +153,14 @@ Static Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ros1_8py_source.html#l00126">126</a> of file <a class="el" href="ros1_8py_source.html">ros1.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a477e787bbec6f134c0129be6e33d66a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a477e787bbec6f134c0129be6e33d66a8">&#9670;&nbsp;</a></span>__init__()</h2>
+<a id="af6d7dcc19e2d91dd56f6138a02b2d555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6d7dcc19e2d91dd56f6138a02b2d555">&#9670;&nbsp;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def __init__ </td>
+          <td class="memname">def rosros.ros1.Bag.__init__ </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -234,14 +234,14 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa2227fec0734f04cb9dd9379d9789d63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2227fec0734f04cb9dd9379d9789d63">&#9670;&nbsp;</a></span>get_message_class()</h2>
+<a id="a80ba8735c01029be4209b8eeec0e8bb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80ba8735c01029be4209b8eeec0e8bb0">&#9670;&nbsp;</a></span>get_message_class()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_message_class </td>
+          <td class="memname">def rosros.ros1.Bag.get_message_class </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -278,14 +278,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5dda5df5a8c0e2362b3b480d5755d8b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dda5df5a8c0e2362b3b480d5755d8b2">&#9670;&nbsp;</a></span>get_message_definition()</h2>
+<a id="aec96a9357d47984e908e7df89645be63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec96a9357d47984e908e7df89645be63">&#9670;&nbsp;</a></span>get_message_definition()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_message_definition </td>
+          <td class="memname">def rosros.ros1.Bag.get_message_definition </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -310,14 +310,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac562e2c452db8b4317ffdf0fb2e59c7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac562e2c452db8b4317ffdf0fb2e59c7e">&#9670;&nbsp;</a></span>get_message_type_hash()</h2>
+<a id="a727a0feedcd74e83ead590ff31206df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a727a0feedcd74e83ead590ff31206df3">&#9670;&nbsp;</a></span>get_message_type_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_message_type_hash </td>
+          <td class="memname">def rosros.ros1.Bag.get_message_type_hash </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -342,14 +342,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2e3795870e77fadd9d99dcdfd1edb7e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e3795870e77fadd9d99dcdfd1edb7e9">&#9670;&nbsp;</a></span>get_qoses()</h2>
+<a id="a65d1ef3593a859d74911a3b8cbbed8b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d1ef3593a859d74911a3b8cbbed8b4">&#9670;&nbsp;</a></span>get_qoses()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_qoses </td>
+          <td class="memname">def rosros.ros1.Bag.get_qoses </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -380,14 +380,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8eaa0d0210a3512ab1837ca1ee0d4ca0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8eaa0d0210a3512ab1837ca1ee0d4ca0">&#9670;&nbsp;</a></span>get_topic_info()</h2>
+<a id="ac9189c6d31292dd0246ad1f1c3d7ecbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9189c6d31292dd0246ad1f1c3d7ecbb">&#9670;&nbsp;</a></span>get_topic_info()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def get_topic_info </td>
+          <td class="memname">def rosros.ros1.Bag.get_topic_info </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -418,14 +418,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab1a86dd57f39bc18ecfe8f2d3b6f8f0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1a86dd57f39bc18ecfe8f2d3b6f8f0e">&#9670;&nbsp;</a></span>read_messages()</h2>
+<a id="a1aebd7daa6be0d3625e4a3d146fdfece"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aebd7daa6be0d3625e4a3d146fdfece">&#9670;&nbsp;</a></span>read_messages()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def read_messages </td>
+          <td class="memname">def rosros.ros1.Bag.read_messages </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -488,8 +488,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4296e1799290350242335dee0c8a6263"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4296e1799290350242335dee0c8a6263">&#9670;&nbsp;</a></span>reindex_file()</h2>
+<a id="af45983c0b715eaeb6d6a7bae9dee00d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af45983c0b715eaeb6d6a7bae9dee00d3">&#9670;&nbsp;</a></span>reindex_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -498,7 +498,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">def reindex_file </td>
+          <td class="memname">def rosros.ros1.Bag.reindex_file </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>f</em></td><td>)</td>
@@ -519,14 +519,14 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a8137db9c4730d06b8ad604a02992d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a8137db9c4730d06b8ad604a02992d2">&#9670;&nbsp;</a></span>write()</h2>
+<a id="a55b2b2e5e07ab0e7e0690fca2e1fbacc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55b2b2e5e07ab0e7e0690fca2e1fbacc">&#9670;&nbsp;</a></span>write()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def write </td>
+          <td class="memname">def rosros.ros1.Bag.write </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -593,8 +593,8 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4e4fe36d016ef611f38e13bacb49347c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e4fe36d016ef611f38e13bacb49347c">&#9670;&nbsp;</a></span>EXTENSION</h2>
+<a id="a018b9ae16c837523b01783d0b9b08e0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018b9ae16c837523b01783d0b9b08e0b">&#9670;&nbsp;</a></span>EXTENSION</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -603,7 +603,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string EXTENSION = &quot;.bag&quot;</td>
+          <td class="memname">string rosros.ros1.Bag.EXTENSION = &quot;.bag&quot;</td>
         </tr>
       </table>
   </td>
@@ -620,7 +620,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/rosros/<a class="el" href="ros1_8py_source.html">ros1.py</a></li>
+<li>rosros/<a class="el" href="ros1_8py_source.html">ros1.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -628,7 +628,7 @@ Static Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1ros1.html">ros1</a></li><li class="navelem"><a class="el" href="classrosros_1_1ros1_1_1_bag.html">Bag</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

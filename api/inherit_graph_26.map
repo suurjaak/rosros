@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classrosros_1_1rospify_1_1timer_1_1_timer_event.html" title="Constructor." alt="" coords="5,5,101,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,72,32"/>
+<area shape="rect" id="node2" href="$classrosros_1_1util_1_1_throttled_logger.html" title="Logger wrapper with support for throttling logged messages per call site." alt="" coords="120,5,315,32"/>
 </map>

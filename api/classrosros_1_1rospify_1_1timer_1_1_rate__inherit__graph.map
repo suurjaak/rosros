@@ -1,4 +1,4 @@
-<map id="Rate" name="Rate">
-<area shape="rect" id="node1" title="Stand&#45;in for `rospy.Rate`, wrapping the creation of ROS2 rate instance." alt="" coords="5,80,57,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="7,5,56,32"/>
+<map id="rosros.rospify.timer.Rate" name="rosros.rospify.timer.Rate">
+<area shape="rect" id="node1" title="Stand&#45;in for `rospy.Rate`, wrapping the creation of ROS2 rate instance." alt="" coords="5,80,188,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="72,5,121,32"/>
 </map>

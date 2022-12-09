@@ -1,4 +1,4 @@
-<map id="Publisher" name="Publisher">
-<area shape="rect" id="node1" title="Stand&#45;in for `rospy.Publisher`, wrapping the creation of ROS2 publisher." alt="" coords="5,80,88,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="22,5,71,32"/>
+<map id="rosros.rospify.topics.Publisher" name="rosros.rospify.topics.Publisher">
+<area shape="rect" id="node1" title="Stand&#45;in for `rospy.Publisher`, wrapping the creation of ROS2 publisher." alt="" coords="5,80,221,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="89,5,138,32"/>
 </map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rosros: ThrottledLogger Class Reference</title>
+<title>rosros: rosros.util.ThrottledLogger Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -87,48 +87,48 @@ $(document).ready(function(){initNavTree('classrosros_1_1util_1_1_throttled_logg
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classrosros_1_1util_1_1_throttled_logger-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ThrottledLogger Class Reference</div>  </div>
+<div class="title">rosros.util.ThrottledLogger Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Logger wrapper with support for throttling logged messages per call site.  
  <a href="classrosros_1_1util_1_1_throttled_logger.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for ThrottledLogger:</div>
+Inheritance diagram for rosros.util.ThrottledLogger:</div>
 <div class="dyncontent">
-<div class="center"><img src="classrosros_1_1util_1_1_throttled_logger__inherit__graph.png" border="0" usemap="#_throttled_logger_inherit__map" alt="Inheritance graph"/></div>
-<map name="_throttled_logger_inherit__map" id="_throttled_logger_inherit__map">
-<area shape="rect" title="Logger wrapper with support for throttling logged messages per call site." alt="" coords="5,80,131,107"/>
-<area shape="rect" title=" " alt="" coords="35,5,101,32"/>
+<div class="center"><img src="classrosros_1_1util_1_1_throttled_logger__inherit__graph.png" border="0" usemap="#rosros_8util_8_throttled_logger_inherit__map" alt="Inheritance graph"/></div>
+<map name="rosros_8util_8_throttled_logger_inherit__map" id="rosros_8util_8_throttled_logger_inherit__map">
+<area shape="rect" title="Logger wrapper with support for throttling logged messages per call site." alt="" coords="5,80,200,107"/>
+<area shape="rect" title=" " alt="" coords="41,5,164,32"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aac3cdede3d1da7dd5e392212b10c4cf5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#aac3cdede3d1da7dd5e392212b10c4cf5">__init__</a> (self, logger)</td></tr>
-<tr class="memdesc:aac3cdede3d1da7dd5e392212b10c4cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a wrapper logger around given logger instance, providing support for throttling.  <a href="classrosros_1_1util_1_1_throttled_logger.html#aac3cdede3d1da7dd5e392212b10c4cf5">More...</a><br /></td></tr>
-<tr class="separator:aac3cdede3d1da7dd5e392212b10c4cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12a3e627c1837dee22303009122bf663"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a12a3e627c1837dee22303009122bf663">debug</a> (self, msg, *args, **kwargs)</td></tr>
-<tr class="memdesc:a12a3e627c1837dee22303009122bf663"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `DEBUG`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a12a3e627c1837dee22303009122bf663">More...</a><br /></td></tr>
-<tr class="separator:a12a3e627c1837dee22303009122bf663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b5f333cfc85b162eb8f810f4e462fd6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a8b5f333cfc85b162eb8f810f4e462fd6">error</a> (self, msg, *args, **kwargs)</td></tr>
-<tr class="memdesc:a8b5f333cfc85b162eb8f810f4e462fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `ERROR`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a8b5f333cfc85b162eb8f810f4e462fd6">More...</a><br /></td></tr>
-<tr class="separator:a8b5f333cfc85b162eb8f810f4e462fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ef3ecbf3298f32bd7762a83107aaf03"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a4ef3ecbf3298f32bd7762a83107aaf03">fatal</a> (self, msg, *args, **kwargs)</td></tr>
-<tr class="memdesc:a4ef3ecbf3298f32bd7762a83107aaf03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `FATAL`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a4ef3ecbf3298f32bd7762a83107aaf03">More...</a><br /></td></tr>
-<tr class="separator:a4ef3ecbf3298f32bd7762a83107aaf03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49626ef1c1f948130981ec984d83c74a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a49626ef1c1f948130981ec984d83c74a">info</a> (self, msg, *args, **kwargs)</td></tr>
-<tr class="memdesc:a49626ef1c1f948130981ec984d83c74a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `INFO`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a49626ef1c1f948130981ec984d83c74a">More...</a><br /></td></tr>
-<tr class="separator:a49626ef1c1f948130981ec984d83c74a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d9f69260f6e7c2b37f089ca6d0fae26"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a4d9f69260f6e7c2b37f089ca6d0fae26">log</a> (self, level, msg, *args, **kwargs)</td></tr>
-<tr class="memdesc:a4d9f69260f6e7c2b37f089ca6d0fae26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with given severity.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a4d9f69260f6e7c2b37f089ca6d0fae26">More...</a><br /></td></tr>
-<tr class="separator:a4d9f69260f6e7c2b37f089ca6d0fae26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ed9d99c8ec607259a72de4e60132936"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a6ed9d99c8ec607259a72de4e60132936">warn</a> (self, msg, *args, **kwargs)</td></tr>
-<tr class="memdesc:a6ed9d99c8ec607259a72de4e60132936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `WARNING`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a6ed9d99c8ec607259a72de4e60132936">More...</a><br /></td></tr>
-<tr class="separator:a6ed9d99c8ec607259a72de4e60132936"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab64eb763c2cc801d986bbb9bb1cad5de"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#ab64eb763c2cc801d986bbb9bb1cad5de">warning</a> (self, msg, *args, **kwargs)</td></tr>
-<tr class="memdesc:ab64eb763c2cc801d986bbb9bb1cad5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `WARN`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#ab64eb763c2cc801d986bbb9bb1cad5de">More...</a><br /></td></tr>
-<tr class="separator:ab64eb763c2cc801d986bbb9bb1cad5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718594c2d5edd5bd3ce328eab67aa8e9"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a718594c2d5edd5bd3ce328eab67aa8e9">__init__</a> (self, logger)</td></tr>
+<tr class="memdesc:a718594c2d5edd5bd3ce328eab67aa8e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a wrapper logger around given logger instance, providing support for throttling.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a718594c2d5edd5bd3ce328eab67aa8e9">More...</a><br /></td></tr>
+<tr class="separator:a718594c2d5edd5bd3ce328eab67aa8e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28f17806d8bcbc00577461b60ad9e78"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#aa28f17806d8bcbc00577461b60ad9e78">debug</a> (self, msg, *args, **kwargs)</td></tr>
+<tr class="memdesc:aa28f17806d8bcbc00577461b60ad9e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `DEBUG`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#aa28f17806d8bcbc00577461b60ad9e78">More...</a><br /></td></tr>
+<tr class="separator:aa28f17806d8bcbc00577461b60ad9e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6cbb040e116b15d4e819bfb18c22ff0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#ab6cbb040e116b15d4e819bfb18c22ff0">error</a> (self, msg, *args, **kwargs)</td></tr>
+<tr class="memdesc:ab6cbb040e116b15d4e819bfb18c22ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `ERROR`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#ab6cbb040e116b15d4e819bfb18c22ff0">More...</a><br /></td></tr>
+<tr class="separator:ab6cbb040e116b15d4e819bfb18c22ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0f207738f052c7ce21557ee91152afb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#ad0f207738f052c7ce21557ee91152afb">fatal</a> (self, msg, *args, **kwargs)</td></tr>
+<tr class="memdesc:ad0f207738f052c7ce21557ee91152afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `FATAL`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#ad0f207738f052c7ce21557ee91152afb">More...</a><br /></td></tr>
+<tr class="separator:ad0f207738f052c7ce21557ee91152afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88d3cd6486a0ce15b61d16679c564f87"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a88d3cd6486a0ce15b61d16679c564f87">info</a> (self, msg, *args, **kwargs)</td></tr>
+<tr class="memdesc:a88d3cd6486a0ce15b61d16679c564f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `INFO`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a88d3cd6486a0ce15b61d16679c564f87">More...</a><br /></td></tr>
+<tr class="separator:a88d3cd6486a0ce15b61d16679c564f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605596b58f80ccd3e8d075a18b830864"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#a605596b58f80ccd3e8d075a18b830864">log</a> (self, level, msg, *args, **kwargs)</td></tr>
+<tr class="memdesc:a605596b58f80ccd3e8d075a18b830864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with given severity.  <a href="classrosros_1_1util_1_1_throttled_logger.html#a605596b58f80ccd3e8d075a18b830864">More...</a><br /></td></tr>
+<tr class="separator:a605596b58f80ccd3e8d075a18b830864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6a929494fb0936fc571c82249fddb0a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#ae6a929494fb0936fc571c82249fddb0a">warn</a> (self, msg, *args, **kwargs)</td></tr>
+<tr class="memdesc:ae6a929494fb0936fc571c82249fddb0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `WARNING`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#ae6a929494fb0936fc571c82249fddb0a">More...</a><br /></td></tr>
+<tr class="separator:ae6a929494fb0936fc571c82249fddb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebf4eeda71f3b2aa152877f22c26f98d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html#aebf4eeda71f3b2aa152877f22c26f98d">warning</a> (self, msg, *args, **kwargs)</td></tr>
+<tr class="memdesc:aebf4eeda71f3b2aa152877f22c26f98d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs `msg % args` with severity `WARN`.  <a href="classrosros_1_1util_1_1_throttled_logger.html#aebf4eeda71f3b2aa152877f22c26f98d">More...</a><br /></td></tr>
+<tr class="separator:aebf4eeda71f3b2aa152877f22c26f98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Logger wrapper with support for throttling logged messages per call site. </p>
@@ -140,14 +140,14 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="util_8py_source.html#l00038">38</a> of file <a class="el" href="util_8py_source.html">util.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aac3cdede3d1da7dd5e392212b10c4cf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac3cdede3d1da7dd5e392212b10c4cf5">&#9670;&nbsp;</a></span>__init__()</h2>
+<a id="a718594c2d5edd5bd3ce328eab67aa8e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a718594c2d5edd5bd3ce328eab67aa8e9">&#9670;&nbsp;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def __init__ </td>
+          <td class="memname">def rosros.util.ThrottledLogger.__init__ </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -179,14 +179,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a12a3e627c1837dee22303009122bf663"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12a3e627c1837dee22303009122bf663">&#9670;&nbsp;</a></span>debug()</h2>
+<a id="aa28f17806d8bcbc00577461b60ad9e78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28f17806d8bcbc00577461b60ad9e78">&#9670;&nbsp;</a></span>debug()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def debug </td>
+          <td class="memname">def rosros.util.ThrottledLogger.debug </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -231,14 +231,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8b5f333cfc85b162eb8f810f4e462fd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b5f333cfc85b162eb8f810f4e462fd6">&#9670;&nbsp;</a></span>error()</h2>
+<a id="ab6cbb040e116b15d4e819bfb18c22ff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6cbb040e116b15d4e819bfb18c22ff0">&#9670;&nbsp;</a></span>error()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def error </td>
+          <td class="memname">def rosros.util.ThrottledLogger.error </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -276,14 +276,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4ef3ecbf3298f32bd7762a83107aaf03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ef3ecbf3298f32bd7762a83107aaf03">&#9670;&nbsp;</a></span>fatal()</h2>
+<a id="ad0f207738f052c7ce21557ee91152afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0f207738f052c7ce21557ee91152afb">&#9670;&nbsp;</a></span>fatal()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def fatal </td>
+          <td class="memname">def rosros.util.ThrottledLogger.fatal </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -321,14 +321,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a49626ef1c1f948130981ec984d83c74a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49626ef1c1f948130981ec984d83c74a">&#9670;&nbsp;</a></span>info()</h2>
+<a id="a88d3cd6486a0ce15b61d16679c564f87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88d3cd6486a0ce15b61d16679c564f87">&#9670;&nbsp;</a></span>info()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def info </td>
+          <td class="memname">def rosros.util.ThrottledLogger.info </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -366,14 +366,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4d9f69260f6e7c2b37f089ca6d0fae26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d9f69260f6e7c2b37f089ca6d0fae26">&#9670;&nbsp;</a></span>log()</h2>
+<a id="a605596b58f80ccd3e8d075a18b830864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a605596b58f80ccd3e8d075a18b830864">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def log </td>
+          <td class="memname">def rosros.util.ThrottledLogger.log </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -417,14 +417,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ed9d99c8ec607259a72de4e60132936"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ed9d99c8ec607259a72de4e60132936">&#9670;&nbsp;</a></span>warn()</h2>
+<a id="ae6a929494fb0936fc571c82249fddb0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6a929494fb0936fc571c82249fddb0a">&#9670;&nbsp;</a></span>warn()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def warn </td>
+          <td class="memname">def rosros.util.ThrottledLogger.warn </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -462,14 +462,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab64eb763c2cc801d986bbb9bb1cad5de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab64eb763c2cc801d986bbb9bb1cad5de">&#9670;&nbsp;</a></span>warning()</h2>
+<a id="aebf4eeda71f3b2aa152877f22c26f98d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebf4eeda71f3b2aa152877f22c26f98d">&#9670;&nbsp;</a></span>warning()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def warning </td>
+          <td class="memname">def rosros.util.ThrottledLogger.warning </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -508,7 +508,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/rosros/<a class="el" href="util_8py_source.html">util.py</a></li>
+<li>rosros/<a class="el" href="util_8py_source.html">util.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -516,7 +516,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1util.html">util</a></li><li class="navelem"><a class="el" href="classrosros_1_1util_1_1_throttled_logger.html">ThrottledLogger</a></li>
-    <li class="footer">Generated on Sun Oct 30 2022 18:54:33 for rosros by
+    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
