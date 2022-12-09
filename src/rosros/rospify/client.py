@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    19.06.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.client
@@ -135,6 +135,7 @@ def init_node(name, argv=None, anonymous=False, log_level=None,
 
     @throws  ROSInitException  if initialization/registration fails
     @throws  ValueError        if name is invalid
+    @return                    `rclpy.node.Node`
     """
     if not name:
         raise ValueError("name must not be empty")
@@ -142,8 +143,8 @@ def init_node(name, argv=None, anonymous=False, log_level=None,
         raise ValueError("namespaces are not allowed in node names")
 
     log_level = _ROSPY_LOG_LEVEL_TO_PY_LEVEL.get(log_level, log_level)
-    try: ros2.init_node(name, argv, anonymous=anonymous, log_level=log_level,
-                        enable_rosout=not disable_rosout)
+    try: return ros2.init_node(name, argv, anonymous=anonymous, log_level=log_level,
+                               enable_rosout=not disable_rosout)
     except Exception as e:
         raise exceptions.ROSInitException() from e
 
