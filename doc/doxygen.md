@@ -24,8 +24,7 @@ Main use-cases:
 | rosros.util                 | Common utility classes and functions
 
 
-Internal Modules                                                                                  
-----------------     
+**Internal Modules**   
 
 |                             ||
 |-----------------------------|------------------------------------------------------------------
