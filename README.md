@@ -124,12 +124,15 @@ create the message or service request/response class instance explicitly.
 ROS1 already provides this short-hand in `rospy`,
 but ROS2 API requires the instances to be created explicitly.
 
+rosros also supports giving message or service request as dictionary.
+
 In rosros:
 
 ```python
 pub = rosros.create_publisher("/topic", "std_msgs/Bool")
 pub.publish(True)
 pub.publish(data=True)
+pub.publish({"data": True})
 pub.publish()
 
 # Service callback need not accept any parameters if request object is irrelevant
@@ -138,6 +141,7 @@ srv = rosros.create_service("/service", "std_srvs/SetBool", lambda: {"message": 
 cli = rosros.create_client("/service", "std_srvs/SetBool")
 cli.call(True)
 cli.call(data=True)
+cli.call({"data": True})
 cli(True)
 ```
 
@@ -147,6 +151,7 @@ Equivalent ROS1 code using rospy:
 pub = rospy.Publisher("/topic", std_msgs.msg.Bool, queue_size=0)
 pub.publish(True)
 pub.publish(data=True)
+pub.publish(std_msgs.msg.Bool(True))
 pub.publish()
 
 srv = rospy.Service("/service", std_srvs.srv.SetBool, lambda req: {"message": "Triggered!"})
@@ -154,6 +159,7 @@ srv = rospy.Service("/service", std_srvs.srv.SetBool, lambda req: {"message": "T
 cli = rospy.ServiceProxy("/service", std_srvs.srv.SetBool)
 cli.call(True)
 cli.call(data=True)
+cli.call(std_srvs.srv.SetBoolRequest(True))
 cli(True)
 ```
 
@@ -161,6 +167,7 @@ Equivalent ROS2 code using rospy:
 
 ```python
 pub = mynode.create_publisher(std_msgs.msg.Bool, "/topic", 0)
+pub.publish(std_msgs.msg.Bool(data=True))
 pub.publish(std_msgs.msg.Bool(data=True))
 pub.publish(std_msgs.msg.Bool(data=True))
 pub.publish(std_msgs.msg.Bool())

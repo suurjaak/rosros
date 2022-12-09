@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    28.10.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -110,9 +110,9 @@ class TestTopics(testbase.TestBase):
 
         for name, pub in self._pubs.items():
             if pub is self._latch_pub: continue  # for name, pub
-            logger.info("Publishing to %r.", name)
-            msg = pub.data_class()
-            pub.publish(msg)
+            for msg in (pub.data_class(), rosros.api.message_to_dict(pub.data_class()), None):
+                logger.info("Publishing to %r (%s).", name, "" if msg is None else msg)
+                pub.publish() if msg is None else pub.publish(msg)
 
         logger.info("Waiting for messages in %s topics.", len(self._subs))
         deadline = time.monotonic() + 10

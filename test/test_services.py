@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.04.2022
-@modified    27.10.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 import functools
@@ -86,10 +86,11 @@ class TestServices(testbase.TestBase):
             self.assertTrue(cli.service_is_ready(), "Unexpected result from service_is_ready().")
 
         for name, cli in self._clis.items():
-            logger.info("Invoking service at %r.", name)
-            req = cli.request_class()
-            resp = cli(req)
-            resps.setdefault(name, []).append(resp)
+            for req in (cli.request_class(), rosros.api.message_to_dict(cli.request_class()), None):
+                logger.info("Invoking service at %r (%s).", name, "" if req is None else req)
+                resp = cli() if req is None else cli(req)
+                resps.setdefault(name, []).append(resp)
+                time.sleep(1)  # ROS2 services can deadlock if callbacks are launched
 
         logger.info("Waiting for actions in %s service clients.", len(self._clis))
         deadline = time.monotonic() + 10

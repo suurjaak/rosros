@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    23.10.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
@@ -163,7 +163,7 @@ def drop_zeros(v, replace=""):
     return re.sub(r"\.?0+$", lambda x: len(x.group()) * replace, str(v))
 
 
-def ensure_object(obj_or_cls, attributes, *args, **kwargs):
+def ensure_object(obj_or_cls, attributes, populate_object=None, *args, **kwargs):
     """
     Ensures result is an object of specified type.
 
@@ -173,33 +173,37 @@ def ensure_object(obj_or_cls, attributes, *args, **kwargs):
     If first positional argument is an instance of specified class,
     it is populated from positional and keyword arguments.
 
+    If first positional argument is a dictionary, it is taken as keyword arguments.
+
     `obj_or_cls` may be a class to instantiate, or the class instance
     to populate if instance not in first positional argument.
     Instance attributes will be given in constructor as keyword arguments.
 
     E.g. `ensure_object(std_msgs.msg.Bool, ["data"], True)`.
 
-    @param   obj_or_cls  object class or instance
-    @param   attributes  iterable of object attribute names
-                         to combine positional arguments from,
-                         or a callable returning iterable
-    @return              object of specified class, populated from
-                         positional and keyword arguments,
-                         created if not given
+    @param   obj_or_cls       object class or instance
+    @param   attributes       iterable of object attribute names
+                              to combine positional arguments from,
+                              or a callable returning iterable
+    @param   populate_object  function(dict, obj) to populate object from dictionary
+    @return                   object of specified class, populated from
+                              positional and keyword arguments,
+                              created if not given
     """
     iscls = inspect.isclass(obj_or_cls)
     cls, obj = (obj_or_cls if iscls else type(obj_or_cls)), None
     isarg = args and isinstance(args[0], cls)  # Object in first positional arg
     if isarg: obj, args = (args[0], args[1:])
-    if callable(attributes): attributes = attributes()
-    for k, v in zip(attributes, args):
+    if args and isinstance(args[0], dict): args, kwargs = args[1:], dict(args[0], **kwargs)
+    if args and callable(attributes): attributes = attributes()
+    for k, v in zip(attributes, args) if args else ():
         if k in kwargs:
             raise TypeError("%s got multiple values for keyword argument %r" %
                             (cls.__name__, k))
         kwargs[k] = v
-    obj = obj or (cls(**kwargs) if iscls else obj_or_cls)
-    for k, v in kwargs.items() if isarg or not iscls else ():
-        setattr(obj, k, v)
+    obj = (cls() if iscls else obj_or_cls) if obj is None else obj
+    populate_object = populate_object or (lambda d, o: [setattr(o, k, v) for k, v in d.items()])
+    populate_object(kwargs, obj)
     return obj
 
 

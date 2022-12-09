@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    21.10.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -39,6 +39,7 @@ else:
     from . import ros2 as ros
     from . rospify import AnyMsg
 
+from . import api
 from . import util
 
 
@@ -53,27 +54,14 @@ PATCHED_FULL = False
 
 
 def patch_ros1():
-    """Patches ROS1 classes with generic compatibility with ROS2."""
+    """Patches ROS1 classes with generic compatibility with ROS2 and rosros."""
     global PATCHED
     if PATCHED: return
 
-    def client_call_async(self, *args, **kwargs):
-        """
-        Make a service request and asyncronously get the result.
+    rospy.Publisher.publish = Publisher__publish
 
-        Service is invoked in a background thread.
-
-        This accepts either a request message instance,
-        or positional and keyword arguments to create a new request instance.
-
-        @return  `asyncio.Future`-conforming interface that completes when the request does
-        """
-        reqcls = self.request_class
-        attributes = functools.partial(ros.get_message_fields, reqcls)
-        req = util.ensure_object(reqcls, attributes, *args, **kwargs)
-        return util.start_future(self.call, req)
-
-    rospy.ServiceProxy.call_async       = client_call_async
+    rospy.ServiceProxy.call             = ServiceProxy__call
+    rospy.ServiceProxy.call_async       = ServiceProxy__call_async
     rospy.ServiceProxy.wait_for_service = ServiceProxy__wait_for_service
     rospy.ServiceProxy.service_is_ready = ServiceProxy__service_is_ready
 
@@ -235,6 +223,40 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
     def Publisher__assert_liveliness(self):
         """Does nothing (ROS2 compatibility stand-in)."""
 
+
+    ROS1_Publisher__publish = rospy.Publisher.publish
+
+    def Publisher__publish(self, *args, **kwds):
+        """Publishes message, supports giving message field values as dictionary in args[0]."""
+        attributes = functools.partial(ros.get_message_fields, self.data_class)
+        msg = util.ensure_object(self.data_class, attributes, api.dict_to_message, *args, **kwds)
+        return ROS1_Publisher__publish(self, msg)
+
+
+    ROS1_ServiceProxy__call = rospy.ServiceProxy.call
+
+    def ServiceProxy__call(self, *args, **kwargs):
+        """Calls the service, supports giving request field values as dictionary in args[0]."""
+        reqcls = self.request_class
+        attributes = functools.partial(ros.get_message_fields, reqcls)
+        req = util.ensure_object(reqcls, attributes, api.dict_to_message, *args, **kwargs)
+        return ROS1_ServiceProxy__call(self, req)
+
+    def ServiceProxy__call_async(self, *args, **kwargs):
+        """
+        Make a service request and asyncronously get the result.
+
+        Service is invoked in a background thread.
+
+        This accepts either a request message instance,
+        or positional and keyword arguments to create a new request instance.
+
+        @return  `asyncio.Future`-conforming interface that completes when the request does
+        """
+        reqcls = self.request_class
+        attributes = functools.partial(ros.get_message_fields, reqcls)
+        req = util.ensure_object(reqcls, attributes, api.dict_to_message, *args, **kwargs)
+        return util.start_future(self.call, req)
 
     def ServiceProxy__remove_pending_request(self, future):
         """
@@ -514,7 +536,7 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
         def inner(self, *args, **kwargs):
             reqcls = self.srv_type.Request
             attributes = functools.partial(ros.get_message_fields, reqcls)
-            req = util.ensure_object(reqcls, attributes, *args, **kwargs)
+            req = util.ensure_object(reqcls, attributes, api.dict_to_message, *args, **kwargs)
             return call(self, req)
         return functools.update_wrapper(inner, call)
 
@@ -526,15 +548,16 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
             elif isinstance(resp, dict):          kwargs = resp
             if args is not None or kwargs is not None:
                 attributes = functools.partial(ros.get_message_fields, respcls)
-                resp = util.ensure_object(respcls, attributes, *args or [], **kwargs or {})
+                args, kwargs = (args or []), (kwargs or {})
+                resp = util.ensure_object(respcls, attributes, api.dict_to_message, *args, **kwargs)
             return resp
         return functools.update_wrapper(inner, serve)
 
     def publish_wrapper(publish):
         """Returns publish-function wrapped to ensure invoke with message instance."""
         def inner(self, *args, **kwargs):
-            attributes = functools.partial(ros.get_message_fields, self.msg_type)
-            msg = util.ensure_object(self.msg_type, attributes, *args, **kwargs)
+            attrs = functools.partial(ros.get_message_fields, self.msg_type)
+            msg = util.ensure_object(self.msg_type, attrs, api.dict_to_message, *args, **kwargs)
             return publish(self, msg)
         return functools.update_wrapper(inner, publish)
 
