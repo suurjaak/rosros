@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    23.10.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 import os
@@ -45,7 +45,7 @@ def get_version():
 common_args = dict(
     install_requires = ["pyyaml"],
     package_dir      = {"": "src"},
-    packages         = [PACKAGE],
+    packages         = setuptools.find_packages("src"),
 )
 version_args = dict(
     data_files      = [
