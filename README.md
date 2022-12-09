@@ -228,7 +228,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | Name                                | Description                                                                                | Arguments
 | ----------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------
 |                                     | **Startup, spin and shutdown**                                                             | |
-| `rosros.init_node`                  | initializes ROS and creates ROS node                                                       | `name, args=None, namespace=None, anonymous=True, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False`
+| `rosros.init_node`                  | initializes ROS and creates ROS node (and returns Node object in ROS2)                     | `name, args=None, namespace=None, anonymous=True, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False`
 | `rosros.start_spin`                 | sets ROS node spinning forever in a background thread                                      | |
 | `rosros.spin`                       | spins ROS node forever                                                                     | |
 | `rosros.spin_once`                  | waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2     | `timeout=None`

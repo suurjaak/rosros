@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     16.04.2022
-@modified    25.06.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 import copy
@@ -23,6 +23,8 @@ import traceback
 
 import rosros
 from rosros import rospify as rospy
+
+if rosros.ros2: import rclpy.node
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from test import testbase, testnode
@@ -57,7 +59,9 @@ class TestRospify(testbase.TestBase):
         self._anymsg_sub = None  # Subscriber instance using AnyMsg
         self._anymsg_cls = {}    # {topic name: real message class}
 
-        rospy.init_node(self.NAME, ["%s:=%s" % x for x in self.REMAPS.items()])
+        node = rospy.init_node(self.NAME, ["%s:=%s" % x for x in self.REMAPS.items()])
+        self.assertIsInstance(node, type(None) if rosros.ros1 else rclpy.node.Node,
+                              "Unexpected value from rosros.init_node().")
         self.add_logging()
 
 

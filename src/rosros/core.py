@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.10.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -46,9 +46,11 @@ def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, 
                             use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      ROS2 only, ignored in ROS1:
                             use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
+    @return                 `None` in ROS1, `rclpy.node.Node` in ROS2
     """
-    if ros1: ros1.init_node(name, args, namespace, anonymous, log_level, enable_rosout)
-    else: ros2.init_node(name, args, namespace, anonymous, log_level, multithreaded, reentrant)
+    if ros1: args = (name, args, namespace, anonymous, log_level, enable_rosout)
+    else:    args = (name, args, namespace, anonymous, log_level, multithreaded, reentrant)
+    return (ros1.init_node if ros1 else ros2.init_node)(*args)
 
 
 def init_params(defaults=None, **defaultkws):

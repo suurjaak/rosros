@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.10.2022
+@modified    09.12.2022
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -227,7 +227,6 @@ PRAGMA synchronous=NORMAL;
     def get_message_count(self, topic_filters=None):
         """
         Returns the number of messages in the bag.
-
 
         @param   topic_filters  list of topics or a single topic to filter by, if at all
         """
@@ -587,14 +586,15 @@ def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, 
     @param   enable_rosout  `False` to suppress auto-publication of rosout
     @param   multithreaded  use `MultiThreadedExecutor` instead of `SingleThreadedExecutor`
     @param   reentrant      use `ReentrantCallbackGroup` instead of `MutuallyExclusiveCallbackGroup`
+    @return                 `rclpy.node.Node`
     """
     global NODE, CALLBACK_GROUP, EXECUTOR, SHUTDOWN
-    if NODE: return
+    if NODE: return NODE
 
     if anonymous:
         name = "%s_%s_%s" % (name, os.getpid(), int(time.time_ns() * 1000))
     with Mutex.NODE:
-        if NODE: return
+        if NODE: return NODE
 
         patch.patch_ros2()
         logger.debug("Initializing ROS node %r.", name)
@@ -620,6 +620,7 @@ def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, 
             logger.setLevel(log_level)
             ros_level = rclpy.logging.get_logging_severity_from_string(log_level)
             NODE.get_logger().set_level(ros_level)
+    return NODE
 
 
 def register_init(node):
