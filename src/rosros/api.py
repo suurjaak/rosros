@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    26.10.2022
+@modified    28.02.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -431,10 +431,9 @@ __all__ = [
     "ROS_STRING_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES", "canonical",
     "deserialize_message", "dict_to_message", "format_param_name", "get_alias_type",
     "get_message_class", "get_message_definition", "get_message_fields",
-    "get_message_type", "get_message_type_hash", "get_message_value",
-    "get_ros_time_category", "get_service_definition", "get_service_request_class",
-    "get_service_response_class", "get_type_alias", "is_ros_message", "is_ros_service",
-    "is_ros_time", "make_duration", "make_full_typename", "make_time", "message_to_dict",
-    "scalar", "serialize_message", "time_message", "to_datetime", "to_decimal", "to_nsec",
-    "to_sec", "to_sec_nsec", "to_time"
+    "get_message_type", "get_message_type_hash", "get_message_value", "get_service_definition",
+    "get_service_request_class", "get_service_response_class", "get_type_alias", "is_ros_message",
+    "is_ros_service", "is_ros_time", "make_duration", "make_full_typename", "make_time",
+    "message_to_dict", "scalar", "serialize_message", "time_message", "to_datetime", "to_decimal",
+    "to_nsec", "to_sec", "to_sec_nsec", "to_time"
 ]
