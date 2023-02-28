@@ -8,11 +8,11 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    09.12.2022
+@modified    28.02.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
-import asyncio
+import concurrent.futures
 import functools
 import hashlib
 import inspect
@@ -377,13 +377,11 @@ def set_value(obj, path, value, pathsep=None):
 
 def start_future(func, *args, **kwargs):
     """
-    Returns `asyncio.Future` and invokes function in a background thread.
+    Returns `concurrent.futures.Future` and invokes function in a background thread.
 
-    Future will be done when function returns or raises.
-
-    Future is not executed with asyncio. Background thread is not daemonic.
+    Future will be done when function returns or raises. Background thread is not daemonic.
     """
-    future = asyncio.Future()
+    future = concurrent.futures.Future()
     def worker():
         try: future.set_result(func(*args, **kwargs))
         except Exception as e: future.set_exception(e)

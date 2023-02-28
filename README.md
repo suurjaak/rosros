@@ -284,7 +284,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 Additional functionality patched onto `rospy` classes for convenience:
 
 - `rospy.ServiceProxy.call_async(*args, **kwargs):`
-  makes service call in a background thread, returns `asyncio.Future`-like response
+  makes service call in a background thread, returns `concurrent.futures.Future`-like response
 - `rospy.ServiceProxy.wait_for_service(timeout=None, timeout_sec=None):`
   waits for service to become available, returns `True`, or `False` on timeout
 - `rospy.ServiceProxy.service_is_ready():`

@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    09.12.2022
+@modified    28.02.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -251,7 +251,7 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
         This accepts either a request message instance,
         or positional and keyword arguments to create a new request instance.
 
-        @return  `asyncio.Future`-conforming interface that completes when the request does
+        @return  `concurrent.futures.Future`-conforming interface that completes when request does
         """
         reqcls = self.request_class
         attributes = functools.partial(ros.get_message_fields, reqcls)
