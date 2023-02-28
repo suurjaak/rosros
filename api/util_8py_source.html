@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.1</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -97,11 +97,11 @@ $(document).ready(function(){initNavTree('util_8py_source.html',''); initResizab
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral"></span> </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@author      Erki Suurjaak</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@created     11.02.2022</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    09.12.2022</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    28.02.2023</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> asyncio</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> concurrent.futures</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">import</span> functools</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">import</span> hashlib</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">import</span> inspect</div>
@@ -466,74 +466,72 @@ $(document).ready(function(){initNavTree('util_8py_source.html',''); initResizab
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1util.html#a05ee747077857c51e1f6bd28cd8bc6cc">start_future</a>(func, *args, **kwargs):</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="stringliteral">    Returns `asyncio.Future` and invokes function in a background thread.</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="stringliteral">    Returns `concurrent.futures.Future` and invokes function in a background thread.</span></div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="stringliteral">    Future will be done when function returns or raises.</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="stringliteral">    Future is not executed with asyncio. Background thread is not daemonic.</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    future = asyncio.Future()</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keyword">def </span>worker():</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">try</span>: future.set_result(<a class="code" href="namespacerosros_1_1rospify_1_1client.html#a8248182d9ecddeb6602691eb8feb0fc0">func</a>(*args, **kwargs))</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e: future.set_exception(e)</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    threading.Thread(target=worker).start()</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">return</span> future</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1util.html#a09e02e15f00a02c6b43f9ce7c214f28d">unique_path</a>(pathname, empty_ok=False):</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="stringliteral">    Returns a unique version of the path.</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00398"></a><span class="lineno"><a class="line" href="namespacerosros_1_1util.html#a05ee747077857c51e1f6bd28cd8bc6cc">  398</a></span>&#160;<span class="stringliteral">    If a file or directory with the same name already exists, returns a unique</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="stringliteral">    version (e.g. &quot;/tmp/my.2.file&quot; if &quot;&quot;/tmp/my.file&quot; already exists).</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="stringliteral">    @param   empty_ok  whether to ignore existence if file is empty</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    result = pathname</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="keywordflow">if</span> os.path.isfile(result) <span class="keywordflow">and</span> empty_ok <span class="keywordflow">and</span> <span class="keywordflow">not</span> os.path.getsize(result):</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="keywordflow">return</span> result</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    path, name = os.path.split(result)</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    base, ext = os.path.splitext(name)</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">if</span> len(name) &gt; 255: <span class="comment"># Filesystem limitation</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        name = base[:255 - len(ext) - 2] + <span class="stringliteral">&quot;..&quot;</span> + ext</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        result = os.path.join(path, name)</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    counter = 2</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">while</span> os.path.exists(result):</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        suffix = <span class="stringliteral">&quot;.%s%s&quot;</span> % (counter, ext)</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        name = base + suffix</div>
-<div class="line"><a name="l00415"></a><span class="lineno"><a class="line" href="namespacerosros_1_1util.html#a09e02e15f00a02c6b43f9ce7c214f28d">  415</a></span>&#160;        <span class="keywordflow">if</span> len(name) &gt; 255:</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            name = base[:255 - len(suffix) - 2] + <span class="stringliteral">&quot;..&quot;</span> + suffix</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        result = os.path.join(path, name)</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        counter += 1</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">return</span> result</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1util.html#a981418afc166c71feb3522fe8f242aa2">wrap_arity</a>(func):</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="stringliteral">    Returns wrapper for invoking function with its maximum supported number of arguments.</span></div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="stringliteral">    E.g. `wrap_arity(abs)(-1, -2)` will return result of `abs(-1)`.</span></div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    params   = inspect.signature(func).parameters</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    varargs  = any(x.kind == inspect.Parameter.VAR_POSITIONAL <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values())</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    varkws   = any(x.kind == inspect.Parameter.VAR_KEYWORD    <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values())</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    posargs  = [x.name <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values() <span class="keywordflow">if</span> x.kind <span class="keywordflow">in</span> POSITIONALS]</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    keywords = [x.name <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values() <span class="keywordflow">if</span> x.kind <span class="keywordflow">in</span> KEYWORDALS]</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keyword">def </span>inner(*args, **kwargs):</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> varargs: args   = args[:len(posargs)]</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> varkws:  kwargs = {k: v <span class="keywordflow">for</span> k, v <span class="keywordflow">in</span> kwargs.items() <span class="keywordflow">if</span> k <span class="keywordflow">in</span> keywords}</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacerosros_1_1rospify_1_1client.html#a8248182d9ecddeb6602691eb8feb0fc0">func</a>(*args, **kwargs)</div>
-<div class="line"><a name="l00440"></a><span class="lineno"><a class="line" href="namespacerosros_1_1util.html#a981418afc166c71feb3522fe8f242aa2">  440</a></span>&#160;    <span class="keywordflow">return</span> functools.update_wrapper(inner, func)</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;__all__ = [</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="stringliteral">&quot;ensure_object&quot;</span>, <span class="stringliteral">&quot;flatten_dict&quot;</span>, <span class="stringliteral">&quot;format_bytes&quot;</span>, <span class="stringliteral">&quot;get_arity&quot;</span>, <span class="stringliteral">&quot;get_value&quot;</span>, <span class="stringliteral">&quot;make_dict&quot;</span>,</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="stringliteral">&quot;memoize&quot;</span>, <span class="stringliteral">&quot;merge_dicts&quot;</span>, <span class="stringliteral">&quot;namejoin&quot;</span>, <span class="stringliteral">&quot;namesplit&quot;</span>, <span class="stringliteral">&quot;set_value&quot;</span>, <span class="stringliteral">&quot;start_future&quot;</span>,</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="stringliteral">&quot;unique_path&quot;</span>, <span class="stringliteral">&quot;wrap_arity&quot;</span>,</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;]</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="stringliteral">    Future will be done when function returns or raises. Background thread is not daemonic.</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    future = concurrent.futures.Future()</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keyword">def </span>worker():</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="keywordflow">try</span>: future.set_result(<a class="code" href="namespacerosros_1_1rospify_1_1client.html#a8248182d9ecddeb6602691eb8feb0fc0">func</a>(*args, **kwargs))</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e: future.set_exception(e)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    threading.Thread(target=worker).start()</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordflow">return</span> future</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1util.html#a09e02e15f00a02c6b43f9ce7c214f28d">unique_path</a>(pathname, empty_ok=False):</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="stringliteral">    Returns a unique version of the path.</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00396"></a><span class="lineno"><a class="line" href="namespacerosros_1_1util.html#a05ee747077857c51e1f6bd28cd8bc6cc">  396</a></span>&#160;<span class="stringliteral">    If a file or directory with the same name already exists, returns a unique</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="stringliteral">    version (e.g. &quot;/tmp/my.2.file&quot; if &quot;&quot;/tmp/my.file&quot; already exists).</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="stringliteral">    @param   empty_ok  whether to ignore existence if file is empty</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    result = pathname</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="keywordflow">if</span> os.path.isfile(result) <span class="keywordflow">and</span> empty_ok <span class="keywordflow">and</span> <span class="keywordflow">not</span> os.path.getsize(result):</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <span class="keywordflow">return</span> result</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    path, name = os.path.split(result)</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    base, ext = os.path.splitext(name)</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">if</span> len(name) &gt; 255: <span class="comment"># Filesystem limitation</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        name = base[:255 - len(ext) - 2] + <span class="stringliteral">&quot;..&quot;</span> + ext</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        result = os.path.join(path, name)</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    counter = 2</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">while</span> os.path.exists(result):</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        suffix = <span class="stringliteral">&quot;.%s%s&quot;</span> % (counter, ext)</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        name = base + suffix</div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="namespacerosros_1_1util.html#a09e02e15f00a02c6b43f9ce7c214f28d">  413</a></span>&#160;        <span class="keywordflow">if</span> len(name) &gt; 255:</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            name = base[:255 - len(suffix) - 2] + <span class="stringliteral">&quot;..&quot;</span> + suffix</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        result = os.path.join(path, name)</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        counter += 1</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordflow">return</span> result</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="keyword">def </span><a class="code" href="namespacerosros_1_1util.html#a981418afc166c71feb3522fe8f242aa2">wrap_arity</a>(func):</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="stringliteral">    Returns wrapper for invoking function with its maximum supported number of arguments.</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="stringliteral">    E.g. `wrap_arity(abs)(-1, -2)` will return result of `abs(-1)`.</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    params   = inspect.signature(func).parameters</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    varargs  = any(x.kind == inspect.Parameter.VAR_POSITIONAL <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values())</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    varkws   = any(x.kind == inspect.Parameter.VAR_KEYWORD    <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values())</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    posargs  = [x.name <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values() <span class="keywordflow">if</span> x.kind <span class="keywordflow">in</span> POSITIONALS]</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    keywords = [x.name <span class="keywordflow">for</span> x <span class="keywordflow">in</span> params.values() <span class="keywordflow">if</span> x.kind <span class="keywordflow">in</span> KEYWORDALS]</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keyword">def </span>inner(*args, **kwargs):</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> varargs: args   = args[:len(posargs)]</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> varkws:  kwargs = {k: v <span class="keywordflow">for</span> k, v <span class="keywordflow">in</span> kwargs.items() <span class="keywordflow">if</span> k <span class="keywordflow">in</span> keywords}</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacerosros_1_1rospify_1_1client.html#a8248182d9ecddeb6602691eb8feb0fc0">func</a>(*args, **kwargs)</div>
+<div class="line"><a name="l00438"></a><span class="lineno"><a class="line" href="namespacerosros_1_1util.html#a981418afc166c71feb3522fe8f242aa2">  438</a></span>&#160;    <span class="keywordflow">return</span> functools.update_wrapper(inner, func)</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;__all__ = [</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="stringliteral">&quot;ensure_object&quot;</span>, <span class="stringliteral">&quot;flatten_dict&quot;</span>, <span class="stringliteral">&quot;format_bytes&quot;</span>, <span class="stringliteral">&quot;get_arity&quot;</span>, <span class="stringliteral">&quot;get_value&quot;</span>, <span class="stringliteral">&quot;make_dict&quot;</span>,</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="stringliteral">&quot;memoize&quot;</span>, <span class="stringliteral">&quot;merge_dicts&quot;</span>, <span class="stringliteral">&quot;namejoin&quot;</span>, <span class="stringliteral">&quot;namesplit&quot;</span>, <span class="stringliteral">&quot;set_value&quot;</span>, <span class="stringliteral">&quot;start_future&quot;</span>,</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="stringliteral">&quot;unique_path&quot;</span>, <span class="stringliteral">&quot;wrap_arity&quot;</span>,</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;]</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_a30a0331c0f99676df800613fa8e9ed07"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#a30a0331c0f99676df800613fa8e9ed07">rosros.util.ThrottledLogger.__logger</a></div><div class="ttdeci">__logger</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00075">util.py:75</a></div></div>
@@ -543,7 +541,7 @@ $(document).ready(function(){initNavTree('util_8py_source.html',''); initResizab
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_ab3a4146397be0c21364d7ae4d78e7b72"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#ab3a4146397be0c21364d7ae4d78e7b72">rosros.util.ThrottledLogger._HASHES</a></div><div class="ttdeci">dictionary _HASHES</div><div class="ttdoc">Caller IDs and log message hashes for throttling by identical text.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00061">util.py:61</a></div></div>
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_aebf4eeda71f3b2aa152877f22c26f98d"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#aebf4eeda71f3b2aa152877f22c26f98d">rosros.util.ThrottledLogger.warning</a></div><div class="ttdeci">def warning(self, msg, *args, **kwargs)</div><div class="ttdoc">Logs `msg % args` with severity `WARN`.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00103">util.py:103</a></div></div>
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_a718594c2d5edd5bd3ce328eab67aa8e9"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#a718594c2d5edd5bd3ce328eab67aa8e9">rosros.util.ThrottledLogger.__init__</a></div><div class="ttdeci">def __init__(self, logger)</div><div class="ttdoc">Creates a wrapper logger around given logger instance, providing support for throttling.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00069">util.py:69</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1util_html_a09e02e15f00a02c6b43f9ce7c214f28d"><div class="ttname"><a href="namespacerosros_1_1util.html#a09e02e15f00a02c6b43f9ce7c214f28d">rosros.util.unique_path</a></div><div class="ttdeci">def unique_path(pathname, empty_ok=False)</div><div class="ttdoc">Returns a unique version of the path.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00415">util.py:415</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1util_html_a09e02e15f00a02c6b43f9ce7c214f28d"><div class="ttname"><a href="namespacerosros_1_1util.html#a09e02e15f00a02c6b43f9ce7c214f28d">rosros.util.unique_path</a></div><div class="ttdeci">def unique_path(pathname, empty_ok=False)</div><div class="ttdoc">Returns a unique version of the path.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00413">util.py:413</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1util_html_a08f37eed56dc76b4c3616f730317fd1e"><div class="ttname"><a href="namespacerosros_1_1util.html#a08f37eed56dc76b4c3616f730317fd1e">rosros.util.get_arity</a></div><div class="ttdeci">def get_arity(func, positional=True, keyword=False)</div><div class="ttdoc">Returns the maximum number of arguments the function takes, -1 if variable number.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00254">util.py:254</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1util_html_a416abf1d88bf5d6f940749853ee9148a"><div class="ttname"><a href="namespacerosros_1_1util.html#a416abf1d88bf5d6f940749853ee9148a">rosros.util.get_nested</a></div><div class="ttdeci">def get_nested(obj, path)</div><div class="ttdoc">Returns (nested value, value parent container, key in parent container).</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00278">util.py:278</a></div></div>
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_ab6cbb040e116b15d4e819bfb18c22ff0"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#ab6cbb040e116b15d4e819bfb18c22ff0">rosros.util.ThrottledLogger.error</a></div><div class="ttdeci">def error(self, msg, *args, **kwargs)</div><div class="ttdoc">Logs `msg % args` with severity `ERROR`.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00119">util.py:119</a></div></div>
@@ -552,7 +550,7 @@ $(document).ready(function(){initNavTree('util_8py_source.html',''); initResizab
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_aa28f17806d8bcbc00577461b60ad9e78"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#aa28f17806d8bcbc00577461b60ad9e78">rosros.util.ThrottledLogger.debug</a></div><div class="ttdeci">def debug(self, msg, *args, **kwargs)</div><div class="ttdoc">Logs `msg % args` with severity `DEBUG`.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00087">util.py:87</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1util_html_ab10d18e87827965e6e879f3c57f6ff60"><div class="ttname"><a href="namespacerosros_1_1util.html#ab10d18e87827965e6e879f3c57f6ff60">rosros.util.memoize</a></div><div class="ttdeci">def memoize(func)</div><div class="ttdoc">Returns a results-caching wrapper for the function.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00318">util.py:318</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rospify_1_1client_html_a8248182d9ecddeb6602691eb8feb0fc0"><div class="ttname"><a href="namespacerosros_1_1rospify_1_1client.html#a8248182d9ecddeb6602691eb8feb0fc0">rosros.rospify.client.func</a></div><div class="ttdeci">func</div><div class="ttdef"><b>Definition:</b> <a href="client_8py_source.html#l00176">client.py:176</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1util_html_a981418afc166c71feb3522fe8f242aa2"><div class="ttname"><a href="namespacerosros_1_1util.html#a981418afc166c71feb3522fe8f242aa2">rosros.util.wrap_arity</a></div><div class="ttdeci">def wrap_arity(func)</div><div class="ttdoc">Returns wrapper for invoking function with its maximum supported number of arguments.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00440">util.py:440</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1util_html_a981418afc166c71feb3522fe8f242aa2"><div class="ttname"><a href="namespacerosros_1_1util.html#a981418afc166c71feb3522fe8f242aa2">rosros.util.wrap_arity</a></div><div class="ttdeci">def wrap_arity(func)</div><div class="ttdoc">Returns wrapper for invoking function with its maximum supported number of arguments.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00438">util.py:438</a></div></div>
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_a4b6163ca9284a8002dd54a7389bca387"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#a4b6163ca9284a8002dd54a7389bca387">rosros.util.ThrottledLogger._KEYWORDS</a></div><div class="ttdeci">list _KEYWORDS</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00043">util.py:43</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1util_html_a693e7c064eea326b1ef41d06974bb6d3"><div class="ttname"><a href="namespacerosros_1_1util.html#a693e7c064eea326b1ef41d06974bb6d3">rosros.util.drop_zeros</a></div><div class="ttdeci">def drop_zeros(v, replace=&quot;&quot;)</div><div class="ttdoc">Drops or replaces trailing zeros and empty decimal separator, if any.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00177">util.py:177</a></div></div>
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_ae6a929494fb0936fc571c82249fddb0a"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#ae6a929494fb0936fc571c82249fddb0a">rosros.util.ThrottledLogger.warn</a></div><div class="ttdeci">def warn(self, msg, *args, **kwargs)</div><div class="ttdoc">Logs `msg % args` with severity `WARNING`.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00111">util.py:111</a></div></div>
@@ -561,7 +559,7 @@ $(document).ready(function(){initNavTree('util_8py_source.html',''); initResizab
 <div class="ttc" id="anamespacerosros_1_1util_html_a2dbbadbf5dcbef76f0053315c62a44d2"><div class="ttname"><a href="namespacerosros_1_1util.html#a2dbbadbf5dcbef76f0053315c62a44d2">rosros.util.namejoin</a></div><div class="ttdeci">def namejoin(*args)</div><div class="ttdoc">Returns arguments joined into a namespace name, starting and separated with &quot;/&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00351">util.py:351</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1util_html_a808ab6c04c5f2bc3009d4f5571f7bc8d"><div class="ttname"><a href="namespacerosros_1_1util.html#a808ab6c04c5f2bc3009d4f5571f7bc8d">rosros.util.ensure_object</a></div><div class="ttdeci">def ensure_object(obj_or_cls, attributes, populate_object=None, *args, **kwargs)</div><div class="ttdoc">Ensures result is an object of specified type.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00207">util.py:207</a></div></div>
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_a605596b58f80ccd3e8d075a18b830864"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#a605596b58f80ccd3e8d075a18b830864">rosros.util.ThrottledLogger.log</a></div><div class="ttdeci">def log(self, level, msg, *args, **kwargs)</div><div class="ttdoc">Logs `msg % args` with given severity.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00135">util.py:135</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1util_html_a05ee747077857c51e1f6bd28cd8bc6cc"><div class="ttname"><a href="namespacerosros_1_1util.html#a05ee747077857c51e1f6bd28cd8bc6cc">rosros.util.start_future</a></div><div class="ttdeci">def start_future(func, *args, **kwargs)</div><div class="ttdoc">Returns `asyncio.Future` and invokes function in a background thread.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00398">util.py:398</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1util_html_a05ee747077857c51e1f6bd28cd8bc6cc"><div class="ttname"><a href="namespacerosros_1_1util.html#a05ee747077857c51e1f6bd28cd8bc6cc">rosros.util.start_future</a></div><div class="ttdeci">def start_future(func, *args, **kwargs)</div><div class="ttdoc">Returns `concurrent.futures.Future` and invokes function in a background thread.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00396">util.py:396</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1util_html_a39a561f4e51219f391e5db56358dcfc8"><div class="ttname"><a href="namespacerosros_1_1util.html#a39a561f4e51219f391e5db56358dcfc8">rosros.util.get_value</a></div><div class="ttdeci">def get_value(obj, path, pathsep=None)</div><div class="ttdoc">Returns object or dictionary or list value at (nested, path).</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00301">util.py:301</a></div></div>
 <div class="ttc" id="aclassrosros_1_1util_1_1_throttled_logger_html_a3a7dc0717aa52d4de1d9d55b5d70f40e"><div class="ttname"><a href="classrosros_1_1util_1_1_throttled_logger.html#a3a7dc0717aa52d4de1d9d55b5d70f40e">rosros.util.ThrottledLogger._ONCES</a></div><div class="ttdeci">_ONCES</div><div class="ttdoc">Caller IDs registered for throttling by once-only.</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00049">util.py:49</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1util_html_a7db22d2858d1bc0b4c6a85813e26301b"><div class="ttname"><a href="namespacerosros_1_1util.html#a7db22d2858d1bc0b4c6a85813e26301b">rosros.util.set_value</a></div><div class="ttdeci">def set_value(obj, path, value, pathsep=None)</div><div class="ttdoc">Sets object or dictionary or list value at key or (nested, path).</div><div class="ttdef"><b>Definition:</b> <a href="util_8py_source.html#l00372">util.py:372</a></div></div>
@@ -573,7 +571,7 @@ $(document).ready(function(){initNavTree('util_8py_source.html',''); initResizab
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="util_8py.html">util.py</a></li>
-    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
+    <li class="footer">Generated on Tue Feb 28 2023 21:21:43 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

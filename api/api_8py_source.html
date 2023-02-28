@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.1</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral"></span> </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@author      Erki Suurjaak</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@created     11.02.2022</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    26.10.2022</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    28.02.2023</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
@@ -520,13 +520,12 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="stringliteral">&quot;ROS_STRING_TYPES&quot;</span>, <span class="stringliteral">&quot;ROS_TIME_CLASSES&quot;</span>, <span class="stringliteral">&quot;ROS_TIME_TYPES&quot;</span>, <span class="stringliteral">&quot;canonical&quot;</span>,</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="stringliteral">&quot;deserialize_message&quot;</span>, <span class="stringliteral">&quot;dict_to_message&quot;</span>, <span class="stringliteral">&quot;format_param_name&quot;</span>, <span class="stringliteral">&quot;get_alias_type&quot;</span>,</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="stringliteral">&quot;get_message_class&quot;</span>, <span class="stringliteral">&quot;get_message_definition&quot;</span>, <span class="stringliteral">&quot;get_message_fields&quot;</span>,</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="stringliteral">&quot;get_message_type&quot;</span>, <span class="stringliteral">&quot;get_message_type_hash&quot;</span>, <span class="stringliteral">&quot;get_message_value&quot;</span>,</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="stringliteral">&quot;get_ros_time_category&quot;</span>, <span class="stringliteral">&quot;get_service_definition&quot;</span>, <span class="stringliteral">&quot;get_service_request_class&quot;</span>,</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="stringliteral">&quot;get_service_response_class&quot;</span>, <span class="stringliteral">&quot;get_type_alias&quot;</span>, <span class="stringliteral">&quot;is_ros_message&quot;</span>, <span class="stringliteral">&quot;is_ros_service&quot;</span>,</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="stringliteral">&quot;is_ros_time&quot;</span>, <span class="stringliteral">&quot;make_duration&quot;</span>, <span class="stringliteral">&quot;make_full_typename&quot;</span>, <span class="stringliteral">&quot;make_time&quot;</span>, <span class="stringliteral">&quot;message_to_dict&quot;</span>,</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="stringliteral">&quot;scalar&quot;</span>, <span class="stringliteral">&quot;serialize_message&quot;</span>, <span class="stringliteral">&quot;time_message&quot;</span>, <span class="stringliteral">&quot;to_datetime&quot;</span>, <span class="stringliteral">&quot;to_decimal&quot;</span>, <span class="stringliteral">&quot;to_nsec&quot;</span>,</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="stringliteral">&quot;to_sec&quot;</span>, <span class="stringliteral">&quot;to_sec_nsec&quot;</span>, <span class="stringliteral">&quot;to_time&quot;</span></div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;]</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="stringliteral">&quot;get_message_type&quot;</span>, <span class="stringliteral">&quot;get_message_type_hash&quot;</span>, <span class="stringliteral">&quot;get_message_value&quot;</span>, <span class="stringliteral">&quot;get_service_definition&quot;</span>,</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="stringliteral">&quot;get_service_request_class&quot;</span>, <span class="stringliteral">&quot;get_service_response_class&quot;</span>, <span class="stringliteral">&quot;get_type_alias&quot;</span>, <span class="stringliteral">&quot;is_ros_message&quot;</span>,</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="stringliteral">&quot;is_ros_service&quot;</span>, <span class="stringliteral">&quot;is_ros_time&quot;</span>, <span class="stringliteral">&quot;make_duration&quot;</span>, <span class="stringliteral">&quot;make_full_typename&quot;</span>, <span class="stringliteral">&quot;make_time&quot;</span>,</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="stringliteral">&quot;message_to_dict&quot;</span>, <span class="stringliteral">&quot;scalar&quot;</span>, <span class="stringliteral">&quot;serialize_message&quot;</span>, <span class="stringliteral">&quot;time_message&quot;</span>, <span class="stringliteral">&quot;to_datetime&quot;</span>, <span class="stringliteral">&quot;to_decimal&quot;</span>,</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="stringliteral">&quot;to_nsec&quot;</span>, <span class="stringliteral">&quot;to_sec&quot;</span>, <span class="stringliteral">&quot;to_sec_nsec&quot;</span>, <span class="stringliteral">&quot;to_time&quot;</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;]</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespacerosros_1_1api_html_a1a63d5440487fb6980ada5f6c42b97e6"><div class="ttname"><a href="namespacerosros_1_1api.html#a1a63d5440487fb6980ada5f6c42b97e6">rosros.api.message_to_str</a></div><div class="ttdeci">def message_to_str(msg, indent=None)</div><div class="ttdoc">Returns ROS message as an evaluatable string, e.g.</div><div class="ttdef"><b>Definition:</b> <a href="api_8py_source.html#l00310">api.py:310</a></div></div>
@@ -567,7 +566,7 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="api_8py.html">api.py</a></li>
-    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
+    <li class="footer">Generated on Tue Feb 28 2023 21:21:43 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

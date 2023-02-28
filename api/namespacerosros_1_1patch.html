@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.1</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -1172,7 +1172,7 @@ Variables</h2></td></tr>
 <p>Make a service request and asyncronously get the result. </p>
 <p>Service is invoked in a background thread.</p>
 <p>This accepts either a request message instance, or positional and keyword arguments to create a new request instance.</p>
-<dl class="section return"><dt>Returns</dt><dd>`asyncio.Future`-conforming interface that completes when the request does </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>`concurrent.futures.Future`-conforming interface that completes when request does </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="patch_8py_source.html#l00255">255</a> of file <a class="el" href="patch_8py_source.html">patch.py</a>.</p>
 
@@ -2822,7 +2822,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1patch.html">patch</a></li>
-    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
+    <li class="footer">Generated on Tue Feb 28 2023 21:21:43 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

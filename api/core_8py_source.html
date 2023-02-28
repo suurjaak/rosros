@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.1</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('core_8py_source.html',''); initResizab
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral"></span> </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@author      Erki Suurjaak</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@created     11.02.2022</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    09.12.2022</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">@modified    28.02.2023</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
@@ -244,7 +244,7 @@ $(document).ready(function(){initNavTree('core_8py_source.html',''); initResizab
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="stringliteral">    Spins ROS until future complete or timeout reached or ROS shut down.</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="namespacerosros_1_1core.html#abf58dbfa228d24f39270ce519b160b81">  157</a></span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="stringliteral">    @param  future       object with `asyncio.Future`-conforming interface to complete</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="stringliteral">    @param  future       object with `concurrent.futures.Future`-conforming interface to complete</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="stringliteral">    @param  timeout      time to wait, as seconds or ROS1 duration</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    ros.spin_until_future_complete(future, timeout)</div>
@@ -509,7 +509,7 @@ $(document).ready(function(){initNavTree('core_8py_source.html',''); initResizab
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="core_8py.html">core.py</a></li>
-    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
+    <li class="footer">Generated on Tue Feb 28 2023 21:21:43 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

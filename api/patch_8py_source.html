@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">rosros
-   &#160;<span id="projectnumber">0.1.1</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('patch_8py_source.html',''); initResiza
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral"></span> </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">@author      Erki Suurjaak</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">@created     23.02.2022</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@modified    09.12.2022</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">@modified    28.02.2023</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
@@ -340,7 +340,7 @@ $(document).ready(function(){initNavTree('patch_8py_source.html',''); initResiza
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="stringliteral">        This accepts either a request message instance,</span></div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="stringliteral">        or positional and keyword arguments to create a new request instance.</span></div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="stringliteral">        @return  `asyncio.Future`-conforming interface that completes when the request does</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="stringliteral">        @return  `concurrent.futures.Future`-conforming interface that completes when request does</span></div>
 <div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="namespacerosros_1_1patch.html#a8ada5b9f71955c1d22c664f3a7e759d3">  255</a></span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        reqcls = self.request_class</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        attributes = functools.partial(ros.get_message_fields, reqcls)</div>
@@ -1001,7 +1001,7 @@ $(document).ready(function(){initNavTree('patch_8py_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="patch_8py.html">patch.py</a></li>
-    <li class="footer">Generated on Fri Dec 9 2022 20:01:47 for rosros by
+    <li class="footer">Generated on Tue Feb 28 2023 21:21:43 for rosros by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
