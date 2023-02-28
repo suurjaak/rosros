@@ -11,7 +11,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     16.02.2022
-@modified    16.06.2022
+@modified    28.02.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rclify.rclify
@@ -110,8 +110,7 @@ def spin_until_future_complete(node=None, future=None, executor=None, timeout_se
     Waits until future complete or timeout reached or ROS shut down.
 
     @param  node         ignored (ROS2 API compatibility stand-in)
-    @param  future       object with `asyncio.Future`-conforming interface to complete
-                         (will not be awaited with `async`)
+    @param  future       object with `concurrent.futures.Future`-conforming interface to complete
     @param  executor     ignored (ROS2 API compatibility stand-in)
     @param  timeout_sec  time to wait, as seconds or ROS1 duration
     """

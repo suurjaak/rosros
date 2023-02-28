@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.10.2022
+@modified    28.02.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -565,8 +565,7 @@ def spin_until_future_complete(future, timeout=None):
     """
     Spins ROS1 until future complete or timeout reached or ROS shut down.
 
-    @param  future   object with `asyncio.Future`-conforming interface to complete
-                     (will not be awaited with `async`)
+    @param  future   object with `concurrent.futures.Future`-conforming interface to complete
     @param  timeout  time to wait, as seconds or ROS1 duration
     """
     if future.done():
