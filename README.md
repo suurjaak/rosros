@@ -565,7 +565,7 @@ Attribution
 
 This package includes partially copied and modified code from `rclpy` core library,
 released under the Apache-2.0 license.
-See [doc/3rd-party licences.txt](doc/3rd-party licences.txt) for full details.
+See [doc/3rd-party licenses.txt](doc/3rd-party%20licenses.txt) for full details.
 
 
 License
