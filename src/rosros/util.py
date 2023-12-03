@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.02.2023
+@modified    09.05.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
@@ -238,7 +238,12 @@ def format_bytes(size, precision=2, inter=" ", strip=True):
 
 
 def get_arity(func, positional=True, keyword=False):
-    """Returns the maximum number of arguments the function takes, -1 if variable number."""
+    """
+    Returns the maximum number of arguments the function takes, -1 if variable number.
+
+    @param   positional  count positional-only and positional/keyword arguments
+    @param   keyword     count keyword-only and positional/keyword arguments
+    """
     POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)
     KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)
     result, params = 0, inspect.signature(func).parameters
@@ -246,7 +251,9 @@ def get_arity(func, positional=True, keyword=False):
     or keyword    and any(x.kind == inspect.Parameter.VAR_KEYWORD    for x in params.values()):
         result = -1
     else:
-        if positional:
+        if positional and keyword:
+            result += sum(x.kind in POSITIONALS + KEYWORDALS for x in params.values())
+        elif positional:
             result += sum(x.kind in POSITIONALS for x in params.values())
         if keyword:
             result += sum(x.kind in KEYWORDALS  for x in params.values())
