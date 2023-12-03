@@ -406,6 +406,20 @@ def to_decimal(val):
     return val
 
 
+def to_duration(val):
+    """Returns value as ROS duration if convertible (int/float/time/datetime/decimal), else value."""
+    result = val
+    if isinstance(val, decimal.Decimal):
+        result = rospy.Duration(int(val), float(val % 1) * 10**9)
+    elif isinstance(val, datetime.datetime):
+        result = rospy.Duration(int(val.timestamp()), 1000 * val.microsecond)
+    elif isinstance(val, (float, int)):
+        result = rospy.Duration(val)
+    elif isinstance(val, rospy.Time):
+        result = rospy.Duration(val.secs, val.nsecs)
+    return result
+
+
 def to_nsec(val):
     """Returns value in nanoseconds if value is ROS time/duration, else value."""
     return ros.to_nsec(val)
@@ -436,5 +450,5 @@ __all__ = [
     "get_service_request_class", "get_service_response_class", "get_type_alias", "is_ros_message",
     "is_ros_service", "is_ros_time", "make_duration", "make_full_typename", "make_time",
     "message_to_dict", "scalar", "serialize_message", "time_message", "to_datetime", "to_decimal",
-    "to_nsec", "to_sec", "to_sec_nsec", "to_time"
+    "to_duration", "to_nsec", "to_sec", "to_sec_nsec", "to_time"
 ]

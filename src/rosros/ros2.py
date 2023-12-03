@@ -1436,6 +1436,26 @@ def time_message(val, to_message=True, clock_type=None):
     return val
 
 
+def to_duration(val):
+    """
+    Returns value as ROS2 duration if convertible (int/float/time/datetime/decimal), else value.
+
+    Convertible types: int/float/time/datetime/decimal/builtin_interfaces.Time.
+    """
+    result = val
+    if isinstance(val, decimal.Decimal):
+        result = make_duration(int(val), float(val % 1) * 10**9)
+    elif isinstance(val, datetime.datetime):
+        result = make_duration(int(val.timestamp()), 1000 * val.microsecond)
+    elif isinstance(val, (float, int)):
+        result = make_duration(val)
+    elif isinstance(val, rclpy.time.Time):
+        result = make_duration(nsecs=val.nanoseconds)
+    elif isinstance(val, tuple(ROS_TIME_MESSAGES.values())):
+        result = make_duration(val.sec, val.nanosec)
+    return result
+
+
 def to_nsec(val):
     """Returns value in nanoseconds if value is ROS2 time/duration, else value."""
     if not isinstance(val, tuple(ROS_TIME_CLASSES)):
@@ -1500,6 +1520,6 @@ __all__ = [
     "has_param", "init_node", "init_params", "is_ros_message", "is_ros_service",
     "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
     "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "spin",
-    "spin_once", "spin_until_future_complete", "start_spin", "time_message", "to_nsec",
-    "to_sec", "to_sec_nsec", "to_time"
+    "spin_once", "spin_until_future_complete", "start_spin", "time_message", "to_duration",
+    "to_nsec", "to_sec", "to_sec_nsec", "to_time"
 ]

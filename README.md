@@ -362,10 +362,11 @@ Can be used as stand-alone library functions without initializing rosros core.
 |                                         | or value if not convertible                                                                   | |
 | `rosros.api.to_datetime`                | returns value as `datetime.datetime` if value is ROS time/duration, else value                | `val`
 | `rosros.api.to_decimal`                 | returns value as `decimal.Decimal` if value is ROS time/duration, else value                  | `val`
+| `rosros.api.to_duration`                | returns value as ROS duration if convertible (int/float/time/datetime/decimal), else value    | `val`
 | `rosros.api.to_nsec`                    | returns value in nanoseconds if value is ROS time/duration, else value                        | `val`
 | `rosros.api.to_sec`                     | returns value in seconds if value is ROS time/duration, else value                            | `val`
-| `rosros.api.to_sec_nsec`                | returns value in (seconds, nanoseconds) if value is ROS time/duration, else value             | `val`                     
-| `rosros.api.to_time`                    | returns value as ROS time if convertible (int/float/duration/datetime/decimal), else value    | `val`                     
+| `rosros.api.to_sec_nsec`                | returns value in (seconds, nanoseconds) if value is ROS time/duration, else value             | `val`
+| `rosros.api.to_time`                    | returns value as ROS time if convertible (int/float/duration/datetime/decimal), else value    | `val`
 |                                         |                                                                                               | |
 |                                         | **Class and type names**                                                                      | |
 | `rosros.api.canonical`                  | returns `"pkg/Type"` for `"pkg/subdir/Type"`                                                  | `typename`

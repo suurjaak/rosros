@@ -1034,6 +1034,20 @@ def scalar(typename):
     return typename[:typename.index("[")] if "[" in typename else typename
 
 
+def to_duration(val):
+    """Returns value as ROS1 duration if convertible (int/float/time/datetime/decimal), else value."""
+    result = val
+    if isinstance(val, decimal.Decimal):
+        result = rospy.Duration(int(val), float(val % 1) * 10**9)
+    elif isinstance(val, datetime.datetime):
+        result = rospy.Duration(int(val.timestamp()), 1000 * val.microsecond)
+    elif isinstance(val, (float, int)):
+        result = rospy.Duration(val)
+    elif isinstance(val, rospy.Time):
+        result = rospy.Duration(val.secs, val.nsecs)
+    return result
+
+
 def to_nsec(val):
     """Returns value in nanoseconds if value is ROS1 time/duration, else value."""
     return val.to_nsec() if isinstance(val, genpy.TVal) else val
@@ -1076,6 +1090,6 @@ __all__ = [
     "get_services", "get_topics", "has_param", "init_node", "init_params", "is_ros_message",
     "is_ros_service", "is_ros_time", "make_duration", "make_time", "ok", "register_init",
     "remap_name", "resolve_name", "scalar", "serialize_message", "set_param", "shutdown",
-    "spin", "spin_once", "spin_until_future_complete", "start_spin", "to_nsec", "to_sec",
-    "to_sec_nsec", "to_time"
+    "spin", "spin_once", "spin_until_future_complete", "start_spin", "to_duration", "to_nsec",
+    "to_sec", "to_sec_nsec", "to_time"
 ]
