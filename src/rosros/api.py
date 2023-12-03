@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.02.2023
+@modified    03.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -389,7 +389,7 @@ def time_message(val, to_message=True, clock_type=None):
     @return              value converted to appropriate type, or original value if not convertible
     """
     if ros1: return val
-    return ros2.time_message(val, to_message)
+    return ros2.time_message(val, to_message, clock_type=clock_type)
 
 
 def to_datetime(val):

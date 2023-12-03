@@ -2,9 +2,10 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.2.1 (2023-05-09)
+0.2.1 (2023-12-03)
 ------------------
 * fix util.get_arity() counting some parameters twice if counting both positional and keyword arguments
+* fix api.time_message() not using clock_type parameter in ROS2
 
 0.2.0 (2023-02-28)
 -------------------
