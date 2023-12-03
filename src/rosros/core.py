@@ -274,8 +274,7 @@ def create_timer(period, callback, oneshot=False, immediate=False):
     @param   immediate  whether to fire once immediately instead of waiting one period
     @return             `rospy.Timer` or `rclpy.timer.Timer`
     """
-    if ros1: return ros1.create_timer(period, callback, oneshot, immediate)
-    return ros2.create_timer(period, callback, oneshot, immediate)
+    return ros.create_timer(period, callback, oneshot, immediate)
 
 
 def create_rate(frequency):
