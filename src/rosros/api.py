@@ -149,13 +149,14 @@ def get_message_type_hash(msg_or_type):
     return ros.get_message_type_hash(msg_or_type)
 
 
-def get_message_value(msg, name):
+def get_message_value(msg, name, default=...):
     """
     Returns object attribute value, with numeric arrays converted to lists.
 
-    @param   message attribute name; may also be (nested, path) or "nested.path"
+    @param   name     message attribute name; may also be (nested, path) or "nested.path"
+    @param   default  value to return if attribute does not exist; raises exception otherwise
     """
-    return ros.get_message_value(msg, name)
+    return ros.get_message_value(msg, name, default)
 
 
 def get_service_definition(srv_or_type):

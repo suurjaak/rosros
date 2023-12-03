@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.02.2023
+@modified    03.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -920,13 +920,17 @@ def get_message_type_hash(msg_or_type):
     return get_message_class(msg_or_type)._md5sum
 
 
-def get_message_value(msg, name):
+def get_message_value(msg, name, default=...):
     """
     Returns object attribute value, with numeric arrays converted to lists.
 
-    @param   message attribute name; may also be (nested, path) or "nested.path"
+    @param   name     message attribute name; may also be (nested, path) or "nested.path"
+    @param   default  value to return if attribute does not exist; raises exception otherwise
     """
-    v, parent, k = util.get_nested(msg, name)
+    try: v, parent, k = util.get_nested(msg, name)
+    except Exception:
+        if default is not Ellipsis: return default
+        raise
     if isinstance(v, bytes) and is_ros_message(parent) \
     and get_message_fields(parent)[k].startswith("uint8["):
         v = list(v)

@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    26.10.2022
+@modified    03.12.2023
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -105,9 +105,10 @@ class TestAPI(testbase.TestBase):
             logger.info("Testing %s.", NAME(func))
             msg1 = std_msgs.msg.Header(frame_id=self.NAME)
             msg2 = std_msgs.msg.UInt8MultiArray(data=b"123")
-            self.assertEqual(func(msg1, "frame_id"), msg1.frame_id,   ERR(func))
-            self.assertEqual(func(msg1, "stamp"),    msg1.stamp,      ERR(func))
-            self.assertEqual(func(msg2, "data"),     list(msg2.data), ERR(func))
+            self.assertEqual(func(msg1, "frame_id"),          msg1.frame_id,   ERR(func))
+            self.assertEqual(func(msg1, "stamp"),             msg1.stamp,      ERR(func))
+            self.assertEqual(func(msg2, "data"),              list(msg2.data), ERR(func))
+            self.assertEqual(func(msg2, "nosuchfield", None), None,            ERR(func))
             with self.assertRaises(Exception, msg=ERR(func)):
                 func(msg1, "nosuchfield")
 

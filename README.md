@@ -336,7 +336,7 @@ Can be used as stand-alone library functions without initializing rosros core.
 | `rosros.api.get_message_type`           | returns ROS message / service canonical type name, like `"std_msgs/Header"`                   | `msg_or_cls`
 |                                         | or `"*"` for `AnyMsg`                                                                         | |
 | `rosros.api.get_message_type_hash`      | returns ROS message / service type MD5 hash                                                   | `msg_or_type`
-| `rosros.api.get_message_value`          | returns message attribute value, with numeric arrays converted to lists                       | `msg, name`
+| `rosros.api.get_message_value`          | returns message attribute value, with numeric arrays converted to lists                       | `msg, name, default=...`
 | `rosros.api.is_ros_message`             | returns whether value is a ROS message or service request/response class or instance          | `val`
 |                                         |                                                                                               | |
 |                                         | **Message conversion**                                                                        | |
