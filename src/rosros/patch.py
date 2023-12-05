@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    28.02.2023
+@modified    05.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -624,7 +624,7 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
         if isinstance(val, numbers.Number):
             return self.__class__(seconds=self.to_sec() // val)
         if isinstance(val, rclpy.duration.Duration):
-            return int(self.to_sec() // val.nanoseconds)
+            return int(self.to_sec() // val.to_sec())
         return NotImplemented
 
     def Duration__truediv(self, val):

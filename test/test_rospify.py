@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     16.04.2022
-@modified    09.12.2022
+@modified    05.12.2023
 ------------------------------------------------------------------------------
 """
 import copy
@@ -270,6 +270,7 @@ class TestRospify(testbase.TestBase):
         self.assertEqual(dur2 / 2, dur1,    "Unexpected value for Duration / divisor.")
         self.assertEqual(dur2 // 2, rospy.Duration(dur1.secs),
                          "Unexpected value for Duration // divisor.")
+        self.assertEqual(dur2 // dur1, 2, "Unexpected value for Duration // Duration.")
         self.assertEqual(rospy.Duration(4) % rospy.Duration(3), rospy.Duration(1),
                          "Unexpected value for Duration % Duration.")
         self.assertEqual(divmod(dur2, dur1), (2, dur0),
