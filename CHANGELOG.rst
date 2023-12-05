@@ -2,10 +2,11 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.2.1 (2023-12-03)
+0.2.1 (2023-12-05)
 ------------------
 * add api.to_duration()
 * add default fallback parameter to api.get_message_value()
+* fix api.dict_to_message() erroring on temporal types in dict
 * fix util.get_arity() counting some parameters twice if counting both positional and keyword arguments
 * fix api.time_message() not using clock_type parameter in ROS2
 

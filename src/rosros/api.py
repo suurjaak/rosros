@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    03.12.2023
+@modified    05.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -271,7 +271,7 @@ def dict_to_message(dct, msg):
         v, msgv = dct[name], ros.get_message_value(msg, name)
 
         if ros.is_ros_message(msgv):
-            v = dict_to_message(v, msgv)
+            v = v if ros.is_ros_time(v) and ros.is_ros_time(msgv) else dict_to_message(v, msgv)
         elif isinstance(msgv, (list, tuple)):
             scalarname = ros.scalar(typename)
             if scalarname in ROS_BUILTIN_TYPES:
