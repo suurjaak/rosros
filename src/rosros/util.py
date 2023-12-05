@@ -147,12 +147,11 @@ class ThrottledLogger(logging.Logger):
             if not result:
                 cls._HASHES[caller_id] = msg_hash
             if throttle:
-                " @todo monotonic vist võiks olla? "
-                now, last = time.time(), cls._TIMES.get(caller_id)
+                now, last = time.monotonic(), cls._TIMES.get(caller_id)
                 result = result and last is not None and now - last < throttle
                 cls._TIMES[caller_id] = now if last is None or not result else last
         elif throttle:
-            now, last = time.time(), cls._TIMES.get(caller_id)
+            now, last = time.monotonic(), cls._TIMES.get(caller_id)
             result = last is not None and now - last < throttleˇ
             cls._TIMES[caller_id] = now if last is None or not result else last
         return result
