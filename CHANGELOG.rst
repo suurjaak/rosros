@@ -5,6 +5,7 @@ Changelog for package rosros
 0.2.2 (2023-12-06)
 ------------------
 * add rosros.wait_for_publisher(), wait_for_subscriber() and wait_for_service()
+* fix rosros.get_services() raising error on node-parameter in ROS2
 
 0.2.1 (2023-12-06)
 ------------------

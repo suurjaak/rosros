@@ -1044,7 +1044,7 @@ def get_services(node=None, namespace=None, include_types=True):
     @param   include_types  if false, type names will be returned as an empty list
     """
     services = NODE.get_service_names_and_types() if not node else \
-               NODE.get_service_names_and_types_by_node(**util.namesplit(node)[::-1])
+               NODE.get_service_names_and_types_by_node(*util.namesplit(node)[::-1])
     return [[n, sorted(map(canonical, tt)) if include_types else []]
             for n, tt in sorted(services) if not namespace or n.startswith(namespace)]
 
