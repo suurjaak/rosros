@@ -1,8 +1,14 @@
 var classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info =
 [
-    [ "__init__", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a2c3a55eb65b828227c8e72be0bd86003", null ],
-    [ "__eq__", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a3715424684b34d2d21fe1c1af7129e9e", null ],
-    [ "__str__", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#acfd35a4f7513e0298dc4278877e1067e", null ],
+    [ "__init__", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a6723bdbf211023a4cd45a795abe09f96", null ],
+    [ "__eq__", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a61c86d5fa8f0d788fe7224d559e8005e", null ],
+    [ "__str__", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#ad23b2ca593c66042649d87e148c17236", null ],
+    [ "_endpoint_gid", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#acbf975e2d4c146c2c19c4e997f774a70", null ],
+    [ "_endpoint_type", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a2070af18d7e6e6fec0933757d5c3f403", null ],
+    [ "_node_name", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a7eb0ed58cf158c4d406061498c319500", null ],
+    [ "_node_namespace", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#aa7a168b200ebb7e4b08fb50f9835131d", null ],
+    [ "_qos_profile", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#aa8735e38901e55bc763e9f61b318459b", null ],
+    [ "_topic_type", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#affbff8546d9d4a6943547e7233f2977b", null ],
     [ "endpoint_gid", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a32c3f622bab7b4b71f1160f64375234a", null ],
     [ "endpoint_type", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a8d63606985b4a59fdae5be5d7fc7c107", null ],
     [ "node_name", "classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#aa0ca6b4acf622f0f4b81f021c87f2b65", null ],

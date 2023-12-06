@@ -1,8 +1,13 @@
 <map id="rosros.rospify.exceptions.ROSException" name="rosros.rospify.exceptions.ROSException">
-<area shape="rect" id="node1" title="Base exception class for ROS clients." alt="" coords="140,71,328,112"/>
-<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html" title="Exception for operations that interrupted, e.g." alt="" coords="379,5,567,47"/>
-<area shape="rect" id="node4" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Exception if time moved backwards." alt="" coords="379,71,567,112"/>
-<area shape="rect" id="node6" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_serialization_exception.html" title="Exception for errors initializing ROS state." alt="" coords="376,136,571,177"/>
-<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="5,78,92,105"/>
-<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="619,71,879,112"/>
+<area shape="rect" id="Node000001" title="Base exception class for ROS clients." alt="" coords="140,69,328,109"/>
+<area shape="rect" id="Node000003" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html" title="Exception for operations that interrupted, e.g." alt="" coords="379,5,567,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="322,63,397,43,399,48,323,68"/>
+<area shape="rect" id="Node000004" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title="Exception if time moved backwards." alt="" coords="379,69,567,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="342,87,379,87,379,92,342,92"/>
+<area shape="rect" id="Node000006" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_serialization_exception.html" title="Exception for errors initializing ROS state." alt="" coords="376,133,571,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="323,110,399,131,397,136,322,116"/>
+<area shape="rect" id="Node000002" href="$class_exception.html" title=" " alt="" coords="5,77,92,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,87,140,87,140,92,106,92"/>
+<area shape="rect" id="Node000005" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="619,69,879,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="581,87,619,87,619,92,581,92"/>
 </map>

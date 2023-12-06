@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classrosros_1_1rclify_1_1callback__groups_1_1_callback_group.html" title="The base class for a callback group." alt="" coords="5,39,177,80"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1callback__groups_1_1_mutually_exclusive_callback_group.html" title="API stand&#45;in for ROS2 compatibility." alt="" coords="225,5,516,47"/>
-<area shape="rect" id="node3" href="$classrosros_1_1rclify_1_1callback__groups_1_1_reentrant_callback_group.html" title=" " alt="" coords="253,71,489,112"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,45,64,70"/>
+<area shape="rect" id="Node000001" href="$classrosros_1_1rclify_1_1parameter_1_1_parameter_1_1_type.html" title="ROS parameter type, a stand&#45;in for ROS2 `rclpy.parameter.Parameter.Type` in ROS1." alt="" coords="123,5,296,45"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="77,47,122,39,123,44,78,52"/>
+<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_preset_profiles.html" title=" " alt="" coords="112,69,307,109"/>
+<area shape="poly" id="edge10_Node000000_Node000002" title=" " alt="" coords="78,62,112,69,111,74,77,68"/>
 </map>

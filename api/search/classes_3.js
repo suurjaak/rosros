@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['durabilitypolicy_637',['DurabilityPolicy',['../classrosros_1_1rclify_1_1qos_1_1_durability_policy.html',1,'rosros::rclify::qos']]]
+  ['durabilitypolicy_0',['DurabilityPolicy',['../classrosros_1_1rclify_1_1qos_1_1_durability_policy.html',1,'rosros::rclify::qos']]]
 ];

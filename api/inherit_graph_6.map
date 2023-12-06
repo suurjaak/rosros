@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classrosros_1_1rclify_1_1parameter_1_1_floating_point_range.html" title="Represents bounds and a step value for a floating point typed parameter." alt="" coords="5,5,179,47"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,100,31"/>
+<area shape="rect" id="Node000001" href="$classrosros_1_1ros1_1_1_bag.html" title="ROS1 bag reader and writer." alt="" coords="148,5,271,31"/>
+<area shape="poly" id="edge54_Node000000_Node000001" title=" " alt="" coords="114,15,148,15,148,21,114,21"/>
 </map>

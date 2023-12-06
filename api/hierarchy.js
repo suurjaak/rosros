@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "ABC", null, [
+    [ "abc.ABC", null, [
       [ "rosros.rospify.service.Service", "classrosros_1_1rospify_1_1service_1_1_service.html", null ],
       [ "rosros.rospify.service.ServiceProxy", "classrosros_1_1rospify_1_1service_1_1_service_proxy.html", null ],
       [ "rosros.rospify.timer.Rate", "classrosros_1_1rospify_1_1timer_1_1_rate.html", null ],
@@ -11,7 +11,7 @@ var hierarchy =
       [ "rosros.rospify.topics.Publisher", "classrosros_1_1rospify_1_1topics_1_1_publisher.html", null ],
       [ "rosros.rospify.topics.Subscriber", "classrosros_1_1rospify_1_1topics_1_1_subscriber.html", null ]
     ] ],
-    [ "Bag", null, [
+    [ "rosbag.Bag", null, [
       [ "rosros.ros1.Bag", "classrosros_1_1ros1_1_1_bag.html", null ]
     ] ],
     [ "rosros.ros2.Bag", "classrosros_1_1ros2_1_1_bag.html", null ],
@@ -27,8 +27,8 @@ var hierarchy =
         [ "rosros.rclify.exceptions.InvalidServiceNameException", "classrosros_1_1rclify_1_1exceptions_1_1_invalid_service_name_exception.html", null ],
         [ "rosros.rclify.exceptions.InvalidTopicNameException", "classrosros_1_1rclify_1_1exceptions_1_1_invalid_topic_name_exception.html", null ]
       ] ],
-      [ "rosros.rclify.exceptions.NotInitializedException", "classrosros_1_1rclify_1_1exceptions_1_1_not_initialized_exception.html", null ],
       [ "rosros.rclify.exceptions.NoTypeSupportImportedException", "classrosros_1_1rclify_1_1exceptions_1_1_no_type_support_imported_exception.html", null ],
+      [ "rosros.rclify.exceptions.NotInitializedException", "classrosros_1_1rclify_1_1exceptions_1_1_not_initialized_exception.html", null ],
       [ "rosros.rclify.exceptions.ParameterException", "classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html", [
         [ "rosros.rclify.exceptions.InvalidParameterException", "classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_exception.html", null ],
         [ "rosros.rclify.exceptions.InvalidParameterValueException", "classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_value_exception.html", null ],
@@ -67,7 +67,7 @@ var hierarchy =
     [ "rosros.rclify.task.Future", "classrosros_1_1rclify_1_1task_1_1_future.html", [
       [ "rosros.rclify.task.Task", "classrosros_1_1rclify_1_1task_1_1_task.html", null ]
     ] ],
-    [ "Handler", null, [
+    [ "logging.Handler", null, [
       [ "rosros.ros1.ROSLogHandler", "classrosros_1_1ros1_1_1_r_o_s_log_handler.html", null ],
       [ "rosros.ros2.ROSLogHandler", "classrosros_1_1ros2_1_1_r_o_s_log_handler.html", null ]
     ] ],
@@ -75,7 +75,7 @@ var hierarchy =
     [ "KeyboardInterrupt", "class_keyboard_interrupt.html", [
       [ "rosros.rospify.exceptions.ROSInterruptException", "classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html", null ]
     ] ],
-    [ "Logger", null, [
+    [ "logging.Logger", null, [
       [ "rosros.util.ThrottledLogger", "classrosros_1_1util_1_1_throttled_logger.html", null ]
     ] ],
     [ "rosros.rospify.log.LogInhibitor", "classrosros_1_1rospify_1_1log_1_1_log_inhibitor.html", null ],

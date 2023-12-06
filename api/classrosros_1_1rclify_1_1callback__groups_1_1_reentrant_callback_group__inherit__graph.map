@@ -1,4 +1,5 @@
 <map id="rosros.rclify.callback_groups.ReentrantCallbackGroup" name="rosros.rclify.callback_groups.ReentrantCallbackGroup">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,241,136"/>
-<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1callback__groups_1_1_callback_group.html" title="The base class for a callback group." alt="" coords="37,5,209,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,241,133"/>
+<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1callback__groups_1_1_callback_group.html" title="The base class for a callback group." alt="" coords="37,5,209,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,59,126,93,121,93,121,59"/>
 </map>

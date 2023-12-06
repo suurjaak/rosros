@@ -1,4 +1,5 @@
 <map id="rosros.rospify.timer.Timer" name="rosros.rospify.timer.Timer">
-<area shape="rect" id="node1" title="Stand&#45;in for `rospy.Timer`, wrapping the creation of ROS2 timer instance." alt="" coords="5,80,195,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="75,5,125,32"/>
+<area shape="rect" id="Node000001" title="Stand&#45;in for `rospy.Timer`, wrapping the creation of ROS2 timer instance." alt="" coords="5,79,195,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="62,5,138,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,44,103,79,97,79,97,44"/>
 </map>
