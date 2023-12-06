@@ -2,7 +2,7 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.2.1 (2023-12-05)
+0.2.1 (2023-12-06)
 ------------------
 * add api.to_duration()
 * add default fallback parameter to api.get_message_value()
