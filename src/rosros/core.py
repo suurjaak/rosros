@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.02.2023
+@modified    06.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -145,8 +145,8 @@ def spin_once(timeout=None):
     """
     Waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2.
 
-    @param  timeout  time to wait at most, as seconds or ROS duration;
-                     None or <0 waits forever
+    @param   timeout  time to wait at most, as seconds or ROS duration;
+                      None or <0 waits forever
     """
     ros.spin_once(timeout)
 
@@ -155,8 +155,8 @@ def spin_until_future_complete(future, timeout=None):
     """
     Spins ROS until future complete or timeout reached or ROS shut down.
 
-    @param  future       object with `concurrent.futures.Future`-conforming interface to complete
-    @param  timeout      time to wait, as seconds or ROS1 duration
+    @param   future   object with `concurrent.futures.Future`-conforming interface to complete
+    @param   timeout  time to wait, as seconds or ROS1 duration
     """
     ros.spin_until_future_complete(future, timeout)
 
@@ -274,8 +274,7 @@ def create_timer(period, callback, oneshot=False, immediate=False):
     @param   immediate  whether to fire once immediately instead of waiting one period
     @return             `rospy.Timer` or `rclpy.timer.Timer`
     """
-    if ros1: return ros1.create_timer(period, callback, oneshot, immediate)
-    return ros2.create_timer(period, callback, oneshot, immediate)
+    return ros.create_timer(period, callback, oneshot, immediate)
 
 
 def create_rate(frequency):

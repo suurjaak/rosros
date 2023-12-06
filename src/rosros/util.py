@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.02.2023
+@modified    05.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
@@ -147,13 +147,13 @@ class ThrottledLogger(logging.Logger):
             if not result:
                 cls._HASHES[caller_id] = msg_hash
             if throttle:
-                now, last = time.time(), cls._TIMES.get(caller_id)
+                now, last = time.monotonic(), cls._TIMES.get(caller_id)
                 result = result and last is not None and now - last < throttle
-                cls._TIMES[caller_id] = now
+                cls._TIMES[caller_id] = now if last is None or not result else last
         elif throttle:
-            now, last = time.time(), cls._TIMES.get(caller_id)
-            result = last is not None and now - last < throttle
-            cls._TIMES[caller_id] = now
+            now, last = time.monotonic(), cls._TIMES.get(caller_id)
+            result = last is not None and now - last < throttleˇ
+            cls._TIMES[caller_id] = now if last is None or not result else last
         return result
 
 
@@ -238,7 +238,12 @@ def format_bytes(size, precision=2, inter=" ", strip=True):
 
 
 def get_arity(func, positional=True, keyword=False):
-    """Returns the maximum number of arguments the function takes, -1 if variable number."""
+    """
+    Returns the maximum number of arguments the function takes, -1 if variable number.
+
+    @param   positional  count positional-only and positional/keyword arguments
+    @param   keyword     count keyword-only and positional/keyword arguments
+    """
     POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)
     KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)
     result, params = 0, inspect.signature(func).parameters
@@ -246,7 +251,9 @@ def get_arity(func, positional=True, keyword=False):
     or keyword    and any(x.kind == inspect.Parameter.VAR_KEYWORD    for x in params.values()):
         result = -1
     else:
-        if positional:
+        if positional and keyword:
+            result += sum(x.kind in POSITIONALS + KEYWORDALS for x in params.values())
+        elif positional:
             result += sum(x.kind in POSITIONALS for x in params.values())
         if keyword:
             result += sum(x.kind in KEYWORDALS  for x in params.values())

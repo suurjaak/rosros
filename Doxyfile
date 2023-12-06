@@ -130,7 +130,7 @@ INPUT                  =
 
 INPUT_ENCODING         = UTF-8
 
-FILE_PATTERNS          = *.md *.py *.rst
+FILE_PATTERNS          = *.md *.py
 
 RECURSIVE              = YES
 

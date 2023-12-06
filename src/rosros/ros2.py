@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.02.2023
+@modified    03.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -1280,13 +1280,17 @@ def _get_message_type_hash(typename):
     return parsing.calculate_definition_hash(typename, definition)
 
 
-def get_message_value(msg, name):
+def get_message_value(msg, name, default=...):
     """
     Returns object attribute value, with numeric arrays converted to lists.
 
-    @param   message attribute name; may also be (nested, path) or "nested.path"
+    @param   name     message attribute name; may also be (nested, path) or "nested.path"
+    @param   default  value to return if attribute does not exist; raises exception otherwise
     """
-    v, parent, k = util.get_nested(msg, name)
+    try: v, parent, k = util.get_nested(msg, name)
+    except Exception:
+        if default is not Ellipsis: return default
+        raise
     if isinstance(v, (bytes, array.array)) \
     or "numpy.ndarray" == "%s.%s" % (v.__class__.__module__, v.__class__.__name__):
         v = list(v)
@@ -1431,6 +1435,26 @@ def time_message(val, to_message=True, clock_type=None):
     return val
 
 
+def to_duration(val):
+    """
+    Returns value as ROS2 duration if convertible (int/float/time/datetime/decimal), else value.
+
+    Convertible types: int/float/time/datetime/decimal/builtin_interfaces.Time.
+    """
+    result = val
+    if isinstance(val, decimal.Decimal):
+        result = make_duration(int(val), float(val % 1) * 10**9)
+    elif isinstance(val, datetime.datetime):
+        result = make_duration(int(val.timestamp()), 1000 * val.microsecond)
+    elif isinstance(val, (float, int)):
+        result = make_duration(val)
+    elif isinstance(val, rclpy.time.Time):
+        result = make_duration(nsecs=val.nanoseconds)
+    elif isinstance(val, tuple(ROS_TIME_MESSAGES.values())):
+        result = make_duration(val.sec, val.nanosec)
+    return result
+
+
 def to_nsec(val):
     """Returns value in nanoseconds if value is ROS2 time/duration, else value."""
     if not isinstance(val, tuple(ROS_TIME_CLASSES)):
@@ -1495,6 +1519,6 @@ __all__ = [
     "has_param", "init_node", "init_params", "is_ros_message", "is_ros_service",
     "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
     "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "spin",
-    "spin_once", "spin_until_future_complete", "start_spin", "time_message", "to_nsec",
-    "to_sec", "to_sec_nsec", "to_time"
+    "spin_once", "spin_until_future_complete", "start_spin", "time_message", "to_duration",
+    "to_nsec", "to_sec", "to_sec_nsec", "to_time"
 ]

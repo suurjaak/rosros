@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    28.02.2023
+@modified    05.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -149,13 +149,14 @@ def get_message_type_hash(msg_or_type):
     return ros.get_message_type_hash(msg_or_type)
 
 
-def get_message_value(msg, name):
+def get_message_value(msg, name, default=...):
     """
     Returns object attribute value, with numeric arrays converted to lists.
 
-    @param   message attribute name; may also be (nested, path) or "nested.path"
+    @param   name     message attribute name; may also be (nested, path) or "nested.path"
+    @param   default  value to return if attribute does not exist; raises exception otherwise
     """
-    return ros.get_message_value(msg, name)
+    return ros.get_message_value(msg, name, default)
 
 
 def get_service_definition(srv_or_type):
@@ -270,7 +271,7 @@ def dict_to_message(dct, msg):
         v, msgv = dct[name], ros.get_message_value(msg, name)
 
         if ros.is_ros_message(msgv):
-            v = dict_to_message(v, msgv)
+            v = v if ros.is_ros_time(v) and ros.is_ros_time(msgv) else dict_to_message(v, msgv)
         elif isinstance(msgv, (list, tuple)):
             scalarname = ros.scalar(typename)
             if scalarname in ROS_BUILTIN_TYPES:
@@ -389,7 +390,7 @@ def time_message(val, to_message=True, clock_type=None):
     @return              value converted to appropriate type, or original value if not convertible
     """
     if ros1: return val
-    return ros2.time_message(val, to_message)
+    return ros2.time_message(val, to_message, clock_type=clock_type)
 
 
 def to_datetime(val):
@@ -403,6 +404,20 @@ def to_decimal(val):
     if ros.is_ros_time(val) and not inspect.isclass(val):
         return decimal.Decimal("%d.%09d" % ros.to_sec_nsec(val))
     return val
+
+
+def to_duration(val):
+    """Returns value as ROS duration if convertible (int/float/time/datetime/decimal), else value."""
+    result = val
+    if isinstance(val, decimal.Decimal):
+        result = rospy.Duration(int(val), float(val % 1) * 10**9)
+    elif isinstance(val, datetime.datetime):
+        result = rospy.Duration(int(val.timestamp()), 1000 * val.microsecond)
+    elif isinstance(val, (float, int)):
+        result = rospy.Duration(val)
+    elif isinstance(val, rospy.Time):
+        result = rospy.Duration(val.secs, val.nsecs)
+    return result
 
 
 def to_nsec(val):
@@ -435,5 +450,5 @@ __all__ = [
     "get_service_request_class", "get_service_response_class", "get_type_alias", "is_ros_message",
     "is_ros_service", "is_ros_time", "make_duration", "make_full_typename", "make_time",
     "message_to_dict", "scalar", "serialize_message", "time_message", "to_datetime", "to_decimal",
-    "to_nsec", "to_sec", "to_sec_nsec", "to_time"
+    "to_duration", "to_nsec", "to_sec", "to_sec_nsec", "to_time"
 ]

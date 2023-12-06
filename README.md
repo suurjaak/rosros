@@ -336,7 +336,7 @@ Can be used as stand-alone library functions without initializing rosros core.
 | `rosros.api.get_message_type`           | returns ROS message / service canonical type name, like `"std_msgs/Header"`                   | `msg_or_cls`
 |                                         | or `"*"` for `AnyMsg`                                                                         | |
 | `rosros.api.get_message_type_hash`      | returns ROS message / service type MD5 hash                                                   | `msg_or_type`
-| `rosros.api.get_message_value`          | returns message attribute value, with numeric arrays converted to lists                       | `msg, name`
+| `rosros.api.get_message_value`          | returns message attribute value, with numeric arrays converted to lists                       | `msg, name, default=...`
 | `rosros.api.is_ros_message`             | returns whether value is a ROS message or service request/response class or instance          | `val`
 |                                         |                                                                                               | |
 |                                         | **Message conversion**                                                                        | |
@@ -362,10 +362,11 @@ Can be used as stand-alone library functions without initializing rosros core.
 |                                         | or value if not convertible                                                                   | |
 | `rosros.api.to_datetime`                | returns value as `datetime.datetime` if value is ROS time/duration, else value                | `val`
 | `rosros.api.to_decimal`                 | returns value as `decimal.Decimal` if value is ROS time/duration, else value                  | `val`
+| `rosros.api.to_duration`                | returns value as ROS duration if convertible (int/float/time/datetime/decimal), else value    | `val`
 | `rosros.api.to_nsec`                    | returns value in nanoseconds if value is ROS time/duration, else value                        | `val`
 | `rosros.api.to_sec`                     | returns value in seconds if value is ROS time/duration, else value                            | `val`
-| `rosros.api.to_sec_nsec`                | returns value in (seconds, nanoseconds) if value is ROS time/duration, else value             | `val`                     
-| `rosros.api.to_time`                    | returns value as ROS time if convertible (int/float/duration/datetime/decimal), else value    | `val`                     
+| `rosros.api.to_sec_nsec`                | returns value in (seconds, nanoseconds) if value is ROS time/duration, else value             | `val`
+| `rosros.api.to_time`                    | returns value as ROS time if convertible (int/float/duration/datetime/decimal), else value    | `val`
 |                                         |                                                                                               | |
 |                                         | **Class and type names**                                                                      | |
 | `rosros.api.canonical`                  | returns `"pkg/Type"` for `"pkg/subdir/Type"`                                                  | `typename`
