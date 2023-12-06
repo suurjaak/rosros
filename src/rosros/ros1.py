@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    03.12.2023
+@modified    06.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -1077,6 +1077,86 @@ def to_time(val):
     return result
 
 
+def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one publisher.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a publisher is available
+    """
+    result = False
+    timeout = to_sec(timeout)
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    typename = get_message_type(cls_or_typename) or cls_or_typename
+    if "*" == typename: typename = None  # AnyMsg
+    fullname, first = resolve_name(topic), True
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        exists, first = any(fullname == t for t, nn in MASTER.getSystemState()[-1][0]), False
+        result = exists and (not typename or typename in dict(get_topics()).get(fullname, []))
+        rospy.rostime.wallsleep(0.1) if not result else None
+    return result
+
+
+def wait_for_subscriber(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one subscriber.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a subscriber is available
+    """
+    result = False
+    timeout = to_sec(timeout)
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    typename = get_message_type(cls_or_typename) or cls_or_typename
+    if "*" == typename: typename = None  # AnyMsg
+    fullname, first = resolve_name(topic), True
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        exists, first = any(fullname == t for t, nn in MASTER.getSystemState()[-1][1]), False
+        result = exists and (not typename or typename in dict(get_topics()).get(fullname, []))
+        rospy.rostime.wallsleep(0.1) if not result else None
+    return result
+
+
+def wait_for_service(service, timeout=None, cls_or_typename=None):
+    """
+    Blocks until service is available.
+
+    @param   service          name of service
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  service type to expect if any,
+                              as ROS service class object like `std_msgs.msg.Bool`
+                              or service type name like "std_srvs/SetBool"
+    @return                   whether the service is available
+    """
+    result = False
+    timeout = None if timeout is None or to_sec(timeout) <= 0 else to_sec(timeout)
+    deadline = None if timeout is None else time.monotonic() + timeout
+    typename = get_message_type(cls_or_typename) or cls_or_typename
+    fullname, first = resolve_name(service), True
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        first = False
+        try: rospy.wait_for_service(service, timeout)
+        except Exception: continue  # while
+        result = not typename
+        if typename:
+            srvs = dict(get_services())
+            result = typename in srvs.get(fullname, [])
+            if not result and fullname in srvs: rospy.rostime.wallsleep(0.1)  # Type mismatch
+    return result
+
+
+
 __all__ = [
     "AnyMsg", "Bag", "ROSLogHandler", "FAMILY", "PARAM_SEPARATOR", "PRIVATE_PREFIX",
     "PY_LOG_LEVEL_TO_ROSPY_LEVEL", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
@@ -1091,5 +1171,6 @@ __all__ = [
     "is_ros_service", "is_ros_time", "make_duration", "make_time", "ok", "register_init",
     "remap_name", "resolve_name", "scalar", "serialize_message", "set_param", "shutdown",
     "spin", "spin_once", "spin_until_future_complete", "start_spin", "to_duration", "to_nsec",
-    "to_sec", "to_sec_nsec", "to_time"
+    "to_sec", "to_sec_nsec", "to_time", "wait_for_publisher", "wait_for_subscriber",
+    "wait_for_service"
 ]

@@ -372,6 +372,51 @@ def register_init(node=None):
     ros1.register_init() if ros1 else ros2.register_init(node)
 
 
+def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one publisher.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a publisher is available
+    """
+    return ros.wait_for_publisher(topic, timeout, cls_or_typename)
+
+
+def wait_for_subscriber(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one subscriber.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a subscriber is available
+    """
+    return ros.wait_for_subscriber(topic, timeout, cls_or_typename)
+
+
+def wait_for_service(service, timeout=None, cls_or_typename=None):
+    """
+    Blocks until service is available.
+
+    @param   service          name of service
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  service type to expect if any,
+                              as ROS service class object like `std_msgs.msg.Bool`
+                              or service type name like "std_srvs/SetBool"
+    @return                   whether the service is available
+    """
+    return ros.wait_for_service(service, timeout, cls_or_typename)
+
+
 __all__ = [
     "ros1", "ros2", "AnyMsg", "Bag",
     "create_client", "create_publisher", "create_rate", "create_service",
@@ -380,5 +425,6 @@ __all__ = [
     "get_param_names", "get_params", "get_rostime", "get_services", "get_topics",
     "has_param", "init_node", "init_params", "ok", "register_init", "remap_name",
     "resolve_name", "set_param", "shutdown", "spin", "spin_once",
-    "spin_until_future_complete", "start_spin"
+    "spin_until_future_complete", "start_spin",
+    "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]

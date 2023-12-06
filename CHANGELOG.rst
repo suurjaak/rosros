@@ -2,7 +2,11 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.2.1 (2023-12-05)
+0.2.2 (2023-12-06)
+------------------
+* add rosros.wait_for_publisher(), wait_for_subscriber() and wait_for_service()
+
+0.2.1 (2023-12-06)
 ------------------
 * add api.to_duration()
 * add default fallback parameter to api.get_message_value()
