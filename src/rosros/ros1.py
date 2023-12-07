@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    06.12.2023
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -558,7 +558,7 @@ def spin_once(timeout=None):
     @param  timeout  time to sleep, as seconds or ROS duration;
                      None or <0 waits forever
     """
-    rospy.rostime.wallsleep(2**31 - 1 if timeout is None else to_sec(timeout))
+    rospy.rostime.wallsleep(2**31 - 1 if timeout is None or timeout < 0 else to_sec(timeout))
 
 
 def spin_until_future_complete(future, timeout=None):
