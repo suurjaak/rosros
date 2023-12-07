@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    05.12.2023
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -130,8 +130,8 @@ def get_message_type(msg_or_cls):
 
     Returns "*" for `AnyMsg`.
 
-    @param   msg_or_cls  class instance like `std_msgs.msg.Bool()`,
-                         or class object like `std_msgs.msg.Bool`
+    @param    msg_or_cls  class instance like `std_msgs.msg.Bool()`,
+                          or class object like `std_msgs.msg.Bool`
     @return   canonical name, or `None` if not ROS message / service
     """
     return ros.get_message_type(msg_or_cls)
