@@ -543,9 +543,11 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
     def service_serve_wrapper(self, serve):
         """Returns service serve-function wrapped to ensure return with response instance."""
         def inner(req, resp):
-            resp, respcls, args, kwargs = serve(req, resp), self.srv_type.Response, None, None
+            resp0, respcls, args, kwargs = resp, self.srv_type.Response, None, None
+            resp = serve(req, resp0)
             if   isinstance(resp, (list, tuple)): args   = resp
             elif isinstance(resp, dict):          kwargs = resp
+            elif resp is None:                    resp   = resp0
             if args is not None or kwargs is not None:
                 attributes = functools.partial(ros.get_message_fields, respcls)
                 args, kwargs = (args or []), (kwargs or {})
@@ -669,7 +671,7 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
 
     def Service__init(self, service_handle, srv_type, srv_name, callback,
                       callback_group, qos_profile):
-        """Wraps Service.__init__() to support returning list or dict from server callback."""
+        """Wraps Service.__init__() to support returning list/dict/None from server callback."""
         callback = service_serve_wrapper(self, callback)
         ROS2_Service__init(self, service_handle, srv_type, srv_name, callback,
                            callback_group, qos_profile)
