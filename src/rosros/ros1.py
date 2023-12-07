@@ -905,7 +905,7 @@ def get_message_type(msg_or_cls):
     if is_ros_time(msg_or_cls):
         cls = msg_or_cls if inspect.isclass(msg_or_cls) else type(msg_or_cls)
         return "%s/%s" % (FAMILY, cls.__name__)
-    return msg_or_cls._type if is_ros_message(msg_or_cls) else None
+    return msg_or_cls._type if is_ros_message(msg_or_cls) or is_ros_service(msg_or_cls) else None
 
 
 def get_message_type_hash(msg_or_type):
