@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    05.12.2023
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -543,7 +543,7 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
     def service_serve_wrapper(self, serve):
         """Returns service serve-function wrapped to ensure return with response instance."""
         def inner(req, resp):
-            resp, respcls, args, kwargs = serve(req), self.srv_type.Response, None, None
+            resp, respcls, args, kwargs = serve(req, resp), self.srv_type.Response, None, None
             if   isinstance(resp, (list, tuple)): args   = resp
             elif isinstance(resp, dict):          kwargs = resp
             if args is not None or kwargs is not None:
