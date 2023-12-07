@@ -246,8 +246,11 @@ def get_arity(func, positional=True, keyword=False):
     """
     POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)
     KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)
-    result, params = 0, inspect.signature(func).parameters
-    if positional and any(x.kind == inspect.Parameter.VAR_POSITIONAL for x in params.values()) \
+    result = 0
+    try: params = inspect.signature(func).parameters  # Raises if built-in
+    except Exception: params = None
+    if params is None \
+    or positional and any(x.kind == inspect.Parameter.VAR_POSITIONAL for x in params.values()) \
     or keyword    and any(x.kind == inspect.Parameter.VAR_KEYWORD    for x in params.values()):
         result = -1
     else:
@@ -429,20 +432,23 @@ def wrap_arity(func):
     Returns wrapper for invoking function with its maximum supported number of arguments.
 
     E.g. `wrap_arity(abs)(-1, -2)` will return result of `abs(-1)`.
+
+    Returns original function if a built-in with no arity information available.
     """
     POSITIONALS = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.POSITIONAL_ONLY)
     KEYWORDALS  = (inspect.Parameter.POSITIONAL_OR_KEYWORD, inspect.Parameter.KEYWORD_ONLY)
-    params   = inspect.signature(func).parameters
-    varargs  = any(x.kind == inspect.Parameter.VAR_POSITIONAL for x in params.values())
-    varkws   = any(x.kind == inspect.Parameter.VAR_KEYWORD    for x in params.values())
-    posargs  = [x.name for x in params.values() if x.kind in POSITIONALS]
-    keywords = [x.name for x in params.values() if x.kind in KEYWORDALS]
+    try: params = inspect.signature(func).parameters  # Raises if built-in
+    except Exception: params = None
+    varargs  = params and any(x.kind == inspect.Parameter.VAR_POSITIONAL for x in params.values())
+    varkws   = params and any(x.kind == inspect.Parameter.VAR_KEYWORD    for x in params.values())
+    posargs  = [] if params is None else [x.name for x in params.values() if x.kind in POSITIONALS]
+    keywords = [] if params is None else [x.name for x in params.values() if x.kind in KEYWORDALS]
 
     def inner(*args, **kwargs):
         if not varargs: args   = args[:len(posargs)]
         if not varkws:  kwargs = {k: v for k, v in kwargs.items() if k in keywords}
         return func(*args, **kwargs)
-    return functools.update_wrapper(inner, func)
+    return func if params is None else functools.update_wrapper(inner, func)
 
 
 __all__ = [

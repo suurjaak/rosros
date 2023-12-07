@@ -9,6 +9,7 @@ Changelog for package rosros
 * fix rosros.get_services() raising error on node-parameter in ROS2
 * fix rosros.get_param_names() returning params dictionary instead of list
 * fix rosros.set_param() raising error on no descriptor in ROS2
+* fix util.get_arity() and wrap_arity() raising for built-in functions
 * fix throttling log messages again
 
 0.2.1 (2023-12-06)
