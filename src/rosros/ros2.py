@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    06.12.2023
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -725,7 +725,7 @@ def set_param(name, value, descriptor=None):
     """
     name = format_param_name(name)
     if not NODE.has_parameter(name):
-        NODE.declare_parameter(name, descriptor=descriptor)
+        NODE.declare_parameter(name, **dict(descriptor=descriptor) if descriptor else {})
     result = NODE.set_parameters([rclpy.Parameter(name, value=value)])[0]
     if not result.successful:
         raise Exception(result.reason)
