@@ -13,8 +13,8 @@ Released under the BSD License.
 """
 ## @namespace rosros
 __title__        = "rosros"
-__version__      = "0.2.2.dev4"
-__version_info__ = (0, 2, 2, "dev4")
+__version__      = "0.2.2.dev5"
+__version_info__ = (0, 2, 2, "dev5")
 
 from rosros import api
 from rosros import rclify

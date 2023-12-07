@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    05.12.2023
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.util
@@ -152,7 +152,7 @@ class ThrottledLogger(logging.Logger):
                 cls._TIMES[caller_id] = now if last is None or not result else last
         elif throttle:
             now, last = time.monotonic(), cls._TIMES.get(caller_id)
-            result = last is not None and now - last < throttleˇ
+            result = last is not None and now - last < throttle
             cls._TIMES[caller_id] = now if last is None or not result else last
         return result
 
