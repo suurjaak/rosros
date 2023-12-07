@@ -60,6 +60,8 @@ def patch_ros1():
 
     rospy.Publisher.publish = Publisher__publish
 
+    rospy.Service.__init__ = Service__init
+
     rospy.ServiceProxy.call             = ServiceProxy__call
     rospy.ServiceProxy.call_async       = ServiceProxy__call_async
     rospy.ServiceProxy.wait_for_service = ServiceProxy__wait_for_service
@@ -220,6 +222,14 @@ def set_extra_attribute(obj, name, value):
 
 if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with ROS2 API
 
+    def service_serve_wrapper(self, serve):
+        """Returns service serve-function wrapped to ensure return with response instance."""
+        def inner(req):
+            resp = serve(req)
+            return {} if resp is None else resp
+        return functools.update_wrapper(inner, serve)
+
+
     def Publisher__assert_liveliness(self):
         """Does nothing (ROS2 compatibility stand-in)."""
 
@@ -231,6 +241,14 @@ if rospy:  # Patch-functions to apply on ROS1 classes, to achieve parity with RO
         attributes = functools.partial(ros.get_message_fields, self.data_class)
         msg = util.ensure_object(self.data_class, attributes, api.dict_to_message, *args, **kwds)
         return ROS1_Publisher__publish(self, msg)
+
+
+    ROS1_Service__init = rospy.Service.__init__
+
+    def Service__init(self, name, service_class, handler, buff_size=65536, error_handler=None):
+        """Wraps Service.__init__() to support returning None from server callback."""
+        callback = service_serve_wrapper(self, handler)
+        ROS1_Service__init(self, name, service_class, callback, buff_size, error_handler)
 
 
     ROS1_ServiceProxy__call = rospy.ServiceProxy.call

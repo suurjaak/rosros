@@ -5,7 +5,7 @@ Changelog for package rosros
 0.2.2 (2023-12-07)
 ------------------
 * add rosros.wait_for_publisher(), wait_for_subscriber() and wait_for_service()
-* allow service callbacks to return None in ROS2
+* allow service callbacks to return None
 * fix service calls raising error in ROS2
 * fix rosros.get_services() raising error on node-parameter in ROS2
 * fix rosros.get_param_names() returning params dictionary instead of list
