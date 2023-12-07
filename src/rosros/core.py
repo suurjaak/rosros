@@ -90,7 +90,7 @@ def has_param(name):
 
 def get_param_names():
     """Returns the names of all parameters on the node."""
-    return ros.get_params()
+    return ros.get_param_names()
 
 
 def get_params(nested=True):
