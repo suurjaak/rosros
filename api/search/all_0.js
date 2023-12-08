@@ -97,5 +97,6 @@ var searchData=
   ['_5ftype_5f_94',['_type_',['../classrosros_1_1rclify_1_1parameter_1_1_parameter.html#a533c74f6c3fa6d780eba5216122089a9',1,'rosros::rclify::parameter::Parameter']]],
   ['_5ftypes_95',['_types',['../classrosros_1_1ros2_1_1_bag.html#a5febd1114702866327004f382c599939',1,'rosros::ros2::Bag']]],
   ['_5fvalue_96',['_value',['../classrosros_1_1rclify_1_1parameter_1_1_parameter.html#a70bf850c0df550d1e1fad7b97ba1427d',1,'rosros::rclify::parameter::Parameter']]],
-  ['_5fwakeable_97',['_wakeable',['../namespacerosros_1_1patch.html#ac8defcb20985e7f04fd3c8b8eee584b2',1,'rosros::patch']]]
+  ['_5fwait_5ffor_5fservice_97',['_wait_for_service',['../namespacerosros_1_1rospify_1_1service.html#a30b6f909f7757100d29a8cca9bee6a12',1,'rosros::rospify::service']]],
+  ['_5fwakeable_98',['_wakeable',['../namespacerosros_1_1patch.html#ac8defcb20985e7f04fd3c8b8eee584b2',1,'rosros::patch']]]
 ];

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.2</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -283,6 +283,15 @@ Functions</h2></td></tr>
 <tr class="memitem:af436e298540f0ab6c90f821d560abc22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros1.html#af436e298540f0ab6c90f821d560abc22">to_time</a> (val)</td></tr>
 <tr class="memdesc:af436e298540f0ab6c90f821d560abc22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns value as ROS1 time if convertible (int/float/duration/datetime/decimal), else value.  <br /></td></tr>
 <tr class="separator:af436e298540f0ab6c90f821d560abc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0115ea642dff536acd178606ffca54b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros1.html#ab0115ea642dff536acd178606ffca54b">wait_for_publisher</a> (topic, timeout=None, cls_or_typename=None)</td></tr>
+<tr class="memdesc:ab0115ea642dff536acd178606ffca54b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocks until topic has at least one publisher.  <br /></td></tr>
+<tr class="separator:ab0115ea642dff536acd178606ffca54b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd46d77a09a223ffbdd68551bf448c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros1.html#a4cd46d77a09a223ffbdd68551bf448c8">wait_for_service</a> (service, timeout=None, cls_or_typename=None)</td></tr>
+<tr class="memdesc:a4cd46d77a09a223ffbdd68551bf448c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocks until service is available.  <br /></td></tr>
+<tr class="separator:a4cd46d77a09a223ffbdd68551bf448c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9562d7e814dcd1840fc4e6e44c73420"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros1.html#ab9562d7e814dcd1840fc4e6e44c73420">wait_for_subscriber</a> (topic, timeout=None, cls_or_typename=None)</td></tr>
+<tr class="memdesc:ab9562d7e814dcd1840fc4e6e44c73420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blocks until topic has at least one subscriber.  <br /></td></tr>
+<tr class="separator:ab9562d7e814dcd1840fc4e6e44c73420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -2055,6 +2064,147 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ab0115ea642dff536acd178606ffca54b" name="ab0115ea642dff536acd178606ffca54b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0115ea642dff536acd178606ffca54b">&#9670;&#160;</a></span>wait_for_publisher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros1.wait_for_publisher </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>topic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>None</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cls_or_typename</em> = <code>None</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blocks until topic has at least one publisher. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>name of topic to open </td></tr>
+    <tr><td class="paramname">timeout</td><td>time to wait at most, as seconds or ROS duration; None or &lt;0 waits forever </td></tr>
+    <tr><td class="paramname">cls_or_typename</td><td>message type to expect if any, as ROS message class object like `std_msgs.msg.Bool` or message type name like "std_msgs/Bool" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether a publisher is available </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ros1_8py_source.html#l01090">1090</a> of file <a class="el" href="ros1_8py_source.html">ros1.py</a>.</p>
+
+</div>
+</div>
+<a id="a4cd46d77a09a223ffbdd68551bf448c8" name="a4cd46d77a09a223ffbdd68551bf448c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cd46d77a09a223ffbdd68551bf448c8">&#9670;&#160;</a></span>wait_for_service()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros1.wait_for_service </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>service</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>None</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cls_or_typename</em> = <code>None</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blocks until service is available. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">service</td><td>name of service </td></tr>
+    <tr><td class="paramname">timeout</td><td>time to wait at most, as seconds or ROS duration; None or &lt;0 waits forever </td></tr>
+    <tr><td class="paramname">cls_or_typename</td><td>service type to expect if any, as ROS service class object like `std_msgs.msg.Bool` or service type name like "std_srvs/SetBool" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether the service is available </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ros1_8py_source.html#l01138">1138</a> of file <a class="el" href="ros1_8py_source.html">ros1.py</a>.</p>
+
+</div>
+</div>
+<a id="ab9562d7e814dcd1840fc4e6e44c73420" name="ab9562d7e814dcd1840fc4e6e44c73420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9562d7e814dcd1840fc4e6e44c73420">&#9670;&#160;</a></span>wait_for_subscriber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros1.wait_for_subscriber </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>topic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>None</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cls_or_typename</em> = <code>None</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blocks until topic has at least one subscriber. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>name of topic to open </td></tr>
+    <tr><td class="paramname">timeout</td><td>time to wait at most, as seconds or ROS duration; None or &lt;0 waits forever </td></tr>
+    <tr><td class="paramname">cls_or_typename</td><td>message type to expect if any, as ROS message class object like `std_msgs.msg.Bool` or message type name like "std_msgs/Bool" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether a subscriber is available </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ros1_8py_source.html#l01114">1114</a> of file <a class="el" href="ros1_8py_source.html">ros1.py</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a10c063c7abba4819413f3765c0e445f1" name="a10c063c7abba4819413f3765c0e445f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a10c063c7abba4819413f3765c0e445f1">&#9670;&#160;</a></span>AnyMsg</h2>
@@ -2249,7 +2399,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1ros1.html">ros1</a></li>
-    <li class="footer">Generated on Wed Dec 6 2023 11:39:12 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Fri Dec 8 2023 10:09:17 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.2</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -171,15 +171,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ab0bc0a14032c3a43fe36f54afc7dadf1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#ab0bc0a14032c3a43fe36f54afc7dadf1">rosros.patch.rostimer_sleep_on_event</a> (duration, event=None)</td></tr>
 <tr class="memdesc:ab0bc0a14032c3a43fe36f54afc7dadf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleeps for the specified duration in ROS time, or until event gets set.  <br /></td></tr>
 <tr class="separator:ab0bc0a14032c3a43fe36f54afc7dadf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa1a92dca1f099b2515afd38b9c21de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#aeaa1a92dca1f099b2515afd38b9c21de">rosros.patch.Service__init</a> (self, name, service_class, handler, buff_size=65536, error_handler=None)</td></tr>
+<tr class="memdesc:aeaa1a92dca1f099b2515afd38b9c21de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps Service.__init__() to support returning None from server callback.  <br /></td></tr>
+<tr class="separator:aeaa1a92dca1f099b2515afd38b9c21de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafc748e9ea2d1b81872882a9babf109f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#aafc748e9ea2d1b81872882a9babf109f">rosros.patch.Service__init</a> (self, service_handle, srv_type, srv_name, callback, callback_group, qos_profile)</td></tr>
-<tr class="memdesc:aafc748e9ea2d1b81872882a9babf109f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps Service.__init__() to support returning list or dict from server callback.  <br /></td></tr>
+<tr class="memdesc:aafc748e9ea2d1b81872882a9babf109f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps Service.__init__() to support returning list/dict/None from server callback.  <br /></td></tr>
 <tr class="separator:aafc748e9ea2d1b81872882a9babf109f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b2cb47bd5b02a4b37ceceb00c0b25b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#a4b2cb47bd5b02a4b37ceceb00c0b25b0">rosros.patch.Service__spin</a> (self)</td></tr>
 <tr class="memdesc:a4b2cb47bd5b02a4b37ceceb00c0b25b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spins ROS2 until service or node shutdown.  <br /></td></tr>
 <tr class="separator:a4b2cb47bd5b02a4b37ceceb00c0b25b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39948dea4c776ebfe6538b429243aea8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#a39948dea4c776ebfe6538b429243aea8">rosros.patch.service_serve_wrapper</a> (self, serve)</td></tr>
-<tr class="memdesc:a39948dea4c776ebfe6538b429243aea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns service serve-function wrapped to ensure return with response instance.  <br /></td></tr>
-<tr class="separator:a39948dea4c776ebfe6538b429243aea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23a77f5d8175c03cb7896b540b09ec61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#a23a77f5d8175c03cb7896b540b09ec61">rosros.patch.service_serve_wrapper</a> (self, serve)</td></tr>
+<tr class="memdesc:a23a77f5d8175c03cb7896b540b09ec61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns service serve-function wrapped to ensure return with response instance.  <br /></td></tr>
+<tr class="separator:a23a77f5d8175c03cb7896b540b09ec61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c371ca491a95afa8ae4311461cb9654"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#a2c371ca491a95afa8ae4311461cb9654">rosros.patch.ServiceProxy__call</a> (self, *args, **kwargs)</td></tr>
 <tr class="memdesc:a2c371ca491a95afa8ae4311461cb9654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls the service, supports giving request field values as dictionary in args[0].  <br /></td></tr>
 <tr class="separator:a2c371ca491a95afa8ae4311461cb9654"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -365,6 +368,8 @@ Variables</h2></td></tr>
 <tr class="separator:aecee47b16417944d601c87bb7ab91e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab39e9d5d2650a3f742939336c96e03fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#ab39e9d5d2650a3f742939336c96e03fb">rosros.patch.ROS1_Publisher__publish</a> = rospy.Publisher.publish</td></tr>
 <tr class="separator:ab39e9d5d2650a3f742939336c96e03fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a331f36770bd86995da75b5b19d98e564"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#a331f36770bd86995da75b5b19d98e564">rosros.patch.ROS1_Service__init</a> = rospy.Service.__init__</td></tr>
+<tr class="separator:a331f36770bd86995da75b5b19d98e564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21f6df10597b35bc40c35d75107fb6a8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#a21f6df10597b35bc40c35d75107fb6a8">rosros.patch.ROS1_ServiceProxy__call</a> = rospy.ServiceProxy.call</td></tr>
 <tr class="separator:a21f6df10597b35bc40c35d75107fb6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7809404e6448f7985c76a4462799a14"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1patch.html#aa7809404e6448f7985c76a4462799a14">rosros.patch.ROS1_Subscriber__init</a> = rospy.Subscriber.__init__</td></tr>
@@ -398,7 +403,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="patch_8py.html">patch.py</a></li>
-    <li class="footer">Generated on Wed Dec 6 2023 11:39:12 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Fri Dec 8 2023 10:09:17 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
