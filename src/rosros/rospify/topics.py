@@ -88,8 +88,8 @@ class Subscriber(abc.ABC):
                                 for multiple subscriptions.
         @param   queue_size     maximum number of messages to receive at a time.
                                 This will generally be 1 or None (infinite, default).
-        @param   buff_size      ignored (ROS1 compatibility stand-ine)
-        @param   tcp_nodelay    ignored (ROS1 compatibility stand-ine)
+        @param   buff_size      ignored (ROS1 compatibility stand-in)
+        @param   tcp_nodelay    ignored (ROS1 compatibility stand-in)
 
         @throws  ROSException   if parameters are invalid
         """
