@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    09.12.2022
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 import functools
@@ -135,6 +135,28 @@ class TestTopics(testbase.TestBase):
                     logger.info("Verifying %s=%r in %r.", k, v, name)
                     self.assertEqual(rosros.util.get_value(msg, k), v,
                                      "Unexpected value in %s." % k)
+
+        TYPES_UNAVAILABLE = ["std_msgs/ColorRGBA",
+                             rosros.api.get_message_class("std_msgs/ColorRGBA")]
+        NAME = lambda f: "%s.%s()" % (f.__module__, f.__name__)
+        FUNCS = [rosros.wait_for_publisher, rosros.wait_for_subscriber]
+        for is_sub, func in enumerate(FUNCS):
+            logger.info("Verifying %s.", NAME(func))
+            for name in [next(iter(self._subs if is_sub else self._pubs)), "no/such/topic"]:
+                topictypes = [None] + TYPES_UNAVAILABLE
+                xub = (self._subs if is_sub else self._pubs).get(name)
+                if xub: topictypes += [xub.data_class, rosros.api.get_message_type(xub.data_class)]
+                for topictype in topictypes:
+                    logger.info("Verifying %s for %r, type %r.", NAME(func), name, topictype)
+                    stamp1 = time.monotonic()
+                    received = func(name, 1, topictype)
+                    stamp2 = time.monotonic()
+                    expected = topictype not in TYPES_UNAVAILABLE if xub else False
+                    self.assertEqual(received, expected, "Unexpected result from %s "
+                                     "for %r, type %r." % (NAME(func), name, topictype))
+                    self.assertAlmostEqual(stamp2 - stamp1, 0 if expected else 1, delta=0.2,
+                                           msg="Unexpected return time from %s "
+                                               "for %r, type %r." % (NAME(func), name, topictype))
 
 
 if "__main__" == __name__:

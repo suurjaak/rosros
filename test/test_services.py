@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.04.2022
-@modified    09.12.2022
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 import functools
@@ -120,6 +120,23 @@ class TestServices(testbase.TestBase):
                     logger.info("Verifying %s=%r in %r.", k, v, name)
                     self.assertEqual(rosros.util.get_value(self._reqs[name][0], k), v,
                                      "Unexpected value in %s." % k)
+
+        TYPES_UNAVAILABLE = ["std_srvs/Empty", rosros.api.get_message_class("std_srvs/Empty")]
+        logger.info("Verifying wait_for_service().")
+        for name in [next(iter(self._srvs)), "no/such/service"]:
+            srvtypes, srv = [None] + TYPES_UNAVAILABLE, self._srvs.get(name)
+            if srv: srvtypes += [srv.service_class, rosros.api.get_message_type(srv.service_class)]
+            for srvtype in srvtypes:
+                logger.info("Verifying wait_for_service() for %r, type %r.", name, srvtype)
+                stamp1 = time.monotonic()
+                received = rosros.wait_for_service(name, 1, srvtype)
+                stamp2 = time.monotonic()
+                expected = name in self._srvs and srvtype not in TYPES_UNAVAILABLE
+                self.assertEqual(received, expected, "Unexpected result from wait_for_service() "
+                                 "for %r, type %r." % (name, srvtype))
+                self.assertAlmostEqual(stamp2 - stamp1, 0 if expected else 1, delta=1/3,
+                                       msg="Unexpected return time from wait_for_service() "
+                                           "for %r, type %r." % (name, srvtype))
 
 
 

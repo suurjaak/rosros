@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    30.05.2022
+@modified    06.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.service
@@ -36,19 +36,40 @@ def wait_for_service(service, timeout=None):
     @throws  ROSException           if specified timeout is exceeded
     @throws  ROSInterruptException  if shutdown interrupts wait
     """
-    monostart, timeout = time.monotonic(), ros2.to_sec(timeout)
-    if timeout == 0.:
+    if ros2.to_sec(timeout) == 0.:
         raise ValueError("timeout must be non-zero")
-    deadline = (monostart + timeout) if timeout else 2**31 - 1
+    _wait_for_service(service, timeout)
+
+
+def _wait_for_service(service, timeout=None, cls_or_typename=None):
+    """
+    Blocks until service is available.
+
+    Use this in initialization code if your program depends on a service already running.
+
+    @param   service          name of service
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  service type to expect if any,
+                              as ROS service class object like `std_msgs.msg.Bool`
+                              or service type name like "std_srvs/SetBool"
+
+    @throws  ROSException           if specified timeout is exceeded
+    @throws  ROSInterruptException  if shutdown interrupts wait
+    """
+    monostart, timeout = time.monotonic(), ros2.to_sec(timeout)
+    deadline = (monostart + timeout) if timeout and timeout > 0 else 2**31 - 1
     service, timer, rate, cls, cli = ros2.resolve_name(service), None, None, None, None
+    typename = ros2.canonical(ros2.get_message_type(cls_or_typename) or cls_or_typename or "")
 
     try:
         timer = ros2.create_timer(0.1, callback=None)
         rate = rclpy.timer.Rate(timer, context=ros2.NODE.context)
 
         while not cls and time.monotonic() < deadline:
-            typename = next((tt[0] for n, tt in ros2.get_services() if n == service), None)
-            if typename: cls = ros2.get_message_class(typename)
+            typenames = sum((tt for n, tt in ros2.get_services() if n == service), [])
+            if typenames and (not typename or typename in typenames):
+                cls = ros2.get_message_class(typename or typenames[0])
             else: rate.sleep()
 
         mononow = time.monotonic()

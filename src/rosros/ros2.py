@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    03.12.2023
+@modified    07.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -725,7 +725,7 @@ def set_param(name, value, descriptor=None):
     """
     name = format_param_name(name)
     if not NODE.has_parameter(name):
-        NODE.declare_parameter(name, descriptor=descriptor)
+        NODE.declare_parameter(name, **dict(descriptor=descriptor) if descriptor else {})
     result = NODE.set_parameters([rclpy.Parameter(name, value=value)])[0]
     if not result.successful:
         raise Exception(result.reason)
@@ -1044,7 +1044,7 @@ def get_services(node=None, namespace=None, include_types=True):
     @param   include_types  if false, type names will be returned as an empty list
     """
     services = NODE.get_service_names_and_types() if not node else \
-               NODE.get_service_names_and_types_by_node(**util.namesplit(node)[::-1])
+               NODE.get_service_names_and_types_by_node(*util.namesplit(node)[::-1])
     return [[n, sorted(map(canonical, tt)) if include_types else []]
             for n, tt in sorted(services) if not namespace or n.startswith(namespace)]
 
@@ -1505,6 +1505,78 @@ def to_time(val):
     return result
 
 
+def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one publisher.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a publisher is available
+    """
+    result = False
+    timeout, first = to_sec(timeout), False
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    from . import api  # Late import to avoid circular
+    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
+    if "*" == typename: typename = None  # AnyMsg
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        pubs = NODE.get_publishers_info_by_topic(topic)
+        exists, first = bool(pubs), False
+        result = exists and (not typename or any(typename == x.topic_type for x in pubs))
+        spin_once(0.1) if not result else None
+    return result
+
+
+def wait_for_subscriber(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one subscriber.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a subscriber is available
+    """
+    result = False
+    timeout, first = to_sec(timeout), False
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    from . import api  # Late import to avoid circular
+    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
+    if "*" == typename: typename = None  # AnyMsg
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        subs = NODE.get_subscriptions_info_by_topic(topic)
+        exists, first = bool(subs), False
+        result = exists and (not typename or any(typename == x.topic_type for x in subs))
+        spin_once(0.1) if not result else None
+    return result
+
+
+def wait_for_service(service, timeout=None, cls_or_typename=None):
+    """
+    Blocks until service is available.
+
+    @param   service          name of service
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  service type to expect if any,
+                              as ROS service class object like `std_msgs.msg.Bool`
+                              or service type name like "std_srvs/SetBool"
+    @return                   whether the service is available
+    """
+    from . rospify.service import _wait_for_service  # Late import to avoid circular
+    try:
+        _wait_for_service(service, max(0, timeout or 0), cls_or_typename)
+    except Exception:
+        return False
+    return True
+
+
 __all__ = [
     "AnyMsg", "Bag", "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR",
     "PRIVATE_PREFIX", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
@@ -1519,6 +1591,7 @@ __all__ = [
     "has_param", "init_node", "init_params", "is_ros_message", "is_ros_service",
     "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
     "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "spin",
-    "spin_once", "spin_until_future_complete", "start_spin", "time_message", "to_duration",
-    "to_nsec", "to_sec", "to_sec_nsec", "to_time"
+    "spin_once", "spin_until_future_complete", "start_spin",
+    "time_message", "to_duration", "to_nsec", "to_sec", "to_sec_nsec", "to_time",
+    "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]
