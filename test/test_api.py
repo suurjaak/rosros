@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    03.12.2023
+@modified    08.12.2023
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -39,8 +39,8 @@ class TestAPI(testbase.TestBase):
 
     def test_messages(self):
         """Tests API functions for dealing with messages."""
-        NAME = lambda f: "%s.%s()" % (f.__module__, f.__name__)
-        ERR  = lambda f: "Unexpected result from %s." % f.__name__
+        NAME = lambda f, *a: "%s.%s(%s)" % (f.__module__, (f.__name__), ", ".join(map(repr, a)))
+        ERR  = lambda f, *a: "Unexpected result from %s(%s)." % (f.__name__, ", ".join(map(repr, a)))
 
         func = api.get_message_class
         with self.subTest(NAME(func)):
@@ -163,7 +163,8 @@ class TestAPI(testbase.TestBase):
             stamp = api.make_time(1, 2)
             msg = std_msgs.msg.Header(frame_id=self.NAME, stamp=stamp if ROS1 else stamp.to_msg())
             if ROS1: msg.seq = dct["seq"]
-            self.assertEqual(func(dct, std_msgs.msg.Header()), msg, ERR(func))
+            for msg_or_type in ("std_msgs/Header", std_msgs.msg.Header, std_msgs.msg.Header()):
+                self.assertEqual(func(dct, msg_or_type), msg, ERR(func, msg_or_type))
 
         func = api.message_to_dict
         with self.subTest(NAME(func)):

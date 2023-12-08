@@ -345,7 +345,7 @@ Can be used as stand-alone library functions without initializing rosros core.
 |                                         |                                                                                               | |
 |                                         | **Message conversion**                                                                        | |
 | `rosros.api.deserialize_message`        | returns ROS message or service request/response instantiated from serialized binary           | `raw, cls_or_typename`
-| `rosros.api.dict_to_message`            | returns given ROS message populated from Python dictionary                                    | `dct, msg`
+| `rosros.api.dict_to_message`            | returns ROS message populated from Python dictionary                                          | `dct, msg_or_type`
 | `rosros.api.message_to_dict`            | returns ROS message as nested Python dictionary;                                              | `msg, replace=None`
 |                                         | with optional replacements for certain values like `{math.nan: None}`                         | |
 | `rosros.api.message_to_str`             | returns ROS message as an evaluatable string, e.g. `"std_msgs.msg.UInt8(data=0)"`             | `msg, indent=None`

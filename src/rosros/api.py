@@ -259,12 +259,18 @@ def make_full_typename(typename, category="msg"):
     return INTER.join(next((x[0], x[-1]) for x in [typename.split("/")]))
 
 
-def dict_to_message(dct, msg):
+def dict_to_message(dct, msg_or_type):
     """
-    Returns given ROS message populated from Python dictionary.
+    Returns ROS message populated from Python dictionary.
 
     Raises TypeError on attribute value type mismatch.
+
+    @param   msg_or_type  canonical or full class name like "std_msgs/Bool" or "std_msgs/msg/Bool",
+                          or class instance like `std_msgs.msg.Bool()`,
+                          or class object like `std_msgs.msg.Bool`
     """
+    msg = get_message_class(msg_or_type) if isinstance(msg_or_type, str) else msg_or_type
+    msg = msg() if inspect.isclass(msg) else msg
     for name, typename in ros.get_message_fields(msg).items():
         if name not in dct:
             continue  # for name,
