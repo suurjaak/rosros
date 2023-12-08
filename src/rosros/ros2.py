@@ -16,6 +16,7 @@ import array
 import collections
 import datetime
 import decimal
+import functools
 import inspect
 import io
 import logging
@@ -761,6 +762,18 @@ def delete_param(name):
 def ok():
     """Returns whether ROS2 has been initialized and is not shut down."""
     return rclpy.ok()
+
+
+def on_shutdown(callback, *args, **kwargs):
+    """
+    Registers function to be called on shutdown, after node has been torn down.
+
+    Function is called with given arguments.
+    """
+    _assert_node()
+    if args or kwargs: callback = functools.partial(callback, *args, **kwargs)
+    from . rospify import client  # Late import to avoid circular
+    client.on_shutdown(callback)
 
 
 def start_spin():
@@ -1637,9 +1650,9 @@ __all__ = [
     "get_params", "get_rostime", "get_service_definition", "get_service_request_class",
     "get_service_response_class", "get_services", "get_topic_qos", "get_topics",
     "has_param", "init_node", "init_params", "is_ros_message", "is_ros_service",
-    "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
-    "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "sleep",
-    "spin", "spin_once", "spin_until_future_complete", "start_spin",
+    "is_ros_time", "make_duration", "make_time", "ok", "on_shutdown", "register_init",
+    "remap_name", "resolve_name", "scalar", "serialize_message", "set_param", "shutdown",
+    "sleep", "spin", "spin_once", "spin_until_future_complete", "start_spin",
     "time_message", "to_duration", "to_nsec", "to_sec", "to_sec_nsec", "to_time",
     "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]

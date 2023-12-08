@@ -166,6 +166,15 @@ def ok():
     return ros.ok()
 
 
+def on_shutdown(callback, *args, **kwargs):
+    """
+    Registers function to be called on shutdown, after node has been torn down.
+
+    Function is called with given arguments.
+    """
+    ros.on_shutdown(callback, *args, **kwargs)
+
+
 def shutdown():
     """Shuts down live ROS node, if any."""
     ros.shutdown()
@@ -430,12 +439,11 @@ def wait_for_service(service, timeout=None, cls_or_typename=None):
 
 __all__ = [
     "ros1", "ros2", "AnyMsg", "Bag",
-    "create_client", "create_publisher", "create_rate", "create_service",
-    "create_subscriber", "create_timer", "delete_param", "destroy_entity",
-    "get_logger", "get_namespace", "get_node_name", "get_nodes", "get_param",
-    "get_param_names", "get_params", "get_rostime", "get_services", "get_topics",
-    "has_param", "init_node", "init_params", "ok", "register_init", "remap_name",
-    "resolve_name", "set_param", "sleep", "shutdown", "spin", "spin_once",
-    "spin_until_future_complete", "start_spin",
+    "create_client", "create_publisher", "create_rate", "create_service", "create_subscriber",
+    "create_timer", "delete_param", "destroy_entity", "get_logger", "get_namespace",
+    "get_node_name", "get_nodes", "get_param", "get_param_names", "get_params", "get_rostime",
+    "get_services", "get_topics", "has_param", "init_node", "init_params", "ok", "on_shutdown",
+    "register_init", "remap_name", "resolve_name", "set_param", "sleep", "shutdown",
+    "spin", "spin_once", "spin_until_future_complete", "start_spin",
     "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]

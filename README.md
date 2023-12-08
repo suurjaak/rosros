@@ -234,6 +234,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | `rosros.spin_once`                  | waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2     | `timeout=None`
 | `rosros.spin_until_future_complete` | spins ROS until future complete or timeout reached or ROS shut down                        | `future, timeout=None`
 | `rosros.ok`                         | returns whether ROS has been initialized and is not shut down                              | |
+| `rosros.on_shutdown`                | registers function to be called on shutdown                                                | `callback, *args, **kwargs`
 | `rosros.shutdown`                   | shuts down live ROS node, if any                                                           | |
 |                                     |                                                                                            | |
 |                                     | **Parameters**                                                                             | |
