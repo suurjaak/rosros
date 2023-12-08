@@ -8,8 +8,8 @@ This file is part of rosros - simple unified interface to ROS1 / ROS2.
 Released under the BSD License.
 
 @author      Erki Suurjaak
-@created     16.04.2022
-@modified    05.12.2023
+@created     86.04.2022
+@modified    08.12.2023
 ------------------------------------------------------------------------------
 """
 import copy
@@ -555,10 +555,11 @@ class TestRospify(testbase.TestBase):
         for topic1, topic2 in self.REMAPS.items():
             self.assertEqual(rospy.remap_name(topic1), topic2, "Unexpected result from remap_name().")
 
-        start = time.time()
-        rospy.sleep(1)
-        self.assertAlmostEqual(time.time() - 1, start, delta=0.2,
-                               msg="Unexpected elapsed time from sleep().")
+        for duration in (1, -1, 0):
+            start = time.time()
+            rospy.sleep(duration)
+            self.assertAlmostEqual(time.time() - max(0, duration), start, delta=0.2,
+                                   msg="Unexpected elapsed time from sleep(%s)." % duration)
 
         for name in self._clis:
             try:

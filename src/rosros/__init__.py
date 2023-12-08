@@ -8,13 +8,13 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    07.12.2023
+@modified    08.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros
 __title__        = "rosros"
-__version__      = "0.2.2.dev10"
-__version_info__ = (0, 2, 2, "dev10")
+__version__      = "0.2.3.dev0"
+__version_info__ = (0, 2, 3, "dev0")
 
 from rosros import api
 from rosros import rclify
