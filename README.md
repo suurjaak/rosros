@@ -260,7 +260,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | `rosros.sleep`                      | sleeps for the specified duration in ROS time                                              | `duration`
 | `rosros.wait_for_publisher`         | blocks until topic has at least one publisher                                              | `topic, timeout=None, cls_or_typename=None`
 | `rosros.wait_for_subscriber`        | blocks until topic has at least one subscriber                                             | `topic, timeout=None, cls_or_typename=None`
-| `rosros.wait_for_publisher`         | blocks until service is available                                                          | `service, timeout=None, cls_or_typename=None`
+| `rosros.wait_for_service`           | blocks until service is available                                                          | `service, timeout=None, cls_or_typename=None`
 |                                     |                                                                                            | |
 |                                     | **ROS bags**                                                                               | |
 | `rosros.Bag`                        | ROS bag reader and writer;                                                                 | |
