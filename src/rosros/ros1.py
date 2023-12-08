@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    07.12.2023
+@modified    08.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -1034,6 +1034,17 @@ def scalar(typename):
     return typename[:typename.index("[")] if "[" in typename else typename
 
 
+def sleep(duration):
+    """
+    Sleeps for the specified duration in ROS time.
+
+    Raises error on ROS shutdown or ROS time jumping backwards
+
+    @param   duration  time to sleep, as seconds or ROS duration, <=0 returns immediately
+    """
+    rospy.sleep(to_duration(duration))
+
+
 def to_duration(val):
     """Returns value as ROS1 duration if convertible (int/float/time/datetime/decimal), else value."""
     result = val
@@ -1169,7 +1180,7 @@ __all__ = [
     "get_service_definition", "get_service_request_class", "get_service_response_class",
     "get_services", "get_topics", "has_param", "init_node", "init_params", "is_ros_message",
     "is_ros_service", "is_ros_time", "make_duration", "make_time", "ok", "register_init",
-    "remap_name", "resolve_name", "scalar", "serialize_message", "set_param", "shutdown",
+    "remap_name", "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "sleep",
     "spin", "spin_once", "spin_until_future_complete", "start_spin", "to_duration", "to_nsec",
     "to_sec", "to_sec_nsec", "to_time", "wait_for_publisher", "wait_for_subscriber",
     "wait_for_service"

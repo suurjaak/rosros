@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    06.12.2023
+@modified    08.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -372,6 +372,17 @@ def register_init(node=None):
     ros1.register_init() if ros1 else ros2.register_init(node)
 
 
+def sleep(duration):
+    """
+    Sleeps for the specified duration in ROS time.
+
+    Raises error on ROS shutdown or ROS time jumping backwards
+
+    @param   duration  time to sleep, as seconds or ROS duration, <=0 returns immediately
+    """
+    ros.sleep(duration)
+
+
 def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
     """
     Blocks until topic has at least one publisher.
@@ -424,7 +435,7 @@ __all__ = [
     "get_logger", "get_namespace", "get_node_name", "get_nodes", "get_param",
     "get_param_names", "get_params", "get_rostime", "get_services", "get_topics",
     "has_param", "init_node", "init_params", "ok", "register_init", "remap_name",
-    "resolve_name", "set_param", "shutdown", "spin", "spin_once",
+    "resolve_name", "set_param", "sleep", "shutdown", "spin", "spin_once",
     "spin_until_future_complete", "start_spin",
     "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]

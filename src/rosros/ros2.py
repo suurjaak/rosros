@@ -1416,6 +1416,18 @@ def scalar(typename):
     return typename
 
 
+def sleep(duration):
+    """
+    Sleeps for the specified duration in ROS time.
+
+    Raises error on ROS shutdown or ROS time jumping backwards
+
+    @param   duration  time to sleep, as seconds or ROS duration, <=0 returns immediately
+    """
+    from . import rospify  # Late import to avoid circular
+    rospify.sleep(duration)
+
+
 def time_message(val, to_message=True, clock_type=None):
     """
     Converts ROS2 time/duration between `rclpy` and `builtin_interfaces` objects.
@@ -1590,8 +1602,8 @@ __all__ = [
     "get_service_response_class", "get_services", "get_topic_qos", "get_topics",
     "has_param", "init_node", "init_params", "is_ros_message", "is_ros_service",
     "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
-    "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "spin",
-    "spin_once", "spin_until_future_complete", "start_spin",
+    "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "sleep",
+    "spin", "spin_once", "spin_until_future_complete", "start_spin",
     "time_message", "to_duration", "to_nsec", "to_sec", "to_sec_nsec", "to_time",
     "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]

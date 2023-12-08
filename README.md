@@ -256,6 +256,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | `rosros.create_rate`                | returns a ROS rate instance, for sleeping at a fixed rate                                  | `frequency`
 | `rosros.destroy_entity`             | closes the given publisher, subscriber, service client, service server, or timer instance  | `item`
 | `rosros.AnyMsg`                     | `rospy.AnyMsg` in ROS1, stand-in class with equivalent functionality in ROS2               | |
+| `rosros.sleep`                      | sleeps for the specified duration in ROS time                                              | `duration`
 | `rosros.wait_for_publisher`         | blocks until topic has at least one publisher                                              | `topic, timeout=None, cls_or_typename=None`
 | `rosros.wait_for_subscriber`        | blocks until topic has at least one subscriber                                             | `topic, timeout=None, cls_or_typename=None`
 | `rosros.wait_for_publisher`         | blocks until service is available                                                          | `service, timeout=None, cls_or_typename=None`
