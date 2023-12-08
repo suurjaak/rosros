@@ -1145,6 +1145,94 @@ def _resolve_name(name, namespace=None):
     return name2
 
 
+def sleep(duration):
+    """
+    Sleeps for the specified duration in ROS time.
+
+    Raises error on ROS shutdown or ROS time jumping backwards
+
+    @param   duration  time to sleep, as seconds or ROS duration, <=0 returns immediately
+    """
+    _assert_node()
+    from . import rospify  # Late import to avoid circular
+    rospify.sleep(duration)
+
+
+def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one publisher.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a publisher is available
+    """
+    _assert_node()
+    result = False
+    timeout, first = to_sec(timeout), False
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    from . import api  # Late import to avoid circular
+    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
+    if "*" == typename: typename = None  # AnyMsg
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        pubs = NODE.get_publishers_info_by_topic(topic)
+        exists, first = bool(pubs), False
+        result = exists and (not typename or any(typename == x.topic_type for x in pubs))
+        spin_once(0.1) if not result else None
+    return result
+
+
+def wait_for_subscriber(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one subscriber.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a subscriber is available
+    """
+    _assert_node()
+    result = False
+    timeout, first = to_sec(timeout), False
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    from . import api  # Late import to avoid circular
+    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
+    if "*" == typename: typename = None  # AnyMsg
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        subs = NODE.get_subscriptions_info_by_topic(topic)
+        exists, first = bool(subs), False
+        result = exists and (not typename or any(typename == x.topic_type for x in subs))
+        spin_once(0.1) if not result else None
+    return result
+
+
+def wait_for_service(service, timeout=None, cls_or_typename=None):
+    """
+    Blocks until service is available.
+
+    @param   service          name of service
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  service type to expect if any,
+                              as ROS service class object like `std_msgs.msg.Bool`
+                              or service type name like "std_srvs/SetBool"
+    @return                   whether the service is available
+    """
+    _assert_node()
+    from . rospify.service import _wait_for_service  # Late import to avoid circular
+    try:
+        _wait_for_service(service, max(0, timeout or 0), cls_or_typename)
+    except Exception:
+        return False
+    return True
+
+
 # -------------------------------- GENERAL API --------------------------------
 
 
@@ -1448,19 +1536,6 @@ def scalar(typename):
     return typename
 
 
-def sleep(duration):
-    """
-    Sleeps for the specified duration in ROS time.
-
-    Raises error on ROS shutdown or ROS time jumping backwards
-
-    @param   duration  time to sleep, as seconds or ROS duration, <=0 returns immediately
-    """
-    _assert_node()
-    from . import rospify  # Late import to avoid circular
-    rospify.sleep(duration)
-
-
 def time_message(val, to_message=True, clock_type=None):
     """
     Converts ROS2 time/duration between `rclpy` and `builtin_interfaces` objects.
@@ -1548,81 +1623,6 @@ def to_time(val):
     elif isinstance(val, tuple(ROS_TIME_MESSAGES.values())):
         result = make_time(val.sec, val.nanosec)
     return result
-
-
-def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
-    """
-    Blocks until topic has at least one publisher.
-
-    @param   topic            name of topic to open
-    @param   timeout          time to wait at most, as seconds or ROS duration;
-                              None or <0 waits forever
-    @param   cls_or_typename  message type to expect if any,
-                              as ROS message class object like `std_msgs.msg.Bool`
-                              or message type name like "std_msgs/Bool"
-    @return                   whether a publisher is available
-    """
-    _assert_node()
-    result = False
-    timeout, first = to_sec(timeout), False
-    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
-    from . import api  # Late import to avoid circular
-    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
-    if "*" == typename: typename = None  # AnyMsg
-    while not result and (first or deadline is None or time.monotonic() < deadline):
-        pubs = NODE.get_publishers_info_by_topic(topic)
-        exists, first = bool(pubs), False
-        result = exists and (not typename or any(typename == x.topic_type for x in pubs))
-        spin_once(0.1) if not result else None
-    return result
-
-
-def wait_for_subscriber(topic, timeout=None, cls_or_typename=None):
-    """
-    Blocks until topic has at least one subscriber.
-
-    @param   topic            name of topic to open
-    @param   timeout          time to wait at most, as seconds or ROS duration;
-                              None or <0 waits forever
-    @param   cls_or_typename  message type to expect if any,
-                              as ROS message class object like `std_msgs.msg.Bool`
-                              or message type name like "std_msgs/Bool"
-    @return                   whether a subscriber is available
-    """
-    _assert_node()
-    result = False
-    timeout, first = to_sec(timeout), False
-    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
-    from . import api  # Late import to avoid circular
-    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
-    if "*" == typename: typename = None  # AnyMsg
-    while not result and (first or deadline is None or time.monotonic() < deadline):
-        subs = NODE.get_subscriptions_info_by_topic(topic)
-        exists, first = bool(subs), False
-        result = exists and (not typename or any(typename == x.topic_type for x in subs))
-        spin_once(0.1) if not result else None
-    return result
-
-
-def wait_for_service(service, timeout=None, cls_or_typename=None):
-    """
-    Blocks until service is available.
-
-    @param   service          name of service
-    @param   timeout          time to wait at most, as seconds or ROS duration;
-                              None or <0 waits forever
-    @param   cls_or_typename  service type to expect if any,
-                              as ROS service class object like `std_msgs.msg.Bool`
-                              or service type name like "std_srvs/SetBool"
-    @return                   whether the service is available
-    """
-    _assert_node()
-    from . rospify.service import _wait_for_service  # Late import to avoid circular
-    try:
-        _wait_for_service(service, max(0, timeout or 0), cls_or_typename)
-    except Exception:
-        return False
-    return True
 
 
 __all__ = [
