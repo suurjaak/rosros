@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    08.12.2023
+@modified    09.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -171,6 +171,8 @@ def on_shutdown(callback, *args, **kwargs):
     Registers function to be called on shutdown, after node has been torn down.
 
     Function is called with given arguments.
+
+    Note: function may not get called if process is killed.
     """
     ros.on_shutdown(callback, *args, **kwargs)
 

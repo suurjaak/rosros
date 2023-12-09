@@ -168,15 +168,7 @@ def myargv(argv=None):
 
 def on_shutdown(h):
     """Registers function to be called on shutdown, after node has been torn down."""
-
-    # ROS2 requires that the callback be a bound method
-    class Cls:
-        def __init__(self, func):
-            self.func = func
-        def callback(self):
-            return self.func()
-
-    ros2.NODE.context.on_shutdown(Cls(h).callback)
+    ros2.on_shutdown(h)
 
 
 def search_param(param_name):

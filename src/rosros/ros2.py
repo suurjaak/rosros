@@ -8,15 +8,15 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    08.12.2023
+@modified    09.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
 import array
+import atexit
 import collections
 import datetime
 import decimal
-import functools
 import inspect
 import io
 import logging
@@ -107,6 +107,9 @@ SPINNER = None
 
 ## Flag for `shutdown()` been called
 SHUTDOWN = False
+
+## Callbacks registered with on_shutdown()
+SHUTDOWN_CALLBACKS = []
 
 
 logger = util.ThrottledLogger(logging.getLogger())
@@ -770,10 +773,22 @@ def on_shutdown(callback, *args, **kwargs):
 
     Function is called with given arguments.
     """
-    _assert_node()
-    if args or kwargs: callback = functools.partial(callback, *args, **kwargs)
-    from . rospify import client  # Late import to avoid circular
-    client.on_shutdown(callback)
+    class CallWrapper:
+        def __init__(self, func, *args, **kwargs):
+            self.func, self.args, self.kwargs = func, args, kwargs
+            self.called = False
+        def __call__(self):
+            if self.called: return
+            self.called = True
+            return self.func(*self.args, **self.kwargs)
+
+    wrapper = CallWrapper(callback, *args, **kwargs)
+    with Mutex.NODE:
+        # Use local fallback, as ROS2 on_shutdown API is utterly unreliable
+        if not SHUTDOWN_CALLBACKS: atexit.register(shutdown)
+        SHUTDOWN_CALLBACKS.append(wrapper)
+        # ROS2 in some versions requires that the callback be a bound method
+        rclpy.get_default_context().on_shutdown(wrapper.__call__)
 
 
 def start_spin():
@@ -858,17 +873,26 @@ def spin_until_future_complete(future, timeout=None):
 
 def shutdown():
     """Shuts down ROS2 execution, if any."""
-    global NODE, EXECUTOR, SPINNER, SHUTDOWN
-    if SHUTDOWN: return
+    def run_callbacks():
+        with Mutex.NODE:
+            cbs, SHUTDOWN_CALLBACKS[:] = SHUTDOWN_CALLBACKS[:], []
+        for cb in cbs:
+            try: cb()
+            except Exception: logger.exception("Error calling shutdown callback %r.", cb)
 
-    with Mutex.NODE:
+    global NODE, EXECUTOR, SPINNER, SHUTDOWN
+    try:
         if SHUTDOWN: return
 
-        node, executor = NODE, EXECUTOR
-        rclpy.ok() and rclpy.shutdown()
-        NODE, EXECUTOR, SPINNER, SHUTDOWN = None, None, None, True
-        executor and executor.shutdown()
-        node and node.destroy_node()
+        with Mutex.NODE:
+            if SHUTDOWN: return
+
+            node, executor = NODE, EXECUTOR
+            rclpy.ok() and rclpy.shutdown()
+            NODE, EXECUTOR, SPINNER, SHUTDOWN = None, None, None, True
+            executor and executor.shutdown()
+            node and node.destroy_node()
+    finally: run_callbacks()
 
 
 def create_client(service, cls_or_typename, **qosargs):
