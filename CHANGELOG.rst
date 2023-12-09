@@ -7,6 +7,7 @@ Changelog for package rosros
 * add rosros.on_shutdown()
 * add rosros.sleep()
 * support giving message class or typename in api.dict_to_message()
+* add test for core functions
 * fix rospify.sleep() not returning immediately for argument value <=0
 
 0.2.2 (2023-12-07)
