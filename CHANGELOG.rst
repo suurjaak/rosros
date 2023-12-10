@@ -2,10 +2,11 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.2.3 (2023-12-08)
+0.2.3 (2023-12-10)
 ------------------
 * add rosros.on_shutdown()
 * add rosros.sleep()
+* add optional reason-parameter to rosros.shutdown()
 * support giving message class or typename in api.dict_to_message()
 * add test for core functions
 * fix rospify.sleep() not returning immediately for argument value <=0

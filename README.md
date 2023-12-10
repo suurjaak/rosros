@@ -235,7 +235,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | `rosros.spin_until_future_complete` | spins ROS until future complete or timeout reached or ROS shut down                        | `future, timeout=None`
 | `rosros.ok`                         | returns whether ROS has been initialized and is not shut down                              | |
 | `rosros.on_shutdown`                | registers function to be called on shutdown                                                | `callback, *args, **kwargs`
-| `rosros.shutdown`                   | shuts down live ROS node, if any                                                           | |
+| `rosros.shutdown`                   | shuts down live ROS node, if any                                                           | `reason=None`
 |                                     |                                                                                            | |
 |                                     | **Parameters**                                                                             | |
 | `rosros.init_params`                | sets all parameters on node from defaults dictionary, returns full parameters dictionary.  | `defaults=None, **defaultkws`

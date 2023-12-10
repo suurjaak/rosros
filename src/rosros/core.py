@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    09.12.2023
+@modified    10.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -177,9 +177,13 @@ def on_shutdown(callback, *args, **kwargs):
     ros.on_shutdown(callback, *args, **kwargs)
 
 
-def shutdown():
-    """Shuts down live ROS node, if any."""
-    ros.shutdown()
+def shutdown(reason=None):
+    """
+    Shuts down live ROS node, if any.
+
+    @param   reason  shutdown reason to log, if any
+    """
+    ros.shutdown(reason)
 
 
 def create_publisher(topic, cls_or_typename, latch=False, queue_size=0, **qosargs):

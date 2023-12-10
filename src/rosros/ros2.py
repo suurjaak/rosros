@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    09.12.2023
+@modified    10.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -871,8 +871,12 @@ def spin_until_future_complete(future, timeout=None):
         future.cancel("ROS shut down")
 
 
-def shutdown():
-    """Shuts down ROS2 execution, if any."""
+def shutdown(reason=None):
+    """
+    Shuts down ROS2 execution, if any.
+
+    @param   reason  shutdown reason to log, if any
+    """
     def run_callbacks():
         with Mutex.NODE:
             cbs, SHUTDOWN_CALLBACKS[:] = SHUTDOWN_CALLBACKS[:], []
@@ -887,6 +891,7 @@ def shutdown():
         with Mutex.NODE:
             if SHUTDOWN: return
 
+            if reason: logger.info("shutdown [%s]", reason)
             node, executor = NODE, EXECUTOR
             rclpy.ok() and rclpy.shutdown()
             NODE, EXECUTOR, SPINNER, SHUTDOWN = None, None, None, True

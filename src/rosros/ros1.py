@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    08.12.2023
+@modified    10.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros1
@@ -595,9 +595,13 @@ def spin_until_future_complete(future, timeout=None):
         future.cancel("ROS shut down")
 
 
-def shutdown():
-    """Sends the shutdown signal to rospy."""
-    rospy.signal_shutdown(reason="")
+def shutdown(reason=None):
+    """
+    Sends the shutdown signal to rospy.
+
+    @param   reason  shutdown reason to log, if any
+    """
+    rospy.signal_shutdown(reason or "")
 
 
 def create_client(service, cls_or_typename):
