@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.2</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.3</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -108,9 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a13ad2c0ef9c05a5779aa19916274d4d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1api.html#a13ad2c0ef9c05a5779aa19916274d4d6">deserialize_message</a> (raw, cls_or_typename)</td></tr>
 <tr class="memdesc:a13ad2c0ef9c05a5779aa19916274d4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS message or service request/response instantiated from serialized binary.  <br /></td></tr>
 <tr class="separator:a13ad2c0ef9c05a5779aa19916274d4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29ed3d4799d984a319edd22828980ef2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1api.html#a29ed3d4799d984a319edd22828980ef2">dict_to_message</a> (dct, msg)</td></tr>
-<tr class="memdesc:a29ed3d4799d984a319edd22828980ef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns given ROS message populated from Python dictionary.  <br /></td></tr>
-<tr class="separator:a29ed3d4799d984a319edd22828980ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03de3fe306fb428e664b228614fbd4f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1api.html#a03de3fe306fb428e664b228614fbd4f5">dict_to_message</a> (dct, msg_or_type)</td></tr>
+<tr class="memdesc:a03de3fe306fb428e664b228614fbd4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS message populated from Python dictionary.  <br /></td></tr>
+<tr class="separator:a03de3fe306fb428e664b228614fbd4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05f861c6e523e89e96699d24e39b8c54"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1api.html#a05f861c6e523e89e96699d24e39b8c54">format_param_name</a> (name)</td></tr>
 <tr class="memdesc:a05f861c6e523e89e96699d24e39b8c54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns parameter name with correct separator for ROS version, and leading sigils stripped.  <br /></td></tr>
 <tr class="separator:a05f861c6e523e89e96699d24e39b8c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -304,12 +304,12 @@ Variables</h2></td></tr>
 
 <p>Returns ROS message or service request/response instantiated from serialized binary. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00342">342</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00347">347</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
-<a id="a29ed3d4799d984a319edd22828980ef2" name="a29ed3d4799d984a319edd22828980ef2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29ed3d4799d984a319edd22828980ef2">&#9670;&#160;</a></span>dict_to_message()</h2>
+<a id="a03de3fe306fb428e664b228614fbd4f5" name="a03de3fe306fb428e664b228614fbd4f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03de3fe306fb428e664b228614fbd4f5">&#9670;&#160;</a></span>dict_to_message()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,7 +324,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>msg</em>&#160;</td>
+          <td class="paramname"><em>msg_or_type</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -334,10 +334,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns given ROS message populated from Python dictionary. </p>
-<p>Raises TypeError on attribute value type mismatch. </p>
+<p>Returns ROS message populated from Python dictionary. </p>
+<p>Raises TypeError on attribute value type mismatch. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg_or_type</td><td>canonical or full class name like "std_msgs/Bool" or "std_msgs/msg/Bool", or class instance like `std_msgs.msg.Bool()`, or class object like `std_msgs.msg.Bool` </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00259">259</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00262">262</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -932,7 +937,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00287">287</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00292">292</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -970,7 +975,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00311">311</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00316">316</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -993,7 +998,7 @@ Variables</h2></td></tr>
 <p>Returns scalar type from ROS message data type, like "uint8" from uint8-array. </p>
 <p>Returns type unchanged if an ordinary type. In ROS2, returns unbounded type, e.g. "string" from "string&lt;=10[&lt;=5]". </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00353">353</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00358">358</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1015,7 +1020,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS message or service request/response as a serialized binary of `bytes()`. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00337">337</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00342">342</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1048,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00364">364</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00369">369</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1090,7 +1095,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value converted to appropriate type, or original value if not convertible </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00379">379</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00384">384</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1112,7 +1117,7 @@ Variables</h2></td></tr>
 
 <p>Returns value as datetime.datetime if value is ROS time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00384">384</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00389">389</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1139,7 @@ Variables</h2></td></tr>
 
 <p>Returns value as decimal.Decimal if value is ROS time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00390">390</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00395">395</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1156,7 +1161,7 @@ Variables</h2></td></tr>
 
 <p>Returns value as ROS duration if convertible (int/float/time/datetime/decimal), else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00397">397</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00402">402</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1178,7 +1183,7 @@ Variables</h2></td></tr>
 
 <p>Returns value in nanoseconds if value is ROS time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00411">411</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00416">416</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1200,7 +1205,7 @@ Variables</h2></td></tr>
 
 <p>Returns value in seconds if value is ROS time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00416">416</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00421">421</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1222,7 +1227,7 @@ Variables</h2></td></tr>
 
 <p>Returns value as (seconds, nanoseconds) if value is ROS time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00421">421</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00426">426</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1244,7 +1249,7 @@ Variables</h2></td></tr>
 
 <p>Returns value as ROS time if convertible (int/float/duration/datetime/decimal), else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00426">426</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="api_8py_source.html#l00431">431</a> of file <a class="el" href="api_8py_source.html">api.py</a>.</p>
 
 </div>
 </div>
@@ -1509,7 +1514,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1api.html">api</a></li>
-    <li class="footer">Generated on Fri Dec 8 2023 10:09:17 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Sun Dec 10 2023 19:58:56 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

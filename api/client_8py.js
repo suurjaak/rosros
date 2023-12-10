@@ -17,7 +17,6 @@ var client_8py =
     [ "DEBUG", "client_8py.html#a1e9f27c2ebc10d6bb2e5cfa3f677452d", null ],
     [ "ERROR", "client_8py.html#a69969334ff486aba4744e59c4a8c8033", null ],
     [ "FATAL", "client_8py.html#aa19637357805bcb7dae7e860801e59ff", null ],
-    [ "func", "client_8py.html#a8248182d9ecddeb6602691eb8feb0fc0", null ],
     [ "get_param_cached", "client_8py.html#a9614483bd2cda54a266d58f51803e82e", null ],
     [ "INFO", "client_8py.html#a44b6d02fc52a34059846393124f27e7f", null ],
     [ "WARN", "client_8py.html#a281159e13506d01f3641acfd991a7197", null ]

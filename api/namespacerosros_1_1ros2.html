@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.2</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.3</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -115,6 +115,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ab77258c5b1b789675e954b200e9b750b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ab77258c5b1b789675e954b200e9b750b">_assert_node</a> ()</td></tr>
+<tr class="memdesc:ab77258c5b1b789675e954b200e9b750b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raises if ROS2 node not inited.  <br /></td></tr>
+<tr class="separator:ab77258c5b1b789675e954b200e9b750b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60734ed891f66fe4b6bb6ef26ffef92a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a60734ed891f66fe4b6bb6ef26ffef92a">_get_message_type_hash</a> (typename)</td></tr>
 <tr class="memdesc:a60734ed891f66fe4b6bb6ef26ffef92a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS2 message type MD5 hash (internal caching method).  <br /></td></tr>
 <tr class="separator:a60734ed891f66fe4b6bb6ef26ffef92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,7 +226,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ae0b32e6c373780b2db058cf8d013ea80"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ae0b32e6c373780b2db058cf8d013ea80">has_param</a> (name)</td></tr>
 <tr class="memdesc:ae0b32e6c373780b2db058cf8d013ea80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the parameter exists.  <br /></td></tr>
 <tr class="separator:ae0b32e6c373780b2db058cf8d013ea80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17ad3f20b2091b8c4fafb1a37b3bff33"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a17ad3f20b2091b8c4fafb1a37b3bff33">init_node</a> (name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False)</td></tr>
+<tr class="memitem:a17ad3f20b2091b8c4fafb1a37b3bff33"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a17ad3f20b2091b8c4fafb1a37b3bff33">init_node</a> (name, <a class="el" href="namespacerosros_1_1ros2.html#a16bfd9fd8f496a38840f95a0d084057f">args</a>=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True, multithreaded=True, reentrant=False)</td></tr>
 <tr class="memdesc:a17ad3f20b2091b8c4fafb1a37b3bff33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes rclpy and creates ROS2 node.  <br /></td></tr>
 <tr class="separator:a17ad3f20b2091b8c4fafb1a37b3bff33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24574039e18c378f6275dbe72a40cd5e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a24574039e18c378f6275dbe72a40cd5e">init_params</a> (defaults=None, **defaultkws)</td></tr>
@@ -247,6 +250,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad357a254e64ba05410142fa2c59d0b79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ad357a254e64ba05410142fa2c59d0b79">ok</a> ()</td></tr>
 <tr class="memdesc:ad357a254e64ba05410142fa2c59d0b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether ROS2 has been initialized and is not shut down.  <br /></td></tr>
 <tr class="separator:ad357a254e64ba05410142fa2c59d0b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cfa99cc2ede69436d501ddd4afea62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#af3cfa99cc2ede69436d501ddd4afea62">on_shutdown</a> (callback, *<a class="el" href="namespacerosros_1_1ros2.html#a16bfd9fd8f496a38840f95a0d084057f">args</a>, **<a class="el" href="namespacerosros_1_1ros2.html#ae63df0251ed34d3b5ca39f0370a61d3e">kwargs</a>)</td></tr>
+<tr class="memdesc:af3cfa99cc2ede69436d501ddd4afea62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers function to be called on shutdown, after node has been torn down.  <br /></td></tr>
+<tr class="separator:af3cfa99cc2ede69436d501ddd4afea62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad869b966e968ed4d539adfa1d8eb6720"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ad869b966e968ed4d539adfa1d8eb6720">register_init</a> (node)</td></tr>
 <tr class="memdesc:ad869b966e968ed4d539adfa1d8eb6720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informs `rosros` of ROS2 having been initialized outside of `init_node()`.  <br /></td></tr>
 <tr class="separator:ad869b966e968ed4d539adfa1d8eb6720"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -265,9 +271,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a30962379cc72e8b7aa468a17e7ff063f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a30962379cc72e8b7aa468a17e7ff063f">set_param</a> (name, value, descriptor=None)</td></tr>
 <tr class="memdesc:a30962379cc72e8b7aa468a17e7ff063f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a parameter on the node, auto-declaring it if unknown so far.  <br /></td></tr>
 <tr class="separator:a30962379cc72e8b7aa468a17e7ff063f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13a941208e2a6a4d8bd74b5a6d6de893"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a13a941208e2a6a4d8bd74b5a6d6de893">shutdown</a> ()</td></tr>
-<tr class="memdesc:a13a941208e2a6a4d8bd74b5a6d6de893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down ROS2 execution, if any.  <br /></td></tr>
-<tr class="separator:a13a941208e2a6a4d8bd74b5a6d6de893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c3f1dc0ddcb894ed15a31b992be220"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ac9c3f1dc0ddcb894ed15a31b992be220">shutdown</a> (reason=None)</td></tr>
+<tr class="memdesc:ac9c3f1dc0ddcb894ed15a31b992be220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down ROS2 execution, if any.  <br /></td></tr>
+<tr class="separator:ac9c3f1dc0ddcb894ed15a31b992be220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24e27204a1204807c4993bae8a722bad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a24e27204a1204807c4993bae8a722bad">sleep</a> (duration)</td></tr>
+<tr class="memdesc:a24e27204a1204807c4993bae8a722bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleeps for the specified duration in ROS time.  <br /></td></tr>
+<tr class="separator:a24e27204a1204807c4993bae8a722bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c3f108c55f2ea6545b54009155fe673"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a7c3f108c55f2ea6545b54009155fe673">spin</a> ()</td></tr>
 <tr class="memdesc:a7c3f108c55f2ea6545b54009155fe673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spins ROS2 node forever.  <br /></td></tr>
 <tr class="separator:a7c3f108c55f2ea6545b54009155fe673"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -313,9 +322,13 @@ Variables</h2></td></tr>
 <tr class="memitem:a32fe9ac80764327a4e1d0e8aef0b9800"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a32fe9ac80764327a4e1d0e8aef0b9800">AnyMsg</a> = patch.AnyMsg</td></tr>
 <tr class="memdesc:a32fe9ac80764327a4e1d0e8aef0b9800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stand-in for `rospy.AnyMsg` with equivalent interface.  <br /></td></tr>
 <tr class="separator:a32fe9ac80764327a4e1d0e8aef0b9800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16bfd9fd8f496a38840f95a0d084057f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a16bfd9fd8f496a38840f95a0d084057f">args</a></td></tr>
+<tr class="separator:a16bfd9fd8f496a38840f95a0d084057f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4f96994eaec31fa5cdda97e3068be6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ab4f96994eaec31fa5cdda97e3068be6c">CALLBACK_GROUP</a> = None</td></tr>
 <tr class="memdesc:ab4f96994eaec31fa5cdda97e3068be6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">`rclpy.callback_groups.CallbackGroup` instance  <br /></td></tr>
 <tr class="separator:ab4f96994eaec31fa5cdda97e3068be6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad077bf0db880a6758c01adcd05908d40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ad077bf0db880a6758c01adcd05908d40">called</a></td></tr>
+<tr class="separator:ad077bf0db880a6758c01adcd05908d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f48c1841ba3cf729e2af091379cc0b0"><td class="memItemLeft" align="right" valign="top">dict&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a3f48c1841ba3cf729e2af091379cc0b0">DDS_TYPES</a></td></tr>
 <tr class="memdesc:a3f48c1841ba3cf729e2af091379cc0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data Distribution Service types to ROS builtins.  <br /></td></tr>
 <tr class="separator:a3f48c1841ba3cf729e2af091379cc0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -325,6 +338,10 @@ Variables</h2></td></tr>
 <tr class="memitem:a53d211f2f3c3111c72ff24f3750f09f6"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a53d211f2f3c3111c72ff24f3750f09f6">FAMILY</a> = &quot;rclpy&quot;</td></tr>
 <tr class="memdesc:a53d211f2f3c3111c72ff24f3750f09f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS Python module family, "rclpy".  <br /></td></tr>
 <tr class="separator:a53d211f2f3c3111c72ff24f3750f09f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84bb3fdc2c07b6647a5fae88fbaa97cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a84bb3fdc2c07b6647a5fae88fbaa97cb">func</a></td></tr>
+<tr class="separator:a84bb3fdc2c07b6647a5fae88fbaa97cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae63df0251ed34d3b5ca39f0370a61d3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#ae63df0251ed34d3b5ca39f0370a61d3e">kwargs</a></td></tr>
+<tr class="separator:ae63df0251ed34d3b5ca39f0370a61d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fd13fd89cd6419a5895193ed08630d9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a6fd13fd89cd6419a5895193ed08630d9">NODE</a> = None</td></tr>
 <tr class="memdesc:a6fd13fd89cd6419a5895193ed08630d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">`rclpy.node.Node` instance  <br /></td></tr>
 <tr class="separator:a6fd13fd89cd6419a5895193ed08630d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -349,6 +366,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a7e42d5da582c9084d677032f56b5cf48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a7e42d5da582c9084d677032f56b5cf48">SHUTDOWN</a> = False</td></tr>
 <tr class="memdesc:a7e42d5da582c9084d677032f56b5cf48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag for `shutdown()` been called.  <br /></td></tr>
 <tr class="separator:a7e42d5da582c9084d677032f56b5cf48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a958d073014ad3dab9535629b86f06529"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a958d073014ad3dab9535629b86f06529">SHUTDOWN_CALLBACKS</a> = []</td></tr>
+<tr class="memdesc:a958d073014ad3dab9535629b86f06529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callbacks registered with on_shutdown()  <br /></td></tr>
+<tr class="separator:a958d073014ad3dab9535629b86f06529"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2df401423c8742c2f9814a0db0c758a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1ros2.html#a2df401423c8742c2f9814a0db0c758a9">SPINNER</a> = None</td></tr>
 <tr class="memdesc:a2df401423c8742c2f9814a0db0c758a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">`threading.Thread` running `EXECUTOR.spin()`  <br /></td></tr>
 <tr class="separator:a2df401423c8742c2f9814a0db0c758a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -356,6 +376,35 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ROS2 core interface. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="ab77258c5b1b789675e954b200e9b750b" name="ab77258c5b1b789675e954b200e9b750b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab77258c5b1b789675e954b200e9b750b">&#9670;&#160;</a></span>_assert_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros2._assert_node </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Raises if ROS2 node not inited. </p>
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00594">594</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
 <a id="a60734ed891f66fe4b6bb6ef26ffef92a" name="a60734ed891f66fe4b6bb6ef26ffef92a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60734ed891f66fe4b6bb6ef26ffef92a">&#9670;&#160;</a></span>_get_message_type_hash()</h2>
 
@@ -382,7 +431,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS2 message type MD5 hash (internal caching method). </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01276">1276</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01437">1437</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -428,7 +477,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01102">1102</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01177">1177</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -451,7 +500,7 @@ Variables</h2></td></tr>
 <p>Returns "pkg/Type" for "pkg/msg/Type", standardizes various ROS2 formats. </p>
 <p>Converts DDS types like "octet" to "byte", and "sequence&lt;uint8, 100&gt;" to "uint8[100]". </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01125">1125</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01286">1286</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -498,7 +547,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rclpy.client.Client`, will support keyword arguments in calls and be callable itself </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00861">861</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00921">921</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -559,7 +608,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rclpy.publisher.Publisher`, will support keyword arguments in `publish()` and have `get_num_connections()` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00905">905</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00967">967</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -588,7 +637,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rclpy.timer.Rate` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00974">974</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01039">1039</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -642,7 +691,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rclpy.service.Service` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00883">883</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00944">944</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -717,7 +766,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rclpy.subscription.Subscription` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00930">930</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00993">993</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -771,7 +820,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rclpy.timer.Timer` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00952">952</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01016">1016</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -805,7 +854,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00748">748</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00765">765</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -837,7 +886,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS2 message or service request/response instantiated from serialized binary. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01395">1395</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01556">1556</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -859,7 +908,7 @@ Variables</h2></td></tr>
 
 <p>Closes the given publisher, subscriber, service client, service server, timer, or rate instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00978">978</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01044">1044</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -881,7 +930,7 @@ Variables</h2></td></tr>
 
 <p>Returns parameter name using "." separator, and leading root or private sigils stripped. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01157">1157</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01318">1318</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -907,7 +956,7 @@ Variables</h2></td></tr>
 <li>`__throttle_identical__`: whether to skip logging identical consecutive texts from call site (given log message excluding formatting arguments). Combines with `__throttle__` to skip duplicates for a period. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01061">1061</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01133">1133</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -936,7 +985,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ROS2 message / service class object, like `std_msgs.msg.Bool` or `std_srvs.srv.SetBool` or `std_srvs.srv.SetBoolRequest`, or None if not found </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01171">1171</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01332">1332</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -976,7 +1025,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>message type definition text </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01203">1203</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01364">1364</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1004,7 +1053,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01227">1227</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01388">1388</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1032,7 +1081,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01237">1237</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01398">1398</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1110,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>canonical name, or `None` if not ROS message / service </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01253">1253</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01414">1414</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1138,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01267">1267</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01428">1428</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1183,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01287">1287</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01448">1448</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1155,7 +1204,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS2 node namespace. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00994">994</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01060">1060</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1176,7 +1225,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS2 node full name with namespace. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00999">999</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01066">1066</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1197,7 +1246,7 @@ Variables</h2></td></tr>
 
 <p>Returns all ROS2 nodes, as `[node full name, ]`. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01004">1004</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01072">1072</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1226,7 +1275,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01314">1314</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01475">1475</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1278,7 +1327,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00699">699</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00712">712</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1299,7 +1348,7 @@ Variables</h2></td></tr>
 
 <p>Returns the names of all current ROS2 node parameters. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00708">708</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00722">722</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1327,7 +1376,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00718">718</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00733">733</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1348,7 +1397,7 @@ Variables</h2></td></tr>
 
 <p>Returns current ROS2 time, as `rclpy.time.Time`. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01065">1065</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01137">1137</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1377,7 +1426,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ROS2 service type definition text </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01329">1329</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01490">1490</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1406,7 +1455,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ROS2 service request class object, like `std_srvs.srv.SetBool.Request` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01342">1342</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01503">1503</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1435,7 +1484,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ROS2 service response class object, like `std_srvs.srv.SetBool.Response` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01354">1354</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01515">1515</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1481,7 +1530,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01044">1044</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01115">1115</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1535,7 +1584,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>{"depth", "reliability", "durability"} </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01023">1023</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01093">1093</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1556,7 +1605,7 @@ Variables</h2></td></tr>
 
 <p>Returns all available ROS2 topics, as `[(topic name, [type name, ]), ]`. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01009">1009</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01078">1078</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1584,7 +1633,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00687">687</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00699">699</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1666,7 +1715,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rclpy.node.Node` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00601">601</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00612">612</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1706,7 +1755,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>full nested parameters dictionary, combined from given defaults and externally set parameters on the node </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00663">663</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00674">674</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1735,7 +1784,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if value is a ROS2 message or service request/response class or instance, False otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01364">1364</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01525">1525</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1757,7 +1806,7 @@ Variables</h2></td></tr>
 
 <p>Returns whether value is a ROS2 service class object. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01369">1369</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01530">1530</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1779,7 +1828,7 @@ Variables</h2></td></tr>
 
 <p>Returns whether value is a ROS2 time/duration class or instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01374">1374</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01535">1535</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1811,7 +1860,7 @@ Variables</h2></td></tr>
 
 <p>Returns an rclpy.duration.Duration. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01380">1380</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01541">1541</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1843,7 +1892,7 @@ Variables</h2></td></tr>
 
 <p>Returns a ROS2 time, as rclpy.time.Time. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01385">1385</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01546">1546</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1864,7 +1913,46 @@ Variables</h2></td></tr>
 
 <p>Returns whether ROS2 has been initialized and is not shut down. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00756">756</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00774">774</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
+<a id="af3cfa99cc2ede69436d501ddd4afea62" name="af3cfa99cc2ede69436d501ddd4afea62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3cfa99cc2ede69436d501ddd4afea62">&#9670;&#160;</a></span>on_shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros2.on_shutdown </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">*&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**&#160;</td>
+          <td class="paramname"><em>kwargs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers function to be called on shutdown, after node has been torn down. </p>
+<p>Function is called with given arguments. </p>
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00784">784</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1892,7 +1980,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00643">643</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00654">654</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1932,7 +2020,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>remapped resolved name, or original if not mapped </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01077">1077</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01150">1150</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1970,7 +2058,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01089">1089</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01163">1163</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -1993,7 +2081,7 @@ Variables</h2></td></tr>
 <p>Returns unbounded scalar type from ROS2 message data type. </p>
 <p>Like "uint8" from "uint8[]", or "string" from "string&lt;=10[&lt;=5]". Returns type unchanged if not a collection or bounded type. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01407">1407</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01568">1568</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2015,7 +2103,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS2 message or service request/response as a serialized binary of `bytes()`. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01390">1390</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01551">1551</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2062,12 +2150,12 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the set value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00733">733</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00749">749</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
-<a id="a13a941208e2a6a4d8bd74b5a6d6de893" name="a13a941208e2a6a4d8bd74b5a6d6de893"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13a941208e2a6a4d8bd74b5a6d6de893">&#9670;&#160;</a></span>shutdown()</h2>
+<a id="ac9c3f1dc0ddcb894ed15a31b992be220" name="ac9c3f1dc0ddcb894ed15a31b992be220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9c3f1dc0ddcb894ed15a31b992be220">&#9670;&#160;</a></span>shutdown()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2075,15 +2163,50 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">rosros.ros2.shutdown </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>reason</em> = <code>None</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Shuts down ROS2 execution, if any. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reason</td><td>shutdown reason to log, if any </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00836">836</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00887">887</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
+<a id="a24e27204a1204807c4993bae8a722bad" name="a24e27204a1204807c4993bae8a722bad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24e27204a1204807c4993bae8a722bad">&#9670;&#160;</a></span>sleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros2.sleep </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>duration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sleeps for the specified duration in ROS time. </p>
+<p>Raises error on ROS shutdown or ROS time jumping backwards </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>time to sleep, as seconds or ROS duration, &lt;=0 returns immediately </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01199">1199</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2104,7 +2227,7 @@ Variables</h2></td></tr>
 
 <p>Spins ROS2 node forever. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00776">776</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00819">819</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2132,7 +2255,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00798">798</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00842">842</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2171,7 +2294,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00818">818</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00863">863</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2192,7 +2315,7 @@ Variables</h2></td></tr>
 
 <p>Sets ROS2 node spinning forever in a background thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00761">761</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00803">803</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2239,7 +2362,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value converted to appropriate type, or original value if not convertible </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01420">1420</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01581">1581</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2262,7 +2385,7 @@ Variables</h2></td></tr>
 <p>Returns value as ROS2 duration if convertible (int/float/time/datetime/decimal), else value. </p>
 <p>Convertible int/float/time/datetime/decimal/builtin_interfaces.Time. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01436">1436</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01597">1597</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2284,7 +2407,7 @@ Variables</h2></td></tr>
 
 <p>Returns value in nanoseconds if value is ROS2 time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01451">1451</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01612">1612</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2306,7 +2429,7 @@ Variables</h2></td></tr>
 
 <p>Returns value in seconds if value is ROS2 time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01460">1460</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01621">1621</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2328,7 +2451,7 @@ Variables</h2></td></tr>
 
 <p>Returns value as (seconds, nanoseconds) if value is ROS2 time/duration, else value. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01470">1470</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01631">1631</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2351,7 +2474,7 @@ Variables</h2></td></tr>
 <p>Returns value as ROS2 time if convertible, else value. </p>
 <p>Convertible int/float/duration/datetime/decimal/builtin_interfaces.Time. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01486">1486</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01647">1647</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2398,7 +2521,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>whether a publisher is available </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01511">1511</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01215">1215</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2445,7 +2568,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>whether the service is available </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01561">1561</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01267">1267</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2492,7 +2615,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>whether a subscriber is available </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01536">1536</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l01241">1241</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2511,7 +2634,23 @@ Variables</h2></td></tr>
 
 <p>Stand-in for `rospy.AnyMsg` with equivalent interface. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00056">56</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00057">57</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
+<a id="a16bfd9fd8f496a38840f95a0d084057f" name="a16bfd9fd8f496a38840f95a0d084057f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16bfd9fd8f496a38840f95a0d084057f">&#9670;&#160;</a></span>args</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros2.args</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00787">787</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2529,7 +2668,23 @@ Variables</h2></td></tr>
 
 <p>`rclpy.callback_groups.CallbackGroup` instance </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00099">99</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00100">100</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
+<a id="ad077bf0db880a6758c01adcd05908d40" name="ad077bf0db880a6758c01adcd05908d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad077bf0db880a6758c01adcd05908d40">&#9670;&#160;</a></span>called</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros2.called</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00788">788</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2557,7 +2712,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p>Data Distribution Service types to ROS builtins. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00075">75</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00076">76</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2575,7 +2730,7 @@ Variables</h2></td></tr>
 
 <p>`rclpy.executors.Executor` instance </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00102">102</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00103">103</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2593,7 +2748,39 @@ Variables</h2></td></tr>
 
 <p>ROS Python module family, "rclpy". </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00093">93</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00094">94</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
+<a id="a84bb3fdc2c07b6647a5fae88fbaa97cb" name="a84bb3fdc2c07b6647a5fae88fbaa97cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84bb3fdc2c07b6647a5fae88fbaa97cb">&#9670;&#160;</a></span>func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros2.func</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00787">787</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
+<a id="ae63df0251ed34d3b5ca39f0370a61d3e" name="ae63df0251ed34d3b5ca39f0370a61d3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63df0251ed34d3b5ca39f0370a61d3e">&#9670;&#160;</a></span>kwargs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.ros2.kwargs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00787">787</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2611,7 +2798,7 @@ Variables</h2></td></tr>
 
 <p>`rclpy.node.Node` instance </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00096">96</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00097">97</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2629,7 +2816,7 @@ Variables</h2></td></tr>
 
 <p>Separator char between ROS2 parameter namespace parts. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00087">87</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00088">88</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2647,7 +2834,7 @@ Variables</h2></td></tr>
 
 <p>Prefix for "private" names, auto-namespaced under current namespace. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00090">90</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00091">91</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2665,7 +2852,7 @@ Variables</h2></td></tr>
 
 <p>Mapping between ROS type aliases and real types, like {"byte": "uint8"}. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00072">72</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00073">73</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2687,7 +2874,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p>ROS2 time/duration types and message types mapped to type names. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00062">62</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00063">63</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2707,7 +2894,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p>ROS2 time/duration types mapped to message types. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00068">68</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00069">69</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2725,7 +2912,7 @@ Variables</h2></td></tr>
 
 <p>ROS2 time/duration message types. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00059">59</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00060">60</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2743,7 +2930,25 @@ Variables</h2></td></tr>
 
 <p>Flag for `shutdown()` been called. </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00108">108</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00109">109</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+
+</div>
+</div>
+<a id="a958d073014ad3dab9535629b86f06529" name="a958d073014ad3dab9535629b86f06529"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a958d073014ad3dab9535629b86f06529">&#9670;&#160;</a></span>SHUTDOWN_CALLBACKS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list rosros.ros2.SHUTDOWN_CALLBACKS = []</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callbacks registered with on_shutdown() </p>
+
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00112">112</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2761,7 +2966,7 @@ Variables</h2></td></tr>
 
 <p>`threading.Thread` running `EXECUTOR.spin()` </p>
 
-<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00105">105</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ros2_8py_source.html#l00106">106</a> of file <a class="el" href="ros2_8py_source.html">ros2.py</a>.</p>
 
 </div>
 </div>
@@ -2771,7 +2976,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1ros2.html">ros2</a></li>
-    <li class="footer">Generated on Fri Dec 8 2023 10:09:17 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Sun Dec 10 2023 19:58:56 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

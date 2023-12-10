@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.2</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.3</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -156,6 +156,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a431644d64fc8c1051240e56d9d4d9740"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a431644d64fc8c1051240e56d9d4d9740">rosros.core.get_params</a> (nested=True)</td></tr>
 <tr class="memdesc:a431644d64fc8c1051240e56d9d4d9740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current ROS node parameters, by default as nested dictionary.  <br /></td></tr>
 <tr class="separator:a431644d64fc8c1051240e56d9d4d9740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38941a7bb935ee02537df14a55848191"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a38941a7bb935ee02537df14a55848191">rosros.core.get_ros_version</a> ()</td></tr>
+<tr class="memdesc:a38941a7bb935ee02537df14a55848191"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS version information, as {"major": "1" / "2", ?"minor": distro like "noetic"}.  <br /></td></tr>
+<tr class="separator:a38941a7bb935ee02537df14a55848191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28f997beed40acb39fcbf4add130f107"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a28f997beed40acb39fcbf4add130f107">rosros.core.get_rostime</a> ()</td></tr>
 <tr class="memdesc:a28f997beed40acb39fcbf4add130f107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS time instance for current ROS clock time.  <br /></td></tr>
 <tr class="separator:a28f997beed40acb39fcbf4add130f107"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +180,9 @@ Functions</h2></td></tr>
 <tr class="memitem:adf6ea3b0c8485c9da57cb99c72d1fd32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#adf6ea3b0c8485c9da57cb99c72d1fd32">rosros.core.ok</a> ()</td></tr>
 <tr class="memdesc:adf6ea3b0c8485c9da57cb99c72d1fd32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether ROS has been initialized and is not shut down.  <br /></td></tr>
 <tr class="separator:adf6ea3b0c8485c9da57cb99c72d1fd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a121abd542678c8978a436fb502821a63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a121abd542678c8978a436fb502821a63">rosros.core.on_shutdown</a> (callback, *args, **kwargs)</td></tr>
+<tr class="memdesc:a121abd542678c8978a436fb502821a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers function to be called on shutdown, after node has been torn down.  <br /></td></tr>
+<tr class="separator:a121abd542678c8978a436fb502821a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56e47eeb22c8da3ad6065034ba06df7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a56e47eeb22c8da3ad6065034ba06df7b">rosros.core.register_init</a> (node=None)</td></tr>
 <tr class="memdesc:a56e47eeb22c8da3ad6065034ba06df7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informs `rosros` of ROS having been initialized outside of `init_node()`.  <br /></td></tr>
 <tr class="separator:a56e47eeb22c8da3ad6065034ba06df7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,9 +195,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab4c560fe84007605a360917a92643a97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#ab4c560fe84007605a360917a92643a97">rosros.core.set_param</a> (name, value, descriptor=None)</td></tr>
 <tr class="memdesc:ab4c560fe84007605a360917a92643a97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a parameter on the node.  <br /></td></tr>
 <tr class="separator:ab4c560fe84007605a360917a92643a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4db83e03c368c11dfa12b00a3297022c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a4db83e03c368c11dfa12b00a3297022c">rosros.core.shutdown</a> ()</td></tr>
-<tr class="memdesc:a4db83e03c368c11dfa12b00a3297022c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down live ROS node, if any.  <br /></td></tr>
-<tr class="separator:a4db83e03c368c11dfa12b00a3297022c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf2feede4350c5533dfeef6c6d68b7e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#afdf2feede4350c5533dfeef6c6d68b7e">rosros.core.shutdown</a> (reason=None)</td></tr>
+<tr class="memdesc:afdf2feede4350c5533dfeef6c6d68b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down live ROS node, if any.  <br /></td></tr>
+<tr class="separator:afdf2feede4350c5533dfeef6c6d68b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa611ca9ebccf1c0f13dba44e3ce19a42"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#aa611ca9ebccf1c0f13dba44e3ce19a42">rosros.core.sleep</a> (duration)</td></tr>
+<tr class="memdesc:aa611ca9ebccf1c0f13dba44e3ce19a42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleeps for the specified duration in ROS time.  <br /></td></tr>
+<tr class="separator:aa611ca9ebccf1c0f13dba44e3ce19a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3871326bd36f0f3f9f054a7809971a0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a3871326bd36f0f3f9f054a7809971a0a">rosros.core.spin</a> ()</td></tr>
 <tr class="memdesc:a3871326bd36f0f3f9f054a7809971a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spins ROS node forever.  <br /></td></tr>
 <tr class="separator:a3871326bd36f0f3f9f054a7809971a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,7 +242,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="core_8py.html">core.py</a></li>
-    <li class="footer">Generated on Fri Dec 8 2023 10:09:17 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Sun Dec 10 2023 19:58:56 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

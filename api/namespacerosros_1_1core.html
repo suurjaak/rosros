@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.2</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.3</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -147,6 +147,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a431644d64fc8c1051240e56d9d4d9740"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a431644d64fc8c1051240e56d9d4d9740">get_params</a> (nested=True)</td></tr>
 <tr class="memdesc:a431644d64fc8c1051240e56d9d4d9740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current ROS node parameters, by default as nested dictionary.  <br /></td></tr>
 <tr class="separator:a431644d64fc8c1051240e56d9d4d9740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38941a7bb935ee02537df14a55848191"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a38941a7bb935ee02537df14a55848191">get_ros_version</a> ()</td></tr>
+<tr class="memdesc:a38941a7bb935ee02537df14a55848191"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS version information, as {"major": "1" / "2", ?"minor": distro like "noetic"}.  <br /></td></tr>
+<tr class="separator:a38941a7bb935ee02537df14a55848191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28f997beed40acb39fcbf4add130f107"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a28f997beed40acb39fcbf4add130f107">get_rostime</a> ()</td></tr>
 <tr class="memdesc:a28f997beed40acb39fcbf4add130f107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns ROS time instance for current ROS clock time.  <br /></td></tr>
 <tr class="separator:a28f997beed40acb39fcbf4add130f107"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,6 +171,9 @@ Functions</h2></td></tr>
 <tr class="memitem:adf6ea3b0c8485c9da57cb99c72d1fd32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#adf6ea3b0c8485c9da57cb99c72d1fd32">ok</a> ()</td></tr>
 <tr class="memdesc:adf6ea3b0c8485c9da57cb99c72d1fd32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether ROS has been initialized and is not shut down.  <br /></td></tr>
 <tr class="separator:adf6ea3b0c8485c9da57cb99c72d1fd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a121abd542678c8978a436fb502821a63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a121abd542678c8978a436fb502821a63">on_shutdown</a> (callback, *args, **kwargs)</td></tr>
+<tr class="memdesc:a121abd542678c8978a436fb502821a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers function to be called on shutdown, after node has been torn down.  <br /></td></tr>
+<tr class="separator:a121abd542678c8978a436fb502821a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56e47eeb22c8da3ad6065034ba06df7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a56e47eeb22c8da3ad6065034ba06df7b">register_init</a> (node=None)</td></tr>
 <tr class="memdesc:a56e47eeb22c8da3ad6065034ba06df7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informs `rosros` of ROS having been initialized outside of `init_node()`.  <br /></td></tr>
 <tr class="separator:a56e47eeb22c8da3ad6065034ba06df7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,9 +186,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab4c560fe84007605a360917a92643a97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#ab4c560fe84007605a360917a92643a97">set_param</a> (name, value, descriptor=None)</td></tr>
 <tr class="memdesc:ab4c560fe84007605a360917a92643a97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a parameter on the node.  <br /></td></tr>
 <tr class="separator:ab4c560fe84007605a360917a92643a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4db83e03c368c11dfa12b00a3297022c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a4db83e03c368c11dfa12b00a3297022c">shutdown</a> ()</td></tr>
-<tr class="memdesc:a4db83e03c368c11dfa12b00a3297022c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down live ROS node, if any.  <br /></td></tr>
-<tr class="separator:a4db83e03c368c11dfa12b00a3297022c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf2feede4350c5533dfeef6c6d68b7e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#afdf2feede4350c5533dfeef6c6d68b7e">shutdown</a> (reason=None)</td></tr>
+<tr class="memdesc:afdf2feede4350c5533dfeef6c6d68b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down live ROS node, if any.  <br /></td></tr>
+<tr class="separator:afdf2feede4350c5533dfeef6c6d68b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa611ca9ebccf1c0f13dba44e3ce19a42"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#aa611ca9ebccf1c0f13dba44e3ce19a42">sleep</a> (duration)</td></tr>
+<tr class="memdesc:aa611ca9ebccf1c0f13dba44e3ce19a42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleeps for the specified duration in ROS time.  <br /></td></tr>
+<tr class="separator:aa611ca9ebccf1c0f13dba44e3ce19a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3871326bd36f0f3f9f054a7809971a0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerosros_1_1core.html#a3871326bd36f0f3f9f054a7809971a0a">spin</a> ()</td></tr>
 <tr class="memdesc:a3871326bd36f0f3f9f054a7809971a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spins ROS node forever.  <br /></td></tr>
 <tr class="separator:a3871326bd36f0f3f9f054a7809971a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,7 +273,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rospy.ServiceProxy` or `rclpy.client.Client`, either will have `call_async()` returning a future, either will support keyword arguments in calls and be callable itself </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00251">251</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00266">266</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -325,7 +334,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rospy.Publisher` or `rclpy.publisher.Publisher`, either will support keyword arguments in `publish()` and have `get_num_connections()` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00183">183</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00198">198</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -354,7 +363,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rospy.Rate` or `rclpy.rate.Rate` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00273">273</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00288">288</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -408,7 +417,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rospy.Service` or `rclpy.service.Service` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00234">234</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00249">249</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -483,7 +492,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rospy.Subscriber` or `rclpy.subscription.Subscription` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00210">210</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00225">225</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -537,7 +546,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>`rospy.Timer` or `rclpy.timer.Timer` </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00264">264</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00279">279</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -593,7 +602,7 @@ Variables</h2></td></tr>
 
 <p>Closes the given publisher, subscriber, service client, or service server instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00277">277</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00292">292</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -619,7 +628,7 @@ Variables</h2></td></tr>
 <li>`__throttle_identical__`: whether to skip logging identical consecutive texts from call site (given log message excluding formatting arguments). Combines with `__throttle__` to skip duplicates for a period. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00292">292</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00307">307</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -640,7 +649,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS node namespace. </p>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00301">301</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00316">316</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -661,7 +670,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS node full name with namespace. </p>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00306">306</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00321">321</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -682,7 +691,7 @@ Variables</h2></td></tr>
 
 <p>Returns all ROS nodes, as `[node full name, ]`. </p>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00311">311</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00326">326</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -787,6 +796,27 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a38941a7bb935ee02537df14a55848191" name="a38941a7bb935ee02537df14a55848191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38941a7bb935ee02537df14a55848191">&#9670;&#160;</a></span>get_ros_version()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.core.get_ros_version </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns ROS version information, as {"major": "1" / "2", ?"minor": distro like "noetic"}. </p>
+
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00331">331</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+
+</div>
+</div>
 <a id="a28f997beed40acb39fcbf4add130f107" name="a28f997beed40acb39fcbf4add130f107"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28f997beed40acb39fcbf4add130f107">&#9670;&#160;</a></span>get_rostime()</h2>
 
@@ -804,7 +834,7 @@ Variables</h2></td></tr>
 
 <p>Returns ROS time instance for current ROS clock time. </p>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00296">296</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00311">311</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -850,7 +880,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00328">328</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00350">350</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -871,7 +901,7 @@ Variables</h2></td></tr>
 
 <p>Returns all available ROS topics, as `[(topic name, [type name, ]), ]`. </p>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00316">316</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00338">338</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1046,6 +1076,46 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a121abd542678c8978a436fb502821a63" name="a121abd542678c8978a436fb502821a63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a121abd542678c8978a436fb502821a63">&#9670;&#160;</a></span>on_shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.core.on_shutdown </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">*&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**&#160;</td>
+          <td class="paramname"><em>kwargs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers function to be called on shutdown, after node has been torn down. </p>
+<p>Function is called with given arguments.</p>
+<dl class="section note"><dt>Note</dt><dd>function may not get called if process is killed. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00169">169</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+
+</div>
+</div>
 <a id="a56e47eeb22c8da3ad6065034ba06df7b" name="a56e47eeb22c8da3ad6065034ba06df7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a56e47eeb22c8da3ad6065034ba06df7b">&#9670;&#160;</a></span>register_init()</h2>
 
@@ -1070,7 +1140,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00357">357</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00379">379</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1110,7 +1180,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>remapped resolved name, or original if not mapped </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00339">339</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00361">361</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1148,7 +1218,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00348">348</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00370">370</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1199,8 +1269,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4db83e03c368c11dfa12b00a3297022c" name="a4db83e03c368c11dfa12b00a3297022c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4db83e03c368c11dfa12b00a3297022c">&#9670;&#160;</a></span>shutdown()</h2>
+<a id="afdf2feede4350c5533dfeef6c6d68b7e" name="afdf2feede4350c5533dfeef6c6d68b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf2feede4350c5533dfeef6c6d68b7e">&#9670;&#160;</a></span>shutdown()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1208,15 +1278,50 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">rosros.core.shutdown </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>reason</em> = <code>None</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Shuts down live ROS node, if any. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reason</td><td>shutdown reason to log, if any </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00162">162</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00178">178</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+
+</div>
+</div>
+<a id="aa611ca9ebccf1c0f13dba44e3ce19a42" name="aa611ca9ebccf1c0f13dba44e3ce19a42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa611ca9ebccf1c0f13dba44e3ce19a42">&#9670;&#160;</a></span>sleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rosros.core.sleep </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>duration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sleeps for the specified duration in ROS time. </p>
+<p>Raises error on ROS shutdown or ROS time jumping backwards </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>time to sleep, as seconds or ROS duration, &lt;=0 returns immediately </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00390">390</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1372,7 +1477,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>whether a publisher is available </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00371">371</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00404">404</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1419,7 +1524,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>whether the service is available </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00399">399</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00432">432</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1466,7 +1571,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>whether a subscriber is available </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00385">385</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="core_8py_source.html#l00418">418</a> of file <a class="el" href="core_8py_source.html">core.py</a>.</p>
 
 </div>
 </div>
@@ -1545,7 +1650,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacerosros.html">rosros</a></li><li class="navelem"><a class="el" href="namespacerosros_1_1core.html">core</a></li>
-    <li class="footer">Generated on Fri Dec 8 2023 10:09:17 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Sun Dec 10 2023 19:58:56 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

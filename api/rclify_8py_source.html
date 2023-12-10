@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.2</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.3</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -236,7 +236,7 @@ $(document).ready(function(){initNavTree('rclify_8py_source.html',''); initResiz
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="stringliteral">    </span><span class="keywordflow">return</span> ros1.ok()</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="keyword">def </span><a class="code hl_function" href="namespacerosros_1_1core.html#a4db83e03c368c11dfa12b00a3297022c">shutdown</a>(*, context=None):</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="keyword">def </span><a class="code hl_function" href="namespacerosros_1_1rclify_1_1rclify.html#aaf004384a45bdbe7c8ee74a507b2a1cf">shutdown</a>(*, context=None):</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="stringliteral">    Sends the shutdown signal to rospy.</span></div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="stringliteral"></span> </div>
@@ -261,10 +261,10 @@ $(document).ready(function(){initNavTree('rclify_8py_source.html',''); initResiz
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>]</div>
 <div class="ttc" id="aclassrosros_1_1rclify_1_1node_1_1_node_html"><div class="ttname"><a href="classrosros_1_1rclify_1_1node_1_1_node.html">rosros.rclify.node.Node</a></div><div class="ttdef"><b>Definition</b> <a href="node_8py_source.html#l00063">node.py:63</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1core_html_a3871326bd36f0f3f9f054a7809971a0a"><div class="ttname"><a href="namespacerosros_1_1core.html#a3871326bd36f0f3f9f054a7809971a0a">rosros.core.spin</a></div><div class="ttdeci">spin()</div><div class="ttdoc">Spins ROS node forever.</div><div class="ttdef"><b>Definition</b> <a href="core_8py_source.html#l00133">core.py:133</a></div></div>
-<div class="ttc" id="anamespacerosros_1_1core_html_a4db83e03c368c11dfa12b00a3297022c"><div class="ttname"><a href="namespacerosros_1_1core.html#a4db83e03c368c11dfa12b00a3297022c">rosros.core.shutdown</a></div><div class="ttdeci">shutdown()</div><div class="ttdoc">Shuts down live ROS node, if any.</div><div class="ttdef"><b>Definition</b> <a href="core_8py_source.html#l00162">core.py:162</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1core_html_adf6ea3b0c8485c9da57cb99c72d1fd32"><div class="ttname"><a href="namespacerosros_1_1core.html#adf6ea3b0c8485c9da57cb99c72d1fd32">rosros.core.ok</a></div><div class="ttdeci">ok()</div><div class="ttdoc">Returns whether ROS has been initialized and is not shut down.</div><div class="ttdef"><b>Definition</b> <a href="core_8py_source.html#l00157">core.py:157</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rclify_1_1rclify_html_a8b8ef132a49307b2304bbb2657e61e41"><div class="ttname"><a href="namespacerosros_1_1rclify_1_1rclify.html#a8b8ef132a49307b2304bbb2657e61e41">rosros.rclify.rclify.spin_once</a></div><div class="ttdeci">spin_once(node=None, *executor=None, timeout_sec=None)</div><div class="ttdoc">Waits until timeout or ROS shut down, or forever if timeout not specified.</div><div class="ttdef"><b>Definition</b> <a href="rclify_8py_source.html#l00093">rclify.py:93</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rclify_1_1rclify_html_a958f8257ff58cd8cbc50760bb26f4d02"><div class="ttname"><a href="namespacerosros_1_1rclify_1_1rclify.html#a958f8257ff58cd8cbc50760bb26f4d02">rosros.rclify.rclify.get_rmw_implementation_identifier</a></div><div class="ttdeci">get_rmw_implementation_identifier()</div><div class="ttdoc">Returns empty string (ROS2 API compatibility stand-in).</div><div class="ttdef"><b>Definition</b> <a href="rclify_8py_source.html#l00129">rclify.py:129</a></div></div>
+<div class="ttc" id="anamespacerosros_1_1rclify_1_1rclify_html_aaf004384a45bdbe7c8ee74a507b2a1cf"><div class="ttname"><a href="namespacerosros_1_1rclify_1_1rclify.html#aaf004384a45bdbe7c8ee74a507b2a1cf">rosros.rclify.rclify.shutdown</a></div><div class="ttdeci">shutdown(*context=None)</div><div class="ttdoc">Sends the shutdown signal to rospy.</div><div class="ttdef"><b>Definition</b> <a href="rclify_8py_source.html#l00148">rclify.py:148</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rclify_1_1rclify_html_ab6418cb8f3d0a91a4cc13c5b63d8a622"><div class="ttname"><a href="namespacerosros_1_1rclify_1_1rclify.html#ab6418cb8f3d0a91a4cc13c5b63d8a622">rosros.rclify.rclify.get_default_context</a></div><div class="ttdeci">get_default_context()</div><div class="ttdoc">Returns None (ROS2 API compatibility stand-in).</div><div class="ttdef"><b>Definition</b> <a href="rclify_8py_source.html#l00119">rclify.py:119</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rclify_1_1rclify_html_ac53df2a1d4a7ef24639d541a2c535e84"><div class="ttname"><a href="namespacerosros_1_1rclify_1_1rclify.html#ac53df2a1d4a7ef24639d541a2c535e84">rosros.rclify.rclify.try_shutdown</a></div><div class="ttdeci">try_shutdown(*context=None)</div><div class="ttdoc">Sends the shutdown signal to rospy.</div><div class="ttdef"><b>Definition</b> <a href="rclify_8py_source.html#l00157">rclify.py:157</a></div></div>
 <div class="ttc" id="anamespacerosros_1_1rclify_1_1rclify_html_ac7ae57e827538f20b23d284f53caee53"><div class="ttname"><a href="namespacerosros_1_1rclify_1_1rclify.html#ac7ae57e827538f20b23d284f53caee53">rosros.rclify.rclify.get_global_executor</a></div><div class="ttdeci">get_global_executor()</div><div class="ttdoc">Returns None (ROS2 API compatibility stand-in).</div><div class="ttdef"><b>Definition</b> <a href="rclify_8py_source.html#l00124">rclify.py:124</a></div></div>
@@ -277,7 +277,7 @@ $(document).ready(function(){initNavTree('rclify_8py_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="dir_a535ebe250b214633be30240979a8017.html">rclify</a></li><li class="navelem"><a class="el" href="rclify_8py.html">rclify.py</a></li>
-    <li class="footer">Generated on Fri Dec 8 2023 10:09:17 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Sun Dec 10 2023 19:58:56 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

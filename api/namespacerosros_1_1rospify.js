@@ -18,7 +18,6 @@ var namespacerosros_1_1rospify =
       [ "DEBUG", "namespacerosros_1_1rospify_1_1client.html#a1e9f27c2ebc10d6bb2e5cfa3f677452d", null ],
       [ "ERROR", "namespacerosros_1_1rospify_1_1client.html#a69969334ff486aba4744e59c4a8c8033", null ],
       [ "FATAL", "namespacerosros_1_1rospify_1_1client.html#aa19637357805bcb7dae7e860801e59ff", null ],
-      [ "func", "namespacerosros_1_1rospify_1_1client.html#a8248182d9ecddeb6602691eb8feb0fc0", null ],
       [ "get_param_cached", "namespacerosros_1_1rospify_1_1client.html#a9614483bd2cda54a266d58f51803e82e", null ],
       [ "INFO", "namespacerosros_1_1rospify_1_1client.html#a44b6d02fc52a34059846393124f27e7f", null ],
       [ "WARN", "namespacerosros_1_1rospify_1_1client.html#a281159e13506d01f3641acfd991a7197", null ]
