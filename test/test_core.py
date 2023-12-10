@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     09.12.2023
-@modified    09.12.2023
+@modified    10.12.2023
 ------------------------------------------------------------------------------
 """
 import logging
@@ -60,6 +60,14 @@ class TestCore(testbase.TestBase):
                     func(cb, *args, **kwargs)
 
         core.start_spin()
+
+        func = core.get_ros_version
+        with self.subTest(NAME(func)):
+            logger.info("Testing %s.", NAME(func))
+            received = func()
+            self.assertIsInstance(received, dict, "Unexpected result from %s." % NAME(func))
+            self.assertEqual(received.get("major"), os.getenv("ROS_VERSION"),
+                             "Unexpected result from %s." % NAME(func))
 
         DURATIONS = sum(([x, api.make_duration(x)] for x in (1, 0, -1)), [])
         func = core.sleep

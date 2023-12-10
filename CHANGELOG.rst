@@ -6,6 +6,7 @@ Changelog for package rosros
 ------------------
 * add rosros.on_shutdown()
 * add rosros.sleep()
+* add rosros.get_ros_version()
 * add optional reason-parameter to rosros.shutdown()
 * support giving message class or typename in api.dict_to_message()
 * add test for core functions

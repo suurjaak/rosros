@@ -279,6 +279,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 |                                     | **Miscellaneous**                                                                          | |
 | `rosros.get_logger`                 | returns `logging.Logger` for logging to ROS log handler;                                   | |
 |                                     | logger supports additional keywords `__once__`, `__throttle__`, `__throttle_identical__`   | |
+| `rosros.get_ros_version`            | returns ROS version information as a data dictionary                                       | |
 | `rosros.get_rostime`                | returns ROS time instance for current ROS clock time                                       | |
 | `rosros.register_init`              | informs `rosros` of ROS having been initialized outside of `init_node()`.                  | `node=None`
 |                                     | Giving node as argument is mandatory in ROS2.                                              | |

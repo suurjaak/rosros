@@ -341,6 +341,13 @@ def get_nodes():
     return ros.get_nodes()
 
 
+def get_ros_version():
+    """Returns ROS version information, as {"major": "1" / "2", ?"minor": distro like "noetic"}."""
+    result = {"major": os.getenv("ROS_VERSION")}
+    if os.getenv("ROS_DISTRO"): result["minor"] = os.getenv("ROS_DISTRO")
+    return result
+
+
 def get_topics():
     """Returns all available ROS topics, as `[(topic name, [type name, ]), ]`."""
     return ros.get_topics()
@@ -447,9 +454,9 @@ __all__ = [
     "ros1", "ros2", "AnyMsg", "Bag",
     "create_client", "create_publisher", "create_rate", "create_service", "create_subscriber",
     "create_timer", "delete_param", "destroy_entity", "get_logger", "get_namespace",
-    "get_node_name", "get_nodes", "get_param", "get_param_names", "get_params", "get_rostime",
-    "get_services", "get_topics", "has_param", "init_node", "init_params", "ok", "on_shutdown",
-    "register_init", "remap_name", "resolve_name", "set_param", "sleep", "shutdown",
-    "spin", "spin_once", "spin_until_future_complete", "start_spin",
+    "get_node_name", "get_nodes", "get_param", "get_param_names", "get_params", "get_ros_version",
+    "get_rostime", "get_services", "get_topics", "has_param", "init_node", "init_params",
+    "ok", "on_shutdown", "register_init", "remap_name", "resolve_name", "set_param", "sleep",
+    "shutdown", "spin", "spin_once", "spin_until_future_complete", "start_spin",
     "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]
