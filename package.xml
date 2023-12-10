@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>rosros</name>
-  <version>0.2.2</version>
+  <version>0.2.3</version>
   <description>Simple unified interface to ROS1 / ROS2 Python API</description>
 
   <maintainer email="erki@lap.ee">Erki Suurjaak</maintainer>
