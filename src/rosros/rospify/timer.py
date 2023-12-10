@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     30.05.2022
-@modified    30.05.2022
+@modified    08.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rospify.timer
@@ -31,8 +31,11 @@ def sleep(duration):
     @throws  ROSInterruptException           if ROS shutdown occurs before sleep completes
     @throws  ROSTimeMovedBackwardsException  if ROS time is set backwards
     """
+    duration = ros2.to_sec(duration)
+    if duration <= 0: return
+
     jumpback = None
-    timer = ros2.create_timer(ros2.to_sec(duration), callback=None)
+    timer = ros2.create_timer(duration, callback=None)
 
     def jumphandler(jump):
         nonlocal jumpback

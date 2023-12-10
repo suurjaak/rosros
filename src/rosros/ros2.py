@@ -8,11 +8,12 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    07.12.2023
+@modified    10.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
 import array
+import atexit
 import collections
 import datetime
 import decimal
@@ -106,6 +107,9 @@ SPINNER = None
 
 ## Flag for `shutdown()` been called
 SHUTDOWN = False
+
+## Callbacks registered with on_shutdown()
+SHUTDOWN_CALLBACKS = []
 
 
 logger = util.ThrottledLogger(logging.getLogger())
@@ -571,6 +575,11 @@ class Mutex:
 
 
 
+def _assert_node():
+    """Raises if ROS2 node not inited."""
+    if not NODE: raise Exception("Node not initialized")
+
+
 def init_node(name, args=None, namespace=None, anonymous=False, log_level=None, enable_rosout=True,
               multithreaded=True, reentrant=False):
     """
@@ -650,6 +659,7 @@ def init_params(defaults=None, **defaultkws):
     @return              full nested parameters dictionary, combined from given defaults
                          and externally set parameters on the node
     """
+    _assert_node()
     result = {}
     stack = list(util.merge_dicts(defaults or {}, defaultkws).items())
     while stack:
@@ -674,6 +684,7 @@ def has_param(name):
 
     @param   name  full name of the parameter in node namespace
     """
+    _assert_node()
     return NODE.has_parameter(format_param_name(name))
 
 
@@ -687,6 +698,7 @@ def get_param(name, default=None, autoset=True):
 
     @throws  KeyError    if parameter not set and default not given
     """
+    _assert_node()
     name = format_param_name(name)
     if not NODE.has_parameter(name):
         if not autoset or default is None:
@@ -697,6 +709,7 @@ def get_param(name, default=None, autoset=True):
 
 def get_param_names():
     """Returns the names of all current ROS2 node parameters."""
+    _assert_node()
     return list(NODE.get_parameters_by_prefix(""))
 
 
@@ -707,6 +720,7 @@ def get_params(nested=True):
     @param   nested  return a nested dictionary,
                      like `{"my": {"name": 1}}` vs {"my.name": 1}
     """
+    _assert_node()
     result = {}
     for path, param in NODE.get_parameters_by_prefix("").items():
         key = [x for x in path.split(PARAM_SEPARATOR) if x] if nested else path
@@ -723,6 +737,7 @@ def set_param(name, value, descriptor=None):
     @param    descriptor  optional `rcl_interfaces.msg.ParameterDescriptor`
     @return               the set value
     """
+    _assert_node()
     name = format_param_name(name)
     if not NODE.has_parameter(name):
         NODE.declare_parameter(name, **dict(descriptor=descriptor) if descriptor else {})
@@ -739,6 +754,7 @@ def delete_param(name):
     @param   name      full name of the parameter in node namespace
     @throws  KeyError  if parameter not set
     """
+    _assert_node()
     name = format_param_name(name)
     try:
         NODE.undeclare_parameter(name)
@@ -751,8 +767,33 @@ def ok():
     return rclpy.ok()
 
 
+def on_shutdown(callback, *args, **kwargs):
+    """
+    Registers function to be called on shutdown, after node has been torn down.
+
+    Function is called with given arguments.
+    """
+    class CallWrapper:
+        def __init__(self, func, *args, **kwargs):
+            self.func, self.args, self.kwargs = func, args, kwargs
+            self.called = False
+        def __call__(self):
+            if self.called: return
+            self.called = True
+            return self.func(*self.args, **self.kwargs)
+
+    wrapper = CallWrapper(callback, *args, **kwargs)
+    with Mutex.NODE:
+        # Use local fallback, as ROS2 on_shutdown API is utterly unreliable
+        if not SHUTDOWN_CALLBACKS: atexit.register(shutdown)
+        SHUTDOWN_CALLBACKS.append(wrapper)
+        # ROS2 in some versions requires that the callback be a bound method
+        rclpy.get_default_context().on_shutdown(wrapper.__call__)
+
+
 def start_spin():
     """Sets ROS2 node spinning forever in a background thread."""
+    _assert_node()
     def do_spin():
         global SPINNER
         try:
@@ -768,6 +809,7 @@ def start_spin():
 
 def spin():
     """Spins ROS2 node forever."""
+    _assert_node()
     global SPINNER
 
     if SPINNER:
@@ -790,6 +832,7 @@ def spin_once(timeout=None):
     @param  timeout  time to wait at most, as seconds or ROS2 duration;
                      None or <0 waits forever
     """
+    _assert_node()
     global SPINNER
     timeout = to_sec(timeout)
     if SPINNER or Mutex.SPIN_ONCE._is_owned():  # Executor already spinning: sleep instead
@@ -810,6 +853,7 @@ def spin_until_future_complete(future, timeout=None):
     @param  future   object with `concurrent.futures.Future`-conforming interface to complete
     @param  timeout  time to wait, as seconds or ROS2 duration
     """
+    _assert_node()
     if future.done():
         return
     timeout = to_sec(timeout)
@@ -827,19 +871,33 @@ def spin_until_future_complete(future, timeout=None):
         future.cancel("ROS shut down")
 
 
-def shutdown():
-    """Shuts down ROS2 execution, if any."""
-    global NODE, EXECUTOR, SPINNER, SHUTDOWN
-    if SHUTDOWN: return
+def shutdown(reason=None):
+    """
+    Shuts down ROS2 execution, if any.
 
-    with Mutex.NODE:
+    @param   reason  shutdown reason to log, if any
+    """
+    def run_callbacks():
+        with Mutex.NODE:
+            cbs, SHUTDOWN_CALLBACKS[:] = SHUTDOWN_CALLBACKS[:], []
+        for cb in cbs:
+            try: cb()
+            except Exception: logger.exception("Error calling shutdown callback %r.", cb)
+
+    global NODE, EXECUTOR, SPINNER, SHUTDOWN
+    try:
         if SHUTDOWN: return
 
-        node, executor = NODE, EXECUTOR
-        rclpy.ok() and rclpy.shutdown()
-        NODE, EXECUTOR, SPINNER, SHUTDOWN = None, None, None, True
-        executor and executor.shutdown()
-        node and node.destroy_node()
+        with Mutex.NODE:
+            if SHUTDOWN: return
+
+            if reason: logger.info("shutdown [%s]", reason)
+            node, executor = NODE, EXECUTOR
+            rclpy.ok() and rclpy.shutdown()
+            NODE, EXECUTOR, SPINNER, SHUTDOWN = None, None, None, True
+            executor and executor.shutdown()
+            node and node.destroy_node()
+    finally: run_callbacks()
 
 
 def create_client(service, cls_or_typename, **qosargs):
@@ -854,6 +912,7 @@ def create_client(service, cls_or_typename, **qosargs):
     @return                   `rclpy.client.Client`, will support keyword arguments in calls
                               and be callable itself
     """
+    _assert_node()
     cls = get_message_class(cls_or_typename)
     if qosargs: qos = rclpy.qos.QoSProfile(**qosargs)
     else: qos = rclpy.qos.QoSPresetProfiles.SERVICES_DEFAULT.value
@@ -877,6 +936,7 @@ def create_service(service, cls_or_typename, callback, **qosargs):
                               `QoSProfile`, like `reliability`
     @return                   `rclpy.service.Service`
     """
+    _assert_node()
     cls = get_message_class(cls_or_typename)
     if qosargs: qos = rclpy.qos.QoSProfile(**qosargs)
     else: qos = rclpy.qos.QoSPresetProfiles.SERVICES_DEFAULT.value
@@ -900,6 +960,7 @@ def create_publisher(topic, cls_or_typename, latch=False, queue_size=0, **qosarg
                               will support keyword arguments in `publish()`
                               and have `get_num_connections()`
     """
+    _assert_node()
     cls = get_message_class(cls_or_typename)
     qosargs.setdefault("depth", queue_size or 0)
     if latch: qosargs["durability"] = rclpy.qos.DurabilityPolicy.TRANSIENT_LOCAL
@@ -927,6 +988,7 @@ def create_subscriber(topic, cls_or_typename, callback, callback_args=None,
                               and create a compatible QoS.
     @return                   `rclpy.subscription.Subscription`
     """
+    _assert_node()
     qosargs.setdefault("depth", queue_size or 0)
     if qosargs.pop("__autodetect", False):
         qosargs.update(get_topic_qos(topic, cls_or_typename, queue_size or 0))
@@ -949,6 +1011,7 @@ def create_timer(period, callback, oneshot=False, immediate=False):
     @param   immediate  whether to fire once immediately instead of waiting one period
     @return             `rclpy.timer.Timer`
     """
+    _assert_node()
     oneshot_timer = None
     def oneshot_callback():
         oneshot_timer.destroy()
@@ -972,6 +1035,7 @@ def create_rate(frequency):
     @param   frequency  rate to sleep at, in Hz
     @return             `rclpy.timer.Rate`
     """
+    _assert_node()
     return NODE.create_rate(frequency)
 
 
@@ -993,21 +1057,25 @@ def destroy_entity(item):
 
 def get_namespace():
     """Returns ROS2 node namespace."""
+    _assert_node()
     return NODE.get_namespace()
 
 
 def get_node_name():
     """Returns ROS2 node full name with namespace."""
+    _assert_node()
     return util.namejoin(NODE.get_namespace(), NODE.get_name())
 
 
 def get_nodes():
     """Returns all ROS2 nodes, as `[node full name, ]`."""
+    _assert_node()
     return [util.namejoin(b, a) for a, b in NODE.get_node_names_and_namespaces()]
 
 
 def get_topics():
     """Returns all available ROS2 topics, as `[(topic name, [type name, ]), ]`."""
+    _assert_node()
     return sorted([n, sorted(map(canonical, tt))] for n, tt in NODE.get_topic_names_and_types())
 
 
@@ -1022,6 +1090,7 @@ def get_topic_qos(topic, cls_or_typename, queue_size=10, publish=False):
                               by default returns settings for a subscription
     @return                   {"depth", "reliability", "durability"}
     """
+    _assert_node()
     typename = cls_or_typename
     if not isinstance(typename, str): typename = get_message_type(cls_or_typename)
     args = dict(depth=queue_size, reliability=rclpy.qos.ReliabilityPolicy.SYSTEM_DEFAULT,
@@ -1043,6 +1112,7 @@ def get_services(node=None, namespace=None, include_types=True):
     @param   namespace      full or partial namespace to scope services from
     @param   include_types  if false, type names will be returned as an empty list
     """
+    _assert_node()
     services = NODE.get_service_names_and_types() if not node else \
                NODE.get_service_names_and_types_by_node(*util.namesplit(node)[::-1])
     return [[n, sorted(map(canonical, tt)) if include_types else []]
@@ -1065,6 +1135,7 @@ def get_logger():
 
 def get_rostime():
     """Returns current ROS2 time, as `rclpy.time.Time`."""
+    _assert_node()
     return NODE.get_clock().now()
 
 
@@ -1077,6 +1148,7 @@ def remap_name(name, namespace=None):
                         by default current node namespace
     @return             remapped resolved name, or original if not mapped
     """
+    _assert_node()
     name1 = _resolve_name(name, namespace)
     with NODE.handle as node_capsule:
         name2 = rclpy_extension.rclpy_remap_topic_name(node_capsule, name1)
@@ -1089,6 +1161,7 @@ def resolve_name(name, namespace=None):
 
     @param   namespace  namespace to use if not current node full name
     """
+    _assert_node()
     name1 = _resolve_name(name, namespace)
     with NODE.handle as node_capsule:
         return rclpy_extension.rclpy_remap_topic_name(node_capsule, name1)
@@ -1100,6 +1173,7 @@ def _resolve_name(name, namespace=None):
 
     @param   namespace  namespace to use if not current node full name
     """
+    _assert_node()
     namespace = namespace or get_node_name()
     if not name:  # empty name resolves to node namespace
         return util.namesplit(namespace)[0] + "/"
@@ -1111,6 +1185,94 @@ def _resolve_name(name, namespace=None):
     elif not name2.startswith("/"):  # relative name
         name2 = util.namejoin(util.namesplit(namespace)[0], name2)
     return name2
+
+
+def sleep(duration):
+    """
+    Sleeps for the specified duration in ROS time.
+
+    Raises error on ROS shutdown or ROS time jumping backwards
+
+    @param   duration  time to sleep, as seconds or ROS duration, <=0 returns immediately
+    """
+    _assert_node()
+    from . import rospify  # Late import to avoid circular
+    rospify.sleep(duration)
+
+
+def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one publisher.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a publisher is available
+    """
+    _assert_node()
+    result = False
+    timeout, first = to_sec(timeout), False
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    from . import api  # Late import to avoid circular
+    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
+    if "*" == typename: typename = None  # AnyMsg
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        pubs = NODE.get_publishers_info_by_topic(topic)
+        exists, first = bool(pubs), False
+        result = exists and (not typename or any(typename == x.topic_type for x in pubs))
+        spin_once(0.1) if not result else None
+    return result
+
+
+def wait_for_subscriber(topic, timeout=None, cls_or_typename=None):
+    """
+    Blocks until topic has at least one subscriber.
+
+    @param   topic            name of topic to open
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  message type to expect if any,
+                              as ROS message class object like `std_msgs.msg.Bool`
+                              or message type name like "std_msgs/Bool"
+    @return                   whether a subscriber is available
+    """
+    _assert_node()
+    result = False
+    timeout, first = to_sec(timeout), False
+    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
+    from . import api  # Late import to avoid circular
+    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
+    if "*" == typename: typename = None  # AnyMsg
+    while not result and (first or deadline is None or time.monotonic() < deadline):
+        subs = NODE.get_subscriptions_info_by_topic(topic)
+        exists, first = bool(subs), False
+        result = exists and (not typename or any(typename == x.topic_type for x in subs))
+        spin_once(0.1) if not result else None
+    return result
+
+
+def wait_for_service(service, timeout=None, cls_or_typename=None):
+    """
+    Blocks until service is available.
+
+    @param   service          name of service
+    @param   timeout          time to wait at most, as seconds or ROS duration;
+                              None or <0 waits forever
+    @param   cls_or_typename  service type to expect if any,
+                              as ROS service class object like `std_msgs.msg.Bool`
+                              or service type name like "std_srvs/SetBool"
+    @return                   whether the service is available
+    """
+    _assert_node()
+    from . rospify.service import _wait_for_service  # Late import to avoid circular
+    try:
+        _wait_for_service(service, max(0, timeout or 0), cls_or_typename)
+    except Exception:
+        return False
+    return True
 
 
 # -------------------------------- GENERAL API --------------------------------
@@ -1505,78 +1667,6 @@ def to_time(val):
     return result
 
 
-def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
-    """
-    Blocks until topic has at least one publisher.
-
-    @param   topic            name of topic to open
-    @param   timeout          time to wait at most, as seconds or ROS duration;
-                              None or <0 waits forever
-    @param   cls_or_typename  message type to expect if any,
-                              as ROS message class object like `std_msgs.msg.Bool`
-                              or message type name like "std_msgs/Bool"
-    @return                   whether a publisher is available
-    """
-    result = False
-    timeout, first = to_sec(timeout), False
-    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
-    from . import api  # Late import to avoid circular
-    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
-    if "*" == typename: typename = None  # AnyMsg
-    while not result and (first or deadline is None or time.monotonic() < deadline):
-        pubs = NODE.get_publishers_info_by_topic(topic)
-        exists, first = bool(pubs), False
-        result = exists and (not typename or any(typename == x.topic_type for x in pubs))
-        spin_once(0.1) if not result else None
-    return result
-
-
-def wait_for_subscriber(topic, timeout=None, cls_or_typename=None):
-    """
-    Blocks until topic has at least one subscriber.
-
-    @param   topic            name of topic to open
-    @param   timeout          time to wait at most, as seconds or ROS duration;
-                              None or <0 waits forever
-    @param   cls_or_typename  message type to expect if any,
-                              as ROS message class object like `std_msgs.msg.Bool`
-                              or message type name like "std_msgs/Bool"
-    @return                   whether a subscriber is available
-    """
-    result = False
-    timeout, first = to_sec(timeout), False
-    deadline = None if timeout is None or timeout < 0 else time.monotonic() + timeout
-    from . import api  # Late import to avoid circular
-    typename = api.make_full_typename(get_message_type(cls_or_typename) or cls_or_typename or "")
-    if "*" == typename: typename = None  # AnyMsg
-    while not result and (first or deadline is None or time.monotonic() < deadline):
-        subs = NODE.get_subscriptions_info_by_topic(topic)
-        exists, first = bool(subs), False
-        result = exists and (not typename or any(typename == x.topic_type for x in subs))
-        spin_once(0.1) if not result else None
-    return result
-
-
-def wait_for_service(service, timeout=None, cls_or_typename=None):
-    """
-    Blocks until service is available.
-
-    @param   service          name of service
-    @param   timeout          time to wait at most, as seconds or ROS duration;
-                              None or <0 waits forever
-    @param   cls_or_typename  service type to expect if any,
-                              as ROS service class object like `std_msgs.msg.Bool`
-                              or service type name like "std_srvs/SetBool"
-    @return                   whether the service is available
-    """
-    from . rospify.service import _wait_for_service  # Late import to avoid circular
-    try:
-        _wait_for_service(service, max(0, timeout or 0), cls_or_typename)
-    except Exception:
-        return False
-    return True
-
-
 __all__ = [
     "AnyMsg", "Bag", "ROSLogHandler", "DDS_TYPES", "FAMILY", "PARAM_SEPARATOR",
     "PRIVATE_PREFIX", "ROS_ALIAS_TYPES", "ROS_TIME_CLASSES", "ROS_TIME_TYPES",
@@ -1589,9 +1679,9 @@ __all__ = [
     "get_params", "get_rostime", "get_service_definition", "get_service_request_class",
     "get_service_response_class", "get_services", "get_topic_qos", "get_topics",
     "has_param", "init_node", "init_params", "is_ros_message", "is_ros_service",
-    "is_ros_time", "make_duration", "make_time", "ok", "register_init", "remap_name",
-    "resolve_name", "scalar", "serialize_message", "set_param", "shutdown", "spin",
-    "spin_once", "spin_until_future_complete", "start_spin",
+    "is_ros_time", "make_duration", "make_time", "ok", "on_shutdown", "register_init",
+    "remap_name", "resolve_name", "scalar", "serialize_message", "set_param", "shutdown",
+    "sleep", "spin", "spin_once", "spin_until_future_complete", "start_spin",
     "time_message", "to_duration", "to_nsec", "to_sec", "to_sec_nsec", "to_time",
     "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]

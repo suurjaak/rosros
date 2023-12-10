@@ -234,7 +234,8 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | `rosros.spin_once`                  | waits until timeout in ROS1; executes one ROS operation or waits until timeout in ROS2     | `timeout=None`
 | `rosros.spin_until_future_complete` | spins ROS until future complete or timeout reached or ROS shut down                        | `future, timeout=None`
 | `rosros.ok`                         | returns whether ROS has been initialized and is not shut down                              | |
-| `rosros.shutdown`                   | shuts down live ROS node, if any                                                           | |
+| `rosros.on_shutdown`                | registers function to be called on shutdown                                                | `callback, *args, **kwargs`
+| `rosros.shutdown`                   | shuts down live ROS node, if any                                                           | `reason=None`
 |                                     |                                                                                            | |
 |                                     | **Parameters**                                                                             | |
 | `rosros.init_params`                | sets all parameters on node from defaults dictionary, returns full parameters dictionary.  | `defaults=None, **defaultkws`
@@ -256,9 +257,10 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 | `rosros.create_rate`                | returns a ROS rate instance, for sleeping at a fixed rate                                  | `frequency`
 | `rosros.destroy_entity`             | closes the given publisher, subscriber, service client, service server, or timer instance  | `item`
 | `rosros.AnyMsg`                     | `rospy.AnyMsg` in ROS1, stand-in class with equivalent functionality in ROS2               | |
+| `rosros.sleep`                      | sleeps for the specified duration in ROS time                                              | `duration`
 | `rosros.wait_for_publisher`         | blocks until topic has at least one publisher                                              | `topic, timeout=None, cls_or_typename=None`
 | `rosros.wait_for_subscriber`        | blocks until topic has at least one subscriber                                             | `topic, timeout=None, cls_or_typename=None`
-| `rosros.wait_for_publisher`         | blocks until service is available                                                          | `service, timeout=None, cls_or_typename=None`
+| `rosros.wait_for_service`           | blocks until service is available                                                          | `service, timeout=None, cls_or_typename=None`
 |                                     |                                                                                            | |
 |                                     | **ROS bags**                                                                               | |
 | `rosros.Bag`                        | ROS bag reader and writer;                                                                 | |
@@ -277,6 +279,7 @@ additional members for a unified interface _**conforming to ROS1 API**_.
 |                                     | **Miscellaneous**                                                                          | |
 | `rosros.get_logger`                 | returns `logging.Logger` for logging to ROS log handler;                                   | |
 |                                     | logger supports additional keywords `__once__`, `__throttle__`, `__throttle_identical__`   | |
+| `rosros.get_ros_version`            | returns ROS version information as a data dictionary                                       | |
 | `rosros.get_rostime`                | returns ROS time instance for current ROS clock time                                       | |
 | `rosros.register_init`              | informs `rosros` of ROS having been initialized outside of `init_node()`.                  | `node=None`
 |                                     | Giving node as argument is mandatory in ROS2.                                              | |
@@ -344,7 +347,7 @@ Can be used as stand-alone library functions without initializing rosros core.
 |                                         |                                                                                               | |
 |                                         | **Message conversion**                                                                        | |
 | `rosros.api.deserialize_message`        | returns ROS message or service request/response instantiated from serialized binary           | `raw, cls_or_typename`
-| `rosros.api.dict_to_message`            | returns given ROS message populated from Python dictionary                                    | `dct, msg`
+| `rosros.api.dict_to_message`            | returns ROS message populated from Python dictionary                                          | `dct, msg_or_type`
 | `rosros.api.message_to_dict`            | returns ROS message as nested Python dictionary;                                              | `msg, replace=None`
 |                                         | with optional replacements for certain values like `{math.nan: None}`                         | |
 | `rosros.api.message_to_str`             | returns ROS message as an evaluatable string, e.g. `"std_msgs.msg.UInt8(data=0)"`             | `msg, indent=None`

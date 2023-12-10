@@ -1,0 +1,3 @@
+<launch>
+  <test test-name="test_core" pkg="rosros" type="test_core.py" />
+</launch>

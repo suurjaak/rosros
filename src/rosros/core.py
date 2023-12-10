@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    06.12.2023
+@modified    10.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.core
@@ -166,9 +166,24 @@ def ok():
     return ros.ok()
 
 
-def shutdown():
-    """Shuts down live ROS node, if any."""
-    ros.shutdown()
+def on_shutdown(callback, *args, **kwargs):
+    """
+    Registers function to be called on shutdown, after node has been torn down.
+
+    Function is called with given arguments.
+
+    Note: function may not get called if process is killed.
+    """
+    ros.on_shutdown(callback, *args, **kwargs)
+
+
+def shutdown(reason=None):
+    """
+    Shuts down live ROS node, if any.
+
+    @param   reason  shutdown reason to log, if any
+    """
+    ros.shutdown(reason)
 
 
 def create_publisher(topic, cls_or_typename, latch=False, queue_size=0, **qosargs):
@@ -326,6 +341,13 @@ def get_nodes():
     return ros.get_nodes()
 
 
+def get_ros_version():
+    """Returns ROS version information, as {"major": "1" / "2", ?"minor": distro like "noetic"}."""
+    result = {"major": os.getenv("ROS_VERSION")}
+    if os.getenv("ROS_DISTRO"): result["minor"] = os.getenv("ROS_DISTRO")
+    return result
+
+
 def get_topics():
     """Returns all available ROS topics, as `[(topic name, [type name, ]), ]`."""
     return ros.get_topics()
@@ -370,6 +392,17 @@ def register_init(node=None):
     @param   node  mandatory `rclpy.node.Node` in ROS2
     """
     ros1.register_init() if ros1 else ros2.register_init(node)
+
+
+def sleep(duration):
+    """
+    Sleeps for the specified duration in ROS time.
+
+    Raises error on ROS shutdown or ROS time jumping backwards
+
+    @param   duration  time to sleep, as seconds or ROS duration, <=0 returns immediately
+    """
+    ros.sleep(duration)
 
 
 def wait_for_publisher(topic, timeout=None, cls_or_typename=None):
@@ -419,12 +452,11 @@ def wait_for_service(service, timeout=None, cls_or_typename=None):
 
 __all__ = [
     "ros1", "ros2", "AnyMsg", "Bag",
-    "create_client", "create_publisher", "create_rate", "create_service",
-    "create_subscriber", "create_timer", "delete_param", "destroy_entity",
-    "get_logger", "get_namespace", "get_node_name", "get_nodes", "get_param",
-    "get_param_names", "get_params", "get_rostime", "get_services", "get_topics",
-    "has_param", "init_node", "init_params", "ok", "register_init", "remap_name",
-    "resolve_name", "set_param", "shutdown", "spin", "spin_once",
-    "spin_until_future_complete", "start_spin",
+    "create_client", "create_publisher", "create_rate", "create_service", "create_subscriber",
+    "create_timer", "delete_param", "destroy_entity", "get_logger", "get_namespace",
+    "get_node_name", "get_nodes", "get_param", "get_param_names", "get_params", "get_ros_version",
+    "get_rostime", "get_services", "get_topics", "has_param", "init_node", "init_params",
+    "ok", "on_shutdown", "register_init", "remap_name", "resolve_name", "set_param", "sleep",
+    "shutdown", "spin", "spin_once", "spin_until_future_complete", "start_spin",
     "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
 ]
