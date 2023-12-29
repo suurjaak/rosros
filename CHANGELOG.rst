@@ -2,6 +2,10 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.2.4 (2023-12-29)
+------------------
+* fix api.to_duration()
+
 0.2.3 (2023-12-10)
 ------------------
 * add rosros.on_shutdown()
