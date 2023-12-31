@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    07.12.2023
+@modified    29.12.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.api
@@ -414,16 +414,7 @@ def to_decimal(val):
 
 def to_duration(val):
     """Returns value as ROS duration if convertible (int/float/time/datetime/decimal), else value."""
-    result = val
-    if isinstance(val, decimal.Decimal):
-        result = rospy.Duration(int(val), float(val % 1) * 10**9)
-    elif isinstance(val, datetime.datetime):
-        result = rospy.Duration(int(val.timestamp()), 1000 * val.microsecond)
-    elif isinstance(val, (float, int)):
-        result = rospy.Duration(val)
-    elif isinstance(val, rospy.Time):
-        result = rospy.Duration(val.secs, val.nsecs)
-    return result
+    return ros.to_duration(val)
 
 
 def to_nsec(val):
