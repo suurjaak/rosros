@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    29.12.2023
+@modified    30.01.2024
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -163,6 +163,9 @@ class TestAPI(testbase.TestBase):
             stamp = api.make_time(1, 2)
             msg = std_msgs.msg.Header(frame_id=self.NAME, stamp=stamp if ROS1 else stamp.to_msg())
             if ROS1: msg.seq = dct["seq"]
+            for msg_or_type in ("std_msgs/Header", std_msgs.msg.Header, std_msgs.msg.Header()):
+                self.assertEqual(func(dct, msg_or_type), msg, ERR(func, msg_or_type))
+            dct["stamp"] = api.time_message(api.make_time(1, 2))  # Verify using nested ROS messages
             for msg_or_type in ("std_msgs/Header", std_msgs.msg.Header, std_msgs.msg.Header()):
                 self.assertEqual(func(dct, msg_or_type), msg, ERR(func, msg_or_type))
 
