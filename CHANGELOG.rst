@@ -2,7 +2,11 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.2.4 (2023-12-31)
+0.2.5 (2024-01-30)
+------------------
+* make api.dict_to_message() support nested ROS messages in dictionary
+
+0.2.4 (2023-12-29)
 ------------------
 * fix api.to_duration()
 
