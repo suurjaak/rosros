@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.4</span>
+   <div id="projectname">rosros<span id="projectnumber">&#160;0.2.5</span>
    </div>
    <div id="projectbrief">Simple unified interface to ROS1 / ROS2 Python API</div>
   </td>
@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="stringliteral"></span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="stringliteral">@author      Erki Suurjaak</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="stringliteral"></span><span class="preprocessor">@created</span>     11.02.2022</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">@modified</span>    29.12.2023</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">@modified</span>    30.01.2024</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>------------------------------------------------------------------------------</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="stringliteral">## @namespace rosros.api</span></div>
@@ -372,7 +372,7 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        v, msgv = dct[name], ros.get_message_value(msg, name)</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordflow">if</span> ros.is_ros_message(msgv):</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            v = v <span class="keywordflow">if</span> ros.is_ros_time(v) <span class="keywordflow">and</span> ros.is_ros_time(msgv) <span class="keywordflow">else</span> <a class="code hl_function" href="namespacerosros_1_1api.html#a03de3fe306fb428e664b228614fbd4f5">dict_to_message</a>(v, msgv)</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            v = v <span class="keywordflow">if</span> ros.is_ros_message(v) <span class="keywordflow">else</span> <a class="code hl_function" href="namespacerosros_1_1api.html#a03de3fe306fb428e664b228614fbd4f5">dict_to_message</a>(v, msgv)</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordflow">elif</span> isinstance(msgv, (list, tuple)):</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            scalarname = ros.scalar(typename)</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            <span class="keywordflow">if</span> scalarname <span class="keywordflow">in</span> ROS_BUILTIN_TYPES:</div>
@@ -380,7 +380,7 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                v = [x <span class="keywordflow">if</span> isinstance(x, cls) <span class="keywordflow">else</span> cls(x) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> v]</div>
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>            <span class="keywordflow">else</span>:</div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>                cls = ros.get_message_class(scalarname)</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                v = [<a class="code hl_function" href="namespacerosros_1_1api.html#a03de3fe306fb428e664b228614fbd4f5">dict_to_message</a>(x, cls()) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> v]</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                v = [x <span class="keywordflow">if</span> ros.is_ros_message(x) <span class="keywordflow">else</span> <a class="code hl_function" href="namespacerosros_1_1api.html#a03de3fe306fb428e664b228614fbd4f5">dict_to_message</a>(x, cls()) <span class="keywordflow">for</span> x <span class="keywordflow">in</span> v]</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordflow">else</span>:</div>
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            v = type(msgv)(v)</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
@@ -585,7 +585,7 @@ $(document).ready(function(){initNavTree('api_8py_source.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_95d50a07ae1b3e81d22ce78194d7dd49.html">rosros</a></li><li class="navelem"><a class="el" href="api_8py.html">api.py</a></li>
-    <li class="footer">Generated on Sun Dec 31 2023 15:18:11 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Tue Jan 30 2024 20:00:19 for rosros by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
