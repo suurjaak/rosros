@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     09.12.2023
-@modified    10.12.2023
+@modified    03.02.2024
 ------------------------------------------------------------------------------
 """
 import logging
@@ -106,20 +106,6 @@ class TestCore(testbase.TestBase):
     def cb_class(cls, *args, **kwargs): cls.CALLS.append((args, kwargs))
 
     def cb_instance(self, *args, **kwargs): self.CALLS.append((args, kwargs))
-
-
-
-    __all__ = [
-    "create_client", "create_publisher", "create_rate", "create_service", "create_subscriber",
-    "create_timer", "delete_param", "destroy_entity", "get_logger", "get_namespace",
-    "get_node_name", "get_nodes", "get_param", "get_param_names", "get_params", "get_rostime",
-    "get_services", "get_topics", "has_param", "init_node", "init_params", "ok", "on_shutdown",
-    "register_init", "remap_name", "resolve_name", "set_param", "sleep", "shutdown",
-    "spin", "spin_once", "spin_until_future_complete", "start_spin",
-    "wait_for_publisher", "wait_for_subscriber", "wait_for_service"
-]
-
-
 
 
 if "__main__" == __name__:
