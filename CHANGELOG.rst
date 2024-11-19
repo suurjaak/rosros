@@ -2,6 +2,10 @@
 Changelog for package rosros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.2.6 (2024-11-19)
+------------------
+* fix rclify error on loading node parameter overrides (issue #1)
+
 0.2.5 (2024-01-30)
 ------------------
 * make api.dict_to_message() support nested ROS messages in dictionary

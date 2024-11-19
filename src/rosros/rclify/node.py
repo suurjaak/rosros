@@ -11,7 +11,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     14.02.2022
-@modified    25.06.2022
+@modified    19.11.2024
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.rclify.node
@@ -115,7 +115,7 @@ class Node:
         ros1.init_node(node_name, node_args, enable_rosout=enable_rosout)
 
         self._parameter_overrides = {k: Parameter(k, value=v)
-                                     for k, v in ros1.get_params(nested=False)}
+                                     for k, v in ros1.get_params(nested=False).items()}
         self._parameter_overrides.update({p.name: p for p in parameter_overrides or {}})
         if automatically_declare_parameters_from_overrides:
             self._parameters.update(self._parameter_overrides)
