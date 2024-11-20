@@ -415,8 +415,8 @@ class TestRclify(testbase.TestBase):
 
         cbs1, cbs2, cbs3, cbs_empty = [], [], [], []
 
-        self._node.set_parameters_callback(make_callback(cbs1, lambda pp: True))
-        self._node.add_on_set_parameters_callback(make_callback(cbs2, lambda p: True))
+        self._node.add_on_set_parameters_callback(make_callback(cbs1, lambda pp: True))
+        self._node.add_on_set_parameters_callback(make_callback(cbs2, lambda pp: True))
 
         removed_cb = make_callback(cbs_empty, lambda pp: False)
         self._node.add_on_set_parameters_callback(removed_cb)
