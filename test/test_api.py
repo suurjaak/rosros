@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     13.04.2022
-@modified    30.01.2024
+@modified    20.11.2024
 ------------------------------------------------------------------------------
 """
 import datetime
@@ -213,8 +213,11 @@ class TestAPI(testbase.TestBase):
         func = api.serialize_message
         with self.subTest(NAME(func)):
             logger.info("Testing %s.", NAME(func))
-            expected = b"\x01" if ROS1 else b"\x00\x01\x00\x00\x01"
-            self.assertEqual(func(std_msgs.msg.Bool(data=True)), expected, ERR(func))
+            if ROS1:
+                self.assertEqual(func(std_msgs.msg.Bool(data=True)), b"\x01", ERR(func))
+            else:
+                expected = b"\x00\x01\x00\x00\x01" # Newer distros have extra "\x00\x00\x00"
+                self.assertTrue(func(std_msgs.msg.Bool(data=True)).startswith(expected), ERR(func))
 
         func = api.deserialize_message
         with self.subTest(NAME(func)):

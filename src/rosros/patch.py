@@ -7,7 +7,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     23.02.2022
-@modified    07.12.2023
+@modified    20.11.2023
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.patch
@@ -687,11 +687,11 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
 
     ROS2_Service__init = rclpy.service.Service.__init__
 
-    def Service__init(self, service_handle, srv_type, srv_name, callback,
+    def Service__init(self, service_impl, srv_type, srv_name, callback,
                       callback_group, qos_profile):
         """Wraps Service.__init__() to support returning list/dict/None from server callback."""
         callback = service_serve_wrapper(self, callback)
-        ROS2_Service__init(self, service_handle, srv_type, srv_name, callback,
+        ROS2_Service__init(self, service_impl, srv_type, srv_name, callback,
                            callback_group, qos_profile)
 
     def Service__spin(self):
@@ -798,12 +798,12 @@ elif rclpy:  # Patch-functions to apply on ROS2 classes, to achieve parity with 
 
     def Timer__join(self):
         """Returns when timer has terminated."""
-        while self.handle and self.is_ready():
+        while self.handle and self.handle.pointer and self.is_ready():
             time.sleep(1)
 
     def Timer__is_alive(self):
         """Returns whether timer is still running."""
-        return self.handle and self.is_ready()
+        return bool(self.handle and self.handle.pointer) and self.is_ready()
 
 
     ROS2_Time__init = rclpy.time.Time.__init__

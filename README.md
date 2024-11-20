@@ -484,6 +484,9 @@ Unsupported arguments in methods are ignored.
 Installation
 ------------
 
+Developed and tested under ROS1 Noetic and ROS2 Foxy,
+works in later ROS2 versions (tested up to ROS2 Jazzy). 
+
 ### Using pip
 
     pip install rosros

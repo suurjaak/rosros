@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     86.04.2022
-@modified    08.12.2023
+@modified    20.11.2024
 ------------------------------------------------------------------------------
 """
 import copy
@@ -44,6 +44,9 @@ class TestRospify(testbase.TestBase):
     ## Topic remaps as {from: to}
     REMAPS = {"/foo": "/bar"}
 
+    ## Given to node as command-line parameters
+    PARAM_OVERRIDES = {"some_parameter": "override_value"}
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -59,7 +62,19 @@ class TestRospify(testbase.TestBase):
         self._anymsg_sub = None  # Subscriber instance using AnyMsg
         self._anymsg_cls = {}    # {topic name: real message class}
 
-        node = rospy.init_node(self.NAME, ["%s:=%s" % x for x in self.REMAPS.items()])
+        cli_args = []
+        if self.REMAPS:
+            if rosros.ros2: cli_args.append("--ros-args")
+            for topic1, topic2 in self.REMAPS.items():
+                if rosros.ros2: cli_args.append("--remap")
+                cli_args.append("%s:=%s" % (topic1, topic2))
+        if self.PARAM_OVERRIDES:
+            if rosros.ros2 and not cli_args: cli_args.append("--ros-args")
+            for k, v in self.PARAM_OVERRIDES.items():
+                if rosros.ros2: cli_args.append("--param")
+                cli_args.append("%s%s:=%s" % ("_" if rosros.ros1 else "", k, v))
+
+        node = rospy.init_node(self.NAME, cli_args)
         self.assertIsInstance(node, type(None) if rosros.ros1 else rclpy.node.Node,
                               "Unexpected value from rosros.init_node().")
         self.add_logging()
@@ -521,6 +536,11 @@ class TestRospify(testbase.TestBase):
                                msg="Unexpected value from get_time().")
         self.assertFalse(rospy.is_shutdown(), "Unexpected value from is_shutdown().")
 
+        if self.PARAM_OVERRIDES:
+            logger.info("Verifying parameter overrides.")
+            for name, value in self.PARAM_OVERRIDES.items():
+                self.assertEqual(rospy.get_param("~" + name), value,
+                                 "Unexpected result from get_param() for expected override.")
 
         name, value = self.NAME, 123
         self.assertEqual(rospy.get_param("~" + name, value), value,

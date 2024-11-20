@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     11.02.2022
-@modified    10.12.2023
+@modified    20.11.2024
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.ros2
@@ -1151,7 +1151,7 @@ def remap_name(name, namespace=None):
     _assert_node()
     name1 = _resolve_name(name, namespace)
     with NODE.handle as node_capsule:
-        name2 = rclpy_extension.rclpy_remap_topic_name(node_capsule, name1)
+        name2 = rclpy_extension.rclpy_remap_topic_name(node_capsule or NODE.handle, name1)
     return name2 if (name1 != name2) else name
 
 
@@ -1164,7 +1164,7 @@ def resolve_name(name, namespace=None):
     _assert_node()
     name1 = _resolve_name(name, namespace)
     with NODE.handle as node_capsule:
-        return rclpy_extension.rclpy_remap_topic_name(node_capsule, name1)
+        return rclpy_extension.rclpy_remap_topic_name(node_capsule or NODE.handle, name1)
 
 
 def _resolve_name(name, namespace=None):
