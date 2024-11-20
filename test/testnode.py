@@ -14,7 +14,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    27.10.2022
+@modified    19.11.2024
 ------------------------------------------------------------------------------
 """
 import copy
@@ -233,11 +233,13 @@ class TestNode():
         """
         target, args, kwargs = None, (), {}
         if "publish" == action["category"]:
-            logger.debug("Executing reaction to %r (source %r): publish to %r.", event, source, action["name"])
+            logger.debug("Executing reaction to %r (source %r): publish to %r.",
+                         event, source, action["name"])
             pub = self._pubs[action["name"]]
             target, kwargs = pub.publish, action.get("value", {})
         if "service" == action["category"]:
-            logger.debug("Executing reaction to %r (source %r): call service %r.", event, source, action["name"])
+            logger.debug("Executing reaction to %r (source %r): call service %r.",
+                         event, source, action["name"])
             cli = self._clis[action["name"]]
             target, kwargs = cli.call, action.get("value", {})
         if target:
