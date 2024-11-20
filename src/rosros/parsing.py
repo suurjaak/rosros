@@ -8,7 +8,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     12.02.2022
-@modified    14.04.2022
+@modified    20.11.2024
 ------------------------------------------------------------------------------
 """
 ## @namespace rosros.parsing
@@ -49,7 +49,7 @@ def make_definition_hash_text(pkg, definition, subdefs=()):
     """
     from . import api  # Imported late to avoid circular import
     # "type name (= constvalue)?" or "type name (defaultvalue)?" (ROS2 format)
-    FIELD_RGX = re.compile(r"^([a-z][^\s:]+)\s+([^\s=]+)(\s*=\s*([^\n]+))?(\s+([^\n]+))?", re.I)
+    FIELD_RGX = re.compile(r"^\s*([a-z][^\s:]+)\s+([^\s=]+)(\s*=\s*([^\n]+))?(\s+([^\n]+))?", re.I)
     STR_CONST_RGX = re.compile(r"^w?string\s+([^\s=#]+)\s*=")
     lines, subdefmap = [], dict(subdefs or ())
 
@@ -105,7 +105,7 @@ def parse_definition_subtypes(typedef):
         result[curtype] = "\n".join(curlines)
 
     # "type name (= constvalue)?" or "type name (defaultvalue)?" (ROS2 format)
-    FIELD_RGX = re.compile(r"^([a-z][^\s]+)\s+([^\s=]+)(\s*=\s*([^\n]+))?(\s+([^\n]+))?", re.I)
+    FIELD_RGX = re.compile(r"^\s*([a-z][^\s]+)\s+([^\s=]+)(\s*=\s*([^\n]+))?(\s+([^\n]+))?", re.I)
     for subtype, subdef in list(result.items()):
         pkg = subtype.rsplit("/", 1)[0]
         for line in subdef.splitlines():
@@ -142,6 +142,7 @@ def get_ros2_message_definition(typename, full=True):
     except Exception:  # .msg/.srv file unavailable: parse IDL
         texts[typename] = get_ros2_message_definition_idl(typename)
     for line in texts[typename].splitlines() if full else ():
+        line = line.strip()
         if not line or not line[0].isalpha():
             continue  # for line
         linetype = api.scalar(api.canonical(re.sub(r"^([a-zA-Z][^\s]+)(.+)", r"\1", line)))
