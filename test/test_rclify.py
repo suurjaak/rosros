@@ -9,7 +9,7 @@ Released under the BSD License.
 
 @author      Erki Suurjaak
 @created     01.06.2022
-@modified    25.06.2022
+@modified    20.11.2024
 ------------------------------------------------------------------------------
 """
 import functools
@@ -38,6 +38,9 @@ class TestRclify(testbase.TestBase):
     ## Node namespace
     NAMESPACE = "/tests"
 
+    ## Given to node as command-line parameters
+    PARAM_OVERRIDES = {"some_parameter": "override_value"}
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -55,8 +58,15 @@ class TestRclify(testbase.TestBase):
 
         self._running = False  # Whether test has been set up and is executing
 
+        cli_args = []
+        if self.PARAM_OVERRIDES:
+            if rosros.ros2: cli_args.append("--ros-args")
+            for k, v in self.PARAM_OVERRIDES.items():
+                if rosros.ros2: cli_args.append("--param")
+                cli_args.append("%s%s:=%s" % ("_" if rosros.ros1 else "", k, v))
+
         rclpy.init()
-        self._node = rclpy.create_node(self.NAME, namespace=self.NAMESPACE)
+        self._node = rclpy.create_node(self.NAME, namespace=self.NAMESPACE, cli_args=cli_args)
         self._grp  = rclpy.callback_groups.ReentrantCallbackGroup()
         self._exec = rclpy.executors.MultiThreadedExecutor()
         self._exec.add_node(self._node)
@@ -89,6 +99,7 @@ class TestRclify(testbase.TestBase):
             aname, atypename, avalue = action["name"], action["type"], action.get("value")
             acls = rosros.api.get_message_class(atypename)
             self._types[aname] = acls
+            self._exps[aname] = {} if avalue is None else avalue
             if "publish" == action["category"]:
                 logger.info("Opening subscriber to %r as %s.", aname, atypename)
                 handler = functools.partial(self.on_message, aname)
@@ -100,9 +111,6 @@ class TestRclify(testbase.TestBase):
                 handler = functools.partial(self.on_service, aname)
                 self._srvs[aname] = self._node.create_service(acls, aname, handler,
                                                               callback_group=self._grp)
-                self._exps[aname] = {} if avalue is None else avalue
-
-            self._exps[aname] = {} if avalue is None else avalue
 
         self._running = True
         threading.Thread(target=self.spin).start()
@@ -385,6 +393,14 @@ class TestRclify(testbase.TestBase):
                          "Unexpected value for rclpy.node.Node.get_clock()")
         self.assertIsNotNone(self._node.get_logger(),
                          "Unexpected value for rclpy.node.Node.get_logger()")
+
+        if self.PARAM_OVERRIDES:
+            logger.info("Verifying parameter overrides.")
+            for name, value in self.PARAM_OVERRIDES.items():
+                self._node.declare_parameter(name)
+                self.assertEqual(self._node.get_parameter_or(name).value, value,
+                                 "Unexpected result from rclpy.node.Node.get_parameter_or() "
+                                 "for expected override.")
 
         def make_callback(lst, resulter):
             """
