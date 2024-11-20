@@ -1,19 +1,35 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,169,81,195"/>
-<area shape="rect" id="Node000001" href="$classrosros_1_1rospify_1_1service_1_1_service.html" title="Stand&#45;in for `rospy.Service`, wrapping the creation of ROS2 service." alt="" coords="135,5,347,31"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="51,155,79,97,100,67,128,41,152,28,154,33,131,46,104,70,83,100,56,158"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rospify_1_1service_1_1_service_proxy.html" title="Stand&#45;in for `rospy.ServiceProxy`, wrapping the creation of ROS2 service client." alt="" coords="135,55,347,95"/>
-<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="63,157,92,130,128,105,155,93,157,98,131,110,96,134,67,161"/>
-<area shape="rect" id="Node000003" href="$classrosros_1_1rospify_1_1timer_1_1_rate.html" title="Stand&#45;in for `rospy.Rate`, wrapping the creation of ROS2 rate instance." alt="" coords="150,120,333,145"/>
-<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="94,164,129,154,177,143,178,148,130,159,95,169"/>
-<area shape="rect" id="Node000004" href="$classrosros_1_1rospify_1_1timer_1_1_timer.html" title="Stand&#45;in for `rospy.Timer`, wrapping the creation of ROS2 timer instance." alt="" coords="147,169,336,195"/>
-<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="95,179,147,179,147,185,95,185"/>
-<area shape="rect" id="Node000005" href="$classrosros_1_1rospify_1_1topics_1_1_message.html" title="Abstract base class of Message data classes auto&#45;generated from msg files." alt="" coords="134,219,349,244"/>
-<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="95,194,130,203,182,216,181,221,129,209,94,199"/>
-<area shape="rect" id="Node000007" href="$classrosros_1_1rospify_1_1topics_1_1_publisher.html" title="Stand&#45;in for `rospy.Publisher`, wrapping the creation of ROS2 publisher." alt="" coords="133,268,349,293"/>
-<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="67,203,96,230,131,253,163,265,161,270,128,258,92,234,63,207"/>
-<area shape="rect" id="Node000008" href="$classrosros_1_1rospify_1_1topics_1_1_subscriber.html" title="Stand&#45;in for `rospy.Subscriber`, wrapping the creation of ROS2 subscription." alt="" coords="129,317,353,343"/>
-<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="57,206,86,256,106,281,131,302,156,315,153,320,128,307,103,285,81,259,53,208"/>
-<area shape="rect" id="Node000006" href="$classrosros_1_1rospify_1_1msg_1_1_any_msg.html" title="Stand&#45;in for `rospy.AnyMsg`." alt="" coords="401,219,599,244"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="362,229,401,229,401,234,362,234"/>
+<area shape="rect" id="node1" href="$class_exception.html" title=" " alt="" coords="5,633,92,659"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title=" " alt="" coords="166,136,357,177"/>
+<area shape="rect" id="node7" href="$classrosros_1_1rclify_1_1exceptions_1_1_not_initialized_exception.html" title=" " alt="" coords="173,233,349,275"/>
+<area shape="rect" id="node8" href="$classrosros_1_1rclify_1_1exceptions_1_1_no_type_support_imported_exception.html" title=" " alt="" coords="140,299,383,340"/>
+<area shape="rect" id="node9" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title=" " alt="" coords="173,364,349,405"/>
+<area shape="rect" id="node15" href="$classrosros_1_1rclify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title=" " alt="" coords="173,429,349,471"/>
+<area shape="rect" id="node16" href="$classrosros_1_1rclify_1_1executors_1_1_condition_reached_exception.html" title=" " alt="" coords="159,495,363,536"/>
+<area shape="rect" id="node17" href="$classrosros_1_1rclify_1_1executors_1_1_external_shutdown_exception.html" title=" " alt="" coords="159,560,363,601"/>
+<area shape="rect" id="node18" href="$classrosros_1_1rclify_1_1executors_1_1_shutdown_exception.html" title=" " alt="" coords="177,625,346,667"/>
+<area shape="rect" id="node19" href="$classrosros_1_1rclify_1_1executors_1_1_timeout_exception.html" title=" " alt="" coords="177,691,346,732"/>
+<area shape="rect" id="node20" href="$classrosros_1_1rclify_1_1node_1_1_node_name_non_existent_error.html" title=" " alt="" coords="156,756,367,797"/>
+<area shape="rect" id="node21" href="$classrosros_1_1rclify_1_1qos_1_1_invalid_qo_s_profile_exception.html" title=" " alt="" coords="175,821,347,863"/>
+<area shape="rect" id="node22" href="$classrosros_1_1rospify_1_1exceptions_1_1_parameter_invalid.html" title=" " alt="" coords="167,887,355,928"/>
+<area shape="rect" id="node23" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_exception.html" title=" " alt="" coords="167,952,355,993"/>
+<area shape="rect" id="node28" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_internal_exception.html" title=" " alt="" coords="167,1069,355,1111"/>
+<area shape="rect" id="node32" href="$classrosros_1_1rospify_1_1service_1_1_service_exception.html" title=" " alt="" coords="155,1135,367,1176"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_namespace_exception.html" title=" " alt="" coords="459,5,665,47"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_node_name_exception.html" title=" " alt="" coords="461,71,663,112"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_service_name_exception.html" title=" " alt="" coords="453,136,671,177"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_topic_name_exception.html" title=" " alt="" coords="461,201,663,243"/>
+<area shape="rect" id="node10" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_exception.html" title=" " alt="" coords="463,267,661,308"/>
+<area shape="rect" id="node11" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_parameter_value_exception.html" title=" " alt="" coords="445,332,679,373"/>
+<area shape="rect" id="node12" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_already_declared_exception.html" title=" " alt="" coords="431,397,693,439"/>
+<area shape="rect" id="node13" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_immutable_exception.html" title=" " alt="" coords="449,463,675,504"/>
+<area shape="rect" id="node14" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_not_declared_exception.html" title=" " alt="" coords="445,528,679,569"/>
+<area shape="rect" id="node24" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_init_exception.html" title=" " alt="" coords="468,880,656,921"/>
+<area shape="rect" id="node25" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_interrupt_exception.html" title=" " alt="" coords="468,1011,656,1052"/>
+<area shape="rect" id="node27" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_serialization_exception.html" title=" " alt="" coords="465,945,659,987"/>
+<area shape="rect" id="node26" href="$classrosros_1_1rospify_1_1exceptions_1_1_r_o_s_time_moved_backwards_exception.html" title=" " alt="" coords="741,1011,1001,1052"/>
+<area shape="rect" id="node29" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_exception.html" title=" " alt="" coords="468,1076,656,1117"/>
+<area shape="rect" id="node30" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_init_error.html" title=" " alt="" coords="777,1076,965,1117"/>
+<area shape="rect" id="node31" href="$classrosros_1_1rospify_1_1exceptions_1_1_transport_terminated.html" title=" " alt="" coords="777,1141,965,1183"/>
+<area shape="rect" id="node33" href="$class_keyboard_interrupt.html" title=" " alt="" coords="192,1018,331,1045"/>
 </map>

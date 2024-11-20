@@ -1,13 +1,8 @@
 <map id="rosros.rclify.exceptions.NameValidationException" name="rosros.rclify.exceptions.NameValidationException">
-<area shape="rect" id="Node000001" title="Raised when a topic name, node name, or namespace are invalid." alt="" coords="140,101,331,141"/>
-<area shape="rect" id="Node000003" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_namespace_exception.html" title="Raised when a namespace is invalid." alt="" coords="384,5,591,45"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="289,93,378,55,413,43,415,48,380,60,291,98"/>
-<area shape="rect" id="Node000004" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_node_name_exception.html" title="Raised when a node name is invalid." alt="" coords="386,69,589,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="344,105,385,100,386,105,345,110"/>
-<area shape="rect" id="Node000005" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_service_name_exception.html" title="Raised when a service name is invalid." alt="" coords="379,133,596,173"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="345,132,379,137,378,142,344,138"/>
-<area shape="rect" id="Node000006" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_topic_name_exception.html" title="Raised when a topic name is invalid." alt="" coords="386,197,589,237"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="291,145,380,183,415,195,413,200,378,188,289,150"/>
-<area shape="rect" id="Node000002" href="$class_exception.html" title=" " alt="" coords="5,109,92,134"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,119,140,119,140,124,106,124"/>
+<area shape="rect" id="node1" title=" " alt="" coords="140,104,331,145"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_namespace_exception.html" title=" " alt="" coords="384,5,591,47"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_node_name_exception.html" title=" " alt="" coords="386,71,589,112"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_service_name_exception.html" title=" " alt="" coords="379,136,596,177"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rclify_1_1exceptions_1_1_invalid_topic_name_exception.html" title=" " alt="" coords="386,201,589,243"/>
+<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="5,111,92,138"/>
 </map>

@@ -1,7 +1,5 @@
 <map id="rosros.rclify.exceptions.ParameterAlreadyDeclaredException" name="rosros.rclify.exceptions.ParameterAlreadyDeclaredException">
-<area shape="rect" id="Node000001" title="Raised when declaring a parameter that had been declared before." alt="" coords="5,167,268,207"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="49,79,225,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,133,139,166,134,166,134,133"/>
-<area shape="rect" id="Node000003" href="$class_exception.html" title=" " alt="" coords="93,5,180,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="139,44,139,79,134,79,134,44"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,169,268,211"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title=" " alt="" coords="49,80,225,121"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="93,5,180,32"/>
 </map>

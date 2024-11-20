@@ -1,7 +1,5 @@
 <map id="rosros.rclify.exceptions.ParameterNotDeclaredException" name="rosros.rclify.exceptions.ParameterNotDeclaredException">
-<area shape="rect" id="Node000001" title="Raised when handling an undeclared parameter when it is not allowed." alt="" coords="5,167,240,207"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="35,79,211,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,133,125,166,120,166,120,133"/>
-<area shape="rect" id="Node000003" href="$class_exception.html" title=" " alt="" coords="79,5,166,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,44,125,79,120,79,120,44"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,169,240,211"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title=" " alt="" coords="35,80,211,121"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="79,5,166,32"/>
 </map>

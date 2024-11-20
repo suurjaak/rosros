@@ -1,19 +1,10 @@
 var searchData=
 [
-  ['data_5fclass_0',['data_class',['../namespacerosros_1_1patch.html#a4f139b85b44100891183ff4154ecb19c',1,'rosros::patch']]],
-  ['dds_5ftypes_1',['DDS_TYPES',['../namespacerosros_1_1ros2.html#a3f48c1841ba3cf729e2af091379cc0b0',1,'rosros::ros2']]],
-  ['deadline_2',['DEADLINE',['../classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_kind.html#a8ac2bd2f6778b64daca8fb189fc09489',1,'rosros::rclify::qos::QoSPolicyKind']]],
-  ['deadline_5fdefault_3',['DEADLINE_DEFAULT',['../namespacerosros_1_1rclify_1_1qos.html#a12aafd3b9f8150b1b33ca39c3eb96b6e',1,'rosros::rclify::qos']]],
-  ['debug_4',['DEBUG',['../namespacerosros_1_1rospify_1_1client.html#a1e9f27c2ebc10d6bb2e5cfa3f677452d',1,'rosros::rospify::client']]],
-  ['default_5',['DEFAULT',['../namespacerosros_1_1rclify_1_1qos.html#a4f3651c3bdc30d9461182336e777cc62',1,'rosros::rclify::qos']]],
-  ['depth_5fsystem_5fdefault_6',['DEPTH_SYSTEM_DEFAULT',['../namespacerosros_1_1rclify_1_1qos.html#a44d4febb412c1bab3de14a8bb5c47bef',1,'rosros::rclify::qos']]],
-  ['description_7',['description',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_descriptor.html#a3e0ef200d8dfc6fba1486a2a67aaa61d',1,'rosros::rclify::parameter::ParameterDescriptor']]],
-  ['double_8',['DOUBLE',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_1_1_type.html#a8cbb6f1f35070baf7970f9fb520fa5ec',1,'rosros::rclify::parameter::Parameter::Type']]],
-  ['double_5farray_9',['DOUBLE_ARRAY',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_1_1_type.html#ad2de52b76edabbc473c6166eb31a3443',1,'rosros::rclify::parameter::Parameter::Type']]],
-  ['double_5farray_5fvalue_10',['double_array_value',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_value.html#ac0284d7c6e4a96e33171d27d50d0504c',1,'rosros::rclify::parameter::ParameterValue']]],
-  ['double_5fvalue_11',['double_value',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_value.html#af46fbc59a5988c9063db881d9ce054d1',1,'rosros::rclify::parameter::ParameterValue']]],
-  ['durability_12',['DURABILITY',['../classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_kind.html#a983d3fd4b820f5261453ef15fc145e78',1,'rosros::rclify::qos::QoSPolicyKind']]],
-  ['duration_13',['Duration',['../namespacerosros_1_1rospify_1_1rostime.html#a46564f058282f69186b2e5e44273aeb8',1,'rosros::rospify::rostime']]],
-  ['duration_5funspeficied_14',['DURATION_UNSPEFICIED',['../namespacerosros_1_1rclify_1_1qos.html#a7cd3bc15058b5c9749d831f87607b252',1,'rosros::rclify::qos']]],
-  ['dynamic_5ftyping_15',['dynamic_typing',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_descriptor.html#a18f54caaa125e15490106fe3fc674497',1,'rosros::rclify::parameter::ParameterDescriptor']]]
+  ['endpoint_5fgid_1160',['endpoint_gid',['../classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a32c3f622bab7b4b71f1160f64375234a',1,'rosros::rclify::topic_endpoint_info::TopicEndpointInfo']]],
+  ['endpoint_5ftype_1161',['endpoint_type',['../classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_info.html#a8d63606985b4a59fdae5be5d7fc7c107',1,'rosros::rclify::topic_endpoint_info::TopicEndpointInfo']]],
+  ['entities_1162',['entities',['../classrosros_1_1rclify_1_1callback__groups_1_1_callback_group.html#a6344579facb1f01efc02574cef621a80',1,'rosros::rclify::callback_groups::CallbackGroup']]],
+  ['error_1163',['ERROR',['../namespacerosros_1_1rospify_1_1client.html#a69969334ff486aba4744e59c4a8c8033',1,'rosros::rospify::client']]],
+  ['executor_1164',['EXECUTOR',['../namespacerosros_1_1ros2.html#a4a25c0e7fb06cf8da1396632cca8f50f',1,'rosros::ros2']]],
+  ['extension_1165',['EXTENSION',['../classrosros_1_1ros1_1_1_bag.html#a018b9ae16c837523b01783d0b9b08e0b',1,'rosros.ros1.Bag.EXTENSION()'],['../classrosros_1_1ros2_1_1_bag.html#aa447e65ed71458a764d6cc1ed708c912',1,'rosros.ros2.Bag.EXTENSION()']]],
+  ['extra_5fattrs_1166',['EXTRA_ATTRS',['../namespacerosros_1_1patch.html#a32f5d540d90fb90d8b9297743e0f9d8a',1,'rosros::patch']]]
 ];

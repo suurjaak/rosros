@@ -1,5 +1,4 @@
 <map id="rosros.rclify.qos.InvalidQoSProfileException" name="rosros.rclify.qos.InvalidQoSProfileException">
-<area shape="rect" id="Node000001" title="Raised when constructing a QoSProfile with invalid arguments." alt="" coords="5,79,177,119"/>
-<area shape="rect" id="Node000002" href="$class_exception.html" title=" " alt="" coords="48,5,135,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,44,94,79,89,79,89,44"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,177,121"/>
+<area shape="rect" id="node2" href="$class_exception.html" title=" " alt="" coords="48,5,135,32"/>
 </map>

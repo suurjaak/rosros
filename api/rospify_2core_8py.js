@@ -1,9 +1,10 @@
 var rospify_2core_8py =
 [
-    [ "get_node_uri", "rospify_2core_8py.html#a446ce6fe332af9d5f08d083db5eac12d", null ],
-    [ "get_ros_root", "rospify_2core_8py.html#a084ab337a234dc7c4a825f10b7d5be2e", null ],
-    [ "is_shutdown", "rospify_2core_8py.html#a2a7d82ebcaf9e5806030147fc471de6c", null ],
-    [ "parse_rosrpc_uri", "rospify_2core_8py.html#a0715ca92e26fff6492fb683a2f944b9e", null ],
-    [ "signal_shutdown", "rospify_2core_8py.html#a2b256ca08ea067f809a8a5e9a0332e9f", null ],
-    [ "ROSRPC", "rospify_2core_8py.html#a7e5de76d54b45efdada6b9d666f8b116", null ]
+    [ "get_node_uri", "rospify_2core_8py.html#a90f8a560425eda4700429612726846d1", null ],
+    [ "get_ros_root", "rospify_2core_8py.html#a5fc1fd414e2299fb4804bc767dee832e", null ],
+    [ "is_shutdown", "rospify_2core_8py.html#a82044f5715d39b7362990c9be52b3ded", null ],
+    [ "parse_rosrpc_uri", "rospify_2core_8py.html#aa527d577249783866ff2bf5a1d9e0039", null ],
+    [ "signal_shutdown", "rospify_2core_8py.html#a86919631763dcfbc7d8262031409e5be", null ],
+    [ "__all__", "rospify_2core_8py.html#ac824a51d1ede0541a673a57a934b1fcb", null ],
+    [ "ROSRPC", "rospify_2core_8py.html#a44a952ca01b84730894ff0d6b833c17c", null ]
 ];

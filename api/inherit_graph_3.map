@@ -1,19 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,134,81,159"/>
-<area shape="rect" id="Node000001" href="$classrosros_1_1rclify_1_1clock_1_1_clock_type.html" title="Enum for clock type." alt="" coords="142,59,347,85"/>
-<area shape="poly" id="edge43_Node000000_Node000001" title=" " alt="" coords="72,124,128,94,165,82,166,87,130,98,74,129"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_enum.html" title="Base for QoS Policy enumerations." alt="" coords="129,109,360,134"/>
-<area shape="poly" id="edge44_Node000000_Node000002" title=" " alt="" coords="95,138,143,131,144,137,96,143"/>
-<area shape="rect" id="Node000007" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_kind.html" title="Enum for types of QoS policies that a Publisher or Subscription can set." alt="" coords="133,158,356,183"/>
-<area shape="poly" id="edge49_Node000000_Node000007" title=" " alt="" coords="95,150,139,155,138,161,95,155"/>
-<area shape="rect" id="Node000008" href="$classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_type_enum.html" title="Enum for possible types of topic endpoints." alt="" coords="139,207,351,262"/>
-<area shape="poly" id="edge50_Node000000_Node000008" title=" " alt="" coords="78,164,130,192,161,205,159,210,128,197,75,169"/>
-<area shape="rect" id="Node000003" href="$classrosros_1_1rclify_1_1qos_1_1_durability_policy.html" title="Enum for QoS Durability settings." alt="" coords="409,5,601,45"/>
-<area shape="poly" id="edge45_Node000002_Node000003" title=" " alt="" coords="337,102,359,94,373,85,382,75,407,55,433,43,435,48,409,60,386,79,376,89,361,98,339,107"/>
-<area shape="rect" id="Node000004" href="$classrosros_1_1rclify_1_1qos_1_1_history_policy.html" title="Enum for QoS History settings." alt="" coords="418,69,593,109"/>
-<area shape="poly" id="edge46_Node000002_Node000004" title=" " alt="" coords="362,104,418,97,418,103,362,110"/>
-<area shape="rect" id="Node000005" href="$classrosros_1_1rclify_1_1qos_1_1_liveliness_policy.html" title="Enum for QoS Liveliness settings." alt="" coords="409,133,602,173"/>
-<area shape="poly" id="edge47_Node000002_Node000005" title=" " alt="" coords="362,133,409,139,408,144,362,138"/>
-<area shape="rect" id="Node000006" href="$classrosros_1_1rclify_1_1qos_1_1_reliability_policy.html" title="Enum for QoS Reliability settings." alt="" coords="408,197,603,237"/>
-<area shape="poly" id="edge48_Node000002_Node000006" title=" " alt="" coords="344,136,361,143,376,153,386,163,396,173,409,183,435,195,432,200,407,188,392,177,382,167,373,157,359,148,342,141"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,135,81,162"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1clock_1_1_clock_type.html" title=" " alt="" coords="142,59,347,86"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_enum.html" title=" " alt="" coords="129,110,360,137"/>
+<area shape="rect" id="node8" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_kind.html" title=" " alt="" coords="133,161,356,187"/>
+<area shape="rect" id="node9" href="$classrosros_1_1rclify_1_1topic__endpoint__info_1_1_topic_endpoint_type_enum.html" title=" " alt="" coords="139,211,351,267"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rclify_1_1qos_1_1_durability_policy.html" title=" " alt="" coords="409,5,601,47"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rclify_1_1qos_1_1_history_policy.html" title=" " alt="" coords="418,71,593,112"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rclify_1_1qos_1_1_liveliness_policy.html" title=" " alt="" coords="409,136,602,177"/>
+<area shape="rect" id="node7" href="$classrosros_1_1rclify_1_1qos_1_1_reliability_policy.html" title=" " alt="" coords="408,201,603,243"/>
 </map>

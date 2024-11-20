@@ -1,3 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classrosros_1_1rospify_1_1log_1_1_log_inhibitor.html" title=" " alt="" coords="5,5,220,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,173,55,200"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rospify_1_1service_1_1_service.html" title=" " alt="" coords="109,5,321,32"/>
+<area shape="rect" id="node3" href="$classrosros_1_1rospify_1_1service_1_1_service_proxy.html" title=" " alt="" coords="109,57,321,98"/>
+<area shape="rect" id="node4" href="$classrosros_1_1rospify_1_1timer_1_1_rate.html" title=" " alt="" coords="123,123,306,149"/>
+<area shape="rect" id="node5" href="$classrosros_1_1rospify_1_1timer_1_1_timer.html" title=" " alt="" coords="120,173,309,200"/>
+<area shape="rect" id="node6" href="$classrosros_1_1rospify_1_1topics_1_1_message.html" title=" " alt="" coords="107,224,322,251"/>
+<area shape="rect" id="node8" href="$classrosros_1_1rospify_1_1topics_1_1_publisher.html" title=" " alt="" coords="107,275,323,301"/>
+<area shape="rect" id="node9" href="$classrosros_1_1rospify_1_1topics_1_1_subscriber.html" title=" " alt="" coords="103,325,327,352"/>
+<area shape="rect" id="node7" href="$classrosros_1_1rospify_1_1msg_1_1_any_msg.html" title=" " alt="" coords="375,224,572,251"/>
 </map>

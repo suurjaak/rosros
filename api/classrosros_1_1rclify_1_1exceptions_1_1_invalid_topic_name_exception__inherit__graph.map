@@ -1,7 +1,5 @@
 <map id="rosros.rclify.exceptions.InvalidTopicNameException" name="rosros.rclify.exceptions.InvalidTopicNameException">
-<area shape="rect" id="Node000001" title="Raised when a topic name is invalid." alt="" coords="5,167,208,207"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title="Raised when a topic name, node name, or namespace are invalid." alt="" coords="11,79,202,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,133,109,166,104,166,104,133"/>
-<area shape="rect" id="Node000003" href="$class_exception.html" title=" " alt="" coords="63,5,150,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,44,109,79,104,79,104,44"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,169,208,211"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title=" " alt="" coords="11,80,202,121"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="63,5,150,32"/>
 </map>

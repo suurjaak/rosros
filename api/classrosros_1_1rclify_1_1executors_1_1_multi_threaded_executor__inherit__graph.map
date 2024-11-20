@@ -1,5 +1,4 @@
 <map id="rosros.rclify.executors.MultiThreadedExecutor" name="rosros.rclify.executors.MultiThreadedExecutor">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,179,133"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1executors_1_1_executor.html" title=" " alt="" coords="7,5,177,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,59,95,93,89,93,89,59"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,95,179,136"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1executors_1_1_executor.html" title=" " alt="" coords="7,5,177,47"/>
 </map>

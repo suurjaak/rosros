@@ -1,7 +1,5 @@
 <map id="rosros.rclify.qos.HistoryPolicy" name="rosros.rclify.qos.HistoryPolicy">
-<area shape="rect" id="Node000001" title="Enum for QoS History settings." alt="" coords="33,152,208,192"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_enum.html" title="Base for QoS Policy enumerations." alt="" coords="5,79,236,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,118,123,152,118,152,118,118"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="83,5,159,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="123,44,123,79,118,79,118,44"/>
+<area shape="rect" id="node1" title=" " alt="" coords="33,155,208,196"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1qos_1_1_qo_s_policy_enum.html" title=" " alt="" coords="5,80,236,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="83,5,159,32"/>
 </map>

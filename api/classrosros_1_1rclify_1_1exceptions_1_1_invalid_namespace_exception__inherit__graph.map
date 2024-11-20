@@ -1,7 +1,5 @@
 <map id="rosros.rclify.exceptions.InvalidNamespaceException" name="rosros.rclify.exceptions.InvalidNamespaceException">
-<area shape="rect" id="Node000001" title="Raised when a namespace is invalid." alt="" coords="5,167,212,207"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title="Raised when a topic name, node name, or namespace are invalid." alt="" coords="13,79,204,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,133,111,166,106,166,106,133"/>
-<area shape="rect" id="Node000003" href="$class_exception.html" title=" " alt="" coords="65,5,152,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="111,44,111,79,106,79,106,44"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,169,212,211"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_name_validation_exception.html" title=" " alt="" coords="13,80,204,121"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="65,5,152,32"/>
 </map>

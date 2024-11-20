@@ -1,7 +1,5 @@
 <map id="rosros.rclify.exceptions.InvalidParameterException" name="rosros.rclify.exceptions.InvalidParameterException">
-<area shape="rect" id="Node000001" title="Raised when a parameter to be declared has an invalid name." alt="" coords="5,167,204,207"/>
-<area shape="rect" id="Node000002" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title="Base exception for parameter&#45;related errors." alt="" coords="17,79,193,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,133,107,166,102,166,102,133"/>
-<area shape="rect" id="Node000003" href="$class_exception.html" title=" " alt="" coords="61,5,148,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,44,107,79,102,79,102,44"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,169,204,211"/>
+<area shape="rect" id="node2" href="$classrosros_1_1rclify_1_1exceptions_1_1_parameter_exception.html" title=" " alt="" coords="17,80,193,121"/>
+<area shape="rect" id="node3" href="$class_exception.html" title=" " alt="" coords="61,5,148,32"/>
 </map>

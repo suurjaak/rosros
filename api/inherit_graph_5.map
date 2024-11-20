@@ -1,5 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,124,31"/>
-<area shape="rect" id="Node000001" href="$classrosros_1_1util_1_1_throttled_logger.html" title="Logger wrapper with support for throttling logged messages per call site." alt="" coords="172,5,367,31"/>
-<area shape="poly" id="edge53_Node000000_Node000001" title=" " alt="" coords="138,15,172,15,172,21,138,21"/>
+<area shape="rect" id="node1" href="$classrosros_1_1rclify_1_1node_1_1_node.html" title=" " alt="" coords="5,5,176,32"/>
 </map>

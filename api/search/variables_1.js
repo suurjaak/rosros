@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['action_5fstatus_5fdefault_0',['ACTION_STATUS_DEFAULT',['../classrosros_1_1rclify_1_1qos_1_1_qo_s_preset_profiles.html#af9308ae6bfc114b9ff84a40153eaca36',1,'rosros::rclify::qos::QoSPresetProfiles']]],
-  ['actions_1',['ACTIONS',['../namespacerosros_1_1rclify_1_1qos.html#a0bd7d595dc3123a0386de0b40ccc7d4f',1,'rosros::rclify::qos']]],
-  ['additional_5fconstraints_2',['additional_constraints',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_descriptor.html#ac426c90113e0e8df75a3a3da763bdb4a',1,'rosros::rclify::parameter::ParameterDescriptor']]],
-  ['anymsg_3',['AnyMsg',['../namespacerosros_1_1core.html#ac8223ebe7aa7bdf6bb05ee20c5c31f1e',1,'rosros.core.AnyMsg'],['../namespacerosros_1_1ros1.html#a10c063c7abba4819413f3765c0e445f1',1,'rosros.ros1.AnyMsg'],['../namespacerosros_1_1ros2.html#a32fe9ac80764327a4e1d0e8aef0b9800',1,'rosros.ros2.AnyMsg']]],
-  ['args_4',['args',['../namespacerosros_1_1ros2.html#a16bfd9fd8f496a38840f95a0d084057f',1,'rosros::ros2']]],
-  ['arrays_5',['ARRAYS',['../classrosros_1_1rclify_1_1parameter_1_1_parameter.html#a99c6a91a0cdba7e1e2c0e9e28c3d0432',1,'rosros::rclify::parameter::Parameter']]],
-  ['automatic_6',['AUTOMATIC',['../classrosros_1_1rclify_1_1qos_1_1_liveliness_policy.html#abe7b5ccb0e1dcd0f33b98479be34c899',1,'rosros::rclify::qos::LivelinessPolicy']]]
+  ['bag_1128',['Bag',['../namespacerosros_1_1core.html#a8967612187d5da04e8e0affff10aba7e',1,'rosros::core']]],
+  ['bagmessage_1129',['BagMessage',['../classrosros_1_1ros2_1_1_bag.html#a67d05e32a489cd867283a74694f6dde7',1,'rosros::ros2::Bag']]],
+  ['best_5feffort_1130',['BEST_EFFORT',['../classrosros_1_1rclify_1_1qos_1_1_reliability_policy.html#a38ca631db157108f9492562bf4d93444',1,'rosros::rclify::qos::ReliabilityPolicy']]],
+  ['bool_1131',['BOOL',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_1_1_type.html#a4f341f2512e12d127adb7ea5d17724c9',1,'rosros::rclify::parameter::Parameter::Type']]],
+  ['bool_5farray_1132',['BOOL_ARRAY',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_1_1_type.html#aa851ad6260641a3dc62a14dee2a6d26f',1,'rosros::rclify::parameter::Parameter::Type']]],
+  ['bool_5farray_5fvalue_1133',['bool_array_value',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_value.html#a79e46214c27490c7fade54fe92849b4b',1,'rosros::rclify::parameter::ParameterValue']]],
+  ['bool_5fvalue_1134',['bool_value',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_value.html#a088d857d7c81ab625762a396c152b4f5',1,'rosros::rclify::parameter::ParameterValue']]],
+  ['byte_5farray_1135',['BYTE_ARRAY',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_1_1_type.html#a16636b204a95caed81e785f7f085be29',1,'rosros::rclify::parameter::Parameter::Type']]],
+  ['byte_5farray_5fvalue_1136',['byte_array_value',['../classrosros_1_1rclify_1_1parameter_1_1_parameter_value.html#a4f0ad0e02d5981ea28629308d783748a',1,'rosros::rclify::parameter::ParameterValue']]]
 ];
